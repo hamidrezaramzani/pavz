@@ -213,6 +213,16 @@ table {
     color: #999;
 }
 @media (min-width: 320px) and (max-width: 801px) {
+    .services ul li {
+        width: 60%;
+        display: block!important;
+        margin: 10px auto!important;
+    }
+
+    .services ul li a {
+        display: block;
+        text-align: center;
+    }
     .search-box {
         width: 90% !important;
         height: auto !important;
@@ -391,4 +401,54 @@ table {
 .search-box button i {
     font-size: 18px;
     line-height: 40px;
+}
+
+/*  MY SERVICES  */
+
+.services {
+    background-color: #111111;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg stroke='%23222222' stroke-width='0' %3E%3Crect fill='%23121212' x='-60' y='-60' width='110' height='240'/%3E%3C/g%3E%3C/svg%3E");
+}
+.services h2 {
+    display: block;
+    text-align: right;
+    font: 35px isblack;
+    color: #fff;
+    margin-bottom: 50px;
+}
+.services p {
+    text-align: right;
+    display: block;
+    font: 14px is;
+    color: #fff;
+    margin-bottom: 2rem;
+}
+
+.services img {
+    width: 70%;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+}
+.services span {
+    display: block;
+    text-align: right;
+    color: rgb(4, 223, 235);
+    font: 18px isblack;
+}
+
+.services ul li {
+    /* height: 50px; */
+    float: right;
+    text-align: right;
+    padding: 5px 10px;
+    border: 1px solid #00dddd;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+.services ul li a {
+    color: #00dddd;
+    text-decoration: none;
+    font: 13px is;
 }
