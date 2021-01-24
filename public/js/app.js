@@ -1,6 +1,6 @@
 new fullpage("#fullpage", {
-    anchors: ["Welcome"],
-    navigationTooltips: ["خوش آمدید", "Open", "Easy", "Touch"],
+    anchors: ["Welcome" , "Services"],
+    navigationTooltips: ["خوش آمدید", "سرویس های ما", "Easy", "Touch"],
     css3: true,
     scrollingSpeed: 1000,
     navigation: true,
