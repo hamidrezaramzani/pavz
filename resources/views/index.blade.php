@@ -4,5 +4,7 @@
         @include('partials.home.header')
         @include('partials.home.services')
         @include('partials.home.best-villas')
+        @include('partials.languages')
     </div>
+    
 @endsection
