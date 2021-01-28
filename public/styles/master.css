@@ -138,19 +138,6 @@ table {
 }
 
 @media only screen and (max-width: 320px) {
-    @font-face {
-        @font-face {
-            font-family: "is";
-            src: url(../fonts/mobile/IRANSansWeb\(FaNum\)_Medium.ttf)
-                format("truetype");
-        }
-
-        @font-face {
-            font-family: "isblack";
-            src: url(../fonts/mobile/IRANSansWeb\(FaNum\)_Black.ttf)
-                format("truetype");
-        }
-    }
 }
 
 .is {
@@ -184,7 +171,7 @@ table {
 
 .top-header {
     padding: 50px;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 9999999;
@@ -213,6 +200,35 @@ table {
     color: #999;
 }
 @media (min-width: 320px) and (max-width: 801px) {
+    @font-face {
+        @font-face {
+            font-family: "is";
+            src: url(../fonts/mobile/IRANSansWeb\(FaNum\)_Medium.ttf)
+                format("truetype");
+        }
+
+        @font-face {
+            font-family: "isblack";
+            src: url(../fonts/mobile/IRANSansWeb\(FaNum\)_Black.ttf)
+                format("truetype");
+        }
+    }
+    .best-villas {
+        padding-top: 100px !important;
+    }
+
+    .title h2 {
+        font-size: 25px !important;
+    }
+
+    .title a {
+        display: none;
+    }
+
+    .title p {
+        text-align: center !important;
+    }
+
     .services ul li {
         width: 60%;
         display: block !important;
@@ -419,10 +435,8 @@ table {
 .title {
     width: 100%;
     height: 50px;
-    position: absolute;
-    top: 50px;
-    right: 0;
-    padding: 50px;
+    padding: 0 35px;
+    margin-bottom: 40px;
 }
 
 .title h2 {
@@ -512,9 +526,20 @@ table {
     height: auto;
     position: relative;
 }
+
+.villa-item-img {
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
 .villa-item-content img {
     width: 100%;
     border-radius: 5px;
+    transition: all 0.5s ease;
+}
+
+.villa-item-content img:hover {
+    transform: scale(1.1);
+    transition: all 0.5s ease;
 }
 
 .my-rating {
@@ -538,8 +563,7 @@ table {
 
 .villa-top-info {
     width: 100%;
-    height: 35px
-    ;
+    height: 35px;
     /* background: #000; */
 }
 
@@ -608,16 +632,15 @@ table {
     direction: rtl;
     float: right;
     border-radius: 3px;
-    margin: 0 5px;
+    margin: 5px;
 }
 
-
-.languages{
+.languages {
     width: 150px;
     height: 30px;
     position: absolute;
-    bottom: 20px;
-    left: 20px;
+    bottom: 15px;
+    left: 0;
     text-align: center;
 }
 
@@ -627,12 +650,63 @@ table {
     display: inline-block;
     padding: 5px;
     text-decoration: none;
-    font:12px is;
+    font: 12px is;
     border-radius: 100%;
-    color:#222;
+    color: #222;
 }
 
-.languages a.active{
+.languages a.active {
     background: #222;
-    color:#fff;
+    color: #fff;
+}
+
+.owl-next {
+    width: 35px !important;
+    height: 35px !important;
+    position: absolute !important;
+    background: #222 !important;
+    color: #fff !important;
+    font-size: 35px !important;
+    border-radius: 100%;
+    top: 0 !important;
+    /* left: 0!important; */
+    bottom: 0 !important;
+    right: 50px !important;
+    margin: auto;
+}
+
+.owl-prev {
+    width: 35px !important;
+    height: 35px !important;
+    position: absolute !important;
+    background: #222 !important;
+    color: #fff !important;
+    font-size: 35px !important;
+    border-radius: 100%;
+    top: 0 !important;
+    left: 50px !important;
+    bottom: 0 !important;
+    /* right: 50px!important; */
+    margin: auto;
+}
+
+.fixed-header {
+    padding: 5px !important;
+    background-color: #fff;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.05);
+}
+.fixed-header ul li a {
+    color: #444 !important;
+}
+.fixed-header ul li {
+    margin: 0 10px;
+    transition: all 0.5s ease;
+}
+.fixed-header ul li:hover {
+    transition: all 0.5s ease;
+    border-bottom: 1px solid #444;
+}
+
+.fixed-header .register-ads {
+    border-color: #444;
 }
