@@ -1,7 +1,7 @@
 <div class="section services">
     <div class="container">
         <div class="row justify-content-center service-box">
-            <div class="col-11 col-md-5">
+            <div class="col-11 col-md-5 d-none d-md-block">
                 <img src="{{ asset('images/we.jpg') }}" alt="">
             </div>
             <div class="col-11 col-md-5">
@@ -58,6 +58,4 @@
 
         </div>
     </div>
-
-    <span class="lable">سرویس های پاوز</span>
 </div>
