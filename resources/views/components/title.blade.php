@@ -4,7 +4,7 @@
             style="float: left">{{ $linkTitle }}</a> --}}
 
         {{ $title }}
-        <i class="fa fa-square mt-3" style="font-size: 20px"></i>
+        <i class="fa fa-square mt-3" style="font-size: 20px "></i>
     </h2>
     <p>{{ $description }}</p>
 </div>

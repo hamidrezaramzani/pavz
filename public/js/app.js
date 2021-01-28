@@ -61,7 +61,16 @@ new fullpage("#home", {
 
 window.addEventListener("hashchange", function (e) {
     const hash = e.newURL.split("#")[1];
+<<<<<<< HEAD
     changeSection(hash);
 });
 
 changeSection(initialHash);
+=======
+    if (hash != "Welcome") {
+        header.classList.add("fixed-header");
+    } else {
+        header.classList.remove("fixed-header");
+    }
+});
+>>>>>>> 5007060be192a8f586893ccef587dbe0ad1e6fd1
