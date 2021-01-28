@@ -32,7 +32,7 @@
 
             <span>/ هر شب</span>
         </p>
-    </div>
+
 
     <div class="villa-properties">
         <ul>
@@ -58,4 +58,6 @@
             </li>
         </ul>
     </div>
+    </div>
+
 </div>

@@ -1,10 +1,17 @@
 const header = document.getElementById("my-header");
+const logo = header.querySelector("img");
 const initialHash = location.hash.split("#")[1];
-if (initialHash  != "Welcome" && initialHash != "") {
-    header.classList.add("fixed-header");
-} else {
-    header.classList.remove("fixed-header");
-}
+
+const changeSection = (hash) => {
+    if (hash != "Welcome" && hash != "") {
+        logo.src = "http://localhost:8000/images/dpavz.png";
+        header.classList.add("fixed-header");
+    } else {
+        logo.src = "http://localhost:8000/images/pavz.png";
+        header.classList.remove("fixed-header");
+    }
+};
+
 $(document).ready(function () {
     $(".owl-carousel").owlCarousel({
         items: 4,
@@ -54,9 +61,7 @@ new fullpage("#home", {
 
 window.addEventListener("hashchange", function (e) {
     const hash = e.newURL.split("#")[1];
-    if (hash != "Welcome") {
-        header.classList.add("fixed-header");
-    } else {
-        header.classList.remove("fixed-header");
-    }
+    changeSection(hash);
 });
+
+changeSection(initialHash);
