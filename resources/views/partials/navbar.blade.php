@@ -1,12 +1,8 @@
 <div class="row top-header" id="my-header">
-<<<<<<< HEAD
     <div class="col-12 col-md-4">
         <img src="{{ asset('images/pavz.png') }}" width="100" alt="pavz logo">
     </div>
     <div class="col-12 col-md-8">
-=======
-    <div class="col-12 col-md-12">
->>>>>>> 5007060be192a8f586893ccef587dbe0ad1e6fd1
         <nav class="navbar navbar-expand-lg" style="direction: rtl">
             <a class="navbar-brand register-ads" href="#">
                 <i class="fa fa-plus"></i>

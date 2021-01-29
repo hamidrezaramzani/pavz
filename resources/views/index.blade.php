@@ -5,7 +5,8 @@
         @include('partials.home.header')
         @include('partials.home.services')
         @include('partials.home.best-villas')
-        @include('partials.languages')
+        @include('partials.home.best-places')
     </div>
-
+    @include('partials.languages')
+    @include('partials.gototop')
 @endsection

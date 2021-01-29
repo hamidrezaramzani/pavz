@@ -7,19 +7,15 @@ use Illuminate\View\Component;
 class Title extends Component
 {
 
-    public $link;
     public $title;
     public $description;
-    public $linkTitle;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($title, $description, $link, $linkTitle)
+    public function __construct($title, $description)
     {
-        $this->linkTitle = $linkTitle;
-        $this->link = $link;
         $this->title = $title;
         $this->description = $description;
     }

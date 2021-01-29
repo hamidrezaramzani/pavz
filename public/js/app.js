@@ -3,7 +3,7 @@ const logo = header.querySelector("img");
 const initialHash = location.hash.split("#")[1];
 
 const changeSection = (hash) => {
-    if (hash != "Welcome" && hash != "") {
+    if (hash && hash != "Welcome") {
         logo.src = "http://localhost:8000/images/dpavz.png";
         header.classList.add("fixed-header");
     } else {
@@ -45,8 +45,8 @@ $(document).ready(function () {
 });
 
 new fullpage("#home", {
-    anchors: ["Welcome", "Services", "Villas"],
-    navigationTooltips: ["خوش آمدید", "سرویس های ما", "ویلا های برتر و دنج"],
+    anchors: ["Welcome", "Services", "Villas" , "Places"],
+    navigationTooltips: ["خوش آمدید", "سرویس های ما", "ویلا های برتر و دنج" , "برترین شهر های ایران"],
     css3: true,
     scrollingSpeed: 1000,
     navigation: true,
@@ -61,16 +61,7 @@ new fullpage("#home", {
 
 window.addEventListener("hashchange", function (e) {
     const hash = e.newURL.split("#")[1];
-<<<<<<< HEAD
     changeSection(hash);
 });
 
 changeSection(initialHash);
-=======
-    if (hash != "Welcome") {
-        header.classList.add("fixed-header");
-    } else {
-        header.classList.remove("fixed-header");
-    }
-});
->>>>>>> 5007060be192a8f586893ccef587dbe0ad1e6fd1
