@@ -446,7 +446,7 @@ background-size: cover; */
 .title h2 {
     display: block;
     text-align: right;
-    font: 30px isblack;
+    font: 25px isblack;
     color: #fff;
 }
 
@@ -455,7 +455,7 @@ background-size: cover; */
     text-align: right;
     margin: 3px;
     color: #fff;
-    font: 13px is;
+    font:11px is;
 }
 
 .lable {
@@ -508,9 +508,6 @@ background-size: cover; */
     text-decoration: none;
 }
 
-.best-villas-slider > div {
-    padding: 10px;
-}
 
 /* BEST VILAA  */
 .villa-item {
@@ -605,12 +602,13 @@ background-size: cover; */
 .villa-item-content h2 {
     /* float: right; */
     font: 20px isblack;
-    color: rgb(75, 66, 66);
+    color: #444141;
     display: inline-block;
     text-align: right;
     /* margin: 10px 0; */
     width: 100%;
     padding: 0 10px;
+    direction: rtl;
 }
 
 .villa-item-content p {
@@ -632,7 +630,7 @@ background-size: cover; */
 .villa-properties {
     margin-top: 20px;
     width: 100%;
-    height: 100px;
+    height: 80px;
     display: flex;
     justify-content: center;
 }
@@ -640,13 +638,14 @@ background-size: cover; */
 .villa-properties ul li i {
     display: block;
     text-align: center;
-    font-size: 25px;
+    font-size: 30px;
+    margin-bottom: 2px;
 }
 
 .villa-properties ul li {
     padding: 4px 10px;
-    color: #333;
-    font: 13px is;
+    color: #444141;
+    font: 11px is;
     direction: rtl;
     float: right;
     border-radius: 3px;
@@ -785,24 +784,13 @@ background-size: cover; */
     width: 100%;
     height: 100vh;
     filter: blur(4px);
-    animation: bbi 5s linear 2s alternate;
-}
-
-@keyframes bbi {
-    0% {
-        transform: scale(1);
-    }
-
-    100% {
-        transform: scale(1.1);
-    }
 }
 
 .bgeffect {
     position: absolute;
     width: 100%;
     height: 100vh;
-    background:linear-gradient(135deg, rgba(12, 61, 48, 0.5) 0%,rgba(4, 18, 32, 0.5) 100%);
+    background:linear-gradient(135deg, rgba(18, 48, 94, 0.5) 0%,rgba(4, 18, 32, 0.5) 100%);
     top: 0;
     left: 0;
     z-index: -1;

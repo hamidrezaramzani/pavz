@@ -49,13 +49,13 @@ AOS.init(); // AOS initiation
 $(".aos-init").removeClass("aos-animate");
 
 new fullpage("#home", {
-    anchors: ["Welcome", "Services", "Villas", "Places", "Apartments"],
+    anchors: ["Welcome", "Villas", "Places", "Apartments" , "Areas"],
     navigationTooltips: [
         "خوش آمدید",
-        "سرویس های ما",
         "ویلا های برتر و دنج",
         "برترین شهر های ایران",
         "برترین آپارتمان های ایران",
+        "برترین زمین های ایران"
     ],
     css3: true,
     scrollingSpeed: 1000,

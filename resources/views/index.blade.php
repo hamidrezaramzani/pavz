@@ -7,6 +7,7 @@
         @include('partials.home.best-places')
         @include('partials.home.best-villas')
         @include('partials.home.best-apartments')
+        @include('partials.home.best-areas')
     </div>
     @include('partials.languages')
     @include('partials.gototop')
