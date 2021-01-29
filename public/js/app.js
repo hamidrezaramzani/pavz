@@ -44,6 +44,10 @@ $(document).ready(function () {
     });
 });
 
+AOS.init(); // AOS initiation
+
+$(".aos-init").removeClass("aos-animate");
+
 new fullpage("#home", {
     anchors: ["Welcome", "Services", "Villas", "Places", "Apartments"],
     navigationTooltips: [
@@ -63,6 +67,24 @@ new fullpage("#home", {
     controlArrows: false,
     margin: 10,
     stagePadding: 50,
+    afterLoad: function () {
+        var a_table = [
+            "start",
+            "quality",
+            "performance",
+            "dob",
+            "parameters",
+            "compatibility",
+            "options",
+            "contact",
+        ]; // duplicated table of anchors name
+
+        for (var i = 0; i < a_table.length; i++) {
+            $(".section-" + a_table[i] + ".active .aos-init").addClass(
+                "aos-animate"
+            ); // all magic goes here - when page is active, then all elements with AOS will start animate
+        }
+    },
 });
 
 window.addEventListener("hashchange", function (e) {

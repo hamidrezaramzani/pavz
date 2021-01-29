@@ -10,12 +10,12 @@
             @include('partials.home.place-item')
             @include('partials.home.place-item')
         </div>
-        <br>
+        {{-- <br>
         <br>
 
         <div class="d-block text-center">
             <a href="" class="btn btn-sm btn-warning is">تمامی شهر ها و استان های ایران</a>
-        </div>
+        </div> --}}
     </div>
 
 </div>
