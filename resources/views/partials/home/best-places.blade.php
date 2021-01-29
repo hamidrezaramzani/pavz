@@ -14,8 +14,7 @@
         <br>
 
         <div class="d-block text-center">
-            <a href="" class="btn btn-sm btn-warning is">تمام ویلا های پاوز</a>
-            <a href="" class="btn btn-sm btn-warning is">ویلا های ویژه روی نقشه</a>
+            <a href="" class="btn btn-sm btn-warning is">تمامی شهر ها و استان های ایران</a>
         </div>
     </div>
 

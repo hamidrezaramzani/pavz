@@ -45,8 +45,14 @@ $(document).ready(function () {
 });
 
 new fullpage("#home", {
-    anchors: ["Welcome", "Services", "Villas" , "Places"],
-    navigationTooltips: ["خوش آمدید", "سرویس های ما", "ویلا های برتر و دنج" , "برترین شهر های ایران"],
+    anchors: ["Welcome", "Services", "Villas", "Places", "Apartments"],
+    navigationTooltips: [
+        "خوش آمدید",
+        "سرویس های ما",
+        "ویلا های برتر و دنج",
+        "برترین شهر های ایران",
+        "برترین آپارتمان های ایران",
+    ],
     css3: true,
     scrollingSpeed: 1000,
     navigation: true,
