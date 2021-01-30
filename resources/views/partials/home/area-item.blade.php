@@ -1,4 +1,4 @@
-<div class="villa-item">
+<div class="villa-item" data-aos="fade-right">
     <div class="villa-item-content">
         <div class="villa-item-img">
             <div class="my-rating"></div>

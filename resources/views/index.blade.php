@@ -3,7 +3,6 @@
     @include('partials.navbar')
     <div id="home">
         @include('partials.home.header')
-        {{-- @include('partials.home.services') --}}
         @include('partials.home.best-places')
         @include('partials.home.best-villas')
         @include('partials.home.best-apartments')
@@ -12,3 +11,5 @@
     @include('partials.languages')
     @include('partials.gototop')
 @endsection
+
+

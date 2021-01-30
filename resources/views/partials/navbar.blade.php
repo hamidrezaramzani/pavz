@@ -1,4 +1,4 @@
-<div class="row top-header" id="my-header">
+<div class="row top-header fixed-header" id="my-header">
     <div class="col-12 col-md-4">
         <img src="{{ asset('images/pavz.png') }}" width="100" alt="pavz logo">
     </div>

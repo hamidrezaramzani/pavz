@@ -1,12 +1,4 @@
 <div class="section best-apartments">
-
-    <div class="bgeffect"></div>
-
-
-    <div class="blurbg">
-        <img src="{{ asset('images/apartments.jpg') }}" alt="Apartment image">
-    </div>
-
     <x-title :title="'برترین آپارتمان های ایران'"
         :description="'اینجا میتوانید بهترین آپارتمان های ایران را انتخاب نمایید'"></x-title>
 
@@ -28,5 +20,4 @@
             <i class="fas fa-map"></i>
         </a>
     </div>
-
 </div>

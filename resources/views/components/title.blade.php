@@ -1,4 +1,4 @@
-<div class="title">
+<div data-aos="zoom-in" class="title">
     <h2>
         {{ $title }}
     </h2>
