@@ -1,4 +1,4 @@
-<div class="row top-header fixed-header" id="my-header">
+<div class="row top-header" id="my-header">
     <div class="col-12 col-md-4">
         <img src="{{ asset('images/pavz.png') }}" width="100" alt="pavz logo">
     </div>
@@ -6,7 +6,7 @@
         <nav class="navbar navbar-expand-lg" style="direction: rtl">
             <a class="navbar-brand register-ads" href="#">
                 <i class="fa fa-plus"></i>
-                ثبت آگهی
+                ثبت آگهی رایگان
             </a>
             <a class="navbar-brand register-ads" href="#">
                 <i class="fa fa-user"></i>

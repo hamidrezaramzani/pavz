@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('styles/aos.css') }}">
 
 
-</head>
+</head> 
 
 <body>
     @yield('content')
@@ -25,6 +25,6 @@
 <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/aos.js') }}"></script>
+<script src="{{ asset('js/multi-animated-counter.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
-
 </html>

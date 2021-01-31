@@ -17,10 +17,10 @@
             @include('partials.home.villa-item')
         </div>
     </div>
-    {{-- <div class="d-block text-center mt-5">
+    <div class="d-block text-center mt-5">
         <a href="/" class="btn btn-sm btn-outline-dark is">
             برترین ویلا های ایران در نقشه
             <i class="fas fa-map"></i>
         </a>
-    </div> --}}
+    </div>
 </div>

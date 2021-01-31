@@ -9,15 +9,17 @@ class Title extends Component
 
     public $title;
     public $description;
+    public $mode = "light";
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($title, $description)
+    public function __construct($title, $description , $mode = "light")
     {
         $this->title = $title;
         $this->description = $description;
+        $this->mode = $mode;
     }
 
     /**

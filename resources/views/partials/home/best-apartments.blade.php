@@ -15,7 +15,7 @@
 
     </div>
     <div class="d-block text-center mt-5">
-        <a href="/" class="btn btn-sm btn-outline-light is">
+        <a href="/" class="btn btn-sm btn-outline-dark is">
             برترین ویلا های ایران در نقشه
             <i class="fas fa-map"></i>
         </a>

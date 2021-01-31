@@ -5,6 +5,7 @@
         @include('partials.home.header')
         @include('partials.home.best-places')
         @include('partials.home.best-villas')
+        @include('partials.home.counts')
         @include('partials.home.best-apartments')
         @include('partials.home.best-areas')
     </div>
