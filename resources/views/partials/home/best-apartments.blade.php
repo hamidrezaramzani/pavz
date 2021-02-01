@@ -1,5 +1,5 @@
 <div class="section best-apartments">
-    <x-title :title="'برترین آپارتمان های ایران'"
+    <x-title :title="'خرید و رهن و اجاره آپارتمان های برتر'"
         :description="'اینجا میتوانید بهترین آپارتمان های ایران را انتخاب نمایید'"></x-title>
 
 

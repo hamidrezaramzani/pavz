@@ -34,30 +34,43 @@
         </p>
 
 
-    <div class="villa-properties">
-        <ul>
-            <li>
-                <i class="fa fa-hotel"></i>
-                4 اتاق
-            </li>
+        <div class="villa-properties">
+            <ul>
+                <li>
+                    <i class="fa fa-hotel"></i>
+                    4 اتاق
+                </li>
 
-            <li>
-                <i class="fa fa-bed"></i>
-                2 تخت خواب
-            </li>
+                <li>
+                    <i class="fa fa-bed"></i>
+                    2 تخت خواب
+                </li>
 
-            <li>
-                <i class="fa fa-chart-area"></i>
-                300 متر زیر بنا
-            </li>
+                <li>
+                    <i class="fa fa-chart-area"></i>
+                    300 متر زیر بنا
+                </li>
 
 
-            <li>
-                <i class="fa fa-users"></i>
-                تا 10 مهمان
-            </li>
-        </ul>
+                <li>
+                    <i class="fa fa-users"></i>
+                    تا 10 مهمان
+                </li>
+            </ul>
+        </div>
+
+
+
+        <div class="user-info">
+            <div>
+                <img src="{{ asset('images/user.png') }}" width="50" alt="User">
+            </div>
+            <div>
+                <h4>حمیدرضا رمضانی</h4>
+                <span>4 روز پیش</span>
+            </div>
+        </div>
     </div>
-    </div>
+
 
 </div>

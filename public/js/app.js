@@ -35,7 +35,7 @@ $(document).ready(function () {
 
 AOS.init();
 
+window.onscroll = function () {
+    myFunction();
+};
 
-window.addEventListener("scroll" ,function(){
-    console.log(document.body.offsetTop);
-})
