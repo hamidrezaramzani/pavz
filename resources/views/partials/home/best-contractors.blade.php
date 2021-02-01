@@ -1,5 +1,5 @@
 <div class="section best-contractors">
-    <x-title :title="'پیمانکار های ویژه '" :description="'پیمانکار های ویژه پاوز که میتوانید انتخاب کنید'"></x-title>
+    <x-title :title="'پیمانکار های ویژه '" :description="'پیمانکار های ویژه پاوز که میتوانید انتخاب کنید'"  :mode="'dark'"></x-title>
 
 
     <div class="container">

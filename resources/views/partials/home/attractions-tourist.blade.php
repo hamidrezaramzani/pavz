@@ -1,7 +1,7 @@
 <div class="section attractions-tourist">
 
     <x-title :title="'جاذبه های گردشگری'" :description="'جاذبه های گردشگری بهترین اهداف برای سفر کردن شما هستند'"
-        :mode="'dark'"></x-title>
+       ></x-title>
 
     <br>
     <br>
