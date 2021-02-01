@@ -24,21 +24,26 @@ $(document).ready(function () {
     });
 
 
-    
+
 
     $(".my-rating").starRating({
         initialRating: 4,
         starSize: 25,
     });
 
-    $(".test").click(function (e) {
-        $(".owl-carousel").carousel("next");
-    });
 });
 
 AOS.init();
 
-window.onscroll = function () {
-    myFunction();
+window.onscroll = function (e) {
+    const scrollHeader = document.getElementById("header").offsetHeight;
+    const y = scrollY;
+    if (y >= scrollHeader){
+        header.classList.add("fixed-header");
+        logo.src= "http://localhost:8000/images/dpavz.png";
+    }else{
+        header.classList.remove("fixed-header");
+        logo.src= "http://localhost:8000/images/pavz.png";
+    }
 };
 
