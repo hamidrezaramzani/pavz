@@ -730,11 +730,13 @@ table {
     color: #fff;
     font: 14px is;
     text-align: center;
-    position: absolute;
+    position: fixed;
     bottom: 20px;
     right: 20px;
     border-radius: 10px;
     line-height: 33px;
+    display: none;
+    cursor:pointer;
 }
 
 .best-cities > div {
