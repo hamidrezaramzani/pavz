@@ -23,6 +23,9 @@ $(document).ready(function () {
         },
     });
 
+
+    
+
     $(".my-rating").starRating({
         initialRating: 4,
         starSize: 25,
