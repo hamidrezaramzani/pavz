@@ -167,7 +167,7 @@ table {
     top: 0;
     left: 0;
     z-index: 9999999;
-    width: 100%;
+    width: 101%;
 }
 
 .top-header img {
@@ -649,7 +649,7 @@ table {
 .languages {
     width: 150px;
     height: 30px;
-    position: absolute;
+    position: fixed;
     bottom: 15px;
     left: 0;
     text-align: center;
@@ -736,7 +736,7 @@ table {
     border-radius: 10px;
     line-height: 33px;
     display: none;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .best-cities > div {
@@ -994,7 +994,7 @@ footer {
 
 footer h4 {
     display: block;
-    text-align:center;
+    text-align: center;
     color: #fff;
     font: 16px is;
     padding-bottom: 5px;
@@ -1039,15 +1039,136 @@ footer ul li a {
     text-align: center;
     display: block;
 }
-footer h3{
+footer h3 {
     display: block;
-    text-align:right;
-    font:18px isblack;
-    color:#fff;
+    text-align: right;
+    font: 18px isblack;
+    color: #fff;
     width: 100%;
 }
 
-
-footer .aboutus img{
+footer .aboutus img {
     float: left;
+}
+
+.login-box {
+    margin: 10rem 0;
+    height: 700px;
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.login-box .right {
+    background: url(../images/cities/ramsar.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+.login-box .effect {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background:linear-gradient(135deg, #62277470 0%,#c5336470 100%);
+}
+
+
+.login-form{
+    padding: 50px;
+}
+
+
+.login-form img{
+    display: block;
+    margin: 0 auto;
+}
+
+.login-form h3{
+    display: block;
+    font:30px isblack;
+    color:#454845;
+    text-align: center;
+    margin:20px 0 0 0 ;
+}
+
+.login-form p{
+    display: block;
+    text-align: center;
+    font:12px is;
+    color:#888;
+    margin-top: 5px;
+}
+
+.login-form input{
+    width: 100%;
+    height: 45px;
+    margin: 15px 0;
+    border:1px solid #ededed;
+    border-radius: 10px;
+    font:14px is;
+    text-align: right;
+    padding: 2px 5px;
+}
+.login-form button{
+    width: 100%;
+    height: 45px;
+    background: royalblue;
+    color:#fff;
+    font:15px is;
+    border-radius: 5px;
+    border:none;
+    transition: all .5s ease;
+}
+
+.login-form button:hover{
+    background: rgb(46, 79, 177);
+    transition: all .5s ease;
+}
+
+.login-form ul li {
+    display: block;
+    text-align: center;
+    margin: 5px 0;
+}
+
+.login-form ul li  a {
+    font:12px is;
+    color:#333;
+}
+
+
+.inpg{
+    width: 100%;
+    display: block;
+    position: relative;
+}
+
+.inpg span{
+    position: absolute;
+    top:30px;
+    left: 10px;
+    color:#444;
+}
+.login-box .right{
+    position: relative;
+}
+.login-box .right h3{
+    position: absolute;
+    margin: auto;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    font:50px isblack;
+    color:#fff;
+    display: block;
+    height: 100px;
+    text-align: center;
+}
+
+.login-box .right p{
+    font:14px is;   
 }
