@@ -1172,3 +1172,10 @@ footer .aboutus img {
 .login-box .right p{
     font:14px is;   
 }
+
+.error{
+    display: block;
+    text-align: center;
+    font:12px is;
+    color:red;
+}
