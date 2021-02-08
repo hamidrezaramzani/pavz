@@ -1,7 +1,9 @@
 @extends('layout.content' , ["title" => "ثبت نام | پاوز"])
 @section('content')
+    @include('partials.home.header')
     @include('partials.navbar')
     <div class="container">
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
         <div class="row justify-content-center login-box">
             <div class="col-md-4 col-11 login-form">
                 <img src="{{ asset('images/dpavz.png') }}" alt="PAVZ logo">
@@ -17,14 +19,14 @@
                         </span>
                     </div>
                     <div class="inpg">
-                        <input type="password" name="password" placeholder="رمز عبور خود را وارد نمایید">
+                        <input type="password" id="password" name="password" placeholder="رمز عبور خود را وارد نمایید">
                         <span>
                             <i class="fa fa-lock"></i>
                         </span>
                     </div>
 
                     <div class="inpg">
-                        <input type="text" name="code" placeholder="کد معرف را وارد نمایید(اختیاری)">
+                        <input type="text" id="identifier-code" name="code" placeholder="کد معرف را وارد نمایید(اختیاری)">
                         <span>
                             <i class="fa fa-envelope"></i>
                         </span>
@@ -46,6 +48,34 @@
                     </p>
                     <a href="/login" class="btn btn-sn btn-outline-light is">ورود</a>
                 </h3>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade show" id="activeAccountModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close btn btn-sm btn-danger" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title is" id="exampleModalLongTitle">فعال سازی حساب</h5>
+
+                </div>
+                <div class="modal-body acm-body">
+                    <h3>کد تایید</h3>
+                    <p id="sent-code-p"></p>
+                    <br>
+                    <form action="" id="activationForm">
+                        <input type="number" placeholder="کد چهار رقمی ارسال شده">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-block btn-primary btn-sm is">تایید</button>
+                </div>
             </div>
         </div>
     </div>
@@ -82,9 +112,30 @@
             "این شماره تلفن قبلا استفاده شده است"
         );
 
+
+
         $('#register-form').validate({
             submitHandler: function(form) {
-                console.log(form.values);
+                const CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                // $("#sent-code-p").text(`کد ارسالی به شماره تلفن ${$("#phonenumber").val()} را وارد نمایید`)
+                // $("#activeAccountModal").modal("show")
+
+                $.ajax({
+                    type: "POST",
+                    url: "/store-user",
+                    data: {
+                        _token: CSRF_TOKEN,
+                        phonenumber: $("#phonenumber").val(),
+                        password: $("#password").val(),
+                        identifierCode: $("#identifier-code").val()
+                    },
+                    success: (response) => {
+                        console.log(response);
+                    },
+                    error: (err) => {
+                        console.log(err);
+                    }
+                })
             },
             rules: {
                 phonenumber: {
@@ -109,6 +160,26 @@
                 }
             }
         });
+
+        $('#activationForm').validate({
+            submitHandler: function(form) {
+                console.log(form);
+            },
+            rules: {
+                code: {
+                    required: true,
+                    minlength: 4,
+                    maxlength: 4
+                }
+            },
+            messages: {
+                code: {
+                    required: "کد را باید وارد نمایید",
+                    minlength: "باید 4 کاراکتر باشد",
+                    maxlength: "باید 4 کاراکتر باشد"
+                }
+            }
+        })
 
     </script>
 @endpush

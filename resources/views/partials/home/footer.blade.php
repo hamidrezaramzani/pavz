@@ -159,12 +159,38 @@
                 </ul>
 
             </div>
-            <div class="col-11 col-md-3">4</div>
+            <div class="col-11 col-md-3">
+                <h4>
+                    <span>راهنما</span>
+                </h4>
+                <ul>
+
+                    <li>
+                        <a href="">
+                          قوانین و مقررات
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="">
+                            سوالات متداول
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="">
+تماس با ما
+                        </a>
+                    </li>
+
+                    <li><a href="">درباره ما</a></li>
+                </ul>
+            </div>
         </div>
 
         <div class="row justify-content-center">
             <div class="col-12">
-                <p> © تمامی حقوق برای pavz.ir محفوظ است</p>
+                <p> ©  تمامی حقوق برای پاوز محفوظ است و هرگونه کپی برداری پیگرد قانونی دارد</p>
             </div>
         </div>
     </div>

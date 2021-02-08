@@ -1,6 +1,6 @@
-<div class="row top-header fixed-header" id="my-header">
+<div class="row top-header" id="my-header">
     <div class="col-12 col-md-3">
-        <img src="{{ asset('images/dpavz.png') }}" width="100" alt="pavz logo">
+        <img src="{{ asset('images/pavz.png') }}" width="100" alt="pavz logo">
     </div>
     <div class="col-12 col-md-9">
         <nav class="navbar navbar-expand-lg" style="direction: rtl">

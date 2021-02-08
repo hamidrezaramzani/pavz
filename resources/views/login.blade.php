@@ -9,7 +9,7 @@
                 <p>با ورود به سایت میتوانید به تمامی امکانات سایت دسترسی پیدا کنید.</p>
                 <br>
                 <br>
-                <form action="" method="POST">
+                <form action="" method="POST" id="login-form">
                     <div class="inpg">
                         <input type="text" name="phonenumber" placeholder="شماره تلفن خود را وارد نمایید">
                         <span>
@@ -46,3 +46,6 @@
     @include('partials.languages')
     @include('partials.gototop')
 @endsection
+@push('scripts')
+    
+@endpush

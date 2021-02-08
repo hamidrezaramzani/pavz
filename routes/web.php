@@ -17,15 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
-
 Route::get('/login', function () {
     return view('login');
 });
-
-
-Route::get('/register', function () {
-    return view('register');
-});
-
-
+Route::get('/register', [UserController::class , "create"]);
+Route::post("/store-user", [UserController::class, "store"]);
 Route::get('/is-phonenumber-duplicate/{phonenumber}', [UserController::class, "isPhoneNumberDuplicate"]);
