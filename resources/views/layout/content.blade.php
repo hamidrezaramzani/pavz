@@ -22,5 +22,6 @@
 </body>
 <script src="{{ asset('js/jquery.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/sweetalert2.js') }}"></script>
 @stack('scripts')
 </html>

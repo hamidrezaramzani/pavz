@@ -178,7 +178,7 @@ table {
     margin: 0 1rem;
 }
 #menu ul li a {
-    font: 14px is;
+    font:12px is;
     color: #fff;
 }
 
@@ -186,7 +186,7 @@ table {
     border: 1px solid #39c0ed;
     border-radius: 5px;
     color: #39c0ed;
-    font: 13px is;
+    font: 12px is;
     padding: 5px 10px;
 }
 
@@ -1018,7 +1018,7 @@ footer .aboutus ul li a {
 
 footer p {
     display: block;
-    text-align: right;
+    text-align: center;
     direction: rtl;
     padding: 20px 0;
     color: #999;
@@ -1178,4 +1178,30 @@ footer .aboutus img {
     text-align: center;
     font:12px is;
     color:red;
+}
+
+.acm-body h3{
+    font:23px isblack;
+    color:#666;
+    display: block;
+    text-align: center;
+}
+
+.acm-body p{
+    display: block;
+    text-align: center;
+    font:12px is;
+    color:#999;
+    margin: 5px 0;
+}
+
+#activationForm input{
+    width:50%;
+    height: 40px;
+    border: 1px solid #efefef;
+    padding: 0 10px;
+    font:12px is;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
 }

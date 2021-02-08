@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use GuzzleHttp\Psr7\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,18 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function (Request $request) {  
     return view('index');
 });
-
 Route::get('/login', function () {
     return view('login');
 });
-
-
-Route::get('/register', function () {
-    return view('register');
-});
-
-
+Route::get('/register', [UserController::class, "create"]);
+Route::post("/store-user", [UserController::class, "store"]);
+Route::post("/active-user", [UserController::class, "activeUser"]);
 Route::get('/is-phonenumber-duplicate/{phonenumber}', [UserController::class, "isPhoneNumberDuplicate"]);
