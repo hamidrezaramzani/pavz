@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ActiveUserRequest;
+use App\Http\Requests\LoginUserRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
 use DateTime;
@@ -131,14 +132,26 @@ class UserController extends Controller
         }
         $userActivationCode = $user->pluck("activeCode")[0];
         if ($code == $userActivationCode) {
-            User::where("phonenumber" , $phonenumber)->update([
-                "isReady" => true , 
-                "activeCode" => 0 , 
+            User::where("phonenumber", $phonenumber)->update([
+                "isReady" => true,
+                "activeCode" => 0,
             ]);
             return response(["message" => "user created"], 200);
-            
         } else {
             return response(["message" => "active code is mistake"], 401);
+        }
+    }
+
+
+    public function login(LoginUserRequest $request)
+    {
+        $credentials = $request->only(['phonenumber', 'password']);
+        $credentials["isReady"] = 1;
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return response("Login Success", 200);
+        } else {
+            return response("Logout failed", 401);
         }
     }
 }

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function (Request $request) {  
+Route::get('/', function () {  
     return view('index');
 });
 Route::get('/login', function () {
@@ -25,4 +25,5 @@ Route::get('/login', function () {
 Route::get('/register', [UserController::class, "create"]);
 Route::post("/store-user", [UserController::class, "store"]);
 Route::post("/active-user", [UserController::class, "activeUser"]);
+Route::post("/login-user", [UserController::class, "login"]);
 Route::get('/is-phonenumber-duplicate/{phonenumber}', [UserController::class, "isPhoneNumberDuplicate"]);
