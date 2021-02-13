@@ -21,9 +21,12 @@ Route::get('/', function () {
 });
 Route::get('/login', function () {
     return view('login');
-});
+})->name("login");
 Route::get('/register', [UserController::class, "create"]);
 Route::post("/store-user", [UserController::class, "store"]);
 Route::post("/active-user", [UserController::class, "activeUser"]);
 Route::post("/login-user", [UserController::class, "login"]);
 Route::get('/is-phonenumber-duplicate/{phonenumber}', [UserController::class, "isPhoneNumberDuplicate"]);
+
+
+Route::get("/panel" , [UserController::class , "panel"])->middleware("auth");

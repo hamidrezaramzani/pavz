@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('styles/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/star-rating-svg.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/aos.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/chart.min.css') }}">
 
 
 </head>

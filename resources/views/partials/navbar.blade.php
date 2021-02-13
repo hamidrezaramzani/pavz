@@ -8,10 +8,19 @@
                 <i class="fa fa-plus"></i>
                 ثبت آگهی رایگان
             </a>
+            @auth
+            <a class="navbar-brand register-ads" href="/panel">
+                <i class="fa fa-user"></i>
+                پنل کاربری
+            </a>
+            @endauth
+            @guest
             <a class="navbar-brand register-ads" href="/login">
                 <i class="fa fa-user"></i>
                 ورود / ثبت نام
-            </a>
+            </a>    
+            @endguest
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
                 aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>

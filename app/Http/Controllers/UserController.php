@@ -154,4 +154,10 @@ class UserController extends Controller
             return response("Logout failed", 401);
         }
     }
+
+
+    public function panel()
+    {
+        return view("panel");
+    }
 }
