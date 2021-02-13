@@ -158,6 +158,6 @@ class UserController extends Controller
 
     public function panel()
     {
-        return view("panel");
+        return view("dashboard");
     }
 }

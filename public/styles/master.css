@@ -1292,7 +1292,13 @@ footer .aboutus img {
 .accordion-item ul li a {
     font: 12px is;
     color: #988;
+    display: block;
+    padding: 5px 0;
     text-decoration: none;
+}
+
+.accordion-item ul li a:hover {
+    color: #555;
 }
 
 .accordion-item ul.show {
@@ -1449,4 +1455,22 @@ footer .aboutus img {
 #chart5 {
     height: 300px!important;
     min-height: 300px!important;
+}
+
+.user-options-dropdown li {
+    width: 90%;
+    box-sizing: border-box;
+    padding: 10px 0;
+}
+
+.user-options-dropdown .dropdown-item {
+    display: block;
+    text-align: center;
+    font: 13px is;
+    text-align: right;
+    width: 100%;
+}
+
+.user-options-dropdown .dropdown-item i {
+    margin-left: 10px;
 }
