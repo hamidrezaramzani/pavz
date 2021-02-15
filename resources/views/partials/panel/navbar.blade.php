@@ -29,7 +29,7 @@
                                 <i class="fa fa-question"></i>
                             </a></li>
                         <li><a class="dropdown-item" href="#">خروج
-                                <i class="fas fa-sign-out" aria-hidden="true"></i>
+                                <i class="fas    fa-sign-out" aria-hidden="true"></i>
                             </a></li>
                     </ul>
                 </div>

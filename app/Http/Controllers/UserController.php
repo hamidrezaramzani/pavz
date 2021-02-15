@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ActiveUserRequest;
 use App\Http\Requests\LoginUserRequest;
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\SubmitProfilePictureRequest;
+use App\Models\Profile;
 use App\Models\User;
 use DateTime;
 use Error;
@@ -54,12 +56,21 @@ class UserController extends Controller
                 "activeCodeExpire" => $activeCodeExpire
             ]);
         } else {
-            User::create([
+            $newUser = User::create([
                 "phonenumber" => $phonenumber,
                 "password" => Hash::make($request->get("password")),
                 "activeCode" => $activeCode,
                 "activeCodeExpire" => $activeCodeExpire
             ]);
+
+            $profile = new Profile([
+                "fullname" => "",
+                "email" => "",
+                "address" => "",
+                "telegram_id" => "",
+                "image" => "",
+            ]);
+            $newUser->profile()->save($profile);
         }
         // send sms with kavehnegar
     }
@@ -159,5 +170,47 @@ class UserController extends Controller
     public function panel()
     {
         return view("dashboard");
+    }
+
+    public function profile()
+    {
+        $id = Auth::id();
+        $user = User::find($id);
+        $profile = $user->profile[0];
+        return view("profile", [
+            "ready" => $user->isReady,
+            "phonenumber" => $user->phonenumber,
+            "image" => $profile->image,
+            "fullname" => $profile->fullname,
+            "address" => $profile->address,
+            "telegram_id" => $profile->telegram_id,
+
+        ]);
+    }
+
+    public function submitProfilePicture(SubmitProfilePictureRequest $request)
+    {
+
+        $fileName = time() . '.' . $request->file("image")->extension();
+        $request->file("image")->move(public_path("upload"), $fileName);
+        $id = Auth::id();
+        $user = User::find($id);
+        $image = $user->profile[0]->image;
+        if ($image) {
+            unlink(public_path("upload/" . $image));
+        }
+        $user->profile()->update(["image" => $fileName]);
+        return redirect("/profile")->with("profile", "update");
+    }
+
+    public function submitUserInfo(Request $request)
+    {
+        $user = User::find(Auth::id());
+        $user->profile()->update([
+            "fullname" => $request->get("fullname"),
+            "address" => $request->get("address"),
+            "telegram_id" => $request->get("telegram_id"),
+        ]);
+        return back()->with("user-info","update");
     }
 }

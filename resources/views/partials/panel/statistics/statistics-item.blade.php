@@ -5,5 +5,6 @@
             <h4>4520</h4>
         </div>
         <div id="{{$id}}"></div>
+        <br>
     </div>
 </div>

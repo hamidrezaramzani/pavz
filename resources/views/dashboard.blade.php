@@ -1,4 +1,4 @@
-@extends('layout.panel')
+@extends('layout.panel' , ["title" => "پیشخوان | پاوز"])
 @section('dashboard')
 <div class="container-fluid">
     @include('partials.panel.statistics.statistics')

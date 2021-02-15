@@ -1,4 +1,4 @@
-@extends('layout.content' , ["title" => "پنل کاربری | پاوز"])
+@extends('layout.content' , ["title" => $title])
 @section('content')
     <div class="container-fluid">
         <div class="row dashboard justify-content-center panel">

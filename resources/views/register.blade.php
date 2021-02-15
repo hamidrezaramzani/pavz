@@ -91,6 +91,16 @@
 <script src="{{ asset('js/additional-methods.min.js') }}"></script>
 <script>
     
+
+
+    $.validator.addMethod(
+            "regex",
+            function(value, element, regexp) {
+                return this.optional(element) || regexp.test(value);
+            },
+            "شماره تلفن صحیح نمیباشد"
+        );
+
     $.validator.addMethod(
         "isDuplicate",
         function(value, element, regexp) {
@@ -109,20 +119,12 @@
     );
 
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 38941173c420ae913d2e17580d88dfdf237d471e
+
     const CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
 
     $('#register-form').validate({
         submitHandler: function(form) {
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 38941173c420ae913d2e17580d88dfdf237d471e
             $.ajax({
                 type: "POST",
                 url: "/store-user",
@@ -131,40 +133,6 @@
                     phonenumber: $("#phonenumber").val(),
                     password: $("#password").val(),
                     identifierCode: $("#identifier-code").val()
-<<<<<<< HEAD
-=======
-=======
-
-        $('#register-form').validate({
-            submitHandler: function(form) {
-                const CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-                // $("#sent-code-p").text(`کد ارسالی به شماره تلفن ${$("#phonenumber").val()} را وارد نمایید`)
-                // $("#activeAccountModal").modal("show")
-
-                $.ajax({
-                    type: "POST",
-                    url: "/store-user",
-                    data: {
-                        _token: CSRF_TOKEN,
-                        phonenumber: $("#phonenumber").val(),
-                        password: $("#password").val(),
-                        identifierCode: $("#identifier-code").val()
-                    },
-                    success: (response) => {
-                        console.log(response);
-                    },
-                    error: (err) => {
-                        console.log(err);
-                    }
-                })
-            },
-            rules: {
-                phonenumber: {
-                    required: true,
-                    regex: /^(?:0|98|\+98|\+980|0098|098|00980)?(9\d{9})$/,
-                    isDuplicate: true
->>>>>>> cc54ed375d0b06f93cd5992fffae3ac2edb620fe
->>>>>>> 38941173c420ae913d2e17580d88dfdf237d471e
                 },
                 success: (response) => {
                     $("#sent-code-p").text(`کد ارسالی به شماره تلفن ${$("#phonenumber").val()} را وارد نمایید`)
@@ -215,10 +183,6 @@
         }
     });
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 38941173c420ae913d2e17580d88dfdf237d471e
     $('#activationForm').validate({
         submitHandler: function(form) {
             const data = {
@@ -242,7 +206,7 @@
                     })
                 } , 
                 error : (error) => {
-                    if(error.status == 401){
+                    if(error.status != 401){
                         Swal.fire({
                         title: 'خطا',
                         text: 'خطایی به وجود آمده است',
@@ -260,7 +224,6 @@
                             confirmButtonText: 'باشه' 
                         })  
                     }
-                    console.log(error);
                 }
             })
         },
@@ -281,30 +244,3 @@
     })
 </script>
 @endpush
-<<<<<<< HEAD
-=======
-=======
-        $('#activationForm').validate({
-            submitHandler: function(form) {
-                console.log(form);
-            },
-            rules: {
-                code: {
-                    required: true,
-                    minlength: 4,
-                    maxlength: 4
-                }
-            },
-            messages: {
-                code: {
-                    required: "کد را باید وارد نمایید",
-                    minlength: "باید 4 کاراکتر باشد",
-                    maxlength: "باید 4 کاراکتر باشد"
-                }
-            }
-        })
-
-    </script>
-@endpush
->>>>>>> cc54ed375d0b06f93cd5992fffae3ac2edb620fe
->>>>>>> 38941173c420ae913d2e17580d88dfdf237d471e

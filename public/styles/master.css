@@ -1448,10 +1448,6 @@ footer .aboutus img {
     font: 22px isblack!important;
 }
 
-.apexcharts-text:nth-child(1) {
-    /* display: none; */
-}
-
 #chart5 {
     height: 300px!important;
     min-height: 300px!important;
@@ -1473,4 +1469,153 @@ footer .aboutus img {
 
 .user-options-dropdown .dropdown-item i {
     margin-left: 10px;
+}
+
+.new-villa h2,
+.dashboard-info-item-content h2 {
+    font: 24px isblack;
+    color: #2b2b2b;
+    display: block;
+    text-align: center;
+}
+
+.new-villa p,
+.dashboard-info-item-content p {
+    display: block;
+    text-align: center;
+    font: 12px is;
+    color: #686868;
+}
+
+.form-part-nav {
+    width: 100%;
+    height: auto;
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.form-part-nav-item {
+    margin: 0 30px;
+}
+
+.form-part-nav-item span {
+    width: 100px;
+    font: 14px is;
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+    color: #2b2b2b;
+}
+
+.form-part-nav-item i {
+    width: 60px;
+    height: 60px;
+    background: #999;
+    border-radius: 100%;
+    display: block;
+    margin: 0 auto;
+    line-height: 60px;
+    text-align: center;
+    font-size: 25px;
+    color: #fff;
+}
+
+.active i {
+    background: #1288d6;
+}
+
+.active span {
+    color: #1288d6;
+}
+
+.center {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    height: 200px;
+}
+
+.center h2 {
+    padding: 10px 0 0 0;
+}
+
+.notes {
+    direction: rtl;
+    text-align: right;
+    font-size: 13px;
+}
+
+.change-profile-image-box {
+    width: 50%;
+    height: 300px;
+    display: block;
+    margin: 30px auto;
+    border-radius: 5px;
+    border: 2px dashed #ccc;
+    padding: 30px;
+}
+
+.user-image {
+    width: 135px;
+    height: 135px;
+    display: block;
+    margin: 0 auto;
+}
+
+span#picture-name {
+    font: 13px is;
+    color: #969696;
+    width: 100%;
+    display: block;
+}
+
+.user-image img {
+    width: 100%;
+    height: 135px;
+    border-radius: 100%;
+    object-fit: cover;
+    padding: 5px;
+    border: 5px solid #ccc;
+}
+
+.drag-and-drop-title {
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.drag-and-drop-title h3 {
+    display: block;
+    text-align: center;
+    font: 15px is;
+    margin-top: 5px;
+}
+
+.user-profile-form input {
+    display: block;
+    text-align: right;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font: 12px is;
+    padding: 0 10px;
+}
+
+.user-profile-form label {
+    display: block;
+    text-align: right;
+    font: 14px is;
+    color: #2b2b2b;
+    margin-top: 25px;
+    margin-bottom: 5px;
+    direction: rtl;
+}
+
+.notifyjs-corner {
+    font: 13px is;
 }

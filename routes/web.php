@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VillasController;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,8 @@ Route::post("/store-user", [UserController::class, "store"]);
 Route::post("/active-user", [UserController::class, "activeUser"]);
 Route::post("/login-user", [UserController::class, "login"]);
 Route::get('/is-phonenumber-duplicate/{phonenumber}', [UserController::class, "isPhoneNumberDuplicate"]);
-
-
 Route::get("/panel" , [UserController::class , "panel"])->middleware("auth");
+Route::get("/new-villa" , [VillasController::class , "newVilla"])->middleware("auth");
+Route::get("/profile" , [UserController::class , "profile"])->middleware("auth");
+Route::post("/submit-profile-picture" , [UserController::class , "submitProfilePicture"])->middleware("auth");
+Route::post("/submit-user-info" , [UserController::class , "submitUserInfo"])->middleware("auth");

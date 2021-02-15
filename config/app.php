@@ -1,5 +1,7 @@
 <?php
 
+use App\Providers\AppBladeServiceProvider;
+
 return [
 
     /*
@@ -175,6 +177,13 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
+
+
+
+        /* MY SERVICE PROVIDERS */
+
+        AppBladeServiceProvider::class
     ],
 
     /*
