@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->count(10)->create();
+     
+        $this->call(VillaTypeSeeder::class);
+        
     }
 }

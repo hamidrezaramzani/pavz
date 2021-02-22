@@ -11,5 +11,6 @@
         @include('partials.panel.dashboard.vip')
         @include('partials.panel.dashboard.last-at')                                       
     </div>
-</div>    
+</div> 
+   
 @endsection

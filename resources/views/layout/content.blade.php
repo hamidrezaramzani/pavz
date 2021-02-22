@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="rtl" lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -14,16 +14,17 @@
     <link rel="stylesheet" href="{{ asset('styles/star-rating-svg.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/chart.min.css') }}">
-
-
+    <link rel="stylesheet" href="{{ asset('styles/leaflet.css') }}">
 </head>
 
 <body>
     @yield('content')
+
 </body>
 <script src="{{ asset('js/jquery.js') }}"></script>
 <script src="{{ asset('js/popper.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.js') }}"></script>
 @stack('scripts')
+
 </html>

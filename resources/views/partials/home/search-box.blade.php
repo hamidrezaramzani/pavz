@@ -8,10 +8,12 @@
             <i class="fa fa-building"></i>
             <select property="voucherCategoryClass">
                 <option value="0">دنبال چی هستی؟</option>
-                <option value="7382">ویلا</option>
-                <option value="7382">زمین</option>
-                <option value="7382">آپارتمان</option>
-                <option value="7382">پیمانکار</option>
+                <option value="7382">خرید ویلا</option>
+                <option value="7382">اجاره ویلا</option>
+                <option value="7382">اجاره سوییت</option>
+                <option value="7382">خرید آپارتمان</option>
+                <option value="7382">اجاره آپارتمان</option>
+                <option value="7382">خرید زمین</option>
             </select>
         </div>
         <button>

@@ -1,7 +1,5 @@
 <div class="row top-header" id="my-header">
-    <div class="col-12 col-md-3">
-        <img src="{{ asset('images/pavz.png') }}" width="100" alt="pavz logo">
-    </div>
+
     <div class="col-12 col-md-9">
         <nav class="navbar navbar-expand-lg" style="direction: rtl">
             <a class="navbar-brand register-ads" href="#">
@@ -9,18 +7,18 @@
                 ثبت آگهی رایگان
             </a>
             @auth
-            <a class="navbar-brand register-ads" href="/panel">
-                <i class="fa fa-user"></i>
-                پنل کاربری
-            </a>
+                <a class="navbar-brand register-ads" href="/panel">
+                    <i class="fa fa-user"></i>
+                    پنل کاربری
+                </a>
             @endauth
             @guest
-            <a class="navbar-brand register-ads" href="/login">
-                <i class="fa fa-user"></i>
-                ورود / ثبت نام
-            </a>    
+                <a class="navbar-brand register-ads" href="/login">
+                    <i class="fa fa-user"></i>
+                    ورود / ثبت نام
+                </a>
             @endguest
-            
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
                 aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
@@ -76,5 +74,9 @@
                 </ul>
             </div>
         </nav>
+
+    </div>
+    <div class="col-12 col-md-3">
+        <img src="{{ asset('images/pavz.png') }}" width="100" alt="pavz logo">
     </div>
 </div>

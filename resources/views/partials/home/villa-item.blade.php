@@ -1,9 +1,15 @@
 <div class="villa-item" data-aos="zoom-in">
     <div class="villa-item-content">
+        <a href="/villa/1">
         <div class="villa-item-img">
             <div class="my-rating"></div>
             <img src="{{ asset('images/villa.jpg') }}" alt="this is villa alt test">
             <div class="vip-lable">ویژه</div>
+
+            <div class="item-buttons">
+                <button class="btn btn-light is" title="اشتراک گذاری" data-toggle="tooltip" data-placement="top"><i class="fa fa-share"></i></button>
+                <button class="btn btn-light is"><i class="fa fa-home" title="افزودن به لیست مقایسه" data-toggle="tooltip" data-placement="top"></i></button>
+            </div>
         </div>
         <div class="villa-top-info">
             <div class="w-50">
@@ -16,9 +22,6 @@
                 <ul>
                     <li>
                         <button><i class="fa fa-heart text-danger"></i></button>
-                    </li>
-                    <li>
-                        <button><i class="fa  fa-balance-scale text-secondary"></i></button>
                     </li>
                 </ul>
             </div>
@@ -59,17 +62,7 @@
             </ul>
         </div>
 
-
-
-        <div class="user-info">
-            <div>
-                <img src="{{ asset('images/user.png') }}" width="50" alt="User">
-            </div>
-            <div>
-                <h4>حمیدرضا رمضانی</h4>
-                <span>4 روز پیش</span>
-            </div>
-        </div>
+    </a>
     </div>
 
 

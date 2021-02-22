@@ -123,8 +123,6 @@ class UserController extends Controller
 
     public function isPhoneNumberDuplicate($phonenumber = null)
     {
-        // $phonenumber = request()->get("phonenumber");
-        // dd($phonenumber);
         $user = User::where([["phonenumber", $phonenumber], ["isReady", 1]])->get()->count();
         return $user;
     }
@@ -211,6 +209,6 @@ class UserController extends Controller
             "address" => $request->get("address"),
             "telegram_id" => $request->get("telegram_id"),
         ]);
-        return back()->with("user-info","update");
+        return back()->with("user-info", "update");
     }
 }

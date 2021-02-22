@@ -2,11 +2,12 @@ const header = document.getElementById("my-header");
 const logo = header.querySelector("img");
 const goToTop = document.getElementById("gototop");
 
-goToTop.addEventListener("click" , function (){
-    scrollTo({ top : 0});
+goToTop.addEventListener("click", function () {
+    scrollTo({ top: 0 });
 });
 
 $(document).ready(function () {
+    
     $(".owl-carousel").owlCarousel({
         items: 4,
         dots: true,
@@ -28,29 +29,30 @@ $(document).ready(function () {
         },
     });
 
-
-
-
     $(".my-rating").starRating({
         initialRating: 4,
         starSize: 25,
     });
-
 });
 
 AOS.init();
 
-window.onscroll = function (e) {
+function scrollDocument() {
+    console.log("scroll");
     const scrollHeader = document.getElementById("header").offsetHeight;
     const y = scrollY;
-    if (y >= scrollHeader){
+    if (y >= scrollHeader) {
         goToTop.style.display = "inline";
         header.classList.add("fixed-header");
-        logo.src= "http://localhost:8000/images/dpavz.png";
-    }else{
+        logo.src = "http://localhost:8000/images/dpavz.png";
+    } else {
         goToTop.style.display = "none";
         header.classList.remove("fixed-header");
-        logo.src= "http://localhost:8000/images/pavz.png";
+        logo.src = "http://localhost:8000/images/pavz.png";
     }
-};
+}
+window.addEventListener("scroll", scrollDocument);
 
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+});

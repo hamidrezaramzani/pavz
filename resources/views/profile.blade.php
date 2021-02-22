@@ -3,7 +3,9 @@
     <div class="container-fluid">
         <div class="row justify-content-center dashboard-info mt-5">
             <div class="col-11 col-md-12 dashboard-info-item-content h-auto">
+                @include('partials.panel.items.title' , ["title" => "تغییر پروفایل" , "description" => "در این بخش میتوانید پروفایل خود را تغییر دهید."])
                 <div class="change-profile-image-box text-center">
+                <h3 class="text-light">تصویر کاربر</h3>
                     <div class="user-image">
                         @if ($image)
                             <img src="{{ asset('upload/' . $image) }}" id="user-image" alt="User Profile Picture">
@@ -12,14 +14,18 @@
                             <img src="{{ asset('images/user.png') }}" id="user-image" alt="User Profile Picture">
 
                         @endif
-                    </div>
-                    <span id="picture-name"></span>
 
-                    <button id="btn-profile" class="btn btn-sm my-3 btn-warning is">انتخاب پروفایل</button>
+                        <button id="btn-profile" class="btn btn-sm my-3 btn-light is">
+                            <i class="fa fa-pen" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <br>
+                    <span id="picture-name"></span>
                     <form action="/submit-profile-picture" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="file" name="image" id="image" style="display: none">
-                        <button type="submit" class="is w-100 btn btn-sm btn-block btn-primary ">ثبت پروفایل</button>
+                        <button type="submit" class="is  btn btn-sm  btn-outline-light">ثبت پروفایل</button>
+                        
                     </form>
                 </div>
 
@@ -105,6 +111,7 @@
         <script src="{{ asset('js/notify.min.js') }}"></script>
         <script>
             $.notify("تصویر پروفایل شما با موفقیت تغییر یافت", "success");
+
         </script>
     @endif
 

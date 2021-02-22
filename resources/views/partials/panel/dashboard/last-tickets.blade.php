@@ -1,6 +1,6 @@
     
                         <div class="col-11 col-md-4 dashboard-info-item">
-                            <div class="dashboard-info-item-content">
+                            <div class="dashboard-info-item-content p-3">
                                 <h3>
                                     تیکت های سیستم
 

@@ -1,5 +1,5 @@
 <div class="col-11 col-md-4 dashboard-info-item">
-    <div class="dashboard-info-item-content">
+    <div class="dashboard-info-item-content p-3">
         <h3>
             آخرین درخواست های رزرو
             <a href="">همه موارد</a>
@@ -12,6 +12,7 @@
                     <th>از تاریخ</th>
                     <th>تا تاریخ</th>
                     <th>تعداد میهمانان</th>
+                    <th>مدیریت</th>
                 </tr>
             </thead>
             <tbody>

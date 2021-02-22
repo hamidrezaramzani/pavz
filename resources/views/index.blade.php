@@ -7,7 +7,6 @@
     @include('partials.home.counts')
     @include('partials.home.best-apartments')
     @include('partials.home.best-areas')
-    @include('partials.home.best-contractors')
     @include('partials.home.attractions-tourist')
     @include('partials.home.footer')
     @include('partials.languages')
