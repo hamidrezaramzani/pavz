@@ -2237,3 +2237,16 @@ span#picture-name {
     margin: 0 auto;
     height: 500px;
 }
+
+.without_ampm::-webkit-datetime-edit-ampm-field {
+    display: none;
+}
+
+input[type=time]::-webkit-clear-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    margin: -10px;
+}

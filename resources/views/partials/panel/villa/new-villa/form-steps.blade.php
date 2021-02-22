@@ -25,7 +25,7 @@
 
         
         <li class="active">
-            <i class="fa fa-vote-yea"></i>
+            <i class="fa fa-check"></i>
             <span>امکانات ملک</span>
         </li>
 
@@ -35,18 +35,20 @@
         </li>
 
 
-        <li>
-            <i class="fa fa-dollar-sign"></i>
-            <span>اطلاعات مالی</span>
-        </li>
 
 
 
-        <li>
+        <li class="active">
             <i class="fa fa-key"></i>
             <span>مقررات ملک</span>
         </li>
 
+
+        
+        <li>
+            <i class="fa fa-dollar-sign"></i>
+            <span>قیمت گذاری</span>
+        </li>
 
         <li>
             <i class="fa fa-image"></i>

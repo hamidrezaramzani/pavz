@@ -14,7 +14,7 @@
                     @include('partials.panel.villa.new-villa.spaces')                    
                     @include('partials.panel.villa.new-villa.possibilities')                    
                     @include('partials.panel.villa.new-villa.address')                    
-                    <section>HI 6</section>
+                    @include('partials.panel.villa.new-villa.rules')                    
                     <section>HI 7</section>
                 </div>
             </div>
