@@ -3,45 +3,30 @@
     <div class="container-fluid">
         <div class="row justify-content-center py-3">
             @isfullready
-            <div class="col-11 col-md-9 dashboard-info-item-content new-villa">
-                <h2>ثبت ویلا</h2>
-                <p>چنانچه میخواهید ویلای جدید ثبت آگهی نمایید میتوانید از فرم های زیر اقدام نمایید</p>
+            <div class="col-11 col-md-12 dashboard-info-item-content new-villa">
+                @include('partials.panel.items.title' , ["title" => "ثبت ویلای جدید" , "description" => "میتوانید از این بخش
+                آگهی ویلای خود را ثبت کنید."])
                 <br>
-                <div class="form-part-nav">
-                    <div class="form-part-nav-item active">
-                        <i class="fa fa-book"></i>
-                        <span>اطلاعات اولیه</span>
-                    </div>
-                    <div class="form-part-nav-item">
-                        <i class="fa fa-picture-o"></i>
-                        <span>عکس ها</span>
-                    </div>
-                    <div class="form-part-nav-item">
-                        <i class="fa fa-home"></i>
-                        <span>اطلاعات اولیه</span>
-                    </div>
-                    <div class="form-part-nav-item">
-                        <i class="fa fa-home"></i>
-                        <span>اطلاعات اولیه</span>
-                    </div>
-
-
+                @include('partials.panel.villa.new-villa.form-steps')        
+                <div class="p-3 sections">
+                    @include('partials.panel.villa.new-villa.specification-data')
+                    @include('partials.panel.villa.new-villa.home-info')
+                    @include('partials.panel.villa.new-villa.spaces')                    
+                    @include('partials.panel.villa.new-villa.possibilities')                    
+                    @include('partials.panel.villa.new-villa.address')                    
+                    <section>HI 6</section>
+                    <section>HI 7</section>
                 </div>
             </div>
         @else
-            <div class="col-11 col-md-9 dashboard-info-item-content text-center position-relative new-villa ">
-                <div class="center">
-                    <?xml version="1.0" encoding="iso-8859-1"?>
-                    <img src="{{ asset('images/icons/warning.png') }}" alt="Warning icon in pavz">
-                    <h2>پروفایل شما کامل نیست</h2>
-                    <p>پروفایل شما کامل نیست. جهت ثبت ویلا باید پروفایل خود را کامل پر کنید.</p>
-                    <br>
-                    <br>
-                    <a href="/profile" class="btn btn-sm btn-block btn-warning is">تغییر پروفایل</a>
-                </div>
-
-            </div>
+            @include('partials.panel.complete-profile')
             @endisfullready
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('js/additional-methods.min.js') }}"></script>
+    <script src="{{ asset('js/leaflet.js') }}"></script>
+    <script src="{{ asset('js/new-rent-villa.js') }}"></script>
+@endpush
