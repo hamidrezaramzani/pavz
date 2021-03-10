@@ -17,6 +17,7 @@
                     @include('partials.panel.villa.new-villa.rules-documents')
                     @include('partials.panel.villa.new-villa.pricing')
                     @include('partials.panel.villa.new-villa.pictures')
+                    @include('partials.panel.villa.new-villa.finish-data')
                 </div>
                 @include('partials.panel.villa.new-villa.new-pool')
                 @include('partials.panel.villa.new-villa.new-room')
