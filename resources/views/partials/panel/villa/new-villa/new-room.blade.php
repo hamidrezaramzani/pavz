@@ -8,6 +8,7 @@
             <div class="modal-body">
                 <form action="" id="new-room-form" class="form">
 
+                    <input type="hidden" id="nr_token" value="{{ csrf_token() }}">
                     <div class="form-group">
                         <label for="room_title">عنوان:</label>
                         <input type="text" id="room_title" name="room_title" class="form-control"
@@ -36,28 +37,41 @@
                     </div>
 
                     <div class="possibilities">
-                        @include('partials.panel.villa.new-villa.checkbox' , ["title" => "رخت آویز" , "name"
-                        => "clothes_hanger"])
-                        @include('partials.panel.villa.new-villa.checkbox' , ["title" => "سیستم تهویه هوا" ,
-                        "name" => "air_conditioning_system"])
-                        @include('partials.panel.villa.new-villa.checkbox' , ["title" => "گاو صندوق" , "name"
-                        => "safe"])
-                        @include('partials.panel.villa.new-villa.checkbox' , ["title" => "سشوار" , "name" =>
-                        "hairdryer"])
-                        @include('partials.panel.villa.new-villa.checkbox' , ["title" => "نور RGB" , "name" =>
-                        "rgb"])
-                        @include('partials.panel.villa.new-villa.checkbox' , ["title" => "پرده" , "name" =>
-                        "curtain"])
-                        @include('partials.panel.villa.new-villa.checkbox' , ["title" => "فرش" , "name" =>
-                        "carpet"])
-                        @include('partials.panel.villa.new-villa.checkbox' , ["title" => "بخاری" , "name" =>
-                        "heater"])
-                        @include('partials.panel.villa.new-villa.checkbox' , ["title" => "شوفاژ" , "name" =>
-                        "radiator"])
-                        @include('partials.panel.villa.new-villa.checkbox' , ["title" => "کولر آبی" , "name"
-                        => "air_conditioner"])
-                        @include('partials.panel.villa.new-villa.checkbox' , ["title" => "پنکه" , "name" =>
-                        "fan"])
+                        <div class="d-block float-right w-100" id="more_room_items">
+
+                            @include('partials.panel.villa.new-villa.checkbox' , ["title" => "رخت آویز" , "name"
+                            => "clothes_hanger"])
+                            @include('partials.panel.villa.new-villa.checkbox' , ["title" => "سیستم تهویه هوا" ,
+                            "name" => "air_conditioning_system"])
+                            @include('partials.panel.villa.new-villa.checkbox' , ["title" => "گاو صندوق" , "name"
+                            => "safe"])
+                            @include('partials.panel.villa.new-villa.checkbox' , ["title" => "سشوار" , "name" =>
+                            "hairdryer"])
+                            @include('partials.panel.villa.new-villa.checkbox' , ["title" => "نور RGB" , "name" =>
+                            "rgb"])
+                            @include('partials.panel.villa.new-villa.checkbox' , ["title" => "پرده" , "name" =>
+                            "curtain"])
+                            @include('partials.panel.villa.new-villa.checkbox' , ["title" => "فرش" , "name" =>
+                            "carpet"])
+                            @include('partials.panel.villa.new-villa.checkbox' , ["title" => "بخاری" , "name" =>
+                            "heater"])
+                            @include('partials.panel.villa.new-villa.checkbox' , ["title" => "شوفاژ" , "name" =>
+                            "radiator"])
+                            @include('partials.panel.villa.new-villa.checkbox' , ["title" => "کولر آبی" , "name"
+                            => "air_conditioner"])
+                            @include('partials.panel.villa.new-villa.checkbox' , ["title" => "پنکه" , "name" =>
+                            "fan"])
+                        </div>
+
+                        <div class="w-100 float-right mt-3">
+                            <input type="text" name="new-room-item" id="new-room-item" class="form-control"
+                                placeholder="اضافه کردن مورد جدید">
+                            <br>
+                            <button class="btn btn-sm btn-warning is new-item" box="#more_room_items"
+                                input="#new-room-item" type="button">ثبت
+                                مورد جدید +</button>
+                        </div>
+
                     </div>
                     <div class="mt-2 d-block float-right w-100">
                         @include('partials.panel.villa.new-villa.checkbox' , ["title" => "این اتاق سرویس
@@ -68,6 +82,7 @@
                         <input type="submit" class="btn btn-sm btn-outline-primary" value="تایید">
                         <button type="button" modal="#new-room-modal" class="close-modal btn btn-danger is">لغو</button>
                     </div>
+
                 </form>
 
             </div>
