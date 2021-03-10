@@ -8,6 +8,7 @@
             <div class="modal-body">
                 <form action="" id="new-parking-form" class="form">
 
+                    <input type="hidden" id="npg_token" value="{{ csrf_token() }}">
                     <div class="form-group">
                         <label for="type_parking">نوع پارکینگ:</label>
                         <select name="type_parking" id="type_parking" name="type_parking" class="form-control">
