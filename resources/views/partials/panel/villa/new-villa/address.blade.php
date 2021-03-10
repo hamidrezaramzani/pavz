@@ -1,6 +1,7 @@
 <section>
     <form action="" class="form" id="address-form">
         <h3>آدرس ملک</h3>
+        <input type="hidden" value="{{ csrf_token() }}" id="address_token">
         <div class="form-group">
             <label for="address">آدرس:</label>
             <textarea name="address" id="address" class="form-control"
@@ -16,9 +17,6 @@
         <br>
         <div id="mapid"></div>
         <br>
-        
-
-
         <br>
         <div class="form-group">
             <button type="submit" class="btn btn-sm btn-primary is">ادامه</button>
