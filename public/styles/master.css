@@ -1785,9 +1785,9 @@ span#picture-name {
     position: absolute;
     content: "";
     width: 100%;
-    height: 5px;
-    background: #ccc;
-    top: -40px;
+    height: 7px;
+    /* background: #ccc; */
+    top: -25px;
     left: 0;
     right: 0;
     bottom: 0;
@@ -1796,23 +1796,29 @@ span#picture-name {
 }
 
 .form-steps ul li.active::after {
-    background: #bfaeff;
+    /* background: #afedf5; */
 }
 
 .form-steps ul li.active i {
-    background: #bfaeff;
+    color: #7f6efd;
+    background: rgb(115, 102, 255, 0.06);
+}
+
+.form-steps ul li.active i:hover {
+    background: rgba(64, 52, 185, 0.06);
 }
 
 .form-steps ul li i {
     display: block;
-    font-size: 25px;
-    width: 50px;
-    height: 50px;
+    font-size: 32px;
+    width: 65px;
+    height: 65px;
     margin: 0 auto;
-    background: #ccc;
+    background: #fdfdfd;
     border-radius: 100%;
-    line-height: 50px;
-    color: #fff;
+    line-height: 65px;
+    color: #999;
+    /* box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25); */
 }
 
 .form-steps ul li span {
@@ -1820,7 +1826,7 @@ span#picture-name {
     padding: 5px 0;
     display: block;
     text-align: center;
-    color: #2b2b2b;
+    color: #666;
 }
 
 .sections section {
@@ -2182,7 +2188,7 @@ span#picture-name {
     float: right;
 }
 
-.possibilities>div {
+.possibilities div>div {
     width: 30%;
     float: right;
 }
@@ -2249,4 +2255,50 @@ input[type=time]::-webkit-clear-button {
     -ms-appearance: none;
     appearance: none;
     margin: -10px;
+}
+
+#cover-image-box {
+    width: 300px;
+    height: auto;
+    position: relative;
+    display: none;
+}
+
+#cover-image-box button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.cover-image {
+    width: 300px;
+    height: 180px;
+    border-radius: 5px;
+    margin: 10px 0;
+    object-fit: cover;
+}
+
+.pictures-box {
+    width: 100%;
+    height: auto;
+    float: right;
+    display: none;
+    margin: 20px 0;
+}
+
+.pictures-box ul li {
+    float: right;
+    width: 300px;
+    height: 180px;
+    margin: 10px;
+}
+
+.pictures-box img {
+    width: 100%;
+    height: 180px;
+    border-radius: 5px;
+}
+
+.pictures-box img {
+    border-radius: 5px;
 }

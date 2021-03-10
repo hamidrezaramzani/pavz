@@ -40,20 +40,11 @@
             </button>
             <ul>
                 <li>
-                    <a href="/new-rent-villa">
+                    <a href="/new-villa">
                         <i class="far fa-circle"></i>
-                        ثبت ویلای جدید جهت اجاره
+                        ثبت ویلای جدید
                     </a>
                 </li>
-
-
-                <li>
-                    <a href="/new-sold-villa">
-                        <i class="far fa-circle"></i>
-                        ثبت ویلای جدید جهت فروش
-                    </a>
-                </li>
-
 
                 <li>
                     <a href="/all-villas">
