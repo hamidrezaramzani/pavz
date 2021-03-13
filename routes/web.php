@@ -58,48 +58,47 @@ Route::post("/submit-user-info", [UserController::class, "submitUserInfo"])->mid
 
 
 /* VILLA ROUTES */
-Route::post("/villa/update/home-info", [VillasController::class, "updateHomeInfo"]);
-Route::post("/villa/update/spaces", [VillasController::class, "updateSpaceInfo"]);
-Route::post("/villa/update/possibilities", [VillasController::class, "updatePossibilitiesInfo"]);
-Route::post("/villa/update/address", [VillasController::class, "updateAddressInfo"]);
-Route::get("/villa/set-status/{id}", [VillasController::class, "setStatus"]);
-
-
+Route::post("/villa/update/home-info", [VillasController::class, "updateHomeInfo"])->middleware("auth");;
+Route::post("/villa/update/spaces", [VillasController::class, "updateSpaceInfo"])->middleware("auth");;
+Route::post("/villa/update/possibilities", [VillasController::class, "updatePossibilitiesInfo"])->middleware("auth");;
+Route::post("/villa/update/address", [VillasController::class, "updateAddressInfo"])->middleware("auth");;
+Route::get("/villa/set-status/{id}", [VillasController::class, "setStatus"])->middleware("auth");;
+Route::get("/manage/villas", [VillasController::class, "manageVillas"])->middleware("auth");;
 /* SPECIAL PLACES ROUTES */
-Route::post("/special-place/new", [SpecialPlaceController::class, "createSpecialPlaceItem"]);
-Route::get("/special-place/remove/{id}/{villa}", [SpecialPlaceController::class, "removeSpecialPlaceItem"]);
+Route::post("/special-place/new", [SpecialPlaceController::class, "createSpecialPlaceItem"])->middleware("auth");;
+Route::get("/special-place/remove/{id}/{villa}", [SpecialPlaceController::class, "removeSpecialPlaceItem"])->middleware("auth");;
 
 /* ROOM ROUTES */
-Route::post("/room/new", [RoomController::class, "newRoom"]);
-Route::get("/room/get/{id}", [RoomController::class, "villaRooms"]);
-Route::get("/room/delete/{id}/{villa_id}", [RoomController::class, "removeRoom"]);
+Route::post("/room/new", [RoomController::class, "newRoom"])->middleware("auth");;
+Route::get("/room/get/{id}", [RoomController::class, "villaRooms"])->middleware("auth");
+Route::get("/room/delete/{id}/{villa_id}", [RoomController::class, "removeRoom"])->middleware("auth");
 
 
 /* POOL ROUTES */
-Route::post("/pool/new", [PoolController::class, "newPool"]);
-Route::get("/pool/delete/{id}/{villa_id}", [PoolController::class, "removePool"]);
+Route::post("/pool/new", [PoolController::class, "newPool"])->middleware("auth");
+Route::get("/pool/delete/{id}/{villa_id}", [PoolController::class, "removePool"])->middleware("auth");
 
 
 /*  PARKING ROUTES */
-Route::post("/parking/new", [ParkingController::class, "newParking"]);
-Route::get("/parking/remove/{id}/{villa_id}", [ParkingController::class, "removeParking"]);
+Route::post("/parking/new", [ParkingController::class, "newParking"])->middleware("auth");
+Route::get("/parking/remove/{id}/{villa_id}", [ParkingController::class, "removeParking"])->middleware("auth");
 
 /*  RULES ROUTES */
-Route::post("/rule/update", [RuleController::class, "updateRules"]);
+Route::post("/rule/update", [RuleController::class, "updateRules"])->middleware("auth");
 
 
 //  RENT PRICES ROUTES
-Route::post("/rent-price/update", [RentPriceController::class, "updatePrices"]);
+Route::post("/rent-price/update", [RentPriceController::class, "updatePrices"])->middleware("auth");
 
 
 /* PICTURE ROUTES */
-Route::post("/pictures/villa/cover-update", [PictureController::class, "updateVillaCover"]);
-Route::post("/pictures/villa/pictures-update", [PictureController::class, "updateVillaPictures"]);
-Route::get("/pictures/villa/get/{id}", [PictureController::class, "getVillaPictures"]);
+Route::post("/pictures/villa/cover-update", [PictureController::class, "updateVillaCover"])->middleware("auth");
+Route::post("/pictures/villa/pictures-update", [PictureController::class, "updateVillaPictures"])->middleware("auth");
+Route::get("/pictures/villa/get/{id}", [PictureController::class, "getVillaPictures"])->middleware("auth");
 
 //  DOCUMENT ROUTES
-Route::post("/document/update", [DocumentController::class, "updateDocument"]);
+Route::post("/document/update", [DocumentController::class, "updateDocument"])->middleware("auth");
 
 
 //  SOLD VILLA PRICES
-Route::post("/sold-villa-prices/update", [SoldVillaPriceController::class, "updatePrice"]);
+Route::post("/sold-villa-prices/update", [SoldVillaPriceController::class, "updatePrice"])->middleware("auth");

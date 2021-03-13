@@ -173,9 +173,17 @@ class VillasController extends Controller
 
     public function setStatus($id = null)
     {
-        $villa = Villa::where("id" , $id);
+        $villa = Villa::where("id", $id);
         $villa->update([
             "status" => "checking"
         ]);
+    }
+
+    public function manageVillas()
+    {
+
+        $id = Auth::id();
+        $villas = User::find($id)->villas()->get();
+        return view("pages.villa.manage-villas", ["villas" => $villas]);
     }
 }

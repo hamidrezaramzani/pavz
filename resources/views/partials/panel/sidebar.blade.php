@@ -47,7 +47,7 @@
                 </li>
 
                 <li>
-                    <a href="/all-villas">
+                    <a href="/manage/villas">
                         <i class="far fa-circle"></i>
                         نمایش ویلاهای من
                     </a>

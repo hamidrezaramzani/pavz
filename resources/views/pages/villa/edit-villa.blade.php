@@ -12,7 +12,7 @@
                     <p>در زمان بررسی آگهی نمیتوان آن را ویرایش کرد</p>
                     <br>
                     <br>
-                    <a href="/manage/villas" class="btn btn-sm btn-primary is">مدیریت ویلا ها</a>
+                    <a href="{{ '/manage/villas/' . $data->id }}" class="btn btn-sm btn-primary is">مدیریت ویلا ها</a>
                 </div>
             @else
                 <div class="col-12 col-md-12 dashboard-info-item-content new-villa">
