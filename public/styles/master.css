@@ -2306,3 +2306,7 @@ input[type=time]::-webkit-clear-button {
 table {
     text-align: center;
 }
+
+.swal2-modal {
+    font-family: is;
+}

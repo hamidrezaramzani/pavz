@@ -5,6 +5,9 @@
             <div class="col-12 col-md-12 dashboard-info-item-content is-checking">
                 <br>
                 <br>
+
+
+                <a href="/new-villa" class="btn btn-sm btn-primary is m-3">+ ثبت آگهی رایگان</a>
                 <div class="table-resposive">
                     <table class="table text-center table-striped table-hover">
                         <thead>
@@ -47,9 +50,15 @@
                                             @endswitch
                                         </td>
                                         <td width="15%">
-                                            <a href="/edit-villa/{{$villa->id}}" style="font-size: 11px" class="btn btn-sm btn-warning is">ویرایش</a>
+                                            <a href="/edit-villa/{{ $villa->id }}" style="font-size: 11px"
+                                                class="btn btn-sm btn-warning is">ویرایش</a>
                                             &nbsp;
-                                            <button class="btn btn-sm btn-danger is">حذف</button>
+                                            <button class="btn btn-sm btn-danger is btn-villa-delete"
+                                                id="{{ $villa->id }}">حذف
+                                                <span id="villa-{{ $villa->id }}" class="spinner-grow spinner-grow-sm"
+                                                    role="status" aria-hidden="true" style="display: none"></span>
+
+                                            </button>
                                         </td>
                                     </tr>
                                     </thead>
@@ -89,9 +98,65 @@
             $("#villa_pic_modal").modal("show");
         });
 
-        
+
         $(".close").click(function() {
             $("#villa_pic_modal").modal("hide");
         });
+
+        function setBtnStatus(btn, status = "hide") {
+            if (status == "show") {
+                btn.prop("disabled", true)
+                btn.find("span").show()
+
+            } else {
+                btn.prop("disabled", false)
+                btn.find("span").hide()
+
+            }
+        }
+
+        $(".btn-villa-delete").click(function() {
+            const id = $(this).attr("id");
+            const thisBtn = $(this);
+            Swal.fire({
+                title: "حذف ویلا",
+                text: "آیا واقعا میخواهید این آگهی را حذف کنید؟",
+                icon: "question",
+                confirmButtonText: "بله",
+                cancelButtonText: "خیر",
+                showCancelButton: true
+
+            }).then(({
+                isConfirmed
+            }) => {
+                if (isConfirmed) {
+                    $.ajax({
+                        method: "GET",
+                        url: "/villa/delete/" + id,
+                        beforeSend: () => {
+                            setBtnStatus(thisBtn, "show")
+                        },
+                        success: () => {
+                            setBtnStatus(thisBtn)
+                            if()
+                            thisBtn.parents("tr").remove();                            
+                        },
+                        error: () => {
+                            setBtnStatus(thisBtn)
+                            Swal.fire({
+                                title: "خطا",
+                                text: "مشکلی در سرور وجود دارد",
+                                icon: "error",
+                                confirmButtonText: "بله",
+
+                            })
+                        }
+                    });
+                }
+
+            })
+
+        });
+
     </script>
 @endpush
