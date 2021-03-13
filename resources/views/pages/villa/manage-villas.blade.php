@@ -138,7 +138,6 @@
                         },
                         success: () => {
                             setBtnStatus(thisBtn)
-                            if()
                             thisBtn.parents("tr").remove();                            
                         },
                         error: () => {

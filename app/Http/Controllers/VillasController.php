@@ -194,7 +194,7 @@ class VillasController extends Controller
         $villa = $user->villas()->where("id", $id);
         if ($villa) {
             if ($villa->get()[0]->cover) {
-                unlink(public_path("covers") . "/" . $villa->cover);
+                unlink(public_path("covers") . "/" . $villa->get()[0]->cover);
             }
             $pictures = Villa::find($id)->pictures()->get();
             $villa->delete();

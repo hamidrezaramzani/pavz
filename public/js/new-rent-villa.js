@@ -700,7 +700,6 @@ $("#spaces").validate({
             data,
             url: "/villa/update/spaces",
             success: (response) => {
-                console.log(response);
                 $("#space-loading").hide();
                 nextForm(form);
             },
@@ -1355,7 +1354,7 @@ $("#finish-form").validate({
             method: "GET",
             success: () => {
                 $("#sold-villa-prices-loading").hide();
-                location.href = "/manage-villas";
+                location.href = "/manage/villas";
             },
             beforeSend: () => {
                 $("#sold-villa-prices-loading").show();
