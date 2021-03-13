@@ -2302,3 +2302,7 @@ input[type=time]::-webkit-clear-button {
 .pictures-box img {
     border-radius: 5px;
 }
+
+table {
+    text-align: center;
+}

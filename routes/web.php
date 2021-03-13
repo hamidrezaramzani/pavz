@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ParkingController;
 use App\Http\Controllers\PictureController;
 use App\Http\Controllers\PoolController;
 use App\Http\Controllers\RentPriceController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RuleController;
+use App\Http\Controllers\SoldVillaPriceController;
 use App\Http\Controllers\SpecialPlaceController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VillasController;
@@ -60,6 +62,7 @@ Route::post("/villa/update/home-info", [VillasController::class, "updateHomeInfo
 Route::post("/villa/update/spaces", [VillasController::class, "updateSpaceInfo"]);
 Route::post("/villa/update/possibilities", [VillasController::class, "updatePossibilitiesInfo"]);
 Route::post("/villa/update/address", [VillasController::class, "updateAddressInfo"]);
+Route::get("/villa/set-status/{id}", [VillasController::class, "setStatus"]);
 
 
 /* SPECIAL PLACES ROUTES */
@@ -94,3 +97,9 @@ Route::post("/pictures/villa/cover-update", [PictureController::class, "updateVi
 Route::post("/pictures/villa/pictures-update", [PictureController::class, "updateVillaPictures"]);
 Route::get("/pictures/villa/get/{id}", [PictureController::class, "getVillaPictures"]);
 
+//  DOCUMENT ROUTES
+Route::post("/document/update", [DocumentController::class, "updateDocument"]);
+
+
+//  SOLD VILLA PRICES
+Route::post("/sold-villa-prices/update", [SoldVillaPriceController::class, "updatePrice"]);

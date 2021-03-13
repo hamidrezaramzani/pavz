@@ -1,4 +1,4 @@
-<section>
+<section style="display: {{$show ? "block" : "none"}};">
 
     <form action="" method="POST" class="form" id="home-info">
         <h3>اطلاعات مربوط به ملک</h3>

@@ -1,88 +1,132 @@
-<section>
+<section style="display: {{ $show ? 'block' : 'none' }};">
 
-    <form action="" id="pricing-form" class="form">
-        <div id="rent-pricing">
+    @if ($data->ads_type == 1)
+        <form action="" id="pricing-form" class="form">
+            <div id="rent-pricing">
+
+                <h3>قیمت گذاری</h3>
+
+                <input type="hidden" name="rent_price_token" id="rent_price_token" value="{{ csrf_token() }}">
+                <div class="accordion-title">
+                    <i class="far fa-circle"></i>
+                    با توجه امکاناتی که در اختیار مهمان ها قرار میدهید قیمت را تعیین کنید.
+                </div>
+                <div class="form-group">
+
+                    <label for="midweek_price">روز های وسط هفته:(به تومان)</label>
+                    <input type="number" value="{{ $data->rentPrices->middweek ?? null }}" name="midweek_price"
+                        id="midweek_price" class="form-control" placeholder="قیمت روز های شنبه تا سه شنبه">
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="endweek_price">روز های آخر هفته:(به تومان)</label>
+                    <input type="number" name="endweek_price" id="endweek_price"
+                        value="{{ $data->rentPrices->endweek ?? null }}" class="form-control"
+                        placeholder="قیمت روز های شنبه تا سه شنبه">
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="peek_price">قیمت ایام پیک:(به تومان)</label>
+                    <input type="number" name="peek_price" id="peek_price" class="form-control"
+                        value="{{ $data->rentPrices->peek ?? null }}" placeholder="برای روز های خاص و تعطیل">
+
+
+
+                    <div class="form-group">
+                        <label for="price_per_person">قیمت اقامت به ازای هر نفر اضافه:(به تومان)</label>
+                        <input type="number" name="price_per_person" id="price_per_person" class="form-control"
+                            value="{{ $data->rentPrices->price_per_person ?? null }}"
+                            placeholder="هر نفر که اضافه شود بر روی قیمت میرود">
+
+
+
+                    </div>
+
+
+                    <br>
+                    <h3>تخفیف گذاری</h3>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="midweek_discount">تخفیف برای روز های وسط هفته</label>
+                        <input type="text" name="midweek_discount" id="midweek_discount" class="form-control"
+                            placeholder="تخفیف روز های شنبه تا سه شنبه"
+                            value="{{ $data->rentPrices->middweek_discount ?? null }}">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="endweek_discount">تخفیف برای روز های آخر هفته</label>
+                        <input type="text" name="endweek_discount" id="endweek_discount" class="form-control"
+                            placeholder="تخفیف روز های شنبه تا سه شنبه"
+                            value="{{ $data->rentPrices->endweek_discount ?? null }}">
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="peek_discount">تخفیف قیمت ایام پیک</label>
+                        <input type="text" name="peek_discount" id="peek_discount" class="form-control"
+                            placeholder="تخفیف برای روز های خاص و تعطیل"
+                            value="{{ $data->rentPrices->peek_discount ?? null }}">
+                    </div>
+                    <br>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-sm btn-primary is">ادامه</button>
+            </div>
+
+        </form>
+
+    @else
+
+        <form class="form" action="" id="sold-pricing-form">
 
             <h3>قیمت گذاری</h3>
 
-            <input type="hidden" name="rent_price_token" id="rent_price_token" value="{{ csrf_token() }}">
+            <br>
             <div class="accordion-title">
                 <i class="far fa-circle"></i>
-                با توجه امکاناتی که در اختیار مهمان ها قرار میدهید قیمت را تعیین کنید.
-            </div>
-            <div class="form-group">
-
-                <label for="midweek_price">روز های وسط هفته:(به تومان)</label>
-                <input type="number" name="midweek_price" id="midweek_price" class="form-control"
-                    placeholder="قیمت روز های شنبه تا سه شنبه">
+                قیمت ها را به تومان وارد نمایید
             </div>
 
-
-
-            <div class="form-group">
-                <label for="endweek_price">روز های آخر هفته:(به تومان)</label>
-                <input type="number" name="endweek_price" id="endweek_price" class="form-control"
-                    placeholder="قیمت روز های شنبه تا سه شنبه">
-            </div>
-
-
-
-            <div class="form-group">
-                <label for="peek_price">قیمت ایام پیک:(به تومان)</label>
-                <input type="number" name="peek_price" id="peek_price" class="form-control"
-                    placeholder="برای روز های خاص و تعطیل">
-
-
-
+            <div id="sold-pricing">
                 <div class="form-group">
-                    <label for="price_per_person">قیمت اقامت به ازای هر نفر اضافه:(به تومان)</label>
-                    <input type="number" name="price_per_person" id="price_per_person" class="form-control"
-                        placeholder="هر نفر که اضافه شود بر روی قیمت میرود">
-
-
-
+                    <label for="total_price">قیمت کل:</label>
+                    <input type="number" name="total_price"
+                        value="{{ $data->soldVillaPrices ? $data->soldVillaPrices->total_price : null }}"
+                        id="total_price" class="form-control" placeholder="قیمت کل ملک برای فروش را وارد نمایید">
                 </div>
-
-
-                <br>
-                <h3>تخفیف گذاری</h3>
-                <br>
-
-                <div class="form-group">
-                    <label for="midweek_discount">تخفیف برای روز های وسط هفته</label>
-                    <input type="text" name="midweek_discount" id="midweek_discount" class="form-control"
-                        placeholder="تخفیف روز های شنبه تا سه شنبه">
-                </div>
-
-
-                <div class="form-group">
-                    <label for="endweek_discount">تخفیف برای روز های آخر هفته</label>
-                    <input type="text" name="endweek_discount" id="endweek_discount" class="form-control"
-                        placeholder="تخفیف روز های شنبه تا سه شنبه">    
-                </div>
-
-
-
-                <div class="form-group">
-                    <label for="peek_discount">تخفیف قیمت ایام پیک</label>
-                    <input type="text" name="peek_discount" id="peek_discount" class="form-control"
-                        placeholder="تخفیف برای روز های خاص و تعطیل">
-                </div>
-                <br>
             </div>
-        </div>
-        {{-- <div id="sold-pricing">
+
+
+            <div>
+                <div class="form-group">
+                    <label for="price_per_meter">قیمت به ازای هر متر:</label>
+                    <input type="number" name="price_per_meter" id="price_per_meter" class="form-control"
+                        value="{{ $data->soldVillaPrices ? $data->soldVillaPrices->price_per_meter : null }}"
+                        placeholder="قیمت کل ملک برای فروش را وارد نمایید">
+                </div>
+            </div>
+
             <div class="form-group">
-                <label for="total-price">قیمت کل:</label>
-                <input type="number" name="total-price" id="total-price" class="form-control"
-                placeholder="قیمت کل ملک برای فروش را وارد نمایید">
+                <button type="submit" class="btn btn-sm btn-primary is">ادامه
+
+                    <div id="sold-villa-prices-loading" class="spinner-border spinner-border-sm" role="status"
+                        style="display: none">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </button>
             </div>
-    
-        </div> --}}
 
-        <div class="form-group">
-            <button type="submit" class="btn btn-sm btn-primary is">ادامه</button>
-        </div>
+        </form>
 
-    </form>
+    @endif
+
 </section>

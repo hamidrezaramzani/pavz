@@ -1,4 +1,4 @@
-<section>
+<section style="display: {{$show ? "block" : "none"}};">
     <form action="" class="form" id="possibilities">
         <h3>امکانات رفاهی</h3>
         <div class="accordion-title">
@@ -85,9 +85,7 @@
         </div>
         <br>
         <div class="form-group">
-            <button type="submit" class="btn btn-sm btn-primary is">ادامه
-
-                
+            <button type="submit" class="btn btn-sm btn-primary is">ادامه                
                 <div id="possibilities-loading" class="spinner-border spinner-border-sm" role="status" style="display: none">
                     <span class="sr-only">Loading...</span>
                 </div>

@@ -7,6 +7,7 @@ use App\Http\Requests\HomeInfoRequest;
 use App\Http\Requests\PossiblitiesInfoRequest;
 use App\Http\Requests\SpaceInfoRequest;
 use App\Http\Requests\SpecificationFormRequest;
+use App\Models\DocumentType;
 use App\Models\SpecialPlace;
 use App\Models\User;
 use App\Models\Villa;
@@ -61,11 +62,12 @@ class VillasController extends Controller
             ["user_id", Auth::id()]
         ]);
 
+
         if (!$villa) {
             return redirect("/panel");
         }
 
-        $data =  Villa::find($id)->with([
+        $data =  Villa::with([
             "rooms" => function ($q) {
                 return $q->orderBy("created_at", "asc");
             }, "specialPlaces", "pools" => function ($q) {
@@ -73,9 +75,11 @@ class VillasController extends Controller
             },
             "parkings" => function ($q) {
                 return $q->orderBy("created_at", "asc");
-            } , 
-            "pictures"
-        ])->get()[0];
+            },
+            "pictures", "rentPrices", "villaTypes", "documents", "soldVillaPrices"
+        ]);
+        $documentTypes  = DocumentType::all();
+        $data = $data->where("id", $id)->get()[0];
         $states = json_decode(file_get_contents(public_path("json/states.json")));
         $villaTypes = VillaType::all();
         $cities = [];
@@ -83,30 +87,66 @@ class VillasController extends Controller
             $cities = $this->getCities($data->state);
         }
 
+
+        $formSteps = [
+            ["icon" => "fa fa-file", "title" => "اطلاعات کلی"],
+            ["icon" => "fa fa-home", "title" => "مشخصات ملک"],
+            ["icon" => "fa fa-vote-yea", "title" => "فضای ملک"],
+            ["icon" => "fa fa-check", "title" => "امکانات ملک"],
+            ["icon" => "fa fa-address-card", "title" => "آدرس", "id" => "step-address"],
+            ["icon" => $data->ads_type == '1' ? "fa fa-gavel" : "fa fa-file", "title" => $data->ads_type == '1' ? "قوانین و مقررات" : "اسناد و امتیازات", "id" => "rules-or-documents"],
+            ["icon" => "fa fa-dollar-sign", "title" => "قیمت گذاری"],
+            ["icon" => "fa fa-image", "title" => "تصاویر ملک"],
+            ["icon" => "fa fa-flag-checkered", "title" => "مرحله نهایی"],
+        ];
+
+        $forms = ["specification-data", "home-info", "spaces", "possibilities", "address", "rules-documents", "pricing", "pictures", "finish-data"];
+
         return view("pages.villa.edit-villa", [
             "states" => $states, "villaTypes" => $villaTypes,
             "state" => [$data->state, $cities, $states],
             "data" => $data,
+            "formSteps" => $formSteps,
+            "forms" => $forms,
+            "documentTypes" => $documentTypes,
         ]);
     }
+
+    public function updateLevel($currentLevel, $nextLevel, $villa)
+    {
+        if ($currentLevel < $nextLevel) {
+            $villa->update(["level" => $nextLevel]);
+        }
+    }
+
     public function updateSpecificationForm(SpecificationFormRequest $request)
     {
-        $data = $request->except("_token");
-        Villa::where("id", $request->get("id"))->update($data);
+        $data = $request->except("_token", "level");
+
+        $villa = Villa::where("id", $request->get("id"));
+        $villa->update($data);
+        $level = $villa->get()[0]->level;
+        $this->updateLevel($level, $request->get("level"), $villa);
         return response(["message" => "update successfully"], 200);
     }
 
     public function updateHomeInfo(HomeInfoRequest $request)
     {
         $data = $request->except("_token");
-        Villa::where("id", $data["id"])->update($data);
+        $villa = Villa::where("id", $data["id"]);
+        $level = $villa->get()[0]->level;
+        $villa->update($data);
+        $this->updateLevel($level, $request->get("level"), $villa);
         return response(["message" => "updated"], 200);
     }
 
     public function updateSpaceInfo(SpaceInfoRequest $request)
     {
         $data = $request->except("_token");
-        Villa::where("id", $data["id"])->update($data);
+        $villa = Villa::where("id", $data["id"]);
+        $level = $villa->get()[0]->level;
+        $villa->update($data);
+        $this->updateLevel($level, $data["level"], $villa);
         return response(["message" => "updated"], 200);
     }
 
@@ -114,14 +154,28 @@ class VillasController extends Controller
     {
 
         $data = $request->except("_token");
-        Villa::where("id", $data["id"])->update($data);
+        $villa = Villa::where("id", $data["id"]);
+        $villa->update($data);
+        $level = $villa->get()[0]->level;
+        $this->updateLevel($level, $data["level"], $villa);
         return response(["message" => "updated"], 200);
     }
 
     public function updateAddressInfo(AddressInfoRequest $request)
     {
         $data = $request->except("_token");
-        Villa::where("id", $data["id"])->update($data);
+        $villa = Villa::where("id", $data["id"]);
+        $villa->update($data);
+        $level = $villa->get()[0]->level;
+        $this->updateLevel($level, $data["level"], $villa);
         return response(["message" => "updated"], 200);
+    }
+
+    public function setStatus($id = null)
+    {
+        $villa = Villa::where("id" , $id);
+        $villa->update([
+            "status" => "checking"
+        ]);
     }
 }

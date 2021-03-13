@@ -12,10 +12,16 @@ class RuleController extends Controller
     public function updateRules(UpdateRulesRequest $request)
     {
 
-        $data = $request->except("_token");
+        $data = $request->except("_token", "level");
 
-        $is_exists = Villa::where("id", $data["villa_id"])->withCount("rules");
+        $villa = Villa::where("id", $data["villa_id"]);
+        $is_exists = $villa->withCount("rules");
         $is_exists = $is_exists->get()[0]->rules_count;
+        $level = $villa->get()[0]->level;
+        $VillaController = new VillasController();
+        $VillaController->updateLevel($level, $request->get("level"), $villa);
+
+
         if (!$is_exists) {
             Rule::create($data);
             return response(["message" => "rules created"], 200);

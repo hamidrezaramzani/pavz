@@ -1,11 +1,11 @@
-<section>
+<section style="display: {{$show ? "block" : "none"}};">
     <form action="" class="form" id="address-form">
         <h3>آدرس ملک</h3>
         <input type="hidden" value="{{ csrf_token() }}" id="address_token">
         <div class="form-group">
             <label for="address">آدرس:</label>
             <textarea name="address" id="address" class="form-control"
-                placeholder="آدرس کامل ملک خود را بنویسید"></textarea>
+                placeholder="آدرس کامل ملک خود را بنویسید">{{ $data->address }}</textarea>
         </div>
         <br>
 

@@ -20,9 +20,15 @@ class PictureController extends Controller
                 unlink(public_path("covers/$villa->cover"));
             }
             $request->file("cover")->move(public_path("covers"), $fileName);
-            Villa::where("id", $id)->update([
+            $villa = Villa::where("id", $id);
+            $villa->update([
                 "cover" => $fileName
             ]);
+            $level = $villa->get()[0]->level;
+            $VillaController = new VillasController();
+            $VillaController->updateLevel($level, $request->get("level"), $villa);
+
+
             return response(["messgae" => "cover updated"], 200);
         }
     }
@@ -34,7 +40,9 @@ class PictureController extends Controller
         $deletedPictures = json_decode($request->get("deleted_pictures"));
 
         foreach ($deletedPictures as $pic_id) {
-            Picture::where("id" , $pic_id)->delete();
+            $pic = Picture::where("id", $pic_id);
+            unlink(public_path("villa_pictures"). "/" . $pic->get()[0]->url);
+            $pic->delete();
         }
         $files = $request->allFiles();
         if (count($files) > 0) {

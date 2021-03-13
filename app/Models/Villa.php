@@ -60,4 +60,22 @@ class Villa extends Model
     {
         return $this->hasOne(RentPrice::class);
     }
+
+
+        
+    public function documents()
+    {
+        return $this->hasOne(Document::class);
+    }
+
+
+    public function villaTypes()
+    {
+        return $this->belongsTo(VillaType::class);
+    }
+
+    public function soldVillaPrices()
+    {
+        return $this->hasOne(SoldVillaPrice::class);
+    }
 }

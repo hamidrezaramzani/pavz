@@ -1,4 +1,4 @@
-<section>
+<section style="display: {{$show ? "block" : "none"}};">
     <form action="" id="picture-form" class="form">
         <h3>اضافه کردن تصاویر ملک</h3>
 
@@ -25,6 +25,10 @@
 
 
         <div class="pictures-box" style="display: {{count($data->pictures) ? "block" : "none"}}">
+            <div class="alert alert-sm alert-danger is " style="font-size: 13px;text-align: right">
+                <i class="far fa-image"></i>
+                با کلیک بر روی هر عکس میتوانید آن را از لیست خود حذف نمایید
+            </div>    
             <ul>
                 @if (count($data->pictures))
                     @foreach ($data->pictures as $picture)
@@ -46,7 +50,12 @@
         </div>
         <br>
         <div class="form-group">
-            <button type="submit" class="btn btn-sm btn-primary is">ادامه</button>
+            <button type="submit" class="btn btn-sm btn-primary is">ادامه
+
+                <div id="pictures-loading" class="spinner-border spinner-border-sm" role="status" style="display: none">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </button>
         </div>
 
         <br>

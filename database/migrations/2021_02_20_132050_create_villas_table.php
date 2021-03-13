@@ -51,9 +51,8 @@ class CreateVillasTable extends Migration
             $table->text("address")->nullable();
             $table->string("lat")->nullable();
             $table->string("long")->nullable();
-            $table->string("status")->default("not-completed");
+            $table->tinyInteger("status")->default(0);
             $table->unsignedBigInteger("user_id");
-
             $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");
             $table->timestamps();
         });

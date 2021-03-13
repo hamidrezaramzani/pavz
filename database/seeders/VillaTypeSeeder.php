@@ -15,6 +15,7 @@ class VillaTypeSeeder extends Seeder
     public function run()
     {
         $data = ["جنگلی" , "شهرکی" , "روستایی" , "کوهستانی" , "شهری" , "ساحلی " , "ییلاقی"];
+        VillaType::truncate();
         foreach ($data as $item) {
             VillaType::create([
                 "name" => $item

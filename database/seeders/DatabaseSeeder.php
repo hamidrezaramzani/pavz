@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
      
-        $this->call(VillaTypeSeeder::class);
-        
+        // $this->call(VillaTypeSeeder::class);        
+        $this->call(DocumentTypesSeeder::class);        
     }
 }

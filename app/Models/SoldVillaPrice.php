@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Document extends Model
+class SoldVillaPrice extends Model
 {
     use HasFactory;
-    protected $fillable = ["type" , "scores" , "villa_id"];
+
+    protected $fillable = ["villa_id", "total_price", "price_per_meter"];
 }

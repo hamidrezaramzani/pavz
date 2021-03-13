@@ -57,6 +57,7 @@ $("#general-specifications").validate({
             estate_type: $("#estate_type").val(),
             _token: $("#s_csrf").val(),
             id: $("#id_").val(),
+            level: 1,
         };
         $("#sd-loading").show();
         updateSpecificationForm(data, function () {
@@ -91,8 +92,6 @@ $("#general-specifications").validate({
         },
     },
 });
-
-$(".sections section").eq(0).show();
 
 $("#select-photos-btn").click(function () {
     $("#photos-input").trigger("click");
@@ -267,6 +266,7 @@ $("#home-info").validate({
             about_home: $("#about_home").val(),
             _token: $("#hi_token").val(),
             id: $("#id_").val(),
+            level: 2,
         };
         $("#hi-loading").show();
         $.ajax({
@@ -691,6 +691,7 @@ $("#spaces").validate({
             views: JSON.stringify(getAllInputs("#views")),
             _token: $("#space_token").val(),
             id: $("#id_").val(),
+            level: 3,
         };
 
         $("#space-loading").show();
@@ -849,18 +850,20 @@ $("#possibilities").validate({
             kitchen_facilities: JSON.stringify(kitchen_facilities),
             _token: $("#p_token").val(),
             id: $("#id_").val(),
+            level: 4,
         };
-        $("#possibilities-loading").hide();
+        $("#possibilities-loading").show();
         $.ajax({
             method: "POST",
             data,
             url: "/villa/update/possibilities",
             success: () => {
-                $("#possibilities-loading").show();
+                $("#possibilities-loading").hide();
                 nextForm(form);
+                moveToSelectedCity();
             },
             error: () => {
-                $("#possibilities-loading").show();
+                $("#possibilities-loading").hide();
                 Swal.fire({
                     title: "خطا",
                     text: "مشکلی در سرور وجود دارد",
@@ -883,7 +886,7 @@ L.tileLayer(
 setInterval(() => {
     mymap.invalidateSize(true);
 }, 0);
-
+moveToSelectedCity();
 var marker;
 mymap.on("click", function (e) {
     if (marker) mymap.removeLayer(marker);
@@ -892,24 +895,26 @@ mymap.on("click", function (e) {
     marker = L.marker(e.latlng).addTo(mymap);
 });
 
-$("#step-address").click(function () {
+function moveToSelectedCity() {
     const option = $("#city option:selected");
     if (option && option.value != 0) {
         lat = option.attr("lat");
         long = option.attr("long");
         mymap.setView([lat, long]);
     }
-});
+}
+
+$("#step-address").click(moveToSelectedCity);
 
 $("#address-form").validate({
     submitHandler: (form) => {
-        console.log(latlong);
         const data = {
             lat: latlong[0],
             long: latlong[1],
             address: $("#address").val(),
             _token: $("#address_token").val(),
             id: $("#id_").val(),
+            level: 5,
         };
         $.ajax({
             method: "POST",
@@ -927,7 +932,6 @@ $("#address-form").validate({
                 });
             },
         });
-        // nextForm(form);
     },
     rules: {
         address: {
@@ -956,6 +960,7 @@ $("#rules-form").validate({
             more_rules_description: $("#more_info_rules").val(),
             villa_id: $("#id_").val(),
             _token: $("#rules_token").val(),
+            level: 6,
         };
         $.ajax({
             method: "POST",
@@ -988,6 +993,7 @@ $("#pricing-form").validate({
             peek_discount: $("#peek_discount").val(),
             villa_id: $("#id_").val(),
             _token: $("#rent_price_token").val(),
+            level  : 7
         };
         $.ajax({
             method: "POST",
@@ -1178,7 +1184,7 @@ $.ajax({
 });
 
 $("#picture-form").validate({
-    submitHandler : (form) => {
+    submitHandler: (form) => {
         if (!isCover) {
             Swal.fire({
                 title: "خطا",
@@ -1188,7 +1194,7 @@ $("#picture-form").validate({
             });
             return;
         }
-    
+
         if (picturesList.length < 5) {
             Swal.fire({
                 title: "خطا",
@@ -1198,10 +1204,11 @@ $("#picture-form").validate({
             });
             return;
         }
-    
+
         cover.append("_token", $("#hi_token").val());
         cover.append("id", $("#id_").val());
-    
+        cover.append("level", "8");
+
         pictures.append("_token", $("#hi_token").val());
         pictures.append("id", $("#id_").val());
         pictures.append("deleted_pictures", JSON.stringify(deletedPictures));
@@ -1221,14 +1228,14 @@ $("#picture-form").validate({
                 });
             },
         });
-    
+
         const updatePicturesPromise = $.ajax({
             method: "POST",
             processData: false,
             contentType: false,
             url: "/pictures/villa/pictures-update",
             data: pictures,
-    
+
             error: () => {
                 console.log(err);
                 Swal.fire({
@@ -1239,7 +1246,7 @@ $("#picture-form").validate({
                 });
             },
         });
-    
+
         Promise.all([updateCoverPromise, updatePicturesPromise])
             .then(() => {
                 nextForm(form);
@@ -1252,5 +1259,116 @@ $("#picture-form").validate({
                     confirmButtonText: "باشه",
                 });
             });
-    }
+    },
+});
+
+$("#document-form").validate({
+    submitHandler: (form) => {
+        const data = {
+            type: $("#document_type").val(),
+            scores: JSON.stringify(getAllInputs("#scores")),
+            villa_id: $("#id_").val(),
+            _token: $("#document-token").val(),
+            level: 6,
+        };
+
+        $.ajax({
+            method: "POST",
+            url: "/document/update",
+            data,
+            beforeSend: () => {
+                $("#documents-loading").show();
+            },
+            success: () => {
+                $("#documents-loading").hide();
+                nextForm(form);
+            },
+            error: () => {
+                $("#documents-loading").hide();
+
+                Swal.fire({
+                    title: "خطا",
+                    text: "مشکلی در سرور وجود دارد",
+                    icon: "error",
+                    confirmButtonText: "باشه",
+                });
+            },
+        });
+    },
+});
+
+$("#sold-pricing-form").validate({
+    rules: {
+        total_price: {
+            required: true,
+        },
+        price_per_meter: {
+            required: true,
+        },
+    },
+
+    messages: {
+        total_price: {
+            required: "این فیلد الزامی است",
+        },
+        price_per_meter: {
+            required: "این فیلد الزامی است",
+        },
+    },
+    submitHandler: (form) => {
+        const data = {
+            total_price: $("#total_price").val(),
+            price_per_meter: $("#price_per_meter").val(),
+            _token: $("#hi_token").val(),
+            villa_id: $("#id_").val(),
+            level: 7,
+        };
+
+        $.ajax({
+            method: "POST",
+            url: "/sold-villa-prices/update",
+            data,
+            success: () => {
+                $("#sold-villa-prices-loading").hide();
+                nextForm(form);
+            },
+            beforeSend: () => {
+                $("#sold-villa-prices-loading").show();
+            },
+            error: () => {
+                $("#sold-villa-prices-loading").hide();
+                Swal.fire({
+                    title: "خطا",
+                    text: "مشکلی در سرور وجود دارد",
+                    icon: "error",
+                    confirmButtonText: "باشه",
+                });
+            },
+        });
+    },
+});
+
+$("#finish-form").validate({
+    submitHandler: () => {
+        $.ajax({
+            url: "/villa/set-status/" + $("#id_").val(),
+            method: "GET",
+            success: () => {
+                $("#sold-villa-prices-loading").hide();
+                // location.href = "/manage-villas";
+            },
+            beforeSend: () => {
+                $("#sold-villa-prices-loading").show();
+            },
+            error: () => {
+                $("#sold-villa-prices-loading").hide();
+                Swal.fire({
+                    title: "خطا",
+                    text: "مشکلی در سرور وجود دارد",
+                    icon: "error",
+                    confirmButtonText: "باشه",
+                });
+            },
+        });
+    },
 });

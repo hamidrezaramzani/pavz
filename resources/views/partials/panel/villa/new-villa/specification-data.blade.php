@@ -1,5 +1,4 @@
-<section>
-
+<section style="display: {{$show ? "block" : "none"}};">
     <form action="" id="general-specifications" method="POST" class="form">
 
         <input type="hidden" name="s_csrf" value="{{ csrf_token() }}" id="s_csrf">
@@ -55,21 +54,22 @@
             <select name="city" id="city" name="city" class="form-control">
                 @if ($state[0])
                     @foreach ($state[1] as $item)
+
                         @if ($item->id == $data->city)
-                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                            <option long="{{$item->longitude}}" lat="{{$item->latitude}}" value="{{ $item->id }}">{{ $item->name }}</option>
                         @endif
                     @endforeach
                     <option value="0">شهر مورد نظر خود را انتخاب کنید</option>
                     @foreach ($state[1] as $item)
                         @if ($item->id != $data->city)
-                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                            <option long="{{$item->longitude}}" lat="{{$item->latitude}}" value="{{ $item->id }}">{{ $item->name }}</option>
                         @endif
 
                     @endforeach
                 @else
                     <option value="0">شهر مورد نظر را انتخاب کنید</option>
                     @foreach ($state[1] as $item)
-                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        <option long="{{$item->longitude}}" lat="{{$item->latitude}}"  value="{{ $item->id }}">{{ $item->name }}</option>
                     @endforeach
                 @endif
             </select>

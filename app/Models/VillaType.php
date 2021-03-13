@@ -10,4 +10,9 @@ class VillaType extends Model
     use HasFactory;
 
     protected $fillable = ["name"];
+
+    public function villas()
+    {
+        return $this->hasMany(Villa::class);
+    }
 }

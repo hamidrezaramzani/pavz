@@ -1,7 +1,7 @@
-<section>
+<section style="display: {{$show ? "block" : "none"}};">
 
     <form action="" class="form" id="spaces">
-        <h3 class="d-block mb-3">اتاق و پذیرایی</h3>
+        <h3 class="d-block mb-3">ظرفیت</h3>
 
         <input type="hidden" id="space_token" value="{{ csrf_token() }}">
 
@@ -17,6 +17,7 @@
             <input type="number" name="max_capacity" id="max_capacity" value="{{ $data->max_capacity }}"
                 class="form-control" placeholder="حداکثر ظرفیت اقامتگاه خود را وارد نمایید">
         </div>
+        <br>
 
 
         <div class="accordion-title">
