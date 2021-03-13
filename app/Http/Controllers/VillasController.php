@@ -8,6 +8,7 @@ use App\Http\Requests\PossiblitiesInfoRequest;
 use App\Http\Requests\SpaceInfoRequest;
 use App\Http\Requests\SpecificationFormRequest;
 use App\Models\DocumentType;
+use App\Models\Picture;
 use App\Models\SpecialPlace;
 use App\Models\User;
 use App\Models\Villa;
@@ -185,5 +186,25 @@ class VillasController extends Controller
         $id = Auth::id();
         $villas = User::find($id)->villas()->get();
         return view("pages.villa.manage-villas", ["villas" => $villas]);
+    }
+
+    public function deleteVillas($id = null)
+    {
+        $user = Auth::user();
+        $villa = $user->villas()->where("id", $id);
+        if ($villa) {
+            if ($villa->get()[0]->cover) {
+                unlink(public_path("covers") . "/" . $villa->cover);
+            }
+            $pictures = Villa::find($id)->pictures()->get();
+            $villa->delete();
+            foreach ($pictures as $picture) {
+                $picture->delete();
+                unlink(public_path("villa_pictures") . "/" . $picture->url);
+            }
+            return response(["message" => "villa deleted"], 200);
+        } else {
+            return response(["message" => "villa not found"], 400);
+        }
     }
 }

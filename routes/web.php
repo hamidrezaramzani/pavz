@@ -64,6 +64,8 @@ Route::post("/villa/update/possibilities", [VillasController::class, "updatePoss
 Route::post("/villa/update/address", [VillasController::class, "updateAddressInfo"])->middleware("auth");;
 Route::get("/villa/set-status/{id}", [VillasController::class, "setStatus"])->middleware("auth");;
 Route::get("/manage/villas", [VillasController::class, "manageVillas"])->middleware("auth");;
+Route::get("/villa/delete/{id}", [VillasController::class, "deleteVillas"])->middleware("auth");;
+
 /* SPECIAL PLACES ROUTES */
 Route::post("/special-place/new", [SpecialPlaceController::class, "createSpecialPlaceItem"])->middleware("auth");;
 Route::get("/special-place/remove/{id}/{villa}", [SpecialPlaceController::class, "removeSpecialPlaceItem"])->middleware("auth");;
