@@ -2,8 +2,6 @@
     <form action="" id="picture-form" class="form">
         <h3>اضافه کردن تصاویر ملک</h3>
 
-        {{-- {{dd($data->pictures)}} --}}
-
         <div id="cover-image-box" style="display:{{ $data->cover ? 'block' : 'none' }}">
 
             @if ($data->cover)

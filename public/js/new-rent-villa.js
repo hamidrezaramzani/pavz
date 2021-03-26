@@ -1068,7 +1068,6 @@ $("#pricing-form").validate({
 
 $("#cover").change(function (e) {
     const files = e.target.files;
-    console.log($(".cover-image").length);
     if (!cover.has("cover") && !$(".cover-image").length) {
         if (files.length) {
             if (files[0].name) {
@@ -1127,7 +1126,6 @@ $("#delete-cover-btn").click(function () {
 });
 
 function removePictureItem(id, isSaved) {
-    console.log(picturesList);
     if (isSaved) deletedPictures.push(id);
     pictures.delete(`picture${id}`);
     $(`.pictures-box ul li#${id}`).remove();
@@ -1211,6 +1209,7 @@ $("#picture-form").validate({
         pictures.append("_token", $("#hi_token").val());
         pictures.append("id", $("#id_").val());
         pictures.append("deleted_pictures", JSON.stringify(deletedPictures));
+        
         const updateCoverPromise = $.ajax({
             method: "POST",
             processData: false,

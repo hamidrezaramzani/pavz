@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApartmentController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ParkingController;
 use App\Http\Controllers\PictureController;
@@ -46,10 +47,10 @@ Route::post("/login-user", [UserController::class, "login"]);
 Route::get('/is-phonenumber-duplicate/{phonenumber}', [UserController::class, "isPhoneNumberDuplicate"]);
 Route::get("/panel", [UserController::class, "panel"])->name("dashboard")->middleware("auth")->breadcrumbs(fn (Trail  $trail) => $trail->push("پیشخوان", route("dashboard")));
 Route::get("/new-villa", [VillasController::class, "newVilla"])->name("new-villa")->middleware("auth")->breadcrumbs(fn (Trail $trail) => $trail->parent("dashboard")->push("ثبت ویلای جدید", route("new-villa")));;
-Route::post("/create-villa" , [VillasController::class , "createVilla"])->middleware("auth");
-Route::post("/update-specification-form" , [VillasController::class , "updateSpecificationForm"])->middleware("auth");
+Route::post("/create-villa", [VillasController::class, "createVilla"])->middleware("auth");
+Route::post("/update-specification-form", [VillasController::class, "updateSpecificationForm"])->middleware("auth");
 
-Route::get("/edit-villa/{id}" , [VillasController::class , "editVilla"])->middleware("auth");
+Route::get("/edit-villa/{id}", [VillasController::class, "editVilla"])->name("edit-villa")->middleware("auth");
 Route::get("/get-cities/{id}", [VillasController::class, "getCities"]);
 Route::get("/villa/{id}", [VillasController::class, "getSingleVilla"]);
 Route::get("/profile", [UserController::class, "profile"])->name("profile")->middleware("auth")->breadcrumbs(fn (Trail  $trail) => $trail->parent("dashboard")->push("تغییر پروفایل", route("profile")));;
@@ -65,6 +66,22 @@ Route::post("/villa/update/address", [VillasController::class, "updateAddressInf
 Route::get("/villa/set-status/{id}", [VillasController::class, "setStatus"])->middleware("auth");;
 Route::get("/manage/villas", [VillasController::class, "manageVillas"])->middleware("auth");;
 Route::get("/villa/delete/{id}", [VillasController::class, "deleteVillas"])->middleware("auth");;
+
+
+
+//  APARTMENT ROUTES
+Route::get("/new-apartment", [ApartmentController::class, "newApartment"])->middleware("auth")->name("new-apartment")->breadcrumbs(fn (Trail $trail) => $trail->parent("dashboard")->push("آپارتمان جدید", route("new-apartment")));;
+Route::get("/edit-apartment/{id}", [ApartmentController::class, "editApartment"])->middleware("auth");
+Route::get("/apartment/get-home-types/{id}", [ApartmentController::class, "getHomeTypes"])->middleware("auth");
+Route::get("/apartment/set-status/{status}/{id}", [ApartmentController::class, "setApartmentStatus"])->middleware("auth");
+Route::post("/create-apartment", [ApartmentController::class, "createApartment"])->middleware("auth")->name("create-apartment");
+Route::post("/apartment/update/specification", [ApartmentController::class, "updateSpecification"])->middleware("auth");
+Route::post("/apartment/update/possibilities", [ApartmentController::class, "updatePossibilities"])->middleware("auth");
+Route::post("/apartment/update/address", [ApartmentController::class, "updateAddress"])->middleware("auth");
+Route::post("/apartment/update/rent-pricing", [ApartmentController::class, "updateRentPricing"])->middleware("auth");
+Route::post("/apartment/update/sold-pricing", [ApartmentController::class, "updateSoldPricing"])->middleware("auth");
+
+
 
 /* SPECIAL PLACES ROUTES */
 Route::post("/special-place/new", [SpecialPlaceController::class, "createSpecialPlaceItem"])->middleware("auth");;
@@ -96,7 +113,10 @@ Route::post("/rent-price/update", [RentPriceController::class, "updatePrices"])-
 /* PICTURE ROUTES */
 Route::post("/pictures/villa/cover-update", [PictureController::class, "updateVillaCover"])->middleware("auth");
 Route::post("/pictures/villa/pictures-update", [PictureController::class, "updateVillaPictures"])->middleware("auth");
+Route::post("/pictures/apartment/pictures-update", [PictureController::class, "updateApartmentPictures"])->middleware("auth");
+Route::post("/pictures/apartment/cover-update", [PictureController::class, "updateApartmentCover"])->middleware("auth");
 Route::get("/pictures/villa/get/{id}", [PictureController::class, "getVillaPictures"])->middleware("auth");
+Route::get("/pictures/apartment/get/{id}", [PictureController::class, "getApartmentPictures"])->middleware("auth");
 
 //  DOCUMENT ROUTES
 Route::post("/document/update", [DocumentController::class, "updateDocument"])->middleware("auth");

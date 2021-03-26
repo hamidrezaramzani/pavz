@@ -2310,3 +2310,28 @@ table {
 .swal2-modal {
     font-family: is;
 }
+
+.form-group {
+    position: relative;
+}
+
+.form-group .draft-icon {
+    position: absolute;
+    top: 60%;
+    left: 10px;
+}
+
+.loading-box {
+    width: 100%;
+    height: 250px;
+    /* background: #000; */
+}
+
+.pic-first-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}

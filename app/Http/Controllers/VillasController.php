@@ -64,7 +64,7 @@ class VillasController extends Controller
         ]);
 
 
-        if (!$villa) {
+        if (!$villa->get()->count()) {
             return redirect("/panel");
         }
 
@@ -190,6 +190,7 @@ class VillasController extends Controller
 
     public function deleteVillas($id = null)
     {
+        
         $user = Auth::user();
         $villa = $user->villas()->where("id", $id);
         if ($villa) {

@@ -12,7 +12,7 @@
         </div>
         <br>
         <div class="accordion-title">
-            <i class="far fa-circle"></i>
+        <i class="far fa-circle"></i>
             برای عنوان بهتر است برای جذاب تر بودن آگهی شما برای مهمان ها از مزیت ها و امکانات خوب ملک خود مانند استخر و
             ... در نظر بگیرید
         </div>
@@ -54,7 +54,6 @@
             <select name="city" id="city" name="city" class="form-control">
                 @if ($state[0])
                     @foreach ($state[1] as $item)
-
                         @if ($item->id == $data->city)
                             <option long="{{$item->longitude}}" lat="{{$item->latitude}}" value="{{ $item->id }}">{{ $item->name }}</option>
                         @endif

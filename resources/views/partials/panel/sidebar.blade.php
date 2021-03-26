@@ -41,7 +41,7 @@
             <ul>
                 <li>
                     <a href="/new-villa">
-                        <i class="far fa-circle"></i>
+                        <i class="fa fa-plus" aria-hidden="true"></i>
                         ثبت ویلای جدید
                     </a>
                 </li>
@@ -65,16 +65,9 @@
             </button>
             <ul>
                 <li>
-                    <a href="">
-                        <i class="far fa-circle"></i>
-                        ثبت آپارتمان جدید جهت فروش
-                    </a>
-                </li>
-
-                <li>
-                    <a href="">
-                        <i class="far fa-circle"></i>
-                        ثبت آپارتمان جدید جهت رهن
+                    <a href="/new-apartment">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        ثبت آپارتمان جدید
                     </a>
                 </li>
 

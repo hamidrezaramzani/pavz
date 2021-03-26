@@ -138,11 +138,7 @@
                         },
                         success: () => {
                             setBtnStatus(thisBtn)
-<<<<<<< HEAD
                             thisBtn.parents("tr").remove();                            
-=======
-                            thisBtn.parents("li").remove();                            
->>>>>>> 6dd32fb9bd099747981e7265641e5a1f5e57ef96
                         },
                         error: () => {
                             setBtnStatus(thisBtn)
