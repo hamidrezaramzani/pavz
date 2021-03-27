@@ -633,7 +633,7 @@ $("#finish-form").validate({
             method: "GET",
             success: () => {
                 $("#finish-loading").hide();
-                location.href = "/manage/apartments";
+                location.href = "/apartment/manage";
             },
             beforeSend: () => {
                 $("#finish-loading").show();

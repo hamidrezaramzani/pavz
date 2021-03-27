@@ -73,7 +73,7 @@
 
 
                 <li>
-                    <a href="">
+                    <a href="/apartment/manage">
                         <i class="far fa-circle"></i>
                         نمایش همه آپارتمان
                     </a>

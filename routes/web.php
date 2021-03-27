@@ -80,6 +80,7 @@ Route::post("/apartment/update/possibilities", [ApartmentController::class, "upd
 Route::post("/apartment/update/address", [ApartmentController::class, "updateAddress"])->middleware("auth");
 Route::post("/apartment/update/rent-pricing", [ApartmentController::class, "updateRentPricing"])->middleware("auth");
 Route::post("/apartment/update/sold-pricing", [ApartmentController::class, "updateSoldPricing"])->middleware("auth");
+Route::get("/apartment/manage", [ApartmentController::class, "manageApartments"])->middleware("auth");
 
 
 

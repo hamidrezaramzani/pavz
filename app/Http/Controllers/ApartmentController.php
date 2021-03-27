@@ -135,4 +135,10 @@ class ApartmentController extends Controller
         Apartment::where("id", $id)->update(["status" => $status]);
         return response(["message" => "status updated"], 200);
     }
+
+    public function manageApartments()
+    {
+        $apartments = Apartment::where("user_id" , Auth::id());
+        return view("pages.apartment.manage-apartment" , ["apartments" => $apartments->get()]);
+    }
 }
