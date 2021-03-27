@@ -7,7 +7,7 @@
                 <br>
 
 
-                <a href="/new-villa" class="btn btn-sm btn-primary is m-3">+ ثبت آگهی رایگان</a>
+                <a href="/new-apartment" class="btn btn-sm btn-primary is m-3">+ ثبت آگهی رایگان</a>
                 <div class="table-resposive">
                     <table class="table text-center table-striped table-hover">
                         <thead>
@@ -35,7 +35,9 @@
                                                 <span class="text-danger">کاور ندارد</span>
                                             @endif
                                         </td>
-                                        <td width="20%">{{ $apartment->ads_type == '1' ? 'اجاره ویلا' : 'فروش ویلا' }}</td>
+                                        <td width="20%">
+                                            {{ $apartment->ads_type == '1' ? 'رهن و اجاره آپارتمان' : 'فروش آپارتمان' }}
+                                        </td>
                                         <td width="15%">
                                             @switch($apartment->status)
                                                 @case("not-completed")
@@ -75,7 +77,7 @@
 @endsection
 
 
-<div class="modal fade" id="villa_pic_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ap-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -85,15 +87,50 @@
                 </button>
             </div>
             <div class="modal-body">
-                <img src="" id="modal_villa_pic_dom" alt="" width="100%" height="300">
+                <img src="" id="ap-pic-modal" alt="" width="100%" height="300">
             </div>
         </div>
     </div>
 </div>
 @push('scripts')
     <script>
-        $(".show-villa-pic").click(function () {
-           const src = $(this).attr("src"); 
+        $(".show-villa-pic").click(function() {
+            const src = $(this).attr("src");
+            $("#ap-pic-modal").attr("src", src);
+            $("#ap-modal").modal("show");
         });
+
+        $(".close").click(function() {
+            $("#ap-modal").modal("hide");
+        })
+
+        $(".btn-apartment-delete").click(function() {
+            const btn = $(this);
+            const id = btn.attr("id");
+            $(`#ap-${id}`).show();
+            btn.prop("disabled", true);
+
+            $.ajax({
+                method: "GET",
+                url: "/apartment/delete/" + id,
+                success: (response) => {
+                    $(`#ap-${id}`).hide();
+                    btn.prop("disabled", false);
+                    btn.parents("tr").remove()
+                },
+                error: (err) => {
+                    console.log(err);
+                    $(`#ap-${id}`).hide();
+                    btn.prop("disabled", false);
+                    Swal.fire({
+                        title: "خطا",
+                        text: "مشکلی در سرور وجود دارد",
+                        icon: "error",
+                        confirmButtonText: "باشه",
+                    });
+                }
+            });
+        })
+
     </script>
 @endpush

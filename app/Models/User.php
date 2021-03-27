@@ -50,4 +50,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Villa::class);
     }
+
+
+    public function apartments()
+    {
+        return $this->hasMany(Apartment::class);
+    }
 }

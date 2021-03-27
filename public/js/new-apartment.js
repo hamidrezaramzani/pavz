@@ -47,7 +47,6 @@ const showSection = (index) => {
     $(".sections section").hide();
     $(".sections section").eq(index).show();
 };
-showSection(0);
 
 function nextForm(form) {
     const index = $(`#${form.id}`).parents("section").index();

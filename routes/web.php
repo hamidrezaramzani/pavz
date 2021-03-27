@@ -81,6 +81,7 @@ Route::post("/apartment/update/address", [ApartmentController::class, "updateAdd
 Route::post("/apartment/update/rent-pricing", [ApartmentController::class, "updateRentPricing"])->middleware("auth");
 Route::post("/apartment/update/sold-pricing", [ApartmentController::class, "updateSoldPricing"])->middleware("auth");
 Route::get("/apartment/manage", [ApartmentController::class, "manageApartments"])->middleware("auth");
+Route::get("/apartment/delete/{id}", [ApartmentController::class, "deleteApartment"])->middleware("auth");
 
 
 

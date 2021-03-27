@@ -14,4 +14,5 @@ class Apartment extends Model
     {
         return $this->morphMany(Picture::class , "pictureable");        
     }
+
 }

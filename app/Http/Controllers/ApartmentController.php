@@ -138,7 +138,27 @@ class ApartmentController extends Controller
 
     public function manageApartments()
     {
-        $apartments = Apartment::where("user_id" , Auth::id());
-        return view("pages.apartment.manage-apartment" , ["apartments" => $apartments->get()]);
+        $apartments = Apartment::where("user_id", Auth::id());
+        return view("pages.apartment.manage-apartment", ["apartments" => $apartments->get()]);
+    }
+
+    public function deleteApartment($id = null)
+    {
+        $user = Auth::user();
+        $apartment = $user->apartments()->where("id",$id);
+        if ($apartment->count()) {
+            if ($apartment->get()[0]->cover) {
+                unlink(public_path("covers") . "/" . $apartment->get()[0]->cover);
+            }
+            $pictures = Apartment::find($id)->pictures()->get();
+            $apartment->delete();
+            foreach ($pictures as $picture) {
+                $picture->delete();
+                unlink(public_path("apartment_pictures") . "/" . $picture->url);
+            }
+            return response(["message" => "apartment deleted"], 200);
+        } else {
+            return response(["message" => "apartment not found"], 400);
+        }
     }
 }
