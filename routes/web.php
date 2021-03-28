@@ -93,6 +93,8 @@ Route::post("/area/update/documents", [AreaController::class, "updateDocuments"]
 Route::post("/area/update/address", [AreaController::class, "updateAddress"])->middleware("auth");
 Route::post("/area/update/pricing", [AreaController::class, "updatePricing"])->middleware("auth");
 Route::get("/area/set-status/{status}/{id}", [AreaController::class, "setAreaStatus"])->middleware("auth");
+Route::get("/area/manage", [AreaController::class, "manageAreas"])->middleware("auth");
+Route::get("/area/delete/{id}", [AreaController::class, "deleteArea"])->middleware("auth");
 
 // ->breadcrumbs(fn (Trail $trail) => $trail->parent("dashboard")->push("ویرایش آگهی", route("edit-area")));
 

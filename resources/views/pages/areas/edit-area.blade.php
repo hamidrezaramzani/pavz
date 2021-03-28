@@ -22,14 +22,14 @@
                     بروید"])
                     <br>
                     @include('partials.panel.areas.form-steps')
-                    <div class="p-3 sections">
-                        @include('partials.panel.areas.specification',["show" => true])
-                        @include('partials.panel.areas.documents',["show" =>false])
-                        @include('partials.panel.areas.address',["show" => false])
-                        @include('partials.panel.areas.pricing',["show" => false])
-                        @include('partials.panel.areas.pictures',["show" => false])
-                        @include('partials.panel.areas.finish',["show" => false])
-
+                    <div class="p-3 sections">                        
+                        @foreach ($pages as $key => $form)
+                            @if ($key == $data->level)
+                                @include('partials.panel.areas.' . $form , ["show" => true])
+                            @else
+                                @include('partials.panel.areas.' . $form , ["show" => false])
+                            @endif
+                        @endforeach
                     </div>
                 </div>
         </div>

@@ -46,12 +46,12 @@ class AreaController extends Controller
             ["user_id", Auth::id()]
         ]);
 
-        if(!$area->count()){
+        if (!$area->count()) {
             return redirect("/panel");
         }
         $data = $area->get()[0];
         $states = json_decode(file_get_contents(public_path("json/states.json")));
-        
+
         $documentTypes = DocumentType::all();
         $cities = [];
         if ($data->state) {
@@ -61,7 +61,17 @@ class AreaController extends Controller
         if (!$area->count())
             return redirect("/panel");
 
-        return view("pages.areas.edit-area", ["data" => $data, "states" => $states, "cities" => $cities, "documentTypes" => $documentTypes]);
+
+        $formSteps = [
+            ["icon" => "fa fa-file", "title" => "اطلاعات کلی"],
+            ["icon" => "fa fa-gavel", "title" => "اسناد و امیتازات"],
+            ["icon" => "fa fa-address-card", "title" => "آدرس", "id" => "step-address"],
+            ["icon" => "fa fa-dollar-sign", "title" => "قیمت گذاری"],
+            ["icon" => "fa fa-image", "title" => "تصاویر زمین"],
+            ["icon" => "fa fa-flag-checkered", "title" => "مرحله نهایی"],
+        ];
+        $pages = ["specification", "documents", "address", "pricing", "pictures", "finish"];
+        return view("pages.areas.edit-area", ["data" => $data, "states" => $states, "cities" => $cities, "documentTypes" => $documentTypes, "steps" => $formSteps, "pages" => $pages]);
     }
 
     public function updateSpecification(UpdateAreaSpecificationRequest $request)
@@ -80,7 +90,7 @@ class AreaController extends Controller
 
     public function updateAddress(UpdateAreaAddressRequest $request)
     {
-        
+
         $data = $request->except(["id", "_token"]);
         Area::where("id", $request->get("id"))->update($data);
         return response(["message" => "updated"], 200);
@@ -93,10 +103,37 @@ class AreaController extends Controller
         return response(["message" => "updated"], 200);
     }
 
-    public function setAreaStatus($status , $id)
+    public function setAreaStatus($status, $id)
     {
-        
+
         Area::where("id", $id)->update(["status" => $status]);
         return response(["message" => "status updated"], 200);
     }
+
+    public function manageAreas()
+    {
+        $data = Area::where("user_id", Auth::id());
+        return view("pages.areas.manage", ["areas" => $data->get()]);
+    }
+
+    public function deleteArea($id = null)
+    {
+        $user = Auth::user();
+        $area = $user->areas()->where("id",$id);
+        if ($area->count()) {
+            if ($area->get()[0]->cover) {
+                unlink(public_path("covers") . "/" . $area->get()[0]->cover);
+            }
+            $pictures = Area::find($id)->pictures()->get();
+            $area->delete();
+            foreach ($pictures as $picture) {
+                $picture->delete();
+                unlink(public_path("area_pictures") . "/" . $picture->url);
+            }
+            return response(["message" => "area deleted"], 200);
+        } else {
+            return response(["message" => "area not found"], 400);
+        }
+    }
+
 }

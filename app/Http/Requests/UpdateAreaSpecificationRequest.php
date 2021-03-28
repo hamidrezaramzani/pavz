@@ -28,7 +28,6 @@ class UpdateAreaSpecificationRequest extends FormRequest
             "title" => "string|required|min:10|max:100" , 
             "state" => "numeric|required" , 
             "city" => "numeric|required" , 
-            "document_type" => "numeric|required" , 
             "id" => "numeric|required" , 
         ];
     }

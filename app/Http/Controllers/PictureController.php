@@ -125,11 +125,12 @@ class PictureController extends Controller
             $area = Area::find($id);
             if ($area->cover) {
                 unlink(public_path("covers/$area->cover"));
-            }
+            }            
             $request->file("cover")->move(public_path("covers"), $fileName);
             $area = Area::where("id", $id);
             $area->update([
-                "cover" => $fileName
+                "cover" => $fileName ,   
+                "level" => $request->get("level") > $area->get()[0]->level ? $request->get("level") : $area->get()[0]->level 
             ]);
             return response(["messgae" => "cover updated"], 200);
         }

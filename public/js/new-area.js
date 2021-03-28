@@ -10,9 +10,9 @@ $("#specification-form").validate({
             title: $("#title").val(),
             state: $("#state").val(),
             city: $("#city").val(),
-            document_type: $("#document_type").val(),
             _token: $("#token").val(),
             id: $("#aid").val(),
+            level : 1
         };
         $.ajax({
             beforeSend: () => {
@@ -68,6 +68,7 @@ $("#documents-form").validate({
             scores: JSON.stringify(getAllInputs("#scores")),
             _token: $("#token").val(),
             id: $("#aid").val(),
+            level : 2
         };
 
         $.ajax({
@@ -110,6 +111,7 @@ $("#address-form").validate({
             long: latlong[1],
             id: $("#aid").val(),
             _token: $("#token").val(),
+            level : 3
         };
 
         $.ajax({
@@ -157,7 +159,8 @@ $("#pricing-form").validate({
             total_price : $("#total_price").val() , 
             price_per_meter : $("#price_per_meter").val() , 
             _token : $("#token").val() , 
-            id : $("#aid").val()
+            id : $("#aid").val() , 
+            level : 4
         };
         $.ajax({
             method : "POST" , 
@@ -167,7 +170,7 @@ $("#pricing-form").validate({
                 $("#p-loading").show();
             },
             success: () => {
-                // nextForm(form);
+                nextForm(form);
                 $("#p-loading").hide();
             },
 

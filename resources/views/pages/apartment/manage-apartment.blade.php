@@ -2,11 +2,10 @@
 @section('dashboard')
     <div class="container-fluid">
         <div class="row justify-content-center py-3">
-            <div class="col-12 col-md-12 dashboard-info-item-content is-checking">
+            <div class="col-12 col-md-12 dashboard-info-item-content is-checking p-5">                
+                <h3>مدیریت آگهی های آپارتمان</h3>
                 <br>
                 <br>
-
-
                 <a href="/new-apartment" class="btn btn-sm btn-primary is m-3">+ ثبت آگهی رایگان</a>
                 <div class="table-resposive">
                     <table class="table text-center table-striped table-hover">

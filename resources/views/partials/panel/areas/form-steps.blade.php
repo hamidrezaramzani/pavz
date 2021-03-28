@@ -1,4 +1,4 @@
-<div class="form-steps px-3">
+{{-- <div class="form-steps px-3">
     <ul>
         <li class="active">
             <i class="fa fa-home"></i>
@@ -36,5 +36,25 @@
             <i class="fa fa-flag"></i>
             <span>مرحله نهایی</span>
         </li>
+    </ul>
+</div> --}}
+
+
+
+<div class="form-steps px-3">
+    <ul>
+        @foreach ($steps as $key => $item)
+            @if ($data->level >= $key)
+            <li class="active" id="{{$item['id'] ?? null}}">
+                <i class="{{ $item['icon'] }}"></i>
+                <span>{{ $item['title'] }}</span>
+            </li>        
+            @else
+            <li id="{{$item['id'] ?? null}}">
+                <i class="{{ $item['icon'] }}"></i>
+                <span>{{ $item['title'] }}</span>
+            </li>        
+            @endif            
+        @endforeach    
     </ul>
 </div>

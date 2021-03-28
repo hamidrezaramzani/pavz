@@ -96,7 +96,7 @@
                         ثبت زمین</a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="/area/manage">
                         <i class="far fa-circle"></i>
                         نمایش همه زمین ها</a>
                 </li>
