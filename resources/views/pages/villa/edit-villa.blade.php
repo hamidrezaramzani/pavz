@@ -49,5 +49,6 @@
     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('js/additional-methods.min.js') }}"></script>
     <script src="{{ asset('js/leaflet.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/new-rent-villa.js') }}"></script>
 @endpush

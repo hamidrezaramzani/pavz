@@ -91,9 +91,9 @@
             </button>
             <ul>
                 <li>
-                    <a href="">
+                    <a href="/area/new">
                         <i class="far fa-circle"></i>
-                        ثبت زمین جهت فروش</a>
+                        ثبت زمین</a>
                 </li>
                 <li>
                     <a href="">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Apartment;
+use App\Models\Area;
 use App\Models\Picture;
 use App\Models\Villa;
 use Illuminate\Http\Request;
@@ -34,7 +35,7 @@ class PictureController extends Controller
         }
     }
 
-    
+
 
     public function updateVillaPictures(Request $request)
     {
@@ -44,7 +45,7 @@ class PictureController extends Controller
 
         foreach ($deletedPictures as $pic_id) {
             $pic = Picture::where("id", $pic_id);
-            unlink(public_path("villa_pictures"). "/" . $pic->get()[0]->url);
+            unlink(public_path("villa_pictures") . "/" . $pic->get()[0]->url);
             $pic->delete();
         }
         $files = $request->allFiles();
@@ -72,7 +73,7 @@ class PictureController extends Controller
         ], 200);
     }
 
-    
+
     public function getApartmentPictures($id = null)
     {
         $data = Apartment::find($id)->pictures();
@@ -83,7 +84,18 @@ class PictureController extends Controller
         ], 200);
     }
 
-    
+
+    public function getAreaPictures($id = null)
+    {
+        $data = Area::find($id)->pictures();
+        $isCover = Area::find($id)->get()[0]->cover;
+        return response([
+            "cover" => $isCover,
+            "pictures" => $data->get()->toArray()
+        ], 200);
+    }
+
+
     public function updateApartmentCover(Request $request)
     {
 
@@ -98,7 +110,27 @@ class PictureController extends Controller
             $apartment = Apartment::where("id", $id);
             $apartment->update([
                 "cover" => $fileName
-            ]);        
+            ]);
+            return response(["messgae" => "cover updated"], 200);
+        }
+    }
+
+
+    public function updateAreaCover(Request $request)
+    {
+
+        if ($request->file("cover")) {
+            $id = $request->get("id");
+            $fileName = time() . '.' . $request->file("cover")->extension();
+            $area = Area::find($id);
+            if ($area->cover) {
+                unlink(public_path("covers/$area->cover"));
+            }
+            $request->file("cover")->move(public_path("covers"), $fileName);
+            $area = Area::where("id", $id);
+            $area->update([
+                "cover" => $fileName
+            ]);
             return response(["messgae" => "cover updated"], 200);
         }
     }
@@ -111,7 +143,7 @@ class PictureController extends Controller
 
         foreach ($deletedPictures as $pic_id) {
             $pic = Picture::where("id", $pic_id);
-            unlink(public_path("apartment_pictures"). "/" . $pic->get()[0]->url);
+            unlink(public_path("apartment_pictures") . "/" . $pic->get()[0]->url);
             $pic->delete();
         }
         $files = $request->allFiles();
@@ -127,7 +159,31 @@ class PictureController extends Controller
                 $picture->save();
             }
         }
-
     }
 
+
+    public function updateAreaPictures(Request $request)
+    {
+        $id = $request->get("id");
+        $deletedPictures = json_decode($request->get("deleted_pictures"));
+
+        foreach ($deletedPictures as $pic_id) {
+            $pic = Picture::where("id", $pic_id);
+            unlink(public_path("area_pictures") . "/" . $pic->get()[0]->url);
+            $pic->delete();
+        }
+        $files = $request->allFiles();
+        if (count($files) > 0) {
+            foreach ($files as $file) {
+                $fileName = time() . rand(1, 9999) . '.' . $file->extension();
+                $file->move(public_path("area_pictures"), $fileName);
+                $area = Area::find($id);
+                $picture = new Picture([
+                    "url" => $fileName
+                ]);
+                $picture->pictureable()->associate($area);
+                $picture->save();
+            }
+        }
+    }
 }

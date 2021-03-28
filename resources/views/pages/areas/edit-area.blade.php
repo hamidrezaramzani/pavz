@@ -1,4 +1,4 @@
-@extends('layout.panel' , ["title" => "ویرایش آپارتمان جدید | پاوز"])
+@extends('layout.panel' , ["title" => "ویرایش زمین جدید | پاوز"])
 @section('dashboard')
     <div class="container-fluid">
         <div class="row justify-content-center py-3">
@@ -17,21 +17,19 @@
                 </div>
             @else
                 <div class="col-12 col-md-12 dashboard-info-item-content new-villa">
-                    @include('partials.panel.items.title' , ["title" => $data->ads_type != 1 ? "ویرایش آگهی فروش ویلا" :
-                    "ویرایش
-                    آگهی اجاره آپارتمان" , "description" => "از این بخش
-                    میتوانید آپارتمان خود را ویرایش کنید برای دسترسی به همه آپارتمان های ثبت شده به بخش همه آپارتمان ها
+                    @include('partials.panel.items.title' , ["title" => "ثبت آگهی ویلا" , "description" => "از این بخش
+                    میتوانید زمین خود را ویرایش کنید برای دسترسی به همه زمین های ثبت شده به بخش همه زمین ها
                     بروید"])
                     <br>
-                    @include('partials.panel.apartments.form-steps')
+                    @include('partials.panel.areas.form-steps')
                     <div class="p-3 sections">
-                        @foreach ($forms as $key => $form)
-                            @if ($key == $data->level)
-                                @include('partials.panel.apartments.' . $form , ["show" => true])
-                            @else
-                                @include('partials.panel.apartments.' . $form , ["show" => false])
-                            @endif
-                        @endforeach                  
+                        @include('partials.panel.areas.specification',["show" => true])
+                        @include('partials.panel.areas.documents',["show" =>false])
+                        @include('partials.panel.areas.address',["show" => false])
+                        @include('partials.panel.areas.pricing',["show" => false])
+                        @include('partials.panel.areas.pictures',["show" => false])
+                        @include('partials.panel.areas.finish',["show" => false])
+
                     </div>
                 </div>
         </div>
@@ -48,6 +46,5 @@
     <script src="{{ asset('js/additional-methods.min.js') }}"></script>
     <script src="{{ asset('js/leaflet.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
-    <script src="{{ asset('js/new-apartment.js') }}"></script>
+    <script src="{{ asset('js/new-area.js') }}"></script>
 @endpush
-

@@ -5,28 +5,6 @@ let picturesList = [];
 let isCover = false;
 const deletedPictures = [];
 // add the rule here
-$.validator.addMethod(
-    "selectRequired",
-    function (value, element, arg) {
-        return value != 0;
-    },
-    "لطفا انتخاب کنید"
-);
-
-const showSection = (index) => {
-    $(".sections section").hide();
-    $(".sections section").eq(index).show();
-};
-
-function nextForm(form) {
-    const index = $(`#${form.id}`).parents("section").index();
-    const nextLi = $(".form-steps ul li").eq(index + 1);
-    const hasClass = nextLi.hasClass("active");
-    if (!hasClass) {
-        nextLi.addClass("active");
-    }
-    showSection(index + 1);
-}
 
 function updateSpecificationForm(data, callback) {
     $.ajax({
@@ -95,45 +73,6 @@ $("#general-specifications").validate({
 
 $("#select-photos-btn").click(function () {
     $("#photos-input").trigger("click");
-});
-
-$(".form-steps ul li").click(function () {
-    let index = $(this).index();
-    const hasClass = $(this).hasClass("active");
-    if (hasClass) {
-        $(".sections section").hide();
-        $(".sections section").eq(index).show();
-        $(this).addClass("active");
-    } else {
-        Swal.fire({
-            title: "خطا",
-            text: "فرم های قبلی را پر نمایید و ادامه را بزنید   ",
-            icon: "error",
-            confirmButtonText: "باشه",
-        });
-    }
-});
-
-$("#state").change(function (props) {
-    const id = props.target.value.trim();
-    $.ajax({
-        method: "GET",
-        url: "/get-cities/" + id,
-        success: (response) => {
-            if (response) {
-                $("#city").html("");
-                for (const city in response) {
-                    const o = new Option(
-                        response[city].name,
-                        response[city].id
-                    );
-                    o.setAttribute("lat", response[city].latitude);
-                    o.setAttribute("long", response[city].longitude);
-                    $("#city").append(o);
-                }
-            }
-        },
-    });
 });
 
 $("#add-special-place").click(function (e) {
@@ -894,14 +833,6 @@ mymap.on("click", function (e) {
     marker = L.marker(e.latlng).addTo(mymap);
 });
 
-function moveToSelectedCity() {
-    const option = $("#city option:selected");
-    if (option && option.value != 0) {
-        lat = option.attr("lat");
-        long = option.attr("long");
-        mymap.setView([lat, long]);
-    }
-}
 
 $("#step-address").click(moveToSelectedCity);
 

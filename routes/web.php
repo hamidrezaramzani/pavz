@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApartmentController;
+use App\Http\Controllers\AreaController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ParkingController;
 use App\Http\Controllers\PictureController;
@@ -84,6 +85,18 @@ Route::get("/apartment/manage", [ApartmentController::class, "manageApartments"]
 Route::get("/apartment/delete/{id}", [ApartmentController::class, "deleteApartment"])->middleware("auth");
 
 
+// AREA ROUTES
+Route::get("/area/new", [AreaController::class, "newArea"])->middleware("auth");
+Route::get("/edit-area/{id}", [AreaController::class, "editArea"])->middleware("auth")->name("edit-area");
+Route::post("/area/update/specification", [AreaController::class, "updateSpecification"])->middleware("auth");
+Route::post("/area/update/documents", [AreaController::class, "updateDocuments"])->middleware("auth");
+Route::post("/area/update/address", [AreaController::class, "updateAddress"])->middleware("auth");
+Route::post("/area/update/pricing", [AreaController::class, "updatePricing"])->middleware("auth");
+Route::get("/area/set-status/{status}/{id}", [AreaController::class, "setAreaStatus"])->middleware("auth");
+
+// ->breadcrumbs(fn (Trail $trail) => $trail->parent("dashboard")->push("ویرایش آگهی", route("edit-area")));
+
+
 
 /* SPECIAL PLACES ROUTES */
 Route::post("/special-place/new", [SpecialPlaceController::class, "createSpecialPlaceItem"])->middleware("auth");;
@@ -116,9 +129,13 @@ Route::post("/rent-price/update", [RentPriceController::class, "updatePrices"])-
 Route::post("/pictures/villa/cover-update", [PictureController::class, "updateVillaCover"])->middleware("auth");
 Route::post("/pictures/villa/pictures-update", [PictureController::class, "updateVillaPictures"])->middleware("auth");
 Route::post("/pictures/apartment/pictures-update", [PictureController::class, "updateApartmentPictures"])->middleware("auth");
+Route::post("/pictures/area/pictures-update", [PictureController::class, "updateAreaPictures"])->middleware("auth");
+
+Route::post("/pictures/area/cover-update", [PictureController::class, "updateAreaCover"])->middleware("auth");
 Route::post("/pictures/apartment/cover-update", [PictureController::class, "updateApartmentCover"])->middleware("auth");
 Route::get("/pictures/villa/get/{id}", [PictureController::class, "getVillaPictures"])->middleware("auth");
 Route::get("/pictures/apartment/get/{id}", [PictureController::class, "getApartmentPictures"])->middleware("auth");
+Route::get("/pictures/area/get/{id}", [PictureController::class, "getAreaPictures"])->middleware("auth");
 
 //  DOCUMENT ROUTES
 Route::post("/document/update", [DocumentController::class, "updateDocument"])->middleware("auth");

@@ -81,8 +81,8 @@ class VillasController extends Controller
         ]);
         $documentTypes  = DocumentType::all();
         $data = $data->where("id", $id)->get()[0];
-        $states = json_decode(file_get_contents(public_path("json/states.json")));
         $villaTypes = VillaType::all();
+        $states = json_decode(file_get_contents(public_path("json/states.json")));
         $cities = [];
         if ($data->state) {
             $cities = $this->getCities($data->state);

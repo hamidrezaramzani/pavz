@@ -2,25 +2,7 @@ let picturesList = [];
 let isCover = false;
 let pictures = new FormData();
 let deletedPictures = [];
-let lat = 35.42323874580487;
-let long = 52.07075264355467;
-let latlong = [lat, long];
-var mymap = L.map("mapid").setView([lat, long], 15);
-L.tileLayer(
-    "https://vt.parsimap.com/comapi.svc/tile/parsimap/{x}/{y}/{z}.jpg?token=ee9e06b3-dcaa-4a45-a60c-21ae72dca0bb"
-).addTo(mymap);
-
-setInterval(() => {
-    mymap.invalidateSize(true);
-}, 0);
-
-let marker;
-mymap.on("click", function (e) {
-    if (marker) mymap.removeLayer(marker);
-    latlong[0] = e.latlng.lat;
-    latlong[1] = e.latlng.lng;
-    marker = L.marker(e.latlng).addTo(mymap);
-});
+const cover = new FormData();
 
 $("#address-step").click(function () {
     const option = $("#city").find("option")[0];
@@ -43,38 +25,6 @@ $(".new-item").click(function () {
     }
 });
 
-const showSection = (index) => {
-    $(".sections section").hide();
-    $(".sections section").eq(index).show();
-};
-
-function nextForm(form) {
-    const index = $(`#${form.id}`).parents("section").index();
-    const nextLi = $(".form-steps ul li").eq(index + 1);
-    const hasClass = nextLi.hasClass("active");
-    if (!hasClass) {
-        nextLi.addClass("active");
-    }
-    showSection(index + 1);
-}
-
-$(".form-steps ul li").click(function () {
-    let index = $(this).index();
-    const hasClass = $(this).hasClass("active");
-    if (hasClass) {
-        $(".sections section").hide();
-        $(".sections section").eq(index).show();
-        $(this).addClass("active");
-    } else {
-        Swal.fire({
-            title: "خطا",
-            text: "فرم های قبلی را پر نمایید و ادامه را بزنید   ",
-            icon: "error",
-            confirmButtonText: "باشه",
-        });
-    }
-});
-
 $("#atype").change(function (e) {
     const atype = Number(e.target.value);
     $.ajax({
@@ -92,27 +42,6 @@ $("#atype").change(function (e) {
     });
 });
 
-$("#state").change(function (props) {
-    const id = props.target.value.trim();
-    $.ajax({
-        method: "GET",
-        url: "/get-cities/" + id,
-        success: (response) => {
-            if (response) {
-                $("#city").html("");
-                for (const city in response) {
-                    const o = new Option(
-                        response[city].name,
-                        response[city].id
-                    );
-                    o.setAttribute("lat", response[city].latitude);
-                    o.setAttribute("long", response[city].longitude);
-                    $("#city").append(o);
-                }
-            }
-        },
-    });
-});
 
 function checkFormat(name) {
     const SUPPORTED_FORMATS = ["png", "jpg", "jpeg"];
@@ -120,7 +49,6 @@ function checkFormat(name) {
     return SUPPORTED_FORMATS.includes(format.toLowerCase());
 }
 
-const cover = new FormData();
 $("#cover").change(function (e) {
     const files = e.target.files;
     if (!cover.has("cover") && !$(".cover-image").length) {
@@ -240,8 +168,8 @@ $("#specification-form").validate({
             year_of_construction: $("#year_of_construction").val(),
             document_type: $("#document_type").val(),
             _token: $("#token").val(),
-            aid: $("#aid").val() , 
-            level : 1            
+            aid: $("#aid").val(),
+            level: 1,
         };
         $.ajax({
             method: "POST",
@@ -294,10 +222,6 @@ $("#specification-form").validate({
             min: 1,
         },
 
-        year_of_construction: {
-            required: true,
-        },
-
         document_type: {
             selectRequired: true,
         },
@@ -309,31 +233,14 @@ $("#specification-form").validate({
             minlength: "حداقل باید 3 کاراکتر داشته باشد",
             maxlength: "حداکثر میتواند 100 کاراکتر داشته باشد",
         },
-        state: {
-            selectRequired: true,
-        },
-        city: {
-            selectRequired: true,
-        },
-        atype: {
-            selectRequired: true,
-        },
-        htype: {
-            selectRequired: true,
-        },
         floors: {
-            required: true,
-            min: 1,
+            required: "پر کردن این فیلد الزامی است",
+            min: "حداقل باید 1 طبقه داشته باشد",
         },
         unites: {
-            required: true,
-            min: 1,
+            required: "پر کردن این فیلد الزامی است",
+            min: "حداقل باید 1 طبقه داشته باشد",
         },
-
-        year_of_construction: {
-            required: true,
-        },
-
         document_type: {
             selectRequired: true,
         },
