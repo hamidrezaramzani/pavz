@@ -813,27 +813,6 @@ $("#possibilities").validate({
     },
 });
 
-let lat = 35.42323874580487;
-let long = 52.07075264355467;
-let latlong = [lat, long];
-var mymap = L.map("mapid").setView([lat, long], 15);
-L.tileLayer(
-    "https://vt.parsimap.com/comapi.svc/tile/parsimap/{x}/{y}/{z}.jpg?token=ee9e06b3-dcaa-4a45-a60c-21ae72dca0bb"
-).addTo(mymap);
-
-setInterval(() => {
-    mymap.invalidateSize(true);
-}, 0);
-moveToSelectedCity();
-var marker;
-mymap.on("click", function (e) {
-    if (marker) mymap.removeLayer(marker);
-    latlong[0] = e.latlng.lat;
-    latlong[1] = e.latlng.lng;
-    marker = L.marker(e.latlng).addTo(mymap);
-});
-
-
 $("#step-address").click(moveToSelectedCity);
 
 $("#address-form").validate({

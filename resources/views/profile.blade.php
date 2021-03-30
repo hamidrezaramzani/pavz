@@ -2,7 +2,7 @@
 @section('dashboard')
     <div class="container-fluid">
         <div class="row justify-content-center dashboard-info mt-5">
-            <div class="col-11 col-md-12 dashboard-info-item-content h-auto">
+            <div class="col-11 col-md-12 dashboard-info-item-content p-4 h-auto">
                 @include('partials.panel.items.title' , ["title" => "تغییر پروفایل" , "description" => "در این بخش میتوانید پروفایل خود را تغییر دهید."])
                 <div class="change-profile-image-box text-center">
                 <h3 class="text-light">تصویر کاربر</h3>
@@ -40,7 +40,7 @@
                     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                     برای ثبت آگهی باید اطلاعاتی که با * قرمز مشخص شده اند کامل شده باشند
                 </div>
-                <form action="/submit-user-info" method="POST" class="user-profile-form">
+                <form action="/submit-user-info" method="POST" class="user-profile-form form">
 
                     @csrf
                     <label for="fullname">

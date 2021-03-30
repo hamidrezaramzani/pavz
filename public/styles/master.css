@@ -1970,8 +1970,30 @@ span#picture-name {
 .villa-content h2 {
     display: block;
     text-align: right;
-    font: 19px isblack;
+    font: 17px isblack;
     color: #4b4b4b;
+}
+
+.villa-info-item table {
+    font-size: 14px;
+}
+
+.info-table tr td {
+    width: 50%;
+}
+
+.info-table tr td:nth-child(1) {
+    color: #999;
+    font-size: 12px;
+}
+
+.info-table tr td:nth-child(2) {
+    text-align: right;
+}
+
+.special-table tbody tr td {
+    font-size: 12px;
+    color: #777;
 }
 
 .villa-content h5 {
@@ -1986,15 +2008,25 @@ span#picture-name {
 
 .villa-info-item {
     height: auto;
-    border-bottom: 1px solid #ccc;
-    padding: 20px 0;
+    border-bottom: 1px solid aliceblue;
+    padding: 20px;
+    background: rgb(249, 250, 252);
+    /* box-shadow: 0 0 4px aliceblue; */
+}
+
+.villa-info-item h2 {
+    color: #353634;
 }
 
 .villa-info-item span {
     display: block;
     text-align: right;
-    font: 12px is;
+    font: 15px is;
     color: #4b4b4b;
+}
+
+.villa-info-item span i {
+    font-size: 13px;
 }
 
 .villa-info-item p {
@@ -2010,16 +2042,18 @@ span#picture-name {
 }
 
 .villa-info-item ul li {
-    font: 12px is;
-    margin: 0 10px;
-    color: #2b2b2b;
+    font: 13px is;
+    margin: 0 30px;
+    color: #444;
+    text-align: center;
 }
 
 .villa-info-item ul li i {
     display: block;
     text-align: center;
-    font-size: 50px;
-    margin-bottom: 5px;
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: rgb(33, 100, 139);
 }
 
 .about-us h2 {
@@ -2096,7 +2130,7 @@ span#picture-name {
     color: #686868;
 }
 
-.form .accordion-title {
+.accordion-title {
     width: 100%;
     margin: 0!important;
 }
@@ -2334,4 +2368,130 @@ table {
     bottom: 0;
     right: 0;
     margin: auto;
+}
+
+.user-call-info {
+    width: 100%;
+    height: auto;
+    float: right;
+    padding: 10px;
+    background: rgb(249, 250, 252);
+    border-radius: 5px;
+}
+
+.user-call-info img {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    object-fit: cover;
+    padding: 10px;
+    background: #111;
+    display: block;
+    margin: 10px auto;
+}
+
+.user-call-info h3 {
+    display: block;
+    text-align: center;
+    font: 18px isblack;
+}
+
+.user-call-info h3 {
+    display: block;
+    text-align: center;
+    font: 18px isblack;
+}
+
+.user-call-info .call-ways {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.user-call-info span {
+    font: 13px is;
+    text-align: center;
+    display: block;
+}
+
+.user-call-info input.reserve-input {
+    height: 35px;
+    margin-top: 5px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    font: 11px is;
+    width: 100%;
+    text-align: center;
+}
+
+.comments ul li {
+    width: 100%;
+    height: auto;
+    background: rgb(249, 250, 252);
+    border-radius: 5px;
+    box-shadow: #eee;
+    float: right;
+    padding: 20px;
+}
+
+.comments ul li .user-img {
+    width: 20%;
+    height: auto;
+}
+
+.comments ul li .user-title {
+    width: 80%;
+}
+
+.user-img img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    object-fit: cover;
+    float: right;
+    /* margin-left: 5px; */
+}
+
+.user-title {
+    display: grid;
+}
+
+.user-title h4 {
+    width: 100%;
+    float: right;
+    margin-right: 10px;
+    /* width: 100%; */
+    padding: 0;
+    margin-top: 10px;
+    font: 13px is;
+    color: #666;
+}
+
+.user-title h4 button {
+    font-size: 11px;
+}
+
+.user-title span {
+    float: right;
+    margin-right: 10px;
+    /* width: 100%; */
+    padding: 0;
+    margin-top: 2px;
+    font: 12px is;
+    color: #999;
+}
+
+.float-left {
+    float: left!important;
+}
+
+.comment-text {
+    padding: 10px 0;
+    width: 100%;
+    height: auto;
+}
+
+.comment-text p {
+    font: 12px is;
+    color: #555;
 }

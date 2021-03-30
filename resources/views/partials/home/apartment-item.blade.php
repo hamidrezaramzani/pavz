@@ -1,5 +1,6 @@
 <div class="villa-item" data-aos="fade-right">
     <div class="villa-item-content">
+        <a href="/villa/1">
         <div class="villa-item-img">
             <div class="my-rating"></div>
             <img src="{{ asset('images/villa.jpg') }}" alt="this is villa alt test">
@@ -55,6 +56,7 @@
                 </li>
             </ul>
         </div>
+    </a>
     </div>
 
 </div>

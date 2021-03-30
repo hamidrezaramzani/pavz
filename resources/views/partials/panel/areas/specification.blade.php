@@ -11,6 +11,7 @@
                 placeholder="عنوان آگهی خود را وارد نمایید" value="{{ $data->title ?? null }}">
 
         </div>
+
         <br>
         <div class="accordion-title">
             <i class="far fa-circle"></i>

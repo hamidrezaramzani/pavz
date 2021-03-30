@@ -174,14 +174,14 @@ class UserController extends Controller
     {
         $id = Auth::id();
         $user = User::find($id);
-        $profile = $user->profile[0];
+        $profile = $user->profile;
         return view("profile", [
             "ready" => $user->isReady,
             "phonenumber" => $user->phonenumber,
-            "image" => $profile->image,
-            "fullname" => $profile->fullname,
-            "address" => $profile->address,
-            "telegram_id" => $profile->telegram_id,
+            "image" => $profile->image ?? null,
+            "fullname" => $profile->fullname ?? null,
+            "address" => $profile->address ?? null,
+            "telegram_id" => $profile->telegram_id ?? null,
 
         ]);
     }
@@ -193,7 +193,7 @@ class UserController extends Controller
         $request->file("image")->move(public_path("upload"), $fileName);
         $id = Auth::id();
         $user = User::find($id);
-        $image = $user->profile[0]->image;
+        $image = $user->profile->image;
         if ($image) {
             unlink(public_path("upload/" . $image));
         }
