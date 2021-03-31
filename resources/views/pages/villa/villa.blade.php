@@ -700,6 +700,75 @@
                 <br>
 
                 <br>
+                <br>
+                <div class="villa-info-item info-table float-right w-100">
+                    <h2>
+                        <i class="fa fa-circle fa-xs text-warning"></i>
+                        امتیاز های مهمان
+                    </h2>
+                    <br>
+
+                    <table class="table text-center is w-50 float-right">
+                        <tbody>
+                            <tr>
+                                <td>صحت مطالب:</td>
+                                <td>
+                                    <div class="accuracy_of_content"></div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>تحویل به موقع:</td>
+                                <td>
+                                    <div class="timely_delivery"></div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>برخورد میزبان:</td>
+                                <td>
+                                    <div class="host_encounter"></div>
+                                </td>
+                            </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+
+
+                    <table class="table text-center is w-50 float-right">
+                        <tbody>
+
+                            <tr>
+                                <td>کیفیت نسبت به قیمت:</td>
+                                <td>
+                                    <div class="quality"></div>
+                                </td>
+                            </tr>
+
+
+
+                            <tr>
+                                <td>پاکیزگی اقامتگاه:</td>
+                                <td>
+                                    <div class="purity"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>آدرس اقامتگاه:</td>
+                                <td>
+                                    <div class="address"></div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <br>
                 <div class="villa-info-item my-4 float-right w-100">
                     <h2>
                         <i class="fa fa-circle fa-xs text-warning"></i>
@@ -949,10 +1018,10 @@
         let latlong = [lat, long];
         var mymap = L.map("mapid").setView([lat, long], 15);
         L.tileLayer(
-    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" , {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }
-).addTo(mymap);
+            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }
+        ).addTo(mymap);
 
         setInterval(() => {
             mymap.invalidateSize(true);
@@ -973,12 +1042,112 @@
 
         $(document).ready(function() {
 
-
-
             $(".my-rating").starRating({
                 initialRating: 4,
                 starSize: 20,
+
             });
+
+
+            function setScore(name, score) {
+                const url = `/scores/${name}/9/${score}`;
+                $.ajax({
+                    method: "GET",
+                    url,
+                    success: () => {
+                        Swal.fire({
+                            title: "انجام شد",
+                            text: "امتیاز ثبت شد",
+                            icon: "success",
+                            confirmButtonText: "باشه",
+                        });
+                    },
+                    error: (err) => {
+                        if (err.status == 401) {
+                            Swal.fire({
+                                title: "خطا",
+                                text: "برای امتیاز دادن باید به حساب خود ورود کنید",
+                                icon: "error",
+                                confirmButtonText: "باشه",
+                            });
+                            return
+                        } else {
+                            Swal.fire({
+                                title: "خطا",
+                                text: "مشکلی در سرور وجود دارد",
+                                icon: "error",
+                                confirmButtonText: "باشه",
+                            });
+                        }
+
+                    }
+                });
+            }
+
+            $(".accuracy_of_content").starRating({
+                initialRating: 4,
+                starSize: 20,
+                callback: (score) => {
+                    setScore("set-accuracy-of-content", score)
+                }
+            });
+
+
+
+            $(".timely_delivery").starRating({
+                initialRating: 4,
+                starSize: 20,
+                callback: (score) => {
+                    setScore("set-timely-delivery", score)
+                }
+            });
+
+
+
+            $(".host_encounter").starRating({
+                initialRating: 4,
+                starSize: 20,
+                callback: (score) => {
+                    setScore("set-host-encounter", score);
+                }
+            });
+
+
+
+            $(".quality").starRating({
+                initialRating: 4,
+                starSize: 20,
+                callback: (score) => {
+                    setScore("set-quality", score);
+                }
+            });
+
+
+
+
+            $(".purity").starRating({
+                initialRating: 4,
+                starSize: 20,
+                callback: (score) => {
+                    setScore("set-purity", score);
+                }
+            });
+
+
+            
+
+            $(".address").starRating({
+                initialRating: 4,
+                starSize: 20,
+                callback: (score) => {
+                    setScore("set-address", score);
+                }
+            });
+
+
+
+
+
         });
 
     </script>

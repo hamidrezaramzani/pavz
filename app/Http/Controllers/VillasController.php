@@ -47,7 +47,11 @@ class VillasController extends Controller
             "user_id" => Auth::id()
         ]);
 
-        return redirect("/edit-villa/$villa->id");
+        
+
+        $id = $villa->id;
+        
+        return redirect("/edit-villa/$id");
     }
 
 

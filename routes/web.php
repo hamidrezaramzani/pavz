@@ -13,8 +13,10 @@ use App\Http\Controllers\SoldVillaPriceController;
 use App\Http\Controllers\SpecialPlaceController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VillasController;
+use App\Http\Controllers\VillaScoreController;
 use App\Models\Parking;
 use App\Models\Room;
+use App\Models\VillaScore;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -146,3 +148,12 @@ Route::post("/document/update", [DocumentController::class, "updateDocument"])->
 
 //  SOLD VILLA PRICES
 Route::post("/sold-villa-prices/update", [SoldVillaPriceController::class, "updatePrice"])->middleware("auth");
+
+
+//  SCORES 
+Route::get("/scores/set-accuracy-of-content/{id}/{score}", [VillaScoreController::class, "setScoreAccuracyOfContent"])->middleware("auth");
+Route::get("/scores/set-timely-delivery/{id}/{score}", [VillaScoreController::class, "setTimelyDelivery"])->middleware("auth");
+Route::get("/scores/set-host-encounter/{id}/{score}", [VillaScoreController::class, "setHostEncounter"])->middleware("auth");
+Route::get("/scores/set-quality/{id}/{score}", [VillaScoreController::class, "setQuality"])->middleware("auth");
+Route::get("/scores/set-purity/{id}/{score}", [VillaScoreController::class, "setPurity"])->middleware("auth");
+Route::get("/scores/set-address/{id}/{score}", [VillaScoreController::class, "setAddress"])->middleware("auth");
