@@ -17,7 +17,7 @@
                 </div>
             @else
                 <div class="col-12 col-md-12 dashboard-info-item-content new-villa">
-                    @include('partials.panel.items.title' , ["title" => "ثبت آگهی ویلا" , "description" => "از این بخش
+                    @include('partials.panel.items.title' , ["title" => "ثبت آگهی زمین" , "description" => "از این بخش
                     میتوانید زمین خود را ویرایش کنید برای دسترسی به همه زمین های ثبت شده به بخش همه زمین ها
                     بروید"])
                     <br>

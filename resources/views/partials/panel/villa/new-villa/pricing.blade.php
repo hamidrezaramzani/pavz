@@ -96,11 +96,19 @@
                 قیمت ها را به تومان وارد نمایید
             </div>
 
+
+            
+            @include('partials.panel.villa.new-villa.checkbox' , ["title" => "قیمت توافقی" , "name" =>
+            "agreed_price" , "checked" => $data->soldVillaPrices->agreed_price])
+
+
+
             <div id="sold-pricing">
                 <div class="form-group">
                     <label for="total_price">قیمت کل:</label>
                     <input type="number" name="total_price"
                         value="{{ $data->soldVillaPrices ? $data->soldVillaPrices->total_price : null }}"
+                        {{$data->soldVillaPrices->agreed_price ? "disabled" : ""}} 
                         id="total_price" class="form-control" placeholder="قیمت کل ملک برای فروش را وارد نمایید">
                 </div>
             </div>
@@ -111,6 +119,7 @@
                     <label for="price_per_meter">قیمت به ازای هر متر:</label>
                     <input type="number" name="price_per_meter" id="price_per_meter" class="form-control"
                         value="{{ $data->soldVillaPrices ? $data->soldVillaPrices->price_per_meter : null }}"
+                        {{$data->soldVillaPrices->agreed_price ? "disabled" : ""}} 
                         placeholder="قیمت کل ملک برای فروش را وارد نمایید">
                 </div>
             </div>

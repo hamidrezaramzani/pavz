@@ -10,6 +10,13 @@
                     <h2>
                         اجاره ویلا استخر دار همراه با جکوزی
                         <div class="my-rating"></div>
+                        <button class="btn btn-sm float-left ml-2 text-danger">
+                            <i class="fa fa-heart"></i>
+                            5
+                        </button>
+                        <button class="btn btn-sm float-left text-primary">
+                            <i class="fa fa-save"></i>
+                        </button>
                     </h2>
                     <h5>
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -21,7 +28,7 @@
                     <br>
                     <span>
                         <i class="fa fa-circle"></i>
-                        درباره اقامتگاه
+                        درباره آپارتمان
                     </span>
                     <p>
                         لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
@@ -67,25 +74,25 @@
                     <table class="table text-center is w-50 float-right">
                         <tbody>
                             <tr>
-                                <td>تعداد طبقات:</td>
+                                <td>نوع کاربری:</td>
+                                <td>تجاری</td>
+                            </tr>
+
+                            <tr>
+                                <td>نوع ملک:</td>
+                                <td>باغ</td>
+                            </tr>
+
+                            <tr>
+                                <td>تعداد طبقه:</td>
                                 <td>4</td>
                             </tr>
 
-                            <tr>
-                                <td>تعداد واحد هر طبقه:</td>
-                                <td>6</td>
-                            </tr>
-
-                            <tr>
-                                <td>متراژ کل زمین:</td>
-                                <td>1500</td>
-                            </tr>
-
 
 
                             <tr>
-                                <td>مسیر دسترسی:</td>
-                                <td>مال رو</td>
+                                <td>تعداد واحد در هر طبقه:</td>
+                                <td>3</td>
                             </tr>
 
 
@@ -96,10 +103,6 @@
                     <table class="table text-center is w-50 float-right">
                         <tbody>
 
-                            <tr>
-                                <td>متراژ ملک:</td>
-                                <td>120</td>
-                            </tr>
 
 
 
@@ -110,54 +113,26 @@
 
 
                             <tr>
-                                <td>نوع مالکیت:</td>
-                                <td>دربست</td>
+                                <td>متراژ:</td>
+                                <td>400 متر مربع</td>
                             </tr>
 
 
+
                             <tr>
-                                <td>همسایگی ملک:</td>
-                                <td>پراکنده</td>
+                                <td>نوع سند:</td>
+                                <td>معارض</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <br>
-                <br>
-                <div class="villa-info-item special-table my-4 float-right w-100">
-                    <h2>
-                        <i class="fa fa-circle fa-xs text-warning"></i>
-                        مکان های خاص
-                    </h2>
-
-                    <br>
-                    <table class="table text-center table-striped table-hover is w-100">
-                        <thead>
-                            <tr>
-                                <th>عنوان</th>
-                                <th>فاصله زمانی پیاده</th>
-                                <th>فاصله زمانی ماشین</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>پمب بزنین</td>
-                                <td>5 دقیقه</td>
-                                <td>2 دقیقه</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-
-
 
                 <br>
                 <br>
                 <div class="villa-info-item my-4 float-right w-100">
                     <h2>
                         <i class="fa fa-circle fa-xs text-warning"></i>
-                        امکانات رفاهی
+                        امکانات آپارتمان
                     </h2>
                     <br>
 
@@ -186,97 +161,12 @@
                     </table>
                 </div>
 
-
-
                 <br>
                 <br>
                 <div class="villa-info-item my-4 float-right w-100">
                     <h2>
                         <i class="fa fa-circle fa-xs text-warning"></i>
-                        امکانات آشپزخانه
-                    </h2>
-                    <br>
-                    <table class="table text-center table-striped table-hover is w-100">
-
-                        <tbody>
-                            <tr>
-                                <td>مایکروفر</td>
-                                <td>یخچال</td>
-                                <td>گاز</td>
-                            </tr>
-
-                            <tr>
-                                <td>توستر</td>
-                                <td>بشقاب</td>
-                                <td>قاشق چنگال</td>
-                            </tr>
-
-
-                            <tr>
-                                <td>سماور</td>
-                                <td>چاقو</td>
-                                <td>قوریl</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-
-
-                <br>
-                <br>
-                <div class="villa-info-item my-4 float-right w-100">
-                    <h2>
-                        <i class="fa fa-circle fa-xs text-warning"></i>
-                        ظرفیت ویلا
-                    </h2>
-                    <br>
-
-                    <table class="table info-table text-center is w-50 float-right">
-                        <tbody>
-                            <tr>
-                                <td>ظرفیت استاندارد:</td>
-                                <td>4</td>
-                            </tr>
-
-                            <tr>
-                                <td>حداکثر ظرفیت:</td>
-                                <td>6</td>
-                            </tr>
-
-
-                        </tbody>
-                    </table>
-
-
-                    <table class="table info-table text-center is w-50 float-right">
-                        <tbody>
-
-                            <tr>
-                                <td>تعداد سرویس های بهداشتی:</td>
-                                <td>2</td>
-                            </tr>
-
-                            <tr>
-                                <td>تعداد حمام:</td>
-                                <td>3</td>
-                            </tr>
-                        </tbody>
-
-                    </table>
-
-                </div>
-
-
-
-
-
-                <br>
-                <br>
-                <div class="villa-info-item my-4 float-right w-100">
-                    <h2>
-                        <i class="fa fa-circle fa-xs text-warning"></i>
-                        سیستم های گرمایشی و سرمایشی ملک
+                        سیستم های گرمایشی و سرمایشی آپارتمان
                     </h2> <br>
 
 
@@ -317,226 +207,6 @@
 
                 </div>
 
-                <br>
-                <br>
-                <div class="villa-info-item my-4 float-right w-100">
-                    <h2>
-                        <i class="fa fa-circle fa-xs text-warning"></i>
-                        فضاهای ویلا
-                    </h2> <br>
-
-
-                    <div class="accordion-title mb-3 float-right w-100">
-                        <i class="fa fa-arrow-down"></i>
-                        اتاق های ویلا
-                    </div>
-
-
-                    <table class="table text-center mt-3 float-right special-table table-striped table-hover is w-100">
-
-                        <thead>
-                            <tr>
-                                <th width="25%">عنوان</th>
-                                <th width="25%">تخت خواب یک نفره</th>
-                                <th width="25%">تخت خواب دو نفره</th>
-                                <th width="25%">امکانات</th>
-                                <th width="25%">مستر</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>اتاق 1</td>
-                                <td>3 عدد</td>
-                                <td>2 عدد</td>
-                                <td><button class="btn btn-sm btn-outline-primary  is"><i
-                                            class="fa fa-eye fa-xs"></i></button></td>
-                                <td>نیست</td>
-                            </tr>
-
-                            <tr>
-                                <td>اتاق 2</td>
-                                <td>5 عدد</td>
-                                <td>3 عدد</td>
-                                <td><button class="btn btn-sm btn-outline-primary  is"><i
-                                            class="fa fa-eye fa-xs"></i></button></td>
-                                <td>است</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-
-
-
-
-
-
-
-                    <div class="accordion-title mb-3 float-right w-100">
-                        <i class="fa fa-arrow-down"></i>
-                        استخر های ویلا
-                    </div>
-
-
-
-                    <div class="table-responsive float-right w-100">
-
-                        <table class="table text-center mt-3 float-right special-table table-hover is w-100">
-
-                            <thead>
-                                <tr>
-                                    <th>نوع</th>
-                                    <th>موقعیت</th>
-                                    <th>سیستم گرمایشی</th>
-                                    <th>سیستم سرمایشی</th>
-                                    <th>طول</th>
-                                    <th>عرض</th>
-                                    <th>ک عمق</th>
-                                    <th>ب عمق</th>
-                                    <th>امکانات</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>روباز</td>
-                                    <td>حیاط</td>
-                                    <td>ندارد</td>
-                                    <td>ندارد</td>
-                                    <td>1 متر</td>
-                                    <td>1 متر</td>
-                                    <td>1 متر</td>
-                                    <td>1 متر</td>
-                                    <td><button class="btn btn-sm btn-outline-primary  is"><i
-                                                class="fa fa-eye fa-xs"></i></button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-
-                    <div class="accordion-title mb-3 float-right w-100">
-                        <i class="fa fa-arrow-down"></i>
-                        دیگر موارد مربوط به استخر
-                    </div>
-
-                    <table class="table mt-3 float-right text-center  table-hover is w-100">
-
-                        <tbody>
-                            <tr>
-                                <td>سرسره و امکانات تفریحی</td>
-                                <td>دوش آب</td>
-                                <td>نردبان</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-
-
-
-
-
-
-
-
-
-
-                    <div class="accordion-title mb-3 float-right w-100">
-                        <i class="fa fa-arrow-down"></i>
-                        پارکینگ های ویلا
-                    </div>
-
-
-
-                    <div class="table-responsive float-right w-100">
-
-                        <table class="table text-center mt-3 float-right special-table table-hover is w-100">
-
-                            <thead>
-                                <tr>
-                                    <th>نوع پارکینگ</th>
-                                    <th>ظرفیت ماشین</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>رو باز</td>
-                                    <td>5 عدد</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-
-
-
-
-
-
-
-
-                    <div class="accordion-title mb-3 float-right w-100">
-                        <i class="fa fa-arrow-down"></i>
-                        ویژگی های حیاط
-                    </div>
-
-
-
-                    <div class="table-responsive float-right w-100">
-
-                        <table class="table mt-3 float-right text-center  table-hover is w-100">
-
-                            <tbody>
-                                <tr>
-                                    <td>باغچه</td>
-                                    <td>حوض</td>
-                                    <td>آلاچیق</td>
-                                    <td>زمین بازی</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-
-                    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-                    <div class="accordion-title mb-3 float-right w-100">
-                        <i class="fa fa-arrow-down"></i>
-                        توضیحات بیشتر درباره فضاهای ملک
-                    </div>
-
-                    <br>
-                    <br>
-                    <p class="float-right w-100 mt-3">
-
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
-                        چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی
-                        مورد
-                        نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد
-                        گذشته
-                        حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد.
-                    </p>
-
-
-
-
-
-
-
-
-
-                </div>
-
-
-
 
 
 
@@ -546,101 +216,7 @@
                 <div class="villa-info-item my-4 float-right w-100">
                     <h2>
                         <i class="fa fa-circle fa-xs text-warning"></i>
-                        مقررات ویلا
-                    </h2>
-
-                    <br>
-
-
-                    <div class="accordion-title mb-3 float-right w-100">
-                        <i class="fa fa-arrow-down"></i>
-                        مقررات زمانی ملک
-                    </div>
-
-                    <table class="table info-table mt-3 text-center is w-50 float-right">
-                        <tbody>
-                            <tr>
-                                <td>ساعت تحویل:</td>
-                                <td>08:00 AM</td>
-                            </tr>
-
-                            <tr>
-                                <td>ساعت تخلیه:</td>
-                                <td>08:00 PM</td>
-                            </tr>
-
-
-                        </tbody>
-                    </table>
-
-
-                    <table class="table info-table mt-3 text-center is w-50 float-right">
-                        <tbody>
-
-                            <tr>
-                                <td>حداقل اقامت:</td>
-                                <td>5 روز</td>
-                            </tr>
-
-                            <tr>
-                                <td>توضیحات بیشتر:</td>
-                                <td>ندارد</td>
-                            </tr>
-                        </tbody>
-
-                    </table>
-
-
-
-                    <div class="accordion-title mb-3 float-right w-100">
-                        <i class="fa fa-arrow-down"></i>
-                        دیگر مقررات ملک
-                    </div>
-
-                    <table class="table info-table mt-3 text-center is w-50 float-right">
-                        <tbody>
-                            <tr>
-                                <td>آوردن حیوان خانگی:</td>
-                                <td>در بیرون ملک</td>
-                            </tr>
-
-                            <tr>
-                                <td>استعمال دخانیات:</td>
-                                <td>در بیرون ملک</td>
-                            </tr>
-
-
-                        </tbody>
-                    </table>
-
-
-                    <table class="table info-table mt-3 text-center is w-50 float-right">
-                        <tbody>
-
-                            <tr>
-                                <td>برگذاری جشن:</td>
-                                <td>هماهنگ با صاحبخانه</td>
-                            </tr>
-
-                            <tr>
-                                <td>توضیحات بیشتر:</td>
-                                <td>ندارد</td>
-                            </tr>
-                        </tbody>
-
-                    </table>
-                </div>
-
-
-
-
-
-                <br>
-                <br>
-                <div class="villa-info-item my-4 float-right w-100">
-                    <h2>
-                        <i class="fa fa-circle fa-xs text-warning"></i>
-                        قیمت گذاری ویلا
+                        قیمت گذاری آپارتمان
                     </h2>
 
                     <br>
@@ -648,15 +224,10 @@
                     <table class="table info-table mt-3 text-center is w-50 float-right">
                         <tbody>
                             <tr>
-                                <td>روز های وسط هفته:</td>
+                                <td>قیمت کلی:</td>
                                 <td>120000 تومان</td>
                             </tr>
 
-                            <tr>
-                                <td>روز های آخر هفته:</td>
-                                <td>150000 تومان</td>
-                            </tr>
-
 
                         </tbody>
                     </table>
@@ -666,14 +237,10 @@
                         <tbody>
 
                             <tr>
-                                <td>قیمت ایام پیک:</td>
+                                <td>قیمت به ازای هر متر:</td>
                                 <td>200000 تومان</td>
                             </tr>
 
-                            <tr>
-                                <td>قیمت اضافه به ازای هر نفر:</td>
-                                <td>30000 تومان</td>
-                            </tr>
                         </tbody>
 
                     </table>
@@ -687,7 +254,7 @@
                 <div class="villa-info-item my-4 float-right w-100">
                     <h2>
                         <i class="fa fa-circle fa-xs text-warning"></i>
-                        آدرس ویلا
+                        آدرس آپارتمان
                     </h2>
 
                     <br>
@@ -884,48 +451,6 @@
                 </div>
 
 
-                <br>
-                <br>
-                <div class="mt-3 user-call-info p-3">
-                    <div class="w-50 float-right p-1">
-                        <span>از تاریخ</span>
-                        <input type="text" name="date-in" class="date-in reserve-input" id="date-in">
-                    </div>
-                    <div class="w-50 float-right p-1">
-                        <span>تا تاریخ</span>
-                        <input type="text" name="date-out" class="date-out reserve-input" id="date-out">
-
-
-                    </div>
-                    <form action="" class="form">
-                        <div class="form-group float-right w-100 mt-2">
-                            <label for="guests">تعداد مهمانان:</label>
-                            <input type="number" name="guests" id=guests" class="form-control bg-white text-right"
-                                placeholder="تعداد مهمانان را مشخص کنید">
-                        </div>
-
-
-
-                        <div class="form-group float-right w-100">
-                            <label for="fullname">نام و نام خانوادگی:</label>
-                            <input type="text" name="fullname" id=fullname" class="form-control bg-white text-right"
-                                placeholder="نام و نام خانوادگی را وارد نمایید">
-                        </div>
-
-
-
-
-                        <div class="form-group float-right w-100">
-                            <label for="phonenumber">شماره تماس:</label>
-                            <input type="text" name="phonenumber" id=phonenumber" class="form-control bg-white text-right"
-                                placeholder="شماره تماس را وارد نمایید">
-                        </div>
-
-                        <button class="btn my-3 btn-sm btn-block btn-primary is float-right w-100">ثبت درخواست رزرو</button>
-                    </form>
-
-
-                </div>
             </div>
         </div>
     </div>
@@ -949,10 +474,10 @@
         let latlong = [lat, long];
         var mymap = L.map("mapid").setView([lat, long], 15);
         L.tileLayer(
-    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" , {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }
-).addTo(mymap);
+            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" , {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }
+        ).addTo(mymap);
 
         setInterval(() => {
             mymap.invalidateSize(true);

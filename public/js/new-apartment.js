@@ -170,6 +170,7 @@ $("#specification-form").validate({
             _token: $("#token").val(),
             aid: $("#aid").val(),
             level: 1,
+            foundation : $("#foundation").val()
         };
         $.ajax({
             method: "POST",
@@ -265,6 +266,7 @@ $("#possibilities-form").validate({
             cooling_systems: JSON.stringify(getAllInputs("#cooling_systems")),
             _token: $("#token").val(),
             aid: $("#aid").val(),
+            level : 2
         };
 
         $.ajax({
@@ -300,6 +302,7 @@ $("#address-form").validate({
             lat: latlong[0],
             long: latlong[1],
             aid: $("#aid").val(),
+            level : 3 , 
             _token: $("#token").val(),
         };
 
@@ -346,6 +349,7 @@ $("#rent-pricing-form").validate({
             mortgage: $("#mortgage").val(),
             rent: $("#rent").val(),
             aid: $("#aid").val(),
+            level : 4 , 
             _token: $("#token").val(),
         };
 
@@ -389,7 +393,7 @@ $("#rent-pricing-form").validate({
         },
         rent: {
             required: "پر کردن این فیلد الزامی می باشد",
-            min: "حداقل باید 100 تومان باشد",
+            min: "حداقل باید 100 تومان باشد",   
         },
     },
 });
@@ -400,7 +404,9 @@ $("#sold-pricing-form").validate({
             total_price: $("#total_price").val(),
             price_per_meter: $("#price_per_meter").val(),
             aid: $("#aid").val(),
+            level : 4 , 
             _token: $("#token").val(),
+            agreed_price: $("#agreed_price:checked").length,
         };
 
         $.ajax({

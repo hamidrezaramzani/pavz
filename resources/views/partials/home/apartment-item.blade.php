@@ -1,10 +1,11 @@
 <div class="villa-item" data-aos="fade-right">
     <div class="villa-item-content">
-        <a href="/villa/1">
+        <a href="/apartment/1">
         <div class="villa-item-img">
             <div class="my-rating"></div>
             <img src="{{ asset('images/villa.jpg') }}" alt="this is villa alt test">
             <div class="vip-lable">ویژه</div>
+            <div class="type-lable">خرید</div>
         </div>
         <div class="villa-top-info">
             <div class="w-50">

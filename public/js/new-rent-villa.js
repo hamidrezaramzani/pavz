@@ -902,7 +902,7 @@ $("#pricing-form").validate({
             peek_discount: $("#peek_discount").val(),
             villa_id: $("#id_").val(),
             _token: $("#rent_price_token").val(),
-            level  : 7
+            level: 7,
         };
         $.ajax({
             method: "POST",
@@ -1119,7 +1119,7 @@ $("#picture-form").validate({
         pictures.append("_token", $("#hi_token").val());
         pictures.append("id", $("#id_").val());
         pictures.append("deleted_pictures", JSON.stringify(deletedPictures));
-        
+
         const updateCoverPromise = $.ajax({
             method: "POST",
             processData: false,
@@ -1230,6 +1230,7 @@ $("#sold-pricing-form").validate({
             _token: $("#hi_token").val(),
             villa_id: $("#id_").val(),
             level: 7,
+            agreed_price: $("#agreed_price:checked").length,
         };
 
         $.ajax({

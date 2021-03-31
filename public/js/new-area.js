@@ -9,10 +9,14 @@ $("#specification-form").validate({
         const data = {
             title: $("#title").val(),
             state: $("#state").val(),
+            foundation : $("#foundation").val() , 
+            area_type : $("#area_type").val() , 
+            count_of_border : $("#count_of_border").val() , 
+            main_border_width : $("#main_border_width").val() , 
             city: $("#city").val(),
             _token: $("#token").val(),
             id: $("#aid").val(),
-            level : 1
+            level: 1,
         };
         $.ajax({
             beforeSend: () => {
@@ -23,7 +27,6 @@ $("#specification-form").validate({
             data: data,
             success: () => {
                 $("#sd-loading").hide();
-
                 nextForm(form);
             },
             error: (err) => {
@@ -50,6 +53,21 @@ $("#specification-form").validate({
         city: {
             selectRequired: true,
         },
+
+        foundation: {
+            required: true,
+            min: 1,
+        },
+
+        area_type: {
+            selectRequired: true,
+        },
+        count_of_border: {
+            required: true,
+        },
+        main_border_width: {
+            required: true,
+        },
     },
 
     messages: {
@@ -57,6 +75,16 @@ $("#specification-form").validate({
             required: "پر کردن این فیلد الزامی میباشد",
             minlength: "حداقل باید 10 کاراکتر داشته باشد",
             maxlength: "حداکثر میتواند 100 کاراکتر داشته باشد",
+        },
+        count_of_border: {
+            required: "پر کردن این فیلد الزامی میباشد",
+        },
+        main_border_width: {
+            required: "پر کردن این فیلد الزامی میباشد",
+        },
+        foundation: {
+            required: "پر کردن این فیلد الزامی میباشد",
+            min: "متراژ باید حداقل 1 متر مربع باشد",
         },
     },
 });
@@ -68,7 +96,7 @@ $("#documents-form").validate({
             scores: JSON.stringify(getAllInputs("#scores")),
             _token: $("#token").val(),
             id: $("#aid").val(),
-            level : 2
+            level: 2,
         };
 
         $.ajax({
@@ -111,7 +139,7 @@ $("#address-form").validate({
             long: latlong[1],
             id: $("#aid").val(),
             _token: $("#token").val(),
-            level : 3
+            level: 3,
         };
 
         $.ajax({
@@ -151,21 +179,20 @@ $("#address-form").validate({
     },
 });
 
-
-
 $("#pricing-form").validate({
-    submitHandler : (form)  => {
+    submitHandler: (form) => {
         const data = {
-            total_price : $("#total_price").val() , 
-            price_per_meter : $("#price_per_meter").val() , 
-            _token : $("#token").val() , 
-            id : $("#aid").val() , 
-            level : 4
+            total_price: $("#total_price").val(),
+            price_per_meter: $("#price_per_meter").val(),
+            _token: $("#token").val(),
+            id: $("#aid").val(),
+            level: 4,
+            agreed_price: $("#agreed_price:checked").length,
         };
         $.ajax({
-            method : "POST" , 
-            url : "/area/update/pricing" , 
-            data , 
+            method: "POST",
+            url: "/area/update/pricing",
+            data,
             beforeSend: () => {
                 $("#p-loading").show();
             },
@@ -182,32 +209,31 @@ $("#pricing-form").validate({
                     icon: "error",
                     confirmButtonText: "باشه",
                 });
-            }
+            },
         });
-    } , 
-    rules : {
-        total_price : {
-            required : true , 
-            min : 100
-        } , 
-        price_per_meter : {
-            required : true , 
-            min : 100
-        }
-    } , 
-    messages : {
-        total_price : {
-            required : "پر کردن این فیلد الزامی است" , 
-            min : "حداقل باید 100 تومان باشد"
-        } , 
-        price_per_meter : {
-            required : "پر کردن این فیلد الزامی است" , 
-            min : "حداقل باید 100 تومان باشد"
-        }
-    }
- });
+    },
+    rules: {
+        total_price: {
+            required: true,
+            min: 100,
+        },
+        price_per_meter: {
+            required: true,
+            min: 100,
+        },
+    },
+    messages: {
+        total_price: {
+            required: "پر کردن این فیلد الزامی است",
+            min: "حداقل باید 100 تومان باشد",
+        },
+        price_per_meter: {
+            required: "پر کردن این فیلد الزامی است",
+            min: "حداقل باید 100 تومان باشد",
+        },
+    },
+});
 
- 
 $.ajax({
     method: "GET",
     url: "/pictures/area/get/" + $("#aid").val(),
@@ -218,7 +244,6 @@ $.ajax({
         $(".pictures-box").show();
     },
 });
-
 
 function checkFormat(name) {
     const SUPPORTED_FORMATS = ["png", "jpg", "jpeg"];
@@ -344,8 +369,6 @@ $("#pictures-form").validate({
             return;
         }
 
-
-        
         if (picturesList.length < 5) {
             Swal.fire({
                 title: "خطا",
@@ -355,7 +378,6 @@ $("#pictures-form").validate({
             });
             return;
         }
-        
 
         $("#pic-loading").show();
 

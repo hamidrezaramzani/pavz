@@ -19,7 +19,7 @@
                 <div class="col-12 col-md-12 dashboard-info-item-content new-villa">
                     @include('partials.panel.items.title' , ["title" => $data->ads_type != 1 ? "ویرایش آگهی فروش ویلا" :
                     "ویرایش
-                    آگهی اجاره آپارتمان" , "description" => "از این بخش
+                    آگهی آپارتمان" , "description" => "از این بخش
                     میتوانید آپارتمان خود را ویرایش کنید برای دسترسی به همه آپارتمان های ثبت شده به بخش همه آپارتمان ها
                     بروید"])
                     <br>
@@ -31,7 +31,7 @@
                             @else
                                 @include('partials.panel.apartments.' . $form , ["show" => false])
                             @endif
-                        @endforeach                  
+                        @endforeach
                     </div>
                 </div>
         </div>
@@ -50,4 +50,3 @@
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/new-apartment.js') }}"></script>
 @endpush
-

@@ -1,4 +1,4 @@
-<section class="p-3" style="display: {{$show ? "block" : "none"}};">
+<section class="p-3" style="display: {{ $show ? 'block' : 'none' }};">
     <form action="" class="form" id="specification-form">
         <h3>اطلاعات کلی</h3>
 
@@ -56,7 +56,9 @@
             <select name="city" id="city" name="city" class="form-control drafted_input">
                 @if ($data->state)
                     @if ($data->city && $data->city != 0)
-                        <option value="{{ $cities[$data->city - 1]->id }}" lat="{{$cities[$data->city - 1]->latitude}}" long="{{$cities[$data->city - 1]->longitude}}">
+                        <option value="{{ $cities[$data->city - 1]->id }}"
+                            lat="{{ $cities[$data->city - 1]->latitude }}"
+                            long="{{ $cities[$data->city - 1]->longitude }}">
                             {{ $cities[$data->city - 1]->name }}</option>
                     @else
                         @foreach ($cities as $item)
@@ -122,14 +124,22 @@
         <div class="form-group">
             <label for="floors">تعداد طبقه:</label>
             <input type="text" name="floors" id="floors" class="form-control drafted_input"
-                placeholder="عنوان آگهی خود را وارد نمایید" value="{{ $data->floors ?? null }}">
+                placeholder="تعداد طبقه خود را وارد نمایید" value="{{ $data->floors ?? null }}">
         </div>
 
 
         <div class="form-group">
             <label for="unites">تعداد واحد هر طبقه:</label>
             <input type="text" name="unites" id="unites" class="form-control drafted_input"
-                placeholder="عنوان آگهی خود را وارد نمایید" value="{{ $data->unites ?? null }}">
+                placeholder="تعداد واحد در هر طبقه را وارد نمایید" value="{{ $data->unites ?? null }}">
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="foundation">متراژ:</label>
+            <input type="text" name="foundation" id="foundation" class="form-control drafted_input"
+                placeholder="متراژ خود را به متر وارد نمایید" value="{{ $data->foundation ?? null }}">
         </div>
 
 
@@ -142,34 +152,37 @@
 
 
 
+        @if ($data->ads_type == 1)
+            <div class="form-group">
+                <label for="document_type">نوع سند:</label>
+                <select name="document_type" id="document_type" name="document_type" class="form-control drafted_input">
+                    @if ($data->document_type)
+                        <option value="{{ $documentTypes[$data->document_type - 1]->id }}">
+                            {{ $documentTypes[$data->document_type - 1]->name }}</option>
+                        @foreach ($documentTypes as $type)
+                            <option value="{{ $type->id }}">{{ $type->name }}</option>
+                        @endforeach
+                        <option value="0">نوع سند را انتخاب نمایید</option>
+                    @else
+                        <option value="0">نوع سند را انتخاب نمایید</option>
+                        @foreach ($documentTypes as $type)
+                            <option value="{{ $type->id }}">{{ $type->name }}</option>
+                        @endforeach
+                    @endif
+                </select>
+            </div>
 
-        <div class="form-group">
-            <label for="document_type">نوع سند:</label>
-            <select name="document_type" id="document_type" name="document_type" class="form-control drafted_input">
-                @if ($data->document_type)
-                    <option value="{{ $documentTypes[$data->document_type - 1]->id }}">
-                        {{ $documentTypes[$data->document_type - 1]->name }}</option>
-                    @foreach ($documentTypes as $type)
-                        <option value="{{ $type->id }}">{{ $type->name }}</option>
-                    @endforeach
-                    <option value="0">نوع سند را انتخاب نمایید</option>
-                @else
-                    <option value="0">نوع سند را انتخاب نمایید</option>
-                    @foreach ($documentTypes as $type)
-                        <option value="{{ $type->id }}">{{ $type->name }}</option>
-                    @endforeach
-                @endif
-            </select>
-        </div>
+
+        @endif
 
 
         <br>
-        <br>        
+        <br>
         <div class="form-group">
             <button class="btn btn-sm btn-primary is" type="submit">ادامه
                 <div id="sd-loading" class="spinner-border spinner-border-sm" role="status" style="display: none">
                     <span class="sr-only">Loading...</span>
-                  </div>
+                </div>
             </button>
         </div>
 

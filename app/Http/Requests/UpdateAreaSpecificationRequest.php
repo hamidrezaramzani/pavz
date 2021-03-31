@@ -25,10 +25,14 @@ class UpdateAreaSpecificationRequest extends FormRequest
     public function rules()
     {
         return [
-            "title" => "string|required|min:10|max:100" , 
-            "state" => "numeric|required" , 
-            "city" => "numeric|required" , 
-            "id" => "numeric|required" , 
+            "title" => "string|required|min:10|max:100",
+            "state" => "numeric|required",
+            "city" => "numeric|required",
+            "foundation" => "required|numeric",
+            "area_type" => "required|numeric",
+            "count_of_border" => "required|numeric",
+            "main_border_width" => "required|numeric",
+            "id" => "numeric|required",
         ];
     }
 }

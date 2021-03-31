@@ -72,12 +72,15 @@ function getAllInputs(id) {
     return inputs;
 }
 
+// https://vt.parsimap.com/comapi.svc/tile/parsimap/{x}/{y}/{z}.jpg?token=ee9e06b3-dcaa-4a45-a60c-21ae72dca0bb
 let lat = 35.6892;
 let long = 51.3890;
 let latlong = [lat, long];
 var mymap = L.map("mapid").setView([lat, long], 15);
 L.tileLayer(
-    "https://vt.parsimap.com/comapi.svc/tile/parsimap/{x}/{y}/{z}.jpg?token=ee9e06b3-dcaa-4a45-a60c-21ae72dca0bb"
+    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" , {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }
 ).addTo(mymap);
 
 setInterval(() => {
@@ -110,3 +113,21 @@ $("#address-step").click(function () {
     moveToSelectedCity();
     marker = L.marker([lat , long]).addTo(mymap);
 })
+
+function setPriceInputsStatus(input, inputIds = []) {
+    const isChecked = input.prop("checked");
+
+    if (isChecked) {
+        inputIds.forEach((id) => {
+            $(`#${id}`).prop("disabled", true);
+        });
+    } else {
+        inputIds.forEach((id) => {
+            $(`#${id}`).prop("disabled", false);
+        });
+    }
+}
+
+$("#agreed_price").click(function (e) {
+    setPriceInputsStatus($(this), ["total_price", "price_per_meter"]);
+});

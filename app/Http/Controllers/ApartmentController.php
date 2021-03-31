@@ -145,7 +145,7 @@ class ApartmentController extends Controller
     public function deleteApartment($id = null)
     {
         $user = Auth::user();
-        $apartment = $user->apartments()->where("id",$id);
+        $apartment = $user->apartments()->where("id", $id);
         if ($apartment->count()) {
             if ($apartment->get()[0]->cover) {
                 unlink(public_path("covers") . "/" . $apartment->get()[0]->cover);
@@ -160,5 +160,10 @@ class ApartmentController extends Controller
         } else {
             return response(["message" => "apartment not found"], 400);
         }
+    }
+
+    public function getSingleApartment($id = null)
+    {
+        return view("pages.apartment.apartment");
     }
 }

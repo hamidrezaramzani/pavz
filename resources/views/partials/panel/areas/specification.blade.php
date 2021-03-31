@@ -79,6 +79,61 @@
             </select>
         </div>
 
+        <br>
+
+        <div class="form-group">
+            <label for="state">نوع کاربری:</label>
+
+            <select name="area_type" id="area_type" name="area_type" class="form-control drafted_input">
+                @if ($data->area_type)
+                    @foreach ($areaTypes as $item)
+                        @if ($item->id == $data->state)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endif
+                    @endforeach
+                    @foreach ($areaTypes as $item)
+                        @if ($item->id != $data->state)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endif
+
+                    @endforeach
+                    <option value="0">نوع کاربری زمین خود را وارد نمایید</option>
+
+                @else
+                    <option value="0">نوع کاربری زمین خود را وارد نمایید</option>
+                    @foreach ($areaTypes as $item)
+                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                    @endforeach
+                @endif
+
+            </select>
+        </div>
+
+
+        
+        <br>
+        <div class="form-group">
+            <label for="foundation">متراژ:</label>
+            <input type="number" name="foundation" id="foundation" class="form-control"
+                placeholder="عنوان آگهی خود را وارد نمایید" value="{{ $data->foundation ?? null }}">
+        </div>
+
+
+        <br>
+        <div class="form-group">
+            <label for="count_of_border">تعداد بر:</label>
+            <input type="number" name="count_of_border" id="count_of_border" class="form-control"
+                placeholder="تعداد بر زمین خود را وارد نمایید" value="{{ $data->count_of_border ?? null }}">
+        </div>
+
+
+        <br>
+        <div class="form-group">
+            <label for="main_border_width">طول بر اصلی:</label>
+            <input type="number" name="main_border_width" id="main_border_width" class="form-control"
+                placeholder="طول بر اصلی خود را وارد نمایید" value="{{ $data->main_border_width ?? null }}">
+        </div>
+
 
         <br>
         <br>

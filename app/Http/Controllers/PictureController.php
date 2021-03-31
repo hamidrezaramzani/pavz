@@ -109,7 +109,8 @@ class PictureController extends Controller
             $request->file("cover")->move(public_path("covers"), $fileName);
             $apartment = Apartment::where("id", $id);
             $apartment->update([
-                "cover" => $fileName
+                "cover" => $fileName ,
+                "level" => $request->get("level") > $apartment->get()[0]->level ? $request->get("level") : $apartment->get()[0]->level 
             ]);
             return response(["messgae" => "cover updated"], 200);
         }

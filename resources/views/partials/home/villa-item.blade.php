@@ -5,17 +5,13 @@
             <div class="my-rating"></div>
             <img src="{{ asset('images/villa.jpg') }}" alt="this is villa alt test">
             <div class="vip-lable">ویژه</div>
-
-            <div class="item-buttons">
-                <button class="btn btn-light is" title="اشتراک گذاری" data-toggle="tooltip" data-placement="top"><i class="fa fa-share"></i></button>
-                <button class="btn btn-light is"><i class="fa fa-home" title="افزودن به لیست مقایسه" data-toggle="tooltip" data-placement="top"></i></button>
-            </div>
+            <div class="type-lable">خرید</div>
         </div>
         <div class="villa-top-info">
             <div class="w-50">
                 <span>
+                    <i class="fas fa-map-marker"></i>
                     مازندران - رامسر
-                    <i class="fas fa-location-arrow"></i>
                 </span>
             </div>
             <div class="w-50">

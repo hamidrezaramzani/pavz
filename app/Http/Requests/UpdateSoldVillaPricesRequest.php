@@ -25,8 +25,9 @@ class UpdateSoldVillaPricesRequest extends FormRequest
     public function rules()
     {
         return [
-            "total_price" => "required|integer" , 
-            "price_per_meter" => "required|integer" , 
+            "total_price" => "nullable|integer" , 
+            "price_per_meter" => "nullable|integer" , 
+            "agreed_price" => "required|numeric" , 
             "villa_id" => "required|integer"
         ];
     }

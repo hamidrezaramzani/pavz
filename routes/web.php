@@ -72,6 +72,7 @@ Route::get("/villa/delete/{id}", [VillasController::class, "deleteVillas"])->mid
 
 //  APARTMENT ROUTES
 Route::get("/new-apartment", [ApartmentController::class, "newApartment"])->middleware("auth")->name("new-apartment")->breadcrumbs(fn (Trail $trail) => $trail->parent("dashboard")->push("آپارتمان جدید", route("new-apartment")));;
+Route::get("/apartment/manage", [ApartmentController::class, "manageApartments"])->middleware("auth");
 Route::get("/edit-apartment/{id}", [ApartmentController::class, "editApartment"])->middleware("auth");
 Route::get("/apartment/get-home-types/{id}", [ApartmentController::class, "getHomeTypes"])->middleware("auth");
 Route::get("/apartment/set-status/{status}/{id}", [ApartmentController::class, "setApartmentStatus"])->middleware("auth");
@@ -81,9 +82,8 @@ Route::post("/apartment/update/possibilities", [ApartmentController::class, "upd
 Route::post("/apartment/update/address", [ApartmentController::class, "updateAddress"])->middleware("auth");
 Route::post("/apartment/update/rent-pricing", [ApartmentController::class, "updateRentPricing"])->middleware("auth");
 Route::post("/apartment/update/sold-pricing", [ApartmentController::class, "updateSoldPricing"])->middleware("auth");
-Route::get("/apartment/manage", [ApartmentController::class, "manageApartments"])->middleware("auth");
 Route::get("/apartment/delete/{id}", [ApartmentController::class, "deleteApartment"])->middleware("auth");
-
+Route::get("/apartment/{id}", [ApartmentController::class, "getSingleApartment"]);
 
 // AREA ROUTES
 Route::get("/area/new", [AreaController::class, "newArea"])->middleware("auth");
@@ -95,6 +95,7 @@ Route::post("/area/update/pricing", [AreaController::class, "updatePricing"])->m
 Route::get("/area/set-status/{status}/{id}", [AreaController::class, "setAreaStatus"])->middleware("auth");
 Route::get("/area/manage", [AreaController::class, "manageAreas"])->middleware("auth");
 Route::get("/area/delete/{id}", [AreaController::class, "deleteArea"])->middleware("auth");
+Route::get("/area/{id}", [AreaController::class, "getSingleArea"])->middleware("auth");
 
 // ->breadcrumbs(fn (Trail $trail) => $trail->parent("dashboard")->push("ویرایش آگهی", route("edit-area")));
 

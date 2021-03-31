@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateAreaDocumentRequest;
 use App\Http\Requests\UpdateAreaPricingRequest;
 use App\Http\Requests\UpdateAreaSpecificationRequest;
 use App\Models\Area;
+use App\Models\AreaType;
 use App\Models\DocumentType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -52,6 +53,7 @@ class AreaController extends Controller
         $data = $area->get()[0];
         $states = json_decode(file_get_contents(public_path("json/states.json")));
 
+        $areaTypes = AreaType::all();
         $documentTypes = DocumentType::all();
         $cities = [];
         if ($data->state) {
@@ -71,7 +73,7 @@ class AreaController extends Controller
             ["icon" => "fa fa-flag-checkered", "title" => "مرحله نهایی"],
         ];
         $pages = ["specification", "documents", "address", "pricing", "pictures", "finish"];
-        return view("pages.areas.edit-area", ["data" => $data, "states" => $states, "cities" => $cities, "documentTypes" => $documentTypes, "steps" => $formSteps, "pages" => $pages]);
+        return view("pages.areas.edit-area", ["data" => $data, "states" => $states, "cities" => $cities, "documentTypes" => $documentTypes, "steps" => $formSteps, "pages" => $pages , "areaTypes" => $areaTypes]);
     }
 
     public function updateSpecification(UpdateAreaSpecificationRequest $request)
@@ -134,6 +136,11 @@ class AreaController extends Controller
         } else {
             return response(["message" => "area not found"], 400);
         }
+    }
+
+    public function getSingleArea($id = null)
+    {
+        return view("pages.areas.area");
     }
 
 }

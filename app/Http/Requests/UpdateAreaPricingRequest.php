@@ -25,8 +25,9 @@ class UpdateAreaPricingRequest extends FormRequest
     public function rules()
     {
         return [
-            "total_price" => "required|numeric|min:100" , 
-            "price_per_meter" => "required|numeric|min:100" , 
+            "total_price" => "nullable|numeric|min:100" , 
+            "price_per_meter" => "nullable|numeric|min:100" ,
+            "agreed_price" => "required|numeric" ,  
             "id" => "required|numeric"
         ];
     }
