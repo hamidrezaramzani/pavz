@@ -40,7 +40,6 @@ $(document).ready(function () {
 AOS.init();
 
 function scrollDocument() {
-    console.log("scroll");
     const scrollHeader = document.getElementById("header").offsetHeight;
     const y = scrollY;
     if (y >= scrollHeader) {

@@ -157,3 +157,4 @@ Route::get("/scores/set-host-encounter/{id}/{score}", [VillaScoreController::cla
 Route::get("/scores/set-quality/{id}/{score}", [VillaScoreController::class, "setQuality"])->middleware("auth");
 Route::get("/scores/set-purity/{id}/{score}", [VillaScoreController::class, "setPurity"])->middleware("auth");
 Route::get("/scores/set-address/{id}/{score}", [VillaScoreController::class, "setAddress"])->middleware("auth");
+Route::get("/scores/get/{id}", [VillaScoreController::class, "getScores"]);

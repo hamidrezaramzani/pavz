@@ -33,11 +33,59 @@ class VillasController extends Controller
         return $data;
     }
 
-    public function getSingleVilla()
+    public function getSingleVilla($id = null)
     {
 
-        // get vill from database and send it to blade
-        return view("pages.villa.villa");
+        if($id == null)
+            return redirect("/");
+
+            $data =  Villa::with([
+                "rooms" => function ($q) {
+                    return $q->orderBy("created_at", "asc");
+                }, "specialPlaces", "pools" => function ($q) {
+                    return $q->orderBy("created_at", "asc");
+                },
+                "parkings" => function ($q) {
+                    return $q->orderBy("created_at", "asc");
+                },
+                "pictures", "rentPrices", "villaTypes", "documents", "soldVillaPrices"
+            ]);
+        $data = Villa::where([
+            ["id" , $id] , 
+            ["status" , "published"]
+        ]);
+        
+        $states = json_decode(file_get_contents(public_path("json/states.json")));
+        $cities = json_decode(file_get_contents(public_path("json/cities.json")));
+
+        $documentTypes  = DocumentType::all();
+
+
+        $stateId = $data->get()[0]->state;
+        $state = array_filter($states, function ($value) use ($stateId) {
+            return $value->id == $stateId;
+        });
+
+
+        
+        $cityId = $data->get()[0]->city;
+        $city = array_filter($cities, function ($value) use ($cityId) {
+            return $value->id == $cityId;
+        });
+
+
+        if(!$data->get()->count()){
+            return redirect("/");
+        }
+
+        
+
+        return view("pages.villa.villa" , [
+            "data" => $data->get()[0] , 
+            "state" => $state  , 
+            "city" => $city , 
+            "documentTypes" => $documentTypes
+        ]);
     }
 
     public function createVilla(Request $request)

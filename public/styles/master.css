@@ -1464,6 +1464,10 @@ footer .aboutus img {
     transition: all 0.5s ease-in;
 }
 
+.accordion-title-red {
+    background: indianred!important;
+}
+
 .accordion-title:hover {
     background: rgba(80, 69, 206, 0.06);
     transition: all 0.5s ease-in;
@@ -2143,7 +2147,7 @@ span#picture-name {
 
 .accordion-title {
     width: 100%;
-    margin: 0!important;
+    /* margin: 0!important; */
 }
 
 @keyframes click-wave {
@@ -2510,4 +2514,8 @@ table {
 input:disabled {
     background: #ddd!important;
     cursor: not-allowed;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
