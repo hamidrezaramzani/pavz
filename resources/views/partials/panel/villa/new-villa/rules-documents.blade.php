@@ -66,11 +66,14 @@
                                 @break
                                 @case(1)
                                 <option value="1">مجاز است</option>
-
                                 <option value="0">مجاز نیست</option>
                                 <option value="2">در بیرون ملک</option>
                                 @break
-
+                                @default
+                                <option value="2">در بیرون ملک</option>
+                                <option value="0">مجاز نیست</option>
+                                <option value="1">مجاز است</option>
+    
                             @endswitch
 
                         @else
@@ -100,6 +103,11 @@
                                 <option value="0">مجاز نیست</option>
                                 <option value="2">در بیرون ملک</option>
                                 @break
+                                @default                            
+                                    <option value="2">در بیرون ملک</option>
+                                    <option value="0">مجاز نیست</option>
+                                    <option value="1">مجاز است</option>
+                                
                             @endswitch
                         @else
                             <option value="2">در بیرون ملک</option>
@@ -126,6 +134,10 @@
                                 <option value="0">مجاز نیست</option>
                                 <option value="2">باید با صاحبخانه هماهنگ شود</option>
                                 @break
+                                @default                            
+                                    <option value="2">باید با صاحبخانه هماهنگ شود</option>
+                                    <option value="0">مجاز نیست</option>
+                                    <option value="1">مجاز است</option>
                             @endswitch
                         @else
                             <option value="2">باید با صاحبخانه هماهنگ شود</option>

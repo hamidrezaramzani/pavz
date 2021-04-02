@@ -68,4 +68,64 @@ class VillaScoreController extends Controller
     {
         $this->setScore($id , $score , "address");   
     }
+
+    public function getScores($id)
+    {
+        $accuracyOfContent = VillaScore::where([
+            "villa_id" => $id , 
+            "name" => "accuracy_of_content"
+        ]);
+        $accuracyOfContent = $accuracyOfContent->avg("score");
+        $timelyDelivery = VillaScore::where([
+            "villa_id" => $id , 
+            "name" => "timely_delivery"
+        ]);
+
+        $timelyDelivery = $timelyDelivery->avg("score");
+
+
+        $hostEncounter = VillaScore::where([
+            "villa_id" => $id , 
+            "name" => "host_encounter"
+        ]);
+
+        $hostEncounter = $hostEncounter->avg("score");
+
+
+        $quality = VillaScore::where([
+            "villa_id" => $id , 
+            "name" => "quality"
+        ]);
+
+        $quality = $quality->avg("score");
+
+
+
+        $purity = VillaScore::where([
+            "villa_id" => $id , 
+            "name" => "purity"
+        ]);
+
+        $purity = $purity->avg("score");
+
+
+
+        $address = VillaScore::where([
+            "villa_id" => $id , 
+            "name" => "address"
+        ]);
+
+        $address = $address->avg("score");
+
+
+        return response([
+            "accuracyOfContent" => $accuracyOfContent  , 
+            "timelyDelivery" => $timelyDelivery , 
+            "hostEncounter" => $hostEncounter , 
+            "quality" => $quality , 
+            "purity" => $purity , 
+            "address" => $address , 
+
+        ],200);
+    }
 }

@@ -131,3 +131,26 @@ function setPriceInputsStatus(input, inputIds = []) {
 $("#agreed_price").click(function (e) {
     setPriceInputsStatus($(this), ["total_price", "price_per_meter"]);
 });
+
+
+
+// function removeCheckboxInput(e) {
+//     $(`#${e.id}`).remove();
+// }
+
+// <i class='fa fa-trash text-danger' onclick="removeCheckboxInput(${id})"></i>
+$(".new-item").click(function () {
+    const box = $($(this).attr("box"));
+    const input = $($(this).attr("input"));
+    const id = "checkbox" + Math.ceil(Math.random() * 99999);
+    if (input.val().length) {
+        box.append(`<div class="form-group checkbox-group" id="${id}">
+        <label>
+            
+            <input type="checkbox" text="${input.val()}"  name="${input.val()}" checked class="option-input checkbox" />
+        ${input.val()}
+        </label>
+    </div>
+    `);
+    }
+});
