@@ -178,33 +178,9 @@
 
             </div>
             <div class="col-12 col-md-4">
-                <div class="user-call-info">
-                    <img src="{{ asset('upload/1617049251.jpg') }}" alt="">
-                    <h3>حمیدرضا رمضانی</h3>
-                    <br>
-                    <div class="call-ways">
-                        <button class="btn btn-sm btn-primary is">
-                            <i class="fa fa-phone"></i>&nbsp;
-                            تماس
-                        </button>
-                        <button class="btn btn-sm mx-2 btn-primary is">
-                            <i class="fab fa-telegram"></i>&nbsp;
-                            تلگرام
-                        </button>
+                
+                @include('pages.villa.sections.user' , ["data" => $data])
 
-                        <button class="btn btn-sm mx-2 btn-primary is">
-                            <i class="fa fa-envelope"></i>&nbsp;
-                            پیامک
-                        </button>
-
-                    </div>
-                    <br>
-                    <br>
-                </div>
-
-
-                <br>
-                <br>
                 <div class="mt-3 user-call-info p-3">
                     <div class="w-50 float-right p-1">
                         <span>از تاریخ</span>

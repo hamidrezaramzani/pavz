@@ -78,4 +78,9 @@ class Villa extends Model
     {
         return $this->hasOne(SoldVillaPrice::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

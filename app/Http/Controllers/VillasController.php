@@ -48,12 +48,14 @@ class VillasController extends Controller
                 "parkings" => function ($q) {
                     return $q->orderBy("created_at", "asc");
                 },
-                "pictures", "rentPrices", "villaTypes", "documents", "soldVillaPrices"
+                "pictures", "rentPrices", "villaTypes", "documents", "soldVillaPrices" , "user"
             ]);
         $data = Villa::where([
             ["id" , $id] , 
             ["status" , "published"]
         ]);
+
+
         
         $states = json_decode(file_get_contents(public_path("json/states.json")));
         $cities = json_decode(file_get_contents(public_path("json/cities.json")));
