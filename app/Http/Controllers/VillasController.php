@@ -7,6 +7,7 @@ use App\Http\Requests\HomeInfoRequest;
 use App\Http\Requests\PossiblitiesInfoRequest;
 use App\Http\Requests\SpaceInfoRequest;
 use App\Http\Requests\SpecificationFormRequest;
+use App\Models\Comment;
 use App\Models\DocumentType;
 use App\Models\Picture;
 use App\Models\SpecialPlace;
@@ -48,13 +49,17 @@ class VillasController extends Controller
                 "parkings" => function ($q) {
                     return $q->orderBy("created_at", "asc");
                 },
-                "pictures", "rentPrices", "villaTypes", "documents", "soldVillaPrices" , "user"
+                "pictures", "rentPrices", "villaTypes", "documents", "soldVillaPrices" ,
             ]);
         $data = Villa::where([
             ["id" , $id] , 
             ["status" , "published"]
         ]);
 
+        $comments = Comment::where([
+            "villa_id" => $id , 
+            "status" => 1
+        ]);
 
         
         $states = json_decode(file_get_contents(public_path("json/states.json")));
@@ -86,7 +91,8 @@ class VillasController extends Controller
             "data" => $data->get()[0] , 
             "state" => $state  , 
             "city" => $city , 
-            "documentTypes" => $documentTypes
+            "documentTypes" => $documentTypes , 
+            "comments" => $comments->get()
         ]);
     }
 

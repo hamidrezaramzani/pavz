@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApartmentController;
 use App\Http\Controllers\AreaController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ParkingController;
 use App\Http\Controllers\PictureController;
@@ -158,3 +159,6 @@ Route::get("/scores/set-quality/{id}/{score}", [VillaScoreController::class, "se
 Route::get("/scores/set-purity/{id}/{score}", [VillaScoreController::class, "setPurity"])->middleware("auth");
 Route::get("/scores/set-address/{id}/{score}", [VillaScoreController::class, "setAddress"])->middleware("auth");
 Route::get("/scores/get/{id}", [VillaScoreController::class, "getScores"]);
+
+// COMMENT ROUTES
+Route::post("/comment/new", [CommentController::class, "newComment"])->middleware("auth");
