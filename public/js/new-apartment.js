@@ -11,19 +11,6 @@ $("#address-step").click(function () {
     mymap.setView([lat, long]);
 });
 
-$(".new-item").click(function () {
-    const box = $($(this).attr("box"));
-    const input = $($(this).attr("input"));
-    if (input.val().length) {
-        box.append(`<div class="form-group checkbox-group">
-        <label>
-            <input type="checkbox" text="${input.val()}"  name="${input.val()}" checked class="option-input checkbox" />
-        ${input.val()}
-        </label>
-    </div>
-    `);
-    }
-});
 
 $("#atype").change(function (e) {
     const atype = Number(e.target.value);

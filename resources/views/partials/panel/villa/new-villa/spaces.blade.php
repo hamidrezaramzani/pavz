@@ -77,7 +77,7 @@
                 @if ($data->heating_systems)
                     @foreach (json_decode($data->heating_systems) as $item)
                         @include('partials.panel.villa.new-villa.checkbox' , ["title" => $item->text , "name"
-                        => $item->name , "checked" => $item->checked] )
+                        => $item->name , "checked" => $item->checked , "new" => $item->new] )
                     @endforeach
                 @else
 
@@ -109,7 +109,7 @@
                 @if ($data->more_pool_possibilities)
                     @foreach (json_decode($data->cooling_systems) as $item)
                         @include('partials.panel.villa.new-villa.checkbox' , ["title" => $item->text , "name"
-                        => $item->name , "checked" => $item->checked] )
+                        => $item->name , "checked" => $item->checked , "new" => $item->new] )
                     @endforeach
                 @else
 
@@ -161,7 +161,7 @@
                 @if ($data->more_health_possibilities)
                     @foreach (json_decode($data->more_health_possibilities) as $item)
                         @include('partials.panel.villa.new-villa.checkbox' , ["title" => $item->text , "name"
-                        => $item->name , "checked" => $item->checked] )
+                        => $item->name , "checked" => $item->checked  , "new" => $item->new] )
                     @endforeach
                 @else
 
@@ -246,7 +246,7 @@
                 @if ($data->more_pool_possibilities)
                     @foreach (json_decode($data->more_pool_possibilities) as $item)
                         @include('partials.panel.villa.new-villa.checkbox' , ["title" => $item->text , "name"
-                        => $item->name , "checked" => $item->checked] )
+                        => $item->name , "checked" => $item->checked  , "new" => $item->new] )
                     @endforeach
                 @else
                     @include('partials.panel.villa.new-villa.checkbox' , ["title" => "سونا خشک" , "name" =>
@@ -277,7 +277,7 @@
                 @if ($data->courtyard)
                     @foreach (json_decode($data->courtyard) as $item)
                         @include('partials.panel.villa.new-villa.checkbox' , ["title" => $item->text , "name"
-                        => $item->name , "checked" => $item->checked] )
+                        => $item->name , "checked" => $item->checked  , "new" => $item->new] )
                     @endforeach
                 @else
 
@@ -360,7 +360,7 @@
                 @if ($data->views)
                     @foreach (json_decode($data->views) as $item)
                         @include('partials.panel.villa.new-villa.checkbox' , ["title" => $item->text , "name"
-                        => $item->name , "checked" => $item->checked] )
+                        => $item->name , "checked" => $item->checked   , "new" => $item->new] )
                     @endforeach
                 @else
 

@@ -62,15 +62,17 @@ $.validator.addMethod(
 
 function getAllInputs(id) {
     let inputs = [];
-    $(`${id} input`).each(function () {
+    $(`${id} input`).each(function () {                
         inputs.push({
             text: $(this).attr("text"),
             name: $(this).attr("name"),
             checked: $(this).prop("checked"),
+            new : $(this).attr("data-new") ? true : false
         });
     });
     return inputs;
 }
+
 
 // https://vt.parsimap.com/comapi.svc/tile/parsimap/{x}/{y}/{z}.jpg?token=ee9e06b3-dcaa-4a45-a60c-21ae72dca0bb
 let lat = 35.6892;
@@ -134,20 +136,22 @@ $("#agreed_price").click(function (e) {
 
 
 
-// function removeCheckboxInput(e) {
-//     $(`#${e.id}`).remove();
-// }
+function removeCheckboxInput(e) {
+    e.closest(".form-group").remove()
+}
 
-// <i class='fa fa-trash text-danger' onclick="removeCheckboxInput(${id})"></i>
 $(".new-item").click(function () {
     const box = $($(this).attr("box"));
     const input = $($(this).attr("input"));
     const id = "checkbox" + Math.ceil(Math.random() * 99999);
     if (input.val().length) {
         box.append(`<div class="form-group checkbox-group" id="${id}">
+        
         <label>
-            
-            <input type="checkbox" text="${input.val()}"  name="${input.val()}" checked class="option-input checkbox" />
+        <button class="btn  btn-sm text-danger is" type="button" onclick="removeCheckboxInput(${id})">
+        <i class="fa fa-xs fa-trash"></i>
+    </button>            
+            <input type="checkbox" text="${input.val()}" data-new="true" name="${input.val()}" checked class="option-input checkbox" />
         ${input.val()}
         </label>
     </div>

@@ -75,20 +75,21 @@
                 </thead>
                 <tbody>
                     @foreach ($data->pools()->get() as $item)
-                    <tr>
-                        <td>{{ $item->pool_type == 1 ? "سرپوشیده" : "روباز"  }}</td>
-                        <td>{{ $item->pool_location  }}</td>
-                        <td>{{ $item->heating_systems	 }}</td>
-                        <td>{{ $item->cooling_systems }}</td>
-                        <td>{{ $item->length }} متر</td>
-                        <td>{{ $item->width }} متر</td>
-                        <td>{{ $item->min_depth }} متر</td>
-                        <td>{{ $item->max_depth }} متر</td>
-                        <td><button class="btn btn-sm btn-outline-primary  is"><i class="fa fa-eye fa-xs"></i></button>
-                        </td>
-                    </tr>    
+                        <tr>
+                            <td>{{ $item->pool_type == 1 ? 'سرپوشیده' : 'روباز' }}</td>
+                            <td>{{ $item->pool_location }}</td>
+                            <td>{{ $item->heating_systems }}</td>
+                            <td>{{ $item->cooling_systems }}</td>
+                            <td>{{ $item->length }} متر</td>
+                            <td>{{ $item->width }} متر</td>
+                            <td>{{ $item->min_depth }} متر</td>
+                            <td>{{ $item->max_depth }} متر</td>
+                            <td><button class="btn btn-sm btn-outline-primary  is"><i
+                                        class="fa fa-eye fa-xs"></i></button>
+                            </td>
+                        </tr>
                     @endforeach
-                    
+
                 </tbody>
             </table>
 
@@ -98,26 +99,28 @@
             <i class="fa fa-arrow-down"></i>
             دیگر موارد مربوط به استخر
         </div>
-    
+
         <table class="table mt-3 float-right text-center  table-hover is w-100">
-    
+
             <tbody>
                 <tr>
                     @foreach (json_decode($data->more_pool_possibilities) as $item)
                         @if ($item->checked)
-                        <td>{{ $item->text }}</td>                                                    
+                            <td><i class="fa fa-check text-success"></i> {{ $item->text }}</td>
+                        @else
+                            <td><i class="fa fa-times text-danger"></i> {{ $item->text }}</td>
                         @endif
                     @endforeach
                 </tr>
             </tbody>
         </table>
-    
-    
-    @else  
-    <div class="bg-white text-danger accordion-title mb-3 mt-3 float-right w-100">
-        <i class="fa fa-times"></i>
-        اقامتگاه استخری ندارد
-    </div>  
+
+
+    @else
+        <div class="bg-white text-danger accordion-title mb-3 mt-3 float-right w-100">
+            <i class="fa fa-times"></i>
+            اقامتگاه استخری ندارد
+        </div>
     @endif
 
 
@@ -130,43 +133,43 @@
 
 
     @if ($data->parkings()->count())
-        
-
-    <div class="accordion-title mb-3 float-right w-100">
-        <i class="fa fa-arrow-down"></i>
-        پارکینگ های ویلا
-    </div>
 
 
+        <div class="accordion-title mb-3 float-right w-100">
+            <i class="fa fa-arrow-down"></i>
+            پارکینگ های ویلا
+        </div>
 
-    <div class="table-responsive float-right w-100">
 
-        <table class="table text-center mt-3 float-right special-table table-hover is w-100">
 
-            <thead>
-                <tr>
-                    <th>نوع پارکینگ</th>
-                    <th>ظرفیت ماشین</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($data->parkings()->get() as $item)
-                <tr>
-                    <td>{{ $item->type == 1 ? "روباز" : "سر بسته" }}</td>
-                    <td>{{ $item->capacity }} عدد</td>
-                </tr>    
-                @endforeach
-                
-            </tbody>
-        </table>
+        <div class="table-responsive float-right w-100">
 
-    </div>
+            <table class="table text-center mt-3 float-right special-table table-hover is w-100">
+
+                <thead>
+                    <tr>
+                        <th>نوع پارکینگ</th>
+                        <th>ظرفیت ماشین</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($data->parkings()->get() as $item)
+                        <tr>
+                            <td>{{ $item->type == 1 ? 'روباز' : 'سر بسته' }}</td>
+                            <td>{{ $item->capacity }} عدد</td>
+                        </tr>
+                    @endforeach
+
+                </tbody>
+            </table>
+
+        </div>
 
     @else
-    <div class="bg-white text-danger accordion-title mb-3 mt-3 float-right w-100">
-        <i class="fa fa-times"></i>
-        اقامتگاه پارکینگ ندارد
-    </div>  
+        <div class="bg-white text-danger accordion-title mb-3 mt-3 float-right w-100">
+            <i class="fa fa-times"></i>
+            اقامتگاه پارکینگ ندارد
+        </div>
 
     @endif
 
@@ -191,8 +194,10 @@
 
                     @foreach (json_decode($data->courtyard) as $item)
                         @if ($item->checked)
-                            <td>{{$item->text}}</td>                        
-                        @endif                        
+                            <td><i class="fa fa-check text-success"></i> {{ $item->text }}</td>
+                        @else
+                            <td><i class="fa fa-times text-danger"></i> {{ $item->text }}</td>
+                        @endif
                     @endforeach
 
                 </tr>
@@ -224,8 +229,10 @@
                 <tr>
                     @foreach (json_decode($data->views) as $item)
                         @if ($item->checked)
-                            <td>{{$item->text}}</td>                        
-                        @endif                        
+                            <td><i class="fa fa-check text-success"></i> {{ $item->text }}</td>
+                        @else
+                            <td><i class="fa fa-times text-danger"></i> {{ $item->text }}</td>
+                        @endif
                     @endforeach
                 </tr>
             </tbody>
@@ -239,19 +246,19 @@
 
     @if ($data->about_space_home)
 
-    <div class="accordion-title mb-3 float-right w-100">
-        <i class="fa fa-arrow-down"></i>
-        توضیحات بیشتر درباره فضاهای ملک
-    </div>
+        <div class="accordion-title mb-3 float-right w-100">
+            <i class="fa fa-arrow-down"></i>
+            توضیحات بیشتر درباره فضاهای ملک
+        </div>
 
-    <br>
-    <br>
-    <p class="float-right w-100 mt-3">
+        <br>
+        <br>
+        <p class="float-right w-100 mt-3">
 
-        {{$data->about_space_home}}
-    </p>
+            {{ $data->about_space_home }}
+        </p>
 
-        
+
     @endif
 
 </div>

@@ -56,6 +56,13 @@ class VillasController extends Controller
             ["status" , "published"]
         ]);
 
+        if($data->count())
+            $data = $data[0];
+        else
+            return redirect("/");
+
+            
+
         $comments = Comment::where([
             "villa_id" => $id , 
             "status" => 1
@@ -140,7 +147,8 @@ class VillasController extends Controller
             "pictures", "rentPrices", "villaTypes", "documents", "soldVillaPrices"
         ]);
         $documentTypes  = DocumentType::all();
-        $data = $data->where("id", $id)->get()[0];
+        $data = $data->where("id", $id)->get();
+        
         $villaTypes = VillaType::all();
         $states = json_decode(file_get_contents(public_path("json/states.json")));
         $cities = [];

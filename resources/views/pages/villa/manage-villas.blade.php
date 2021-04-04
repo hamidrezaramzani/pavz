@@ -45,7 +45,7 @@
                                                 <span class="text-warning">در حال بررسی</span>
                                                 @break
                                                 @case("published")
-                                                <span class="text-warning">انتشار یافت</span>
+                                                <span class="text-success">انتشار یافت</span>
                                                 @break
                                             @endswitch
                                         </td>

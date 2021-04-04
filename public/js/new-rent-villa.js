@@ -581,17 +581,6 @@ $("#new-pool-form").validate({
     },
 });
 
-function getAllInputs(id) {
-    let inputs = [];
-    $(`${id} input`).each(function () {
-        inputs.push({
-            text: $(this).attr("text"),
-            name: $(this).attr("name"),
-            checked: $(this).prop("checked"),
-        });
-    });
-    return inputs;
-}
 
 $("#spaces").validate({
     submitHandler: (form) => {

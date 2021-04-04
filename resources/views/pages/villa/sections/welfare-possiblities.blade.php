@@ -19,6 +19,8 @@
             @foreach ($chunks as $item)
                 @if ($item->checked)
                     <td><i class="fa fa-check text-success"></i> {{$item->text}}</td>                
+                @else
+                    <td><i class="fa fa-times text-danger"></i> {{$item->text}}</td>                
                 @endif
             @endforeach
         </tr>

@@ -11,7 +11,7 @@
                 @if ($data->welfare_amenities)
                     @foreach (json_decode($data->welfare_amenities) as $item)
                         @include('partials.panel.villa.new-villa.checkbox' , ["title" => $item->text , "name"
-                        => $item->name , "checked" => $item->checked] )
+                        => $item->name , "checked" => $item->checked , "new" => $item->new] )
                     @endforeach
                 @else
                     @include('partials.panel.villa.new-villa.checkbox' , ["title" => "تلفن ثابت" , "name" =>
@@ -57,7 +57,7 @@
                 @if ($data->kitchen_facilities)
                     @foreach (json_decode($data->kitchen_facilities) as $item)
                         @include('partials.panel.villa.new-villa.checkbox' , ["title" => $item->text , "name"
-                        => $item->name , "checked" => $item->checked] )
+                        => $item->name , "checked" => $item->checked , "new" => $item->new] )
                     @endforeach
                 @else
                     @include('partials.panel.villa.new-villa.checkbox' , ["title" => "مایکروفر" , "name" => "microfer"])

@@ -12,8 +12,7 @@
                 </button>
             @endif
 
-        </h4>
-        <span>4 روز پیش</span>
+        </h4>        
     </div>
     <div class="comment-text">
         <p>
