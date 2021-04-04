@@ -67,7 +67,7 @@
 
 
 
-                    <div class="d-block float-right w-100" id="more_pool_items">
+                    <div class="d-block float-right w-100" id="pool-possibilities">
 
                         @include('partials.panel.villa.new-villa.checkbox' , ["title" => "سرسره و امکانات تفریحی" ,
                         "name" =>
@@ -83,7 +83,7 @@
                         <input type="text" name="new_pool_input" id="new_pool_input" class="form-control"
                             placeholder="اضافه کردن مورد جدید">
                         <br>
-                        <button class="btn btn-sm btn-warning is new-item" box="#more_pool_items" input="#new_pool_input"
+                        <button class="btn btn-sm btn-warning is new-item" box="#pool-possibilities" input="#new_pool_input"
                             type="button">ثبت
                             مورد جدید +</button>
                     </div>

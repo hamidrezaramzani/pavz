@@ -376,20 +376,14 @@ function renderRooms(rooms) {
 
 $("#new-room-form").validate({
     submitHandler: () => {
-        const selected = [];
-        $(".possibilities input:checked").each(function () {
-            selected.push({
-                name: $(this).attr("text"),
-                checked: $(this).prop("checked"),
-            });
-        });
+        
         const data = {
             id: Math.ceil(Math.random() * 5555),
             room_title: $("#room_title").val(),
             single_bed: $("#single_bed").val(),
             double_bed: $("#double_bed").val(),
             is_master: $("#master:checked").length,
-            possibilities: JSON.stringify(selected),
+            possibilities: JSON.stringify(getAllInputs("#room-possibilities")),
             villa_id: $("#id_").val(),
             _token: $("#nr_token").val(),
         };
@@ -532,8 +526,7 @@ function renderPools(pools) {
 }
 
 $("#new-pool-form").validate({
-    submitHandler: () => {
-        let possibilities = getAllCheckedInputs("#more_pool_items");
+    submitHandler: () => {        
         const data = {
             id: Math.ceil(Math.random() * 5555),
             pool_type: $("#type_pool").val(),
@@ -544,7 +537,7 @@ $("#new-pool-form").validate({
             length: $("#length_pool").val(),
             min_depth: $("#least_pool_depth").val(),
             max_depth: $("#max_pool_depth").val(),
-            possibilities: JSON.stringify(possibilities),
+            possibilities: JSON.stringify(getAllInputs("#pool-possibilities")),
             _token: $("#np_token").val(),
             villa_id: $("#id_").val(),
         };

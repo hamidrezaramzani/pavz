@@ -12,32 +12,42 @@
         </div>
 
 
-        <table class="table text-center mt-3 float-right special-table table-striped table-hover is w-100">
+        @foreach ($data->rooms()->get() as $item)
 
-            <thead>
-
-                <tr>
-                    <th width="25%">عنوان</th>
-                    <th width="25%">تخت خواب یک نفره</th>
-                    <th width="25%">تخت خواب دو نفره</th>
-                    <th width="25%">امکانات</th>
-                    <th width="25%">مستر</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($data->rooms()->get() as $item)
-                    <tr>
-                        <td>{{ $item->room_title }}</td>
-                        <td>{{ $item->single_bed }} عدد</td>
-                        <td>{{ $item->double_bed }} عدد</td>
-                        <td><button class="btn btn-sm btn-outline-primary  is"><i class="fa fa-eye fa-xs"></i></button>
-                        </td>
-                        <td>{{ $item->is_master ? 'است' : 'نیست' }}</td>
-                    </tr>
-
+            <div class="space-item">
+                <h6>
+                    <i class="fa fa-xs text-dark fa-circle"></i>
+                    {{ $item->room_title }}
+                </h6>
+                <span>
+                    <i class="fa fa-xs text-dark fa-bed"></i>
+                    یک نفره : {{ $item->single_bed }} عدد
+                </span>
+                <span>
+                    <i class="fa fa-xs text-dark fa-bed"></i>
+                    دو نفره : {{ $item->double_bed }} عدد
+                </span>
+                <br>
+                <span>
+                    امکانات :
+                </span>
+                @foreach (json_decode($item->possibilities) as $item1)
+                    @if ($item1->checked)
+                        <span>
+                            <i class="fa fa-xs text-success fa-check"></i>
+                            {{ $item1->text }}
+                        </span>
+                    @else
+                        <span>
+                            <i class="fa fa-xs text-danger fa-times"></i>
+                            {{ $item1->text }}
+                        </span>
+                    @endif
                 @endforeach
-            </tbody>
-        </table>
+
+            </div>
+        @endforeach
+
     @else
         <div class="bg-white text-danger accordion-title mb-3 mt-3 float-right w-100">
             <i class="fa fa-times"></i>
@@ -57,8 +67,7 @@
 
 
         <div class="table-responsive float-right w-100">
-
-            <table class="table text-center mt-3 float-right special-table table-hover is w-100">
+            {{-- <table class="table text-center mt-3 float-right special-table table-hover is w-100">
 
                 <thead>
                     <tr>
@@ -91,7 +100,72 @@
                     @endforeach
 
                 </tbody>
-            </table>
+
+
+
+            </table> --}}
+
+
+
+            @foreach ($data->pools()->get() as $index => $item)
+
+                <div class="space-item">
+                    <h6>
+                        <i class="fa fa-xs text-dark fa-circle"></i>
+                        استخر {{ $index + 1 }}
+                    </h6>
+                    <span>
+                        <i class="fa fa-xs text-dark fa-square"></i>
+                        نوع استخر : {{ $item->pool_type == 1 ? 'روباز' : 'سرپوشیده' }}
+                    </span>
+                    <span>
+                        <i class="fa fa-xs text-dark fa-map-marker"></i>
+                        موقعیت استخر : {{ $item->pool_location }}
+                    </span>
+                    <span>
+                        <i class="fa fa-xs text-dark fa-square"></i>
+                        عرض استخر : {{ $item->width }} متر
+                    </span>
+                    <span>
+                        <i class="fa fa-xs text-dark fa-square"></i>
+                        طول استخر : {{ $item->length }} متر
+                    </span>
+                    <span>
+                        <i class="fa fa-xs text-dark fa-square"></i>
+                        کمترین عمق : {{ $item->min_depth }} متر
+                    </span>
+                    <span>
+                        <i class="fa fa-xs text-dark fa-square"></i>
+                        بیشترین عمق : {{ $item->max_depth }} متر
+                    </span>
+                    <span>
+                        <i class="fa fa-xs text-dark fa-square"></i>
+                        سیستم گرمایشی : {{ $item->heating_systems }}
+                    </span>
+                    <span>
+                        <i class="fa fa-xs text-dark fa-square"></i>
+                    سیستم سرمایشی : {{ $item->cooling_systems }}
+                    </span>
+                    <br>
+                    <span>
+                        امکانات :
+                    </span>
+                    @foreach (json_decode($item->possibilities) as $item1)
+                        @if ($item1->checked)
+                            <span>
+                                <i class="fa fa-xs text-success fa-check"></i>
+                                {{ $item1->text }}
+                            </span>
+                        @else
+                            <span>
+                                <i class="fa fa-xs text-danger fa-times"></i>
+                                {{ $item1->text }}
+                            </span>
+                        @endif
+                    @endforeach
+
+                </div>
+            @endforeach
 
         </div>
 

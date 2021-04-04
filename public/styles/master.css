@@ -2519,3 +2519,33 @@ input:disabled {
 .cursor-pointer {
     cursor: pointer;
 }
+
+.space-item {
+    width: 200px;
+    height: auto;
+    background: #fdfdfd;
+    float: right;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 0 10px;
+}
+
+.space-item h6 {
+    display: block;
+    text-align: right;
+    font: 14px is;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.space-item i {
+    font-size: 10px!important;
+}
+
+.space-item span {
+    display: block;
+    font: 11px is;
+    margin: 5px 0;
+    padding-right: 10px;
+    color: #888;
+}

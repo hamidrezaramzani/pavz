@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="possibilities">
-                        <div class="d-block float-right w-100" id="more_room_items">
+                        <div class="d-block float-right w-100" id="room-possibilities">
 
                             @include('partials.panel.villa.new-villa.checkbox' , ["title" => "رخت آویز" , "name"
                             => "clothes_hanger"])
@@ -67,7 +67,7 @@
                             <input type="text" name="new-room-item" id="new-room-item" class="form-control"
                                 placeholder="اضافه کردن مورد جدید">
                             <br>
-                            <button class="btn btn-sm btn-warning is new-item" box="#more_room_items"
+                            <button class="btn btn-sm btn-warning is new-item" box="#room-possibilities"
                                 input="#new-room-item" type="button">ثبت
                                 مورد جدید +</button>
                         </div>

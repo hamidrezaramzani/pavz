@@ -51,7 +51,13 @@
                             @endif
 
                             @foreach (json_decode($item->possibilities) as $item2)
-                                <span><i class="fa fa-check text-success"></i>&nbsp;{{ $item2->name }}</span>
+                                    @if ($item2->checked)
+                                    <span><i class="fa fa-check text-success"></i>&nbsp;{{ $item2->text }}</span>
+                                        
+                                    @else
+                                    <span><i class="fa fa-times text-danger"></i>&nbsp;{{ $item2->text }}</span>
+                                        
+                                    @endif
                             @endforeach
                         </li>
                     @endforeach
