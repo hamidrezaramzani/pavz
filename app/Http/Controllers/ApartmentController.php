@@ -45,7 +45,7 @@ class ApartmentController extends Controller
         $formSteps = [
             ["icon" => "fa fa-file", "title" => "اطلاعات کلی"],
             ["icon" => "fa fa-tools", "title" => "امکانات"],
-            ["icon" => "fa fa-map", "title" => "آدرس"],
+            ["icon" => "fa fa-map", "title" => "آدرس" , "id" => "address-step"],
             ["icon" => "fa fa-dollar-sign", "title" => "قیمت گذاری"],
             ["icon" => "fa fa-image", "title" => "تصاویر ملک"],
             ["icon" => "fa fa-flag-checkered", "title" => "مرحله نهایی"],
@@ -164,6 +164,44 @@ class ApartmentController extends Controller
 
     public function getSingleApartment($id = null)
     {
-        return view("pages.apartment.apartment");
+        if ($id == null) {
+            return redirect("/");
+        }
+        $data = Apartment::where([
+            ["id", $id] , 
+            ["status" , "published"]
+        ]);
+        
+
+        
+        $states = json_decode(file_get_contents(public_path("json/states.json")));
+        $cities = json_decode(file_get_contents(public_path("json/cities.json")));
+
+
+
+        $stateId = $data->get()[0]->state;
+        $state = array_filter($states, function ($value) use ($stateId) {
+            return $value->id == $stateId;
+        });
+
+
+        
+        $cityId = $data->get()[0]->city;
+        $city = array_filter($cities, function ($value) use ($cityId) {
+            return $value->id == $cityId;
+        });
+
+
+        
+        if ($data->get()->count() == 0) {
+            return redirect("/");
+        }else{
+            $data = $data->get()[0];
+        }
+        return view("pages.apartment.apartment" , [
+            "data" =>  $data , 
+            "state" => $state , 
+            "city" => $city
+        ]);
     }
 }

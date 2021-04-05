@@ -16,4 +16,25 @@ class Apartment extends Model
           
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function accountType()
+    {
+        return $this->hasOne(ApartmentAccountTypes::class , "id" , "atype");
+    }
+
+    
+    public function apartmentType()
+    {
+        return $this->hasOne(ApartmentTypes::class , "id" , "htype");
+    }
+
+    public function document()
+    {
+        return $this->hasOne(DocumentType::class , "id" , "document_type");
+    }
+
 }

@@ -67,7 +67,7 @@ class AreaController extends Controller
         $formSteps = [
             ["icon" => "fa fa-file", "title" => "اطلاعات کلی"],
             ["icon" => "fa fa-gavel", "title" => "اسناد و امیتازات"],
-            ["icon" => "fa fa-address-card", "title" => "آدرس", "id" => "step-address"],
+            ["icon" => "fa fa-address-card", "title" => "آدرس", "id" => "address-step"],
             ["icon" => "fa fa-dollar-sign", "title" => "قیمت گذاری"],
             ["icon" => "fa fa-image", "title" => "تصاویر زمین"],
             ["icon" => "fa fa-flag-checkered", "title" => "مرحله نهایی"],

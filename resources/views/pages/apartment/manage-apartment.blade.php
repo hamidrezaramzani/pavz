@@ -2,7 +2,7 @@
 @section('dashboard')
     <div class="container-fluid">
         <div class="row justify-content-center py-3">
-            <div class="col-12 col-md-12 dashboard-info-item-content is-checking p-5">                
+            <div class="col-12 col-md-12 dashboard-info-item-content is-checking p-5">
                 <h3>مدیریت آگهی های آپارتمان</h3>
                 <br>
                 <br>
@@ -35,7 +35,7 @@
                                             @endif
                                         </td>
                                         <td width="20%">
-                                            {{ $apartment->ads_type == '1' ? 'رهن و اجاره آپارتمان' : 'فروش آپارتمان' }}
+                                            {{ $apartment->ads_type == '1' ? "فروش آپارتمان" : "رهن و اجاره آپارتمان" }}
                                         </td>
                                         <td width="15%">
                                             @switch($apartment->status)
@@ -109,26 +109,43 @@
             $(`#ap-${id}`).show();
             btn.prop("disabled", true);
 
-            $.ajax({
-                method: "GET",
-                url: "/apartment/delete/" + id,
-                success: (response) => {
-                    $(`#ap-${id}`).hide();
-                    btn.prop("disabled", false);
-                    btn.parents("tr").remove()
-                },
-                error: (err) => {
-                    console.log(err);
-                    $(`#ap-${id}`).hide();
-                    btn.prop("disabled", false);
-                    Swal.fire({
-                        title: "خطا",
-                        text: "مشکلی در سرور وجود دارد",
-                        icon: "error",
-                        confirmButtonText: "باشه",
+            Swal.fire({
+                title: "حذف آپارتمان",
+                text: "آیا واقعا میخواهید این آگهی را حذف کنید؟",
+                icon: "question",
+                confirmButtonText: "بله",
+                cancelButtonText: "خیر",
+                showCancelButton: true
+
+            }).then(({
+                isConfirmed
+            }) => {
+                if (isConfirmed) {
+
+                    $.ajax({
+                        method: "GET",
+                        url: "/apartment/delete/" + id,
+                        success: (response) => {
+                            $(`#ap-${id}`).hide();
+                            btn.prop("disabled", false);
+                            btn.parents("tr").remove()
+                        },
+                        error: (err) => {
+                            console.log(err);
+                            $(`#ap-${id}`).hide();
+                            btn.prop("disabled", false);
+                            Swal.fire({
+                                title: "خطا",
+                                text: "مشکلی در سرور وجود دارد",
+                                icon: "error",
+                                confirmButtonText: "باشه",
+                            });
+                        }
                     });
                 }
-            });
+
+            })
+
         })
 
     </script>

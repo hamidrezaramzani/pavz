@@ -5,7 +5,7 @@
     <div class="container my-5">
         <div class="row justify-content-center villa-content">
 
-            @include('partials.gallery' , ["images" => $data->pictures()->get()])
+            @include('partials.gallery' , ["images" => $data->pictures()->get() , "folder" => "villa_pictures"])
             <div class="col-12 col-md-8">
                 @include('pages.villa.sections.main' , ["data" => $data])
                 @include('pages.villa.sections.home' , ["data" => $data])
@@ -18,14 +18,14 @@
                 @include('pages.villa.sections.pricing' , ["data" => $data])
                 @include('pages.villa.sections.address' , ["data" => $data])
                 @include('pages.villa.sections.scores' , ["data" => $data])
-                @include('pages.villa.sections.add-comment' , ["data" => $data])
-                @include('pages.villa.sections.comments' , ["data" => $data])
+                @include('pages.add-comment' , ["data" => $data])
+                @include('pages.comments' , ["data" => $data])
                 
 
             </div>
             <div class="col-12 col-md-4">
                 
-                @include('pages.villa.sections.user' , ["data" => $data])
+                @include('pages.user' , ["data" => $data])
 
                 <div class="mt-3 user-call-info p-3">
                     <div class="w-50 float-right p-1">

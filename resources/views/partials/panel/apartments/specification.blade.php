@@ -99,6 +99,7 @@
         </div>
 
 
+        
 
         <div class="form-group">
             <label for="htype">نوع ملک:</label>
@@ -115,7 +116,11 @@
                         @endif
                     @endforeach
                 @else
-
+                    @foreach ($apartmentTypes as $type)
+                        @if ($type->atype_id == 1)
+                            <option value="{{ $type->id }}">{{ $type->name }}</option>
+                        @endif
+                    @endforeach
                 @endif
             </select>
         </div>

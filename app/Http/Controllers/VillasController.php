@@ -68,11 +68,12 @@ class VillasController extends Controller
             "status" => 1
         ]);
 
+        $documentTypes  = DocumentType::all();
+
         
         $states = json_decode(file_get_contents(public_path("json/states.json")));
         $cities = json_decode(file_get_contents(public_path("json/cities.json")));
 
-        $documentTypes  = DocumentType::all();
 
 
         $stateId = $data->get()[0]->state;

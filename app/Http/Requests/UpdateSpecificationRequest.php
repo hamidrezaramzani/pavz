@@ -32,8 +32,8 @@ class UpdateSpecificationRequest extends FormRequest
             "htype" => "numeric|required",
             "floors" => "numeric|required",
             "unites" => "numeric|required",
-            "year_of_construction" => "numeric|required",
-            "document_type" => "numeric|required",
+            "year_of_construction" => "numeric|nullable",
+            "document_type" => "numeric|nullable",
             "aid" => "numeric|required",
 
         ];

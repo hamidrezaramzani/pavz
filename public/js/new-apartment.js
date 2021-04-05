@@ -4,12 +4,6 @@ let pictures = new FormData();
 let deletedPictures = [];
 const cover = new FormData();
 
-$("#address-step").click(function () {
-    const option = $("#city").find("option")[0];
-    const lat = option.getAttribute("lat");
-    const long = option.getAttribute("long");
-    mymap.setView([lat, long]);
-});
 
 
 $("#atype").change(function (e) {
@@ -234,17 +228,7 @@ $("#specification-form").validate({
         },
     },
 });
-function getAllInputs(id) {
-    let inputs = [];
-    $(`${id} input`).each(function () {
-        inputs.push({
-            text: $(this).attr("text"),
-            name: $(this).attr("name"),
-            checked: $(this).prop("checked"),
-        });
-    });
-    return inputs;
-}
+
 $("#possibilities-form").validate({
     submitHandler: (form) => {
         const data = {
