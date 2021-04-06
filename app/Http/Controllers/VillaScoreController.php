@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rate;
 use App\Models\Villa;
 use App\Models\VillaScore;
 use Illuminate\Http\Request;
@@ -120,6 +121,15 @@ class VillaScoreController extends Controller
         $address = $address->avg("score");
 
 
+
+        
+        $rates = Rate::where([
+            "villa_id" => $id            
+        ]);
+
+        $rates = $rates->avg("score");
+
+
         return response([
             "accuracyOfContent" => $accuracyOfContent  , 
             "timelyDelivery" => $timelyDelivery , 
@@ -127,7 +137,7 @@ class VillaScoreController extends Controller
             "quality" => $quality , 
             "purity" => $purity , 
             "address" => $address , 
-
+            "rates" => $rates
         ],200);
     }
 }

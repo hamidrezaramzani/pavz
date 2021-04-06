@@ -7,6 +7,7 @@ use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ParkingController;
 use App\Http\Controllers\PictureController;
 use App\Http\Controllers\PoolController;
+use App\Http\Controllers\RateController;
 use App\Http\Controllers\RentPriceController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RuleController;
@@ -162,3 +163,8 @@ Route::get("/scores/get/{id}", [VillaScoreController::class, "getScores"]);
 
 // COMMENT ROUTES
 Route::post("/comment/new", [CommentController::class, "newComment"])->middleware("auth");
+
+
+// Rate 
+Route::post("/rate/set-score", [RateController::class, "setScore"])->middleware("auth");
+

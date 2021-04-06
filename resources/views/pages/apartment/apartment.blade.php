@@ -52,27 +52,9 @@
         }, 0);
 
 
-        $(".date-in").pDatepicker({
-            minDate: new persianDate().unix(),
-            initialValue: false
-        });
-
-
-
-        $(".date-out").pDatepicker({
-            minDate: new persianDate().unix(),
-            initialValue: false
-        });
-
-        $(document).ready(function() {
-
-
-
-            $(".my-rating").starRating({
+        $(".my-rating").starRating({
                 initialRating: 4,
                 starSize: 20,
             });
-        });
-
     </script>
 @endpush

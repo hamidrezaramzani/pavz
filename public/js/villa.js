@@ -27,10 +27,7 @@ $(".date-out").pDatepicker({
 });
 
 $(document).ready(function () {
-    $(".my-rating").starRating({
-        initialRating: 4,
-        starSize: 20,
-    });
+    
 
     function setScore(name, score) {
         const url = `/scores/${name}/${$("#id").val()}/${score}`;
@@ -70,6 +67,50 @@ $(document).ready(function () {
         method: "GET",
         url: "/scores/get/" + $("#id").val(),
         success: (response) => {
+            
+            $(".my-rating").starRating({
+                initialRating: response.rates,
+                starSize: 20,
+                callback : (score) => {
+                    $.ajax({
+                        method : "POST" , 
+                        url :"/rate/set-score" , 
+                        data : {
+                            score : score , 
+                            id : $("#id").val() , 
+                            _token : $("#token").val()
+                        } , 
+                        success: () => {
+                            Swal.fire({
+                                title: "انجام شد",
+                                text: "امتیاز ثبت شد",
+                                icon: "success",
+                                confirmButtonText: "باشه",
+                            });
+                        },
+                        error: (err) => {
+                            if (err.status == 401) {
+                                Swal.fire({
+                                    title: "خطا",
+                                    text: "برای امتیاز دادن باید به حساب خود ورود کنید",
+                                    icon: "error",
+                                    confirmButtonText: "باشه",
+                                });
+                                return;
+                            } else {
+                                Swal.fire({
+                                    title: "خطا",
+                                    text: "مشکلی در سرور وجود دارد",
+                                    icon: "error",
+                                    confirmButtonText: "باشه",
+                                });
+                            }
+                        },
+                    });
+                }
+            });
+
+
             $(".accuracy_of_content").starRating({
                 initialRating: response.accuracyOfContent,
                 starSize: 20,
@@ -120,6 +161,9 @@ $(document).ready(function () {
         },
     });
 });
+
+
+
 
 $("#comment-form").validate({
     submitHandler: () => {

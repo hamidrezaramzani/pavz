@@ -73,7 +73,7 @@ class AreaController extends Controller
             ["icon" => "fa fa-flag-checkered", "title" => "مرحله نهایی"],
         ];
         $pages = ["specification", "documents", "address", "pricing", "pictures", "finish"];
-        return view("pages.areas.edit-area", ["data" => $data, "states" => $states, "cities" => $cities, "documentTypes" => $documentTypes, "steps" => $formSteps, "pages" => $pages , "areaTypes" => $areaTypes]);
+        return view("pages.areas.edit-area", ["data" => $data, "states" => $states, "cities" => $cities, "documentTypes" => $documentTypes, "steps" => $formSteps, "pages" => $pages, "areaTypes" => $areaTypes]);
     }
 
     public function updateSpecification(UpdateAreaSpecificationRequest $request)
@@ -121,7 +121,7 @@ class AreaController extends Controller
     public function deleteArea($id = null)
     {
         $user = Auth::user();
-        $area = $user->areas()->where("id",$id);
+        $area = $user->areas()->where("id", $id);
         if ($area->count()) {
             if ($area->get()[0]->cover) {
                 unlink(public_path("covers") . "/" . $area->get()[0]->cover);
@@ -140,7 +140,47 @@ class AreaController extends Controller
 
     public function getSingleArea($id = null)
     {
-        return view("pages.areas.area");
-    }
 
+        if ($id == null) {
+            return redirect("/");
+        }
+        $data = Area::where([
+            ["id", $id] , 
+            ["status" , "published"]
+        ]);
+
+
+        
+        $states = json_decode(file_get_contents(public_path("json/states.json")));
+        $cities = json_decode(file_get_contents(public_path("json/cities.json")));
+
+
+
+
+        if($data->get()->count()){
+            $data = $data->get()[0];
+        }else{
+            return redirect("/");
+        }
+
+        $stateId = $data->get()[0]->state;
+        $state = array_filter($states, function ($value) use ($stateId) {
+            return $value->id == $stateId;
+        });
+
+
+        
+        $cityId = $data->get()[0]->city;
+        $city = array_filter($cities, function ($value) use ($cityId) {
+            return $value->id == $cityId;
+        });
+
+
+
+        return view("pages.areas.area" , [
+            "data" => $data , 
+            "city" => $city ,
+            "state" => $state
+        ]);
+    }
 }
