@@ -1,5 +1,6 @@
 @extends('layout.content' , ["title" => "اجاره و خرید ویلا زمین و آپارتمان و پیدا کردن پیمانکار های حرفه ای | پاوز"])
 @section('content')
+@include('pages.slideshow' , ["images" => $data->pictures()->get() , "folder" => "area_pictures"])
     @include('partials.navbar')
     @include('partials.home.header')
     <div class="container my-5">
@@ -9,9 +10,7 @@
                 @include("pages.areas.sections.main")
                 @include("pages.areas.sections.home")
                 @include("pages.areas.sections.prices")
-                @include("pages.areas.sections.address")
-                
-
+                @include("pages.areas.sections.address")            
             </div>
             <div class="col-12 col-md-4">            
                 @include("pages.user")
@@ -26,6 +25,7 @@
     <link rel="stylesheet" href="{{ asset('styles/persian-datepicker.min.css') }}" />
     <script src="{{ asset('js/aos.js') }}"></script>
     <script src="{{ asset('js/multi-animated-counter.js') }}"></script>
+    <script src="{{ asset('js/RBSlideshow.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/jquery.star-rating-svg.min.js') }}"></script>
     <script src="{{ asset('js/persian-date.min.js') }}"></script>
@@ -47,12 +47,17 @@
             mymap.invalidateSize(true);
         }, 0);
 
+        $(".show-more-images").click(function (e) {
+    e.preventDefault();
+    $(".slideshow").show();
+});
 
 
-            $(".my-rating").starRating({
-                initialRating: 4,
-                starSize: 20,
-            });
+$("#close-slideshow").click(function (e) {
+    $(".slideshow").hide();
+});
+
+
 
     </script>
 @endpush

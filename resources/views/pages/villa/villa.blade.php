@@ -1,10 +1,11 @@
 @extends('layout.content' , ["title" => "اجاره و خرید ویلا زمین و آپارتمان و پیدا کردن پیمانکار های حرفه ای | پاوز"])
 @section('content')
+@include('pages.slideshow' , ["images" => $data->pictures()->get() , "folder" => "villa_pictures"])
+
     @include('partials.navbar')
     @include('partials.home.header')
     <div class="container my-5">
         <div class="row justify-content-center villa-content">
-
             @include('partials.gallery' , ["images" => $data->pictures()->get() , "folder" => "villa_pictures"])
             <div class="col-12 col-md-8">
                 @include('pages.villa.sections.main' , ["data" => $data])
@@ -76,6 +77,7 @@
 @endsection
 @push('scripts')
     <link rel="stylesheet" href="{{ asset('styles/persian-datepicker.min.css') }}" />
+    <script src="{{ asset('js/RBSlideshow.js') }}"></script>
     <script src="{{ asset('js/aos.js') }}"></script>
     <script src="{{ asset('js/multi-animated-counter.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>

@@ -27,8 +27,6 @@ $(".date-out").pDatepicker({
 });
 
 $(document).ready(function () {
-    
-
     function setScore(name, score) {
         const url = `/scores/${name}/${$("#id").val()}/${score}`;
         $.ajax({
@@ -67,19 +65,18 @@ $(document).ready(function () {
         method: "GET",
         url: "/scores/get/" + $("#id").val(),
         success: (response) => {
-            
             $(".my-rating").starRating({
                 initialRating: response.rates,
                 starSize: 20,
-                callback : (score) => {
+                callback: (score) => {
                     $.ajax({
-                        method : "POST" , 
-                        url :"/rate/set-score" , 
-                        data : {
-                            score : score , 
-                            id : $("#id").val() , 
-                            _token : $("#token").val()
-                        } , 
+                        method: "POST",
+                        url: "/rate/set-score",
+                        data: {
+                            score: score,
+                            id: $("#id").val(),
+                            _token: $("#token").val(),
+                        },
                         success: () => {
                             Swal.fire({
                                 title: "انجام شد",
@@ -92,7 +89,8 @@ $(document).ready(function () {
                             if (err.status == 401) {
                                 Swal.fire({
                                     title: "خطا",
-                                    text: "برای امتیاز دادن باید به حساب خود ورود کنید",
+                                    text:
+                                        "برای امتیاز دادن باید به حساب خود ورود کنید",
                                     icon: "error",
                                     confirmButtonText: "باشه",
                                 });
@@ -107,9 +105,8 @@ $(document).ready(function () {
                             }
                         },
                     });
-                }
+                },
             });
-
 
             $(".accuracy_of_content").starRating({
                 initialRating: response.accuracyOfContent,
@@ -162,38 +159,36 @@ $(document).ready(function () {
     });
 });
 
-
-
-
 $("#comment-form").validate({
     submitHandler: () => {
         const data = {
             description: $("#description").val(),
-            villa_id: $("#id").val(),                        
+            villa_id: $("#id").val(),
             _token: $("#token").val(),
         };
 
         $.ajax({
-            method : "POST" , 
-            url : "/comment/new" , 
-            data  ,
-            beforeSend : () => {
-                $("#btn-comment").prop("disabled" , true);
+            method: "POST",
+            url: "/comment/new",
+            data,
+            beforeSend: () => {
+                $("#btn-comment").prop("disabled", true);
                 $("#comment-loading").show();
-            } ,
+            },
             success: () => {
-                $("#btn-comment").prop("disabled" , false);
+                $("#btn-comment").prop("disabled", false);
                 $("#comment-loading").hide();
-                $("#description").val("")
+                $("#description").val("");
                 Swal.fire({
                     title: "انجام شد",
-                    text: "نظر شما با موفقیت ثبت شد و بعد از تایید منتشر خواهد شد",
+                    text:
+                        "نظر شما با موفقیت ثبت شد و بعد از تایید منتشر خواهد شد",
                     icon: "success",
                     confirmButtonText: "باشه",
                 });
             },
             error: () => {
-                $("#btn-comment").prop("disabled" , false);
+                $("#btn-comment").prop("disabled", false);
                 $("#comment-loading").hide();
                 Swal.fire({
                     title: "خطا",
@@ -202,14 +197,12 @@ $("#comment-form").validate({
                     confirmButtonText: "باشه",
                 });
             },
-
-        })
-        
+        });
     },
     rules: {
         title: {
             required: true,
-        },        
+        },
         description: {
             required: true,
             minlength: 5,
@@ -218,10 +211,21 @@ $("#comment-form").validate({
     messages: {
         title: {
             required: "پر کردن این فیلد الزامی است",
-        },        
+        },
         description: {
             required: "پر کردن این فیلد الزامی است",
             minlength: "حداقل باید 5 کاراکتر داشته باشد",
         },
     },
 });
+
+$(".show-more-images").click(function (e) {
+    e.preventDefault();
+    $(".slideshow").show();
+});
+
+
+$("#close-slideshow").click(function (e) {
+    $(".slideshow").hide();
+});
+

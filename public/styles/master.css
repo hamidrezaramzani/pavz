@@ -2549,3 +2549,14 @@ input:disabled {
     padding-right: 10px;
     color: #888;
 }
+
+.slideshow {
+    display: none;
+}
+
+#close-slideshow {
+    z-index: 999999999999999999;
+    position: fixed;
+    top: 30px;
+    left: 30px;
+}

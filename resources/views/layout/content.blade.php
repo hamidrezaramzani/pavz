@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('styles/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/chart.min.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/leaflet.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/RBSlideshow.css') }}" />
 </head>
 
 <body>
