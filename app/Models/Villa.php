@@ -9,15 +9,15 @@ class Villa extends Model
 {
     use HasFactory;
     protected $casts = [
-        "heating_system" => "array" , 
-        "cooling_system" => "array" , 
-        "more_health_possibilities" , 
-        "courtyard" ,
-        "welfare_amenities" , 
-        "kitchen_facilities" 
+        "heating_system" => "array",
+        "cooling_system" => "array",
+        "more_health_possibilities",
+        "courtyard",
+        "welfare_amenities",
+        "kitchen_facilities"
     ];
 
-    protected $fillable = ["ads_type" , "user_id"];
+    protected $fillable = ["ads_type", "user_id"];
 
     public function rooms()
     {
@@ -38,8 +38,9 @@ class Villa extends Model
     }
 
 
-    public function pictures(){
-        return $this->morphMany(Picture::class , "pictureable");
+    public function pictures()
+    {
+        return $this->morphMany(Picture::class, "pictureable");
     }
 
 
@@ -49,20 +50,20 @@ class Villa extends Model
     }
 
 
-    
+
     public function rules()
     {
         return $this->hasOne(Rule::class);
     }
 
-    
+
     public function rentPrices()
     {
         return $this->hasOne(RentPrice::class);
     }
 
 
-        
+
     public function documents()
     {
         return $this->hasOne(Document::class);
@@ -82,5 +83,10 @@ class Villa extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function reserves()
+    {
+        return $this->hasMany(Reserve::class);
     }
 }

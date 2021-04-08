@@ -2560,3 +2560,11 @@ input:disabled {
     top: 30px;
     left: 30px;
 }
+
+.mbsc-calendar-title {
+    font-family: is;
+}
+
+.mbsc-calendar-cell-text {
+    font-family: is;
+}

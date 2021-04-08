@@ -9,6 +9,7 @@ use App\Http\Controllers\PictureController;
 use App\Http\Controllers\PoolController;
 use App\Http\Controllers\RateController;
 use App\Http\Controllers\RentPriceController;
+use App\Http\Controllers\ReserveController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RuleController;
 use App\Http\Controllers\SoldVillaPriceController;
@@ -167,4 +168,9 @@ Route::post("/comment/new", [CommentController::class, "newComment"])->middlewar
 
 // Rate 
 Route::post("/rate/set-score", [RateController::class, "setScore"])->middleware("auth");
+
+//  RESERVE VILLA
+Route::post("/reserve/new", [ReserveController::class, "newReserve"]);
+Route::get("/reserves/manage", [ReserveController::class, "getReserves"])->middleware("auth");
+Route::get("/reserve/set/{status}/{id}", [ReserveController::class, "setReserveStatus"])->middleware("auth");
 

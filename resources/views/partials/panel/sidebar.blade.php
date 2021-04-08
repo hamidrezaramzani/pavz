@@ -104,8 +104,8 @@
         </div>
 
         <div class="accordion-item">
-            <a href="/">
-                <img src="{{ asset('images/icons/svg/setting.svg') }}" alt="SETTING">
+            <a href="/reserves/manage">
+                <img src="{{ asset('images/icons/svg/setting.svg') }}" alt="manage reserves">
                 مدیریت رزرو ها
             </a>
         </div>
