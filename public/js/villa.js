@@ -419,3 +419,10 @@ $("#reserve-form").validate({
         },
     },
 });
+
+
+
+$(".saved-ads").click(function () {
+    const btn = $(this);
+    saveAds(btn , "villa");
+});
