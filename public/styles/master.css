@@ -2568,3 +2568,16 @@ input:disabled {
 .mbsc-calendar-cell-text {
     font-family: is;
 }
+
+.vip-advantages h4 {
+    font: 14px is;
+}
+
+.vip-notes {
+    font-size: 13px;
+}
+
+.price-text {
+    font: 14px is;
+    color: red;
+}

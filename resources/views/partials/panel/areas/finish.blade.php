@@ -7,9 +7,7 @@
             بعد از صحت اطمینان از اطلاعات آپارتمان آن را برای بررسی بفرستید. در زمان بررسی نمیتواند این بخش را تغییر
             دهید
         </div>
-        <br>
-        <br>
-
+        @include("partials.vip-advantage");
 
         @if ($data->status == 'not-completed')
             <button type="submit" class="btn btn-primary btn-sm is">ارسال برای بررسی و انتشار در سایت

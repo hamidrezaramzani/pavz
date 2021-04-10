@@ -115,7 +115,7 @@
         <div class="form-group">
             <label for="foundation">متراژ:</label>
             <input type="number" name="foundation" id="foundation" class="form-control"
-                placeholder="عنوان آگهی خود را وارد نمایید" value="{{ $data->foundation ?? null }}">
+                placeholder="متراژ زمین خود را وارد نمایید" value="{{ $data->foundation ?? null }}">
         </div>
 
 

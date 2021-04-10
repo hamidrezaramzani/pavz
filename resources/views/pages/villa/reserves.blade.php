@@ -43,10 +43,10 @@
                                                 <span class="text-warning">درخواست جدید</span>
                                                 @break
                                                 @case("confirm")
-                                                <span class="text-success">ثبت شد</span>
+                                                <span class="text-success">تایید شد</span>
                                                 @break
                                                 @case("reject")
-                                                <span class="text-danger">لغو شد</span>
+                                                <span class="text-danger">رد شد</span>
                                             @endswitch
                                         </td>
                                         <td width="10%">

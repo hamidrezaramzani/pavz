@@ -37,4 +37,10 @@ class Apartment extends Model
         return $this->hasOne(DocumentType::class , "id" , "document_type");
     }
 
+    public function saves()
+    {
+        return $this->morphMany(Save::class, "saveable");
+    }
+
+
 }

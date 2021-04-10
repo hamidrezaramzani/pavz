@@ -32,6 +32,8 @@ function saveAds(btn, type) {
             }
         },
         error: (err) => {
+            btn.prop("disabled", false);
+
             if (err.status == 401) {
                 Swal.fire({
                     title: "خطا",

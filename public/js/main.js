@@ -43,7 +43,9 @@ const showSection = (index) => {
 };
 
 function nextForm(form) {
-    const index = $(`#${form.id}`).parents("section").index();
+    const index = $(`#${form.getAttribute("id")}`)
+        .parents("section")
+        .index();
     const nextLi = $(".form-steps ul li").eq(index + 1);
     const hasClass = nextLi.hasClass("active");
     if (!hasClass) {
@@ -62,28 +64,26 @@ $.validator.addMethod(
 
 function getAllInputs(id) {
     let inputs = [];
-    $(`${id} input`).each(function () {                
+    $(`${id} input`).each(function () {
         inputs.push({
             text: $(this).attr("text"),
             name: $(this).attr("name"),
             checked: $(this).prop("checked"),
-            new : $(this).attr("data-new") ? true : false
+            new: $(this).attr("data-new") ? true : false,
         });
     });
     return inputs;
 }
 
-
 // https://vt.parsimap.com/comapi.svc/tile/parsimap/{x}/{y}/{z}.jpg?token=ee9e06b3-dcaa-4a45-a60c-21ae72dca0bb
 let lat = 35.6892;
-let long = 51.3890;
+let long = 51.389;
 let latlong = [lat, long];
 var mymap = L.map("mapid").setView([lat, long], 15);
-L.tileLayer(
-    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" , {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }
-).addTo(mymap);
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+}).addTo(mymap);
 
 setInterval(() => {
     mymap.invalidateSize(true);
@@ -97,8 +97,6 @@ mymap.on("click", function (e) {
     marker = L.marker(e.latlng).addTo(mymap);
 });
 
-
-
 function moveToSelectedCity() {
     const option = $("#city option:selected");
     if (option && option.value != 0) {
@@ -108,13 +106,12 @@ function moveToSelectedCity() {
     }
 }
 
-
 $("#address-step").click(function () {
-    const lat = $(this).attr('data-lat')
-    const long = $(this).attr('data-long')
+    const lat = $(this).attr("data-lat");
+    const long = $(this).attr("data-long");
     moveToSelectedCity();
-    marker = L.marker([lat , long]).addTo(mymap);
-})
+    marker = L.marker([lat, long]).addTo(mymap);
+});
 
 function setPriceInputsStatus(input, inputIds = []) {
     const isChecked = input.prop("checked");
@@ -134,10 +131,8 @@ $("#agreed_price").click(function (e) {
     setPriceInputsStatus($(this), ["total_price", "price_per_meter"]);
 });
 
-
-
 function removeCheckboxInput(e) {
-    e.closest(".form-group").remove()
+    e.closest(".form-group").remove();
 }
 
 $(".new-item").click(function () {
@@ -157,4 +152,18 @@ $(".new-item").click(function () {
     </div>
     `);
     }
+});
+
+$.validator.addMethod(
+    "selectRequired",
+    function (value, element, arg) {
+        return value != 0;
+    },
+    "لطفا انتخاب کنید"
+);
+
+$(".price-counter").keyup(function () {
+    const price = $(this).val();
+    const text = Num2persian(price);
+    $(this).parents(".form-group").find("span").text(text);
 });

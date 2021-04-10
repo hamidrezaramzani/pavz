@@ -44,6 +44,13 @@ class Villa extends Model
     }
 
 
+    
+    public function saves()
+    {
+        return $this->morphMany(Save::class, "saveable");
+    }
+
+
     public function specialPlaces()
     {
         return $this->hasMany(SpecialPlace::class);

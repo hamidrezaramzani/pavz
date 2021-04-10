@@ -145,21 +145,21 @@ class AreaController extends Controller
             return redirect("/");
         }
         $data = Area::where([
-            ["id", $id] , 
-            ["status" , "published"]
+            ["id", $id],
+            ["status", "published"]
         ]);
 
 
-        
+
         $states = json_decode(file_get_contents(public_path("json/states.json")));
         $cities = json_decode(file_get_contents(public_path("json/cities.json")));
 
 
 
 
-        if($data->get()->count()){
+        if ($data->get()->count()) {
             $data = $data->get()[0];
-        }else{
+        } else {
             return redirect("/");
         }
 
@@ -169,7 +169,7 @@ class AreaController extends Controller
         });
 
 
-        
+
         $cityId = $data->get()[0]->city;
         $city = array_filter($cities, function ($value) use ($cityId) {
             return $value->id == $cityId;
@@ -177,10 +177,15 @@ class AreaController extends Controller
 
 
 
-        return view("pages.areas.area" , [
-            "data" => $data , 
-            "city" => $city ,
-            "state" => $state
+        $saved = 0;
+        if (Auth::check() && $data->saves()->where("user_id", Auth::id())->get()->count()) {
+            $saved = 1;
+        }
+        return view("pages.areas.area", [
+            "data" => $data,
+            "city" => $city,
+            "state" => $state,
+            "saved" => $saved
         ]);
     }
 }

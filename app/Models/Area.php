@@ -31,4 +31,9 @@ class Area extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function saves()
+    {
+        return $this->morphMany(Save::class, "saveable");
+    }
 }

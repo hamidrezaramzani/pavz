@@ -90,5 +90,6 @@
     <script src="{{ asset('js/additional-methods.min.js') }}"></script>
     <script src="{{ asset('js/moment.js') }}"></script>
     <script src="{{ asset('js/persian-date.min.js') }}"></script>
+    <script src="{{ asset('js/save.js') }}"></script>
     <script src="{{ asset('js/villa.js') }}"></script>
 @endpush

@@ -36,6 +36,7 @@
     <script src="{{ asset('js/persian-date.min.js') }}"></script>
     <script src="{{ asset('js/persian-datepicker.min.js') }}"></script>
     <script src="{{ asset('js/leaflet.js') }}"></script>
+    <script src="{{ asset('js/save.js') }}"></script>
 
     <script>
         let lat = $("#lat").val();
@@ -64,6 +65,13 @@
 
         $("#close-slideshow").click(function(e) {
             $(".slideshow").hide();
+        });
+
+
+
+        $(".saved-ads").click(function() {
+            const btn = $(this);
+            saveAds(btn, "apartment");
         });
 
     </script>

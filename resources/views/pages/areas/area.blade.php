@@ -1,6 +1,6 @@
 @extends('layout.content' , ["title" => "اجاره و خرید ویلا زمین و آپارتمان و پیدا کردن پیمانکار های حرفه ای | پاوز"])
 @section('content')
-@include('pages.slideshow' , ["images" => $data->pictures()->get() , "folder" => "area_pictures"])
+    @include('pages.slideshow' , ["images" => $data->pictures()->get() , "folder" => "area_pictures"])
     @include('partials.navbar')
     @include('partials.home.header')
     <div class="container my-5">
@@ -10,9 +10,9 @@
                 @include("pages.areas.sections.main")
                 @include("pages.areas.sections.home")
                 @include("pages.areas.sections.prices")
-                @include("pages.areas.sections.address")            
+                @include("pages.areas.sections.address")
             </div>
-            <div class="col-12 col-md-4">            
+            <div class="col-12 col-md-4">
                 @include("pages.user")
             </div>
         </div>
@@ -31,6 +31,7 @@
     <script src="{{ asset('js/persian-date.min.js') }}"></script>
     <script src="{{ asset('js/persian-datepicker.min.js') }}"></script>
     <script src="{{ asset('js/leaflet.js') }}"></script>
+    <script src="{{ asset('js/save.js') }}"></script>
 
     <script>
         let lat = $("#lat").val();
@@ -42,22 +43,31 @@
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }
         ).addTo(mymap);
-        L.marker({lat  , lng : long}).addTo(mymap);
+        L.marker({
+            lat,
+            lng: long
+        }).addTo(mymap);
         setInterval(() => {
             mymap.invalidateSize(true);
         }, 0);
 
-        $(".show-more-images").click(function (e) {
-    e.preventDefault();
-    $(".slideshow").show();
-});
+        $(".show-more-images").click(function(e) {
+            e.preventDefault();
+            $(".slideshow").show();
+        });
 
 
-$("#close-slideshow").click(function (e) {
-    $(".slideshow").hide();
-});
+        $("#close-slideshow").click(function(e) {
+            $(".slideshow").hide();
+        });
+
+        
 
 
+        $(".saved-ads").click(function() {
+            const btn = $(this);
+            saveAds(btn, "area");
+        });
 
     </script>
 @endpush

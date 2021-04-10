@@ -12,11 +12,14 @@ use App\Http\Controllers\RentPriceController;
 use App\Http\Controllers\ReserveController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RuleController;
+use App\Http\Controllers\SaveController;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\SoldVillaPriceController;
 use App\Http\Controllers\SpecialPlaceController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VillasController;
 use App\Http\Controllers\VillaScoreController;
+use App\Http\Controllers\VipController;
 use App\Models\Parking;
 use App\Models\Room;
 use App\Models\VillaScore;
@@ -138,16 +141,20 @@ Route::post("/pictures/villa/cover-update", [PictureController::class, "updateVi
 Route::post("/pictures/villa/pictures-update", [PictureController::class, "updateVillaPictures"])->middleware("auth");
 Route::post("/pictures/apartment/pictures-update", [PictureController::class, "updateApartmentPictures"])->middleware("auth");
 Route::post("/pictures/area/pictures-update", [PictureController::class, "updateAreaPictures"])->middleware("auth");
-
 Route::post("/pictures/area/cover-update", [PictureController::class, "updateAreaCover"])->middleware("auth");
 Route::post("/pictures/apartment/cover-update", [PictureController::class, "updateApartmentCover"])->middleware("auth");
+Route::post("/pictures/shop/cover-update", [PictureController::class, "updateShopCover"])->middleware("auth");
+Route::post("/pictures/shop/pictures-update", [PictureController::class, "updateShopPictures"])->middleware("auth");
+
+
+
 Route::get("/pictures/villa/get/{id}", [PictureController::class, "getVillaPictures"])->middleware("auth");
 Route::get("/pictures/apartment/get/{id}", [PictureController::class, "getApartmentPictures"])->middleware("auth");
 Route::get("/pictures/area/get/{id}", [PictureController::class, "getAreaPictures"])->middleware("auth");
+Route::get("/pictures/shop/get/{id}", [PictureController::class, "getShopPictures"])->middleware("auth");
 
 //  DOCUMENT ROUTES
 Route::post("/document/update", [DocumentController::class, "updateDocument"])->middleware("auth");
-
 
 //  SOLD VILLA PRICES
 Route::post("/sold-villa-prices/update", [SoldVillaPriceController::class, "updatePrice"])->middleware("auth");
@@ -174,3 +181,20 @@ Route::post("/reserve/new", [ReserveController::class, "newReserve"]);
 Route::get("/reserves/manage", [ReserveController::class, "getReserves"])->middleware("auth");
 Route::get("/reserve/set/{status}/{id}", [ReserveController::class, "setReserveStatus"])->middleware("auth");
 
+
+
+// SHOP ROUTES
+Route::get("/shop/new", [ShopController::class, "newShop"])->middleware("auth");
+Route::get("/shop/edit/{id}", [ShopController::class, "editShop"])->middleware("auth");
+Route::post("/shop/create", [ShopController::class, "createShop"])->middleware("auth");
+Route::post("/shop/update/specification", [ShopController::class, "updateSpecification"])->middleware("auth");
+Route::post("/shop/update/possibilities", [ShopController::class, "updatePossibilities"])->middleware("auth");
+Route::post("/shop/update/address", [ShopController::class, "updateAddress"])->middleware("auth");
+Route::post("/shop/update/rent-pricing", [ShopController::class, "updateRentPricing"])->middleware("auth");
+Route::post("/shop/update/sold-pricing", [ShopController::class, "updateSoldPricing"])->middleware("auth");
+Route::get("/shop/set-status/{id}", [ShopController::class, "updateShopStatus"])->middleware("auth");
+
+// Vip ROUTES
+Route::get("/vip/buy", [VipController::class, "newVip"])->middleware("auth");
+// SAVE ROUTES
+Route::get("/save/{type}/{id}", [SaveController::class, "saveAds"])->middleware("auth");

@@ -16,6 +16,6 @@ class DatabaseSeeder extends Seeder
     {
      
         // $this->call(VillaTypeSeeder::class);        
-        $this->call(DocumentTypesSeeder::class);        
+        // $this->call(DocumentTypesSeeder::class);        
     }
 }

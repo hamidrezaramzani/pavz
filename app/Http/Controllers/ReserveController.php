@@ -29,9 +29,10 @@ class ReserveController extends Controller
 
     public function setReserveStatus($status, $id)
     {
-        if ($status != "confirm" || $status != "reject") {
+        if ($status != "confirm" && $status != "reject") {
             return redirect("/reserves/manage");
         }
+
         Reserve::where("id", $id)->update(["status" => $status]);
         // sms beraye oun yaro mire
         return redirect("/reserves/manage");

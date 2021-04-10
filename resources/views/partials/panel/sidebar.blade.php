@@ -22,7 +22,7 @@
         <div class="accordion-item">
             <a href="/panel">
                 <img src="{{ asset('images/icons/svg/home.svg') }}" alt="HOME SVG">
-                خانه
+                پیشخوان
             </a>
 
         </div>
@@ -103,6 +103,29 @@
             </ul>
         </div>
 
+
+        
+        <div class="accordion-item">
+            <button>
+                <img src="{{ asset('images/icons/svg/shop.svg') }}" alt="AREA SVG">
+                مدیریت مغازه ها
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <ul>
+                <li>
+                    <a href="/shop/new">
+                        <i class="far fa-circle"></i>
+                        ثبت مغازه جدید</a>
+                </li>
+                <li>
+                    <a href="/shop/manage">
+                        <i class="far fa-circle"></i>
+                        نمایش همه مغازه ها</a>
+                </li>
+            </ul>
+        </div>
+
+
         <div class="accordion-item">
             <a href="/reserves/manage">
                 <img src="{{ asset('images/icons/svg/setting.svg') }}" alt="manage reserves">
@@ -118,6 +141,34 @@
         </div>
 
 
+
+        <div class="accordion-item">
+            <button>
+                <img src="{{ asset('images/icons/svg/money.svg') }}" alt="AREA SVG">
+                بخش مالی
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <ul>
+                <li>
+                    <a href="/vip/status">
+                        <i class="far fa-circle"></i>
+                        وضعیت حساب ویژه
+                    </a>
+                </li>
+                <li>
+                    <a href="/vip/buy">
+                        <i class="far fa-circle"></i>
+                        خرید اشتراک حساب ویژه
+                    </a>
+                </li>
+                <li>
+                    <a href="/vip/factories">
+                        <i class="far fa-circle"></i>
+                        فاکتور های خرید 
+                    </a>
+                </li>
+            </ul>
+        </div>
 
 
         <div class="accordion-item">

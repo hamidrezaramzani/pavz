@@ -50,7 +50,19 @@
             </div>
 
             <div class="col-11 col-md-2">
-                Enamad Logo
+                <style>
+                    #zarinpal {
+                        margin: auto
+                    }
+
+                    #zarinpal img {
+                        width: 80px;
+                    }
+
+                </style>
+                <div id="zarinpal">
+                    <script src="https://www.zarinpal.com/webservice/TrustCode" type="text/javascript"></script>
+                </div>
             </div>
         </div>
         <br>
@@ -140,7 +152,7 @@
 
                     <li>
                         <a href="">
-                          بهترین خانه برای اجاره کدام است
+                            بهترین خانه برای اجاره کدام است
                         </a>
                     </li>
 
@@ -152,7 +164,7 @@
 
                     <li>
                         <a href="">
-نکات مهم در ثبت آگهی
+                            نکات مهم در ثبت آگهی
                         </a>
                     </li>
 
@@ -167,7 +179,7 @@
 
                     <li>
                         <a href="">
-                          قوانین و مقررات
+                            قوانین و مقررات
                         </a>
                     </li>
 
@@ -179,7 +191,7 @@
 
                     <li>
                         <a href="">
-تماس با ما
+                            تماس با ما
                         </a>
                     </li>
 
@@ -190,7 +202,7 @@
 
         <div class="row justify-content-center">
             <div class="col-12">
-                <p> ©  تمامی حقوق برای پاوز محفوظ است و هرگونه کپی برداری پیگرد قانونی دارد</p>
+                <p> © تمامی حقوق برای پاوز محفوظ است و هرگونه کپی برداری پیگرد قانونی دارد</p>
             </div>
         </div>
     </div>

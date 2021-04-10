@@ -94,13 +94,19 @@ class VillasController extends Controller
         }
 
         
+        $saved = 0;
+        if (Auth::check() && $data->get()[0]->saves()->where("user_id" , Auth::id())->get()->count()) {
+            $saved = 1;
+        }
 
+        // dd(Villa::find($id)->saves()->get()->count());
         return view("pages.villa.villa" , [
             "data" => $data->get()[0] , 
             "state" => $state  , 
             "city" => $city , 
             "documentTypes" => $documentTypes , 
-            "comments" => $comments->get()
+            "comments" => $comments->get() , 
+            "saved" => $saved
         ]);
     }
 

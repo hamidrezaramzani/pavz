@@ -9,6 +9,7 @@
         </div>
         <br>
         <br>
+        @include("partials.vip-advantage");
 
 
         @if ($data->status == 'not-completed')

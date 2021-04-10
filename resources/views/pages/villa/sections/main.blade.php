@@ -1,7 +1,8 @@
 <div class="villa-info-item">
     <h2>
         {{$data->title}}
-        <div class="my-rating"></div>
+        <div class="my-rating"></div>&nbsp;&nbsp;
+        
     </h2>
     <h5>
         <i class="fa fa-map-marker" aria-hidden="true"></i>
