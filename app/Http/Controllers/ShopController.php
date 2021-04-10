@@ -86,7 +86,7 @@ class ShopController extends Controller
             "state" => [$data->state, $cities, $states],
             "data" => $data,
             "documentTypes" => $documentTypes,
-            "steps" => $formSteps , 
+            "steps" => $formSteps,
             "forms" => $forms
         ]);
     }
@@ -141,5 +141,33 @@ class ShopController extends Controller
             ]);
         }
         return response(["message" => "status updated"], 200);
+    }
+
+
+    public function manageShops()
+    {
+        $shops = Shop::where("user_id", Auth::id());
+
+        return view("pages.shop.manage-shops", ["data" => $shops->get()]);
+    }
+
+    public function deleteShop($id)
+    {
+        $user = Auth::user();
+        $shop = $user->shops()->where("id", $id);
+        if ($shop) {
+            if ($shop->get()[0]->cover) {
+                unlink(public_path("covers") . "/" . $shop->get()[0]->cover);
+            }
+            $pictures = Shop::find($id)->pictures()->get();
+            $shop->delete();
+            foreach ($pictures as $picture) {
+                $picture->delete();
+                unlink(public_path("shop_pictures") . "/" . $picture->url);
+            }
+            return response(["message" => "shop deleted"], 200);
+        } else {
+            return response(["message" => "shop not found"], 400);
+        }
     }
 }

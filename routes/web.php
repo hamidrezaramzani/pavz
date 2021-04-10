@@ -193,6 +193,8 @@ Route::post("/shop/update/address", [ShopController::class, "updateAddress"])->m
 Route::post("/shop/update/rent-pricing", [ShopController::class, "updateRentPricing"])->middleware("auth");
 Route::post("/shop/update/sold-pricing", [ShopController::class, "updateSoldPricing"])->middleware("auth");
 Route::get("/shop/set-status/{id}", [ShopController::class, "updateShopStatus"])->middleware("auth");
+Route::get("/shop/manage", [ShopController::class, "manageShops"])->middleware("auth");
+Route::get("/shop/delete/{id}", [ShopController::class, "deleteShop"])->middleware("auth");
 
 // Vip ROUTES
 Route::get("/vip/buy", [VipController::class, "newVip"])->middleware("auth");
