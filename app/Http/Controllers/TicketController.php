@@ -28,9 +28,16 @@ class TicketController extends Controller
         }
 
         $data["attach"] = $fileName;
-        $data["user_id"] = Auth::id();     
-        
+        $data["user_id"] = Auth::id();
+
         Ticket::create($data);
         return response(["message" => "ticket created"]);
+    }
+
+
+    public function manageTickets()
+    {
+        $data = Ticket::where("user_id", Auth::id());
+        return view("pages.ticket.manage", ["data" => $data->get()]);
     }
 }

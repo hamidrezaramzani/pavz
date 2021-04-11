@@ -208,3 +208,4 @@ Route::get("/save/{type}/{id}", [SaveController::class, "saveAds"])->middleware(
 // TICKETS
 Route::get("/ticket/new", [TicketController::class, "newTicket"])->middleware("auth");
 Route::post("/ticket/create", [TicketController::class, "createTicket"])->middleware("auth");
+Route::get("/ticket/manage", [TicketController::class, "manageTickets"])->middleware("auth");
