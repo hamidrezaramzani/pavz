@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Apartment;
 use App\Models\Area;
 use App\Models\Save;
+use App\Models\Shop;
 use App\Models\Villa;
 use Hamcrest\Core\IsSame;
 use Illuminate\Http\Request;
@@ -50,6 +51,11 @@ class SaveController extends Controller
             case "area": {
                     $area = Area::find($id);
                     return $this->save($area);
+                }
+                break;
+            case "shop": {
+                    $shop = Shop::find($id);
+                    return $this->save($shop);
                 }
                 break;
         };

@@ -195,6 +195,7 @@ Route::post("/shop/update/sold-pricing", [ShopController::class, "updateSoldPric
 Route::get("/shop/set-status/{id}", [ShopController::class, "updateShopStatus"])->middleware("auth");
 Route::get("/shop/manage", [ShopController::class, "manageShops"])->middleware("auth");
 Route::get("/shop/delete/{id}", [ShopController::class, "deleteShop"])->middleware("auth");
+Route::get("/shop/{id}", [ShopController::class, "getShop"]);
 
 // Vip ROUTES
 Route::get("/vip/buy", [VipController::class, "newVip"])->middleware("auth");

@@ -71,7 +71,7 @@ class ShopController extends Controller
         $formSteps = [
             ["icon" => "fa fa-file", "title" => "اطلاعات کلی"],
             ["icon" => "fa fa-check", "title" => "امکانات مغازه"],
-            ["icon" => "fa fa-address-card", "title" => "آدرس", "id" => "step-address"],
+            ["icon" => "fa fa-address-card", "title" => "آدرس", "id" => "address-step" , "lat" => $data->lat , "long" => $data->long],
             ["icon" => "fa fa-dollar-sign", "title" => "قیمت گذاری"],
             ["icon" => "fa fa-image", "title" => "تصاویر ملک"],
             ["icon" => "fa fa-flag-checkered", "title" => "مرحله نهایی"],
@@ -170,4 +170,60 @@ class ShopController extends Controller
             return response(["message" => "shop not found"], 400);
         }
     }
+
+    public function getShop($id = null)
+    {
+        
+        if ($id == null) {
+            return redirect("/");
+        }
+        $data = Shop::where([
+            ["id", $id],
+            ["status", "published"]
+        ]);
+
+
+        
+
+
+        if ($data->get()->count() == 0) {
+            return redirect("/");
+        } else {
+            $data = $data->get()[0];
+        }
+
+
+        $states = json_decode(file_get_contents(public_path("json/states.json")));
+        $cities = json_decode(file_get_contents(public_path("json/cities.json")));
+
+
+
+        $stateId = $data->get()[0]->state;
+        $state = array_filter($states, function ($value) use ($stateId) {
+            return $value->id == $stateId;
+        });
+
+
+
+        $cityId = $data->get()[0]->city;
+        $city = array_filter($cities, function ($value) use ($cityId) {
+            return $value->id == $cityId;
+        });
+
+
+        $saved = 0;
+        if (Auth::check() && $data->saves()->where("user_id", Auth::id())->get()->count()) {
+            $saved = 1;
+        }
+        
+
+
+        return view("pages.shop.shop", [
+            "data" =>  $data,
+            "state" => $state,
+            "city" => $city , 
+            "saved" => $saved
+        ]);
+    }
+
 }

@@ -43,12 +43,12 @@
 
         @foreach ($steps as $key => $item)
             @if ($data->level >= $key)
-            <li class="active" id="{{$item['id'] ?? null}}">
+            <li class="active" id="{{$item['id'] ?? null}}" data-lat="{{$item['lat'] ?? null}}" data-long="{{$item['long'] ?? null}}">
                 <i class="{{ $item['icon'] }}"></i>
                 <span>{{ $item['title'] }}</span>
             </li>        
             @else
-            <li id="{{$item['id'] ?? null}}">
+            <li id="{{$item['id'] ?? null}}" data-lat="{{$item['lat'] ?? null}}" data-long="{{$item['long'] ?? null}}">
                 <i class="{{ $item['icon'] }}"></i>
                 <span>{{ $item['title'] }}</span>
             </li>        

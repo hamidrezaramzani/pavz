@@ -8,10 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class Shop extends Model
 {
     use HasFactory;
-    protected $fillable = ["user_id" , "ads_type"];
+    protected $fillable = ["user_id", "ads_type"];
     public function pictures()
     {
-        return $this->morphMany(Picture::class , "pictureable");                
+        return $this->morphMany(Picture::class, "pictureable");
     }
 
+    public function saves()
+    {
+        return $this->morphMany(Save::class, "saveable");
+    }
+    public function document()
+    {
+        return $this->hasOne(DocumentType::class, "id", "document_type");
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
