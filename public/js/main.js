@@ -167,3 +167,5 @@ $(".price-counter").keyup(function () {
     const text = Num2persian(price);
     $(this).parents(".form-group").find("span").text(text);
 });
+
+

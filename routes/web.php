@@ -16,12 +16,14 @@ use App\Http\Controllers\SaveController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\SoldVillaPriceController;
 use App\Http\Controllers\SpecialPlaceController;
+use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VillasController;
 use App\Http\Controllers\VillaScoreController;
 use App\Http\Controllers\VipController;
 use App\Models\Parking;
 use App\Models\Room;
+use App\Models\Ticket;
 use App\Models\VillaScore;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Auth;
@@ -201,3 +203,8 @@ Route::get("/shop/{id}", [ShopController::class, "getShop"]);
 Route::get("/vip/buy", [VipController::class, "newVip"])->middleware("auth");
 // SAVE ROUTES
 Route::get("/save/{type}/{id}", [SaveController::class, "saveAds"])->middleware("auth");
+
+
+// TICKETS
+Route::get("/ticket/new", [TicketController::class, "newTicket"])->middleware("auth");
+Route::post("/ticket/create", [TicketController::class, "createTicket"])->middleware("auth");

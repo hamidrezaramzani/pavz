@@ -20,7 +20,6 @@
 
         <div class="form-group">
             <label for="state">استان:</label>
-
             <select name="state" id="state" name="state" class="form-control drafted_input">
                 @if ($data->state)
                     @foreach ($states as $item)

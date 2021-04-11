@@ -179,13 +179,19 @@
             </button>
             <ul>
                 <li>
-                    ثبت ویلای جدید
+                    <a href="/ticket/new">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        تیکت جدید
+                    </a>
                 </li>
+
                 <li>
-                    نمایش ویلاهای من
+                    <a href="/ticket/manage">
+                        <i class="far fa-circle"></i>
+                        تیکت های من
+                    </a>
                 </li>
-            </ul>
-        </div>
+            </ul>        </div>
 
 
         <div class="accordion-item">
