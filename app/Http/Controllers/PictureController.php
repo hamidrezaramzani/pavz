@@ -16,22 +16,23 @@ class PictureController extends Controller
     {
         $id = $request->get("id");
         $villa = Villa::where("id", $id);
-        $level = $villa->get()[0]->level;
+        $villa = $villa->get()[0];
+
+        $level = $villa->level;
         $VillaController = new VillasController();
         $VillaController->updateLevel($level, $request->get("level"), $villa);
 
+
+
         if ($request->file("cover")) {
             $fileName = time() . '.' . $request->file("cover")->extension();
-            $villa = Villa::find($id);
             if ($villa->cover) {
                 unlink(public_path("covers/$villa->cover"));
             }
             $request->file("cover")->move(public_path("covers"), $fileName);
-            $villa->update([
+            Villa::where("id", $id)->update([
                 "cover" => $fileName
             ]);
-
-
             return response(["messgae" => "cover updated"], 200);
         }
     }
@@ -155,7 +156,7 @@ class PictureController extends Controller
             }
             $request->file("cover")->move(public_path("covers"), $fileName);
             $apartment = Apartment::where("id", $id);
-            $apartment->update([
+            Apartment::where("id", $id)->update([
                 "cover" => $fileName,
                 "level" => $request->get("level") > $apartment->get()[0]->level ? $request->get("level") : $apartment->get()[0]->level
             ]);
@@ -175,8 +176,7 @@ class PictureController extends Controller
                 unlink(public_path("covers/$area->cover"));
             }
             $request->file("cover")->move(public_path("covers"), $fileName);
-            $area = Area::where("id", $id);
-            $area->update([
+            Area::where("id", $id)->update([
                 "cover" => $fileName,
                 "level" => $request->get("level") > $area->get()[0]->level ? $request->get("level") : $area->get()[0]->level
             ]);

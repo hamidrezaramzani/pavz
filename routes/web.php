@@ -13,6 +13,7 @@ use App\Http\Controllers\ReserveController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RuleController;
 use App\Http\Controllers\SaveController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\SoldVillaPriceController;
 use App\Http\Controllers\SpecialPlaceController;
@@ -209,3 +210,11 @@ Route::get("/save/{type}/{id}", [SaveController::class, "saveAds"])->middleware(
 Route::get("/ticket/new", [TicketController::class, "newTicket"])->middleware("auth");
 Route::post("/ticket/create", [TicketController::class, "createTicket"])->middleware("auth");
 Route::get("/ticket/manage", [TicketController::class, "manageTickets"])->middleware("auth");
+
+
+// SEARCH
+Route::get("/search/locations/{text}", [SearchController::class , "getLocations"]);
+Route::get("/search/get-all/{type}", [SearchController::class , "getAllData"]);
+
+Route::get("/search", [SearchController::class , "getSearchData"]);
+

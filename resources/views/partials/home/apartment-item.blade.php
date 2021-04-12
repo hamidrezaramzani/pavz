@@ -1,63 +1,78 @@
-<div class="villa-item" data-aos="fade-right">
+<div class="villa-item" data-aos="zoom-in">
     <div class="villa-item-content">
-        <a href="/apartment/1">
-        <div class="villa-item-img">
-            <div class="my-rating"></div>
-            <img src="{{ asset('images/villa.jpg') }}" alt="this is villa alt test">
-            <div class="vip-lable">ویژه</div>
-            <div class="type-lable">خرید</div>
-        </div>
-        <div class="villa-top-info">
-            <div class="w-50">
-                <span>
-                    مازندران - رامسر
-                    <i class="fas fa-location-arrow"></i>
-                </span>
+        <a href="/apartment/{{$item->id}}">
+            <div class="villa-item-img">
+
+                <img src="{{ asset('covers/' . $item->cover) }}" alt="this is villa alt test">
+                @if ($item['is-vip'])
+                    <div class="vip-lable">ویژه</div>
+                @else
+                    <div class="normal-lable">عادی</div>
+
+                @endif
+                <div class="type-lable">{{ $item->ads_type == 2 ? 'اجاره' : 'فروش' }}</div>
             </div>
-            <div class="w-50">
+            <div class="villa-top-info">
+                <div class="w-50">
+                    <span>
+                        <i class="fas fa-map-marker"></i>
+                        مازندران - رامسر
+                    </span>
+                </div>
+                <div class="w-50">
+                    <ul>
+                        <li>
+                            <div class="my-rating"></div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <h2>{{ $item->title }}</h2>
+            <p>
+                @if ($item->ads_type == 2)
+                    {{ $item->mortgage }}
+                    تومان
+                    <span>/ رهن</span>
+                @else
+                    @if ($item->agreed_price)
+                        قیمت توافقی
+                    @else
+                        {{ $item->total_price }}
+
+                    @endif
+                @endif
+
+            </p>
+
+
+            <div class="villa-properties">
                 <ul>
                     <li>
-                        <button><i class="fa fa-heart text-danger"></i></button>
+                        <i class="fa fa-hotel"></i>
+                        {{ $item->floors }} طبقه
                     </li>
+
                     <li>
-                        <button><i class="fa  fa-balance-scale text-secondary"></i></button>
+                        <i class="fa fa-chart-area"></i>
+                        {{ $item->foundation }} متر
+                    </li>
+
+                    <li>
+                        <i class="fa fa-home"></i>
+                        {{ $item->unites }} واحد
+                    </li>
+
+
+                    <li>
+                        <i class="fa fa-users"></i>
+                        {{ $item->accountType->name }}
                     </li>
                 </ul>
             </div>
 
-        </div>
-        <h2>خرید آپارتمان 3 خوابه با قیمت عالی</h2>
-        <p>
-
-            قیمت توافقی
-        </p>
-
-
-        <div class="villa-properties">
-            <ul>
-                <li>
-                    <i class="fa fa-hotel"></i>
-                    4 اتاق
-                </li>
-
-                <li>
-                    <i class="fa fa-bed"></i>
-                    2 تخت خواب
-                </li>
-
-                <li>
-                    <i class="fa fa-chart-area"></i>
-                    80 متر زیر بنا
-                </li>
-
-
-                <li>
-                    <i class="fa fa-users"></i>
-                    مسکونی  
-                </li>
-            </ul>
-        </div>
-    </a>
+        </a>
     </div>
+
 
 </div>

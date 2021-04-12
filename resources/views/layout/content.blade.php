@@ -29,6 +29,7 @@
 <script src="{{ asset('js/popper.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.js') }}"></script>
+<script src="{{ asset('js/all.js') }}"></script>
 @stack('scripts')
 
 </html>

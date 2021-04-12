@@ -10,7 +10,7 @@
                     <div class="normal-lable">عادی</div>
 
                 @endif
-                <div class="type-lable">فروش</div>
+                <div class="type-lable">{{ $item->ads_type == 2 ? 'اجاره' : 'فروش' }}</div>
             </div>
             <div class="villa-top-info">
                 <div class="w-50">
@@ -22,7 +22,7 @@
                 <div class="w-50">
                     <ul>
                         <li>
-                            <div class="my-rating"></div>
+                            <div class="my-rating-{{$item->id}}"></div>
                         </li>
                     </ul>
                 </div>
@@ -30,8 +30,19 @@
             </div>
             <h2>{{ $item->title }}</h2>
             <p>
-                {{ $item->total_price }}
-                تومان
+                @if ($item->ads_type == 2)
+                    {{ $item->mortgage }}
+                    تومان
+                    <span>/ رهن</span>
+                @else
+                    @if ($item->agreed_price)
+                        قیمت توافقی
+                    @else
+                        {{ $item->total_price }}
+
+                    @endif
+                @endif
+
             </p>
 
 
@@ -39,24 +50,19 @@
                 <ul>
                     <li>
                         <i class="fa fa-hotel"></i>
-                        {{ $item->count_of_border }} بر
+                        {{ $item->border_width }} متر بر
                     </li>
 
                     <li>
                         <i class="fa fa-chart-area"></i>
-                        {{ $item->foundation }} متر متراژ
+                        {{ $item->foundation }} متر
                     </li>
 
                     <li>
                         <i class="fa fa-home"></i>
-                        {{$item->main_border_width}} متر بر اصلی
+                        {{ $item->height }} متر ارتفاع
                     </li>
 
-
-                    <li>
-                        <i class="fa fa-users"></i>
-                        {{$item->areaType->name}}
-                    </li>
                 </ul>
             </div>
 
