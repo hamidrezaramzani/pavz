@@ -420,9 +420,123 @@ $("#reserve-form").validate({
     },
 });
 
-
-
 $(".saved-ads").click(function () {
     const btn = $(this);
-    saveAds(btn , "villa");
+    saveAds(btn, "villa");
+});
+
+let commentId = null;
+
+$(".answer-comment-btn").click(function () {
+    const parent = $(this).parents("li");
+    const text = parent.find("p").text().trim();
+    commentId = parent.find(".comment-id-input").val();
+    $("#user-comment-text").text(text);
+    $("#answer-comment-modal").modal("show");
+});
+
+$("#answer-form").validate({
+    submitHandler: () => {
+        const data = {
+            description: $("#text").val(),
+            comment_id: commentId,
+            _token: $("#token").val(),
+        };
+
+        $.ajax({
+            url: "/comment-answer/new",
+            data,
+            method: "POST",
+            beforeSend: () => {
+                $("#new-answer-loading").prop("disabled", true);
+                $("#new-answer-loading").show();
+            },
+            success: () => {
+                $("#new-answer-loading").prop("disabled", false);
+                $("#new-answer-loading").hide();
+                Swal.fire({
+                    title: "انجام شد",
+                    text: "پاسخ این نظر داده شد و بعد از بررسی تایید خواهد شد",
+                    icon: "success",
+                    confirmButtonText: "باشه",
+                    onClose: () => {
+                        $("#text").val("");
+                        $("#answer-comment-modal").modal("hide");
+                    },
+                });
+            },
+            error: () => {
+                $("#new-answer-loading").prop("disabled", false);
+                $("#new-answer-loading").hide();
+                Swal.fire({
+                    title: "خطا",
+                    text: "مشکلی در سرور وجود دارد",
+                    icon: "error",
+                    confirmButtonText: "باشه",
+                });
+            },
+        });
+    },
+    rules: {
+        text: {
+            required: true,
+            minlength: 10,
+            maxlength: 10000,
+        },
+    },
+    messages: {
+        text: {
+            required: "پر کردن این فیلد الزامی است",
+            minlength: "حداقل باید 10 کاراکتر باشد",
+            maxlength: "حداکثر باید 10000 کاراکتر باشد",
+        },
+    },
+});
+
+
+$(".delete-answer").click(function () {
+    const btn = $(this);
+    const id = btn.attr("id");
+    Swal.fire({
+        title: "حذف پاسخ",
+        text: "آیا واقعا میخواهید این پاسخ را پاک کنید؟",
+        icon: "question",
+        confirmButtonText: "بله",
+        showCancelButton : true , 
+        cancelButtonText : "خیر" 
+    }).then(({isConfirmed}) => {
+        if(isConfirmed){
+            $.ajax({
+                method : "GET" , 
+                url : "/comment-answer/delete/" + id , 
+                beforeSend: () => {
+                    btn.find("div").prop("disabled", true);
+                    btn.find("div").show();
+                },
+                success: () => {
+                    btn.find("div").prop("disabled", false);
+                    btn.find("div").hide();
+                    Swal.fire({
+                        title: "انجام شد",
+                        text: "این پاسخ پاک شد",
+                        icon: "success",
+                        confirmButtonText: "باشه",
+                        onClose: () => {
+                            btn.parents(".comment-answer").remove();
+                        },
+                    });
+                },
+                error: () => {
+                    btn.find("div").prop("disabled", false);
+                    btn.find("div").hide();
+                    Swal.fire({
+                        title: "خطا",
+                        text: "مشکلی در سرور وجود دارد",
+                        icon: "error",
+                        confirmButtonText: "باشه",
+                    });
+                },  
+            });
+        }
+    });
 });

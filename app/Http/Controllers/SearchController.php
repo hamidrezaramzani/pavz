@@ -154,24 +154,29 @@ class SearchController extends Controller
             return redirect("/");
         }
 
+        
 
         if ($state) {
             $state = $state[array_key_first($state)];
             $data = $this->getData($type, "state", $state->id);
             return view("pages.search-list", [
-                "data" => $data->get(),
+                "data" => $data->orderBy('is_vip' , 'DESC')->get(),
                 "lat" => $state->latitude,
                 "long" => $state->longitude,
-                "type" => $type
+                "type" => $type,
+                // "state" => $state,
+                // "city" => $city[array_key_first($city)]
             ]);
         } else if ($city) {
             $city = $city[array_key_first($city)];
             $data = $this->getData($type, "city", $city->id);
             return view("pages.search-list", [
-                "data" => $data->get(),
+                "data" => $data->orderBy('is_vip' , 'DESC')->get(),
                 "lat" => $city->latitude,
                 "long" => $city->longitude,
-                "type" => $type
+                "type" => $type,
+                // "state" => $state[array_key_first($state)],
+                // "city" => $city
             ]);
         } else {
             return redirect("/");

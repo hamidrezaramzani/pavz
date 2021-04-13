@@ -2712,3 +2712,20 @@ input:disabled {
     font: 13px is;
     color: #222;
 }
+
+#answer-comment-modal .modal-body {
+    height: 450px!important;
+}
+
+#answer-form textarea {
+    height: 150px;
+    resize: none;
+}
+
+.comment-answer {
+    width: 100%;
+    height: 120px;
+    background: #f3f4f7;
+    border-radius: 4px;
+    padding: 20px;
+}

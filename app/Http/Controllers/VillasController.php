@@ -37,40 +37,42 @@ class VillasController extends Controller
     public function getSingleVilla($id = null)
     {
 
-        if($id == null)
+        if ($id == null)
             return redirect("/");
 
-            $data =  Villa::with([
-                "rooms" => function ($q) {
-                    return $q->orderBy("created_at", "asc");
-                }, "specialPlaces", "pools" => function ($q) {
-                    return $q->orderBy("created_at", "asc");
-                },
-                "parkings" => function ($q) {
-                    return $q->orderBy("created_at", "asc");
-                },
-                "pictures", "rentPrices", "villaTypes", "documents", "soldVillaPrices" ,
-            ]);
+        $data =  Villa::with([
+            "rooms" => function ($q) {
+                return $q->orderBy("created_at", "asc");
+            }, "specialPlaces", "pools" => function ($q) {
+                return $q->orderBy("created_at", "asc");
+            },
+            "parkings" => function ($q) {
+                return $q->orderBy("created_at", "asc");
+            },
+            "pictures", "rentPrices", "villaTypes", "documents", "soldVillaPrices",
+        ]);
+        
         $data = Villa::where([
-            ["id" , $id] , 
-            ["status" , "published"]
+            ["id", $id],
+            ["status", "published"]
         ]);
 
-        if($data->count())
+        if ($data->count())
             $data = $data->get()[0];
         else
             return redirect("/");
 
+                
 
 
-        $comments = Comment::where([
-            "villa_id" => $id , 
+        $comments = Comment::with(["commentAnswers"])->where([
+            "villa_id" => $id,
             "status" => 1
         ]);
 
         $documentTypes  = DocumentType::all();
 
-        
+
         $states = json_decode(file_get_contents(public_path("json/states.json")));
         $cities = json_decode(file_get_contents(public_path("json/cities.json")));
 
@@ -82,30 +84,29 @@ class VillasController extends Controller
         });
 
 
-        
+
         $cityId = $data->get()[0]->city;
         $city = array_filter($cities, function ($value) use ($cityId) {
             return $value->id == $cityId;
         });
 
 
-        if(!$data->get()->count()){
+        if (!$data->get()->count()) {
             return redirect("/");
         }
 
-        
+
         $saved = 0;
-        if (Auth::check() && $data->get()[0]->saves()->where("user_id" , Auth::id())->get()->count()) {
+        if (Auth::check() && $data->get()[0]->saves()->where("user_id", Auth::id())->get()->count()) {
             $saved = 1;
         }
 
-        // dd(Villa::find($id)->saves()->get()->count());
-        return view("pages.villa.villa" , [
-            "data" => $data->get()[0] , 
-            "state" => $state  , 
-            "city" => $city , 
-            "documentTypes" => $documentTypes , 
-            "comments" => $comments->get() , 
+        return view("pages.villa.villa", [
+            "data" => $data,
+            "state" => $state,
+            "city" => $city,
+            "documentTypes" => $documentTypes,
+            "comments" => $comments->get(),
             "saved" => $saved
         ]);
     }
@@ -117,10 +118,10 @@ class VillasController extends Controller
             "user_id" => Auth::id()
         ]);
 
-        
+
 
         $id = $villa->id;
-        
+
         return redirect("/edit-villa/$id");
     }
 
@@ -155,7 +156,7 @@ class VillasController extends Controller
         ]);
         $documentTypes  = DocumentType::all();
         $data = $data->where("id", $id)->get()[0];
-        
+
         $villaTypes = VillaType::all();
         $states = json_decode(file_get_contents(public_path("json/states.json")));
         $cities = [];
@@ -265,7 +266,7 @@ class VillasController extends Controller
 
     public function deleteVillas($id = null)
     {
-        
+
         $user = Auth::user();
         $villa = $user->villas()->where("id", $id);
         if ($villa) {

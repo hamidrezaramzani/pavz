@@ -4,7 +4,7 @@
             <div class="villa-item-img">
 
                 <img src="{{ asset('covers/' . $item->cover) }}" alt="this is villa alt test">
-                @if ($item['is-vip'])
+                @if ($item['is_vip'])
                     <div class="vip-lable">ویژه</div>
                 @else
                     <div class="normal-lable">عادی</div>

@@ -8,9 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
-    protected $fillable = ["title" , "description" , "user_id" , "villa_id"];
+    protected $fillable = ["title", "description", "user_id", "villa_id"];
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function commentAnswers()
+    {
+        return $this->hasMany(CommentAnswer::class);
     }
 }

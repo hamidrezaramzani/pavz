@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApartmentController;
 use App\Http\Controllers\AreaController;
+use App\Http\Controllers\CommentAnswerController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ParkingController;
@@ -224,3 +225,6 @@ Route::get("/search/get-all/{type}", [SearchController::class , "getAllData"]);
 
 Route::get("/search", [SearchController::class , "getSearchData"]);
 
+// COMMENT ANSWERS
+Route::post("/comment-answer/new", [CommentAnswerController::class, "newAnswer"])->middleware("auth");
+Route::get("/comment-answer/delete/{id}", [CommentAnswerController::class, "deleteAnswer"])->middleware("auth");
