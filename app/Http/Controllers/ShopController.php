@@ -10,6 +10,7 @@ use App\Models\DocumentType;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class ShopController extends Controller
 {
@@ -190,6 +191,13 @@ class ShopController extends Controller
             return redirect("/");
         } else {
             $data = $data->get()[0];
+        }
+
+
+        
+        if (!Session::get("shop-" . $data->id)) {
+            Session::push("shop-" . $data->id , true);
+            Shop::where("id", $id)->update(["view_count" => $data->view_count  + 1]);
         }
 
 

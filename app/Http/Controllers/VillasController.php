@@ -16,6 +16,7 @@ use App\Models\Villa;
 use App\Models\VillaType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class VillasController extends Controller
 {
@@ -37,7 +38,7 @@ class VillasController extends Controller
     public function getSingleVilla($id = null)
     {
 
-        if ($id == null)
+        if ($id == null) 
             return redirect("/");
 
         $data =  Villa::with([
@@ -62,7 +63,11 @@ class VillasController extends Controller
         else
             return redirect("/");
 
-                
+            
+        if (!Session::get("villa-" . $data->id)) {
+            Session::push("villa-" . $data->id , true);
+            Villa::where("id", $id)->update(["view_count" => $data->view_count  + 1]);
+        }
 
 
         $comments = Comment::with(["commentAnswers"])->where([

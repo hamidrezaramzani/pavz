@@ -26,6 +26,7 @@
 
                 @include('pages.user' , ["data" => $data])
 
+                @if ($data->ads_type == 1)
                 <div class="mt-3 user-call-info p-4">
                     <form action="" class="form" id="reserve-form">
                         <div class="w-50 float-right p-1">
@@ -70,7 +71,9 @@
                     </form>
 
 
-                </div>
+                </div>    
+                @endif
+                
             </div>
         </div>
     </div>

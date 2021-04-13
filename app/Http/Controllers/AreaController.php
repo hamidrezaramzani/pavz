@@ -11,6 +11,7 @@ use App\Models\AreaType;
 use App\Models\DocumentType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AreaController extends Controller
 {
@@ -37,10 +38,6 @@ class AreaController extends Controller
 
     public function editArea($id = null)
     {
-        // if ($id == null || !is_int($id)) {
-        //     return redirect("/panel");
-        // }
-
 
         $area = Area::where([
             ["id", $id],
@@ -162,6 +159,14 @@ class AreaController extends Controller
         } else {
             return redirect("/");
         }
+
+
+
+        if (!Session::get("area-" . $data->id)) {
+            Session::push("area-" . $data->id , true);
+            Area::where("id", $id)->update(["view_count" => $data->view_count  + 1]);
+        }
+
 
         $stateId = $data->get()[0]->state;
         $state = array_filter($states, function ($value) use ($stateId) {

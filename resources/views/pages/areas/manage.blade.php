@@ -13,7 +13,8 @@
                         <thead>
                             <tr>
                                 <th width="10%">کد</th>
-                                <th width="30%">عنوان</th>
+                                <th width="20%">عنوان</th>
+                                <th width="10%">عنوان</th>
                                 <th width="20%">کاور</th>
                                 <th width="15%">وضعیت</th>
                                 <th width="25%">مدیریت</th>
@@ -34,16 +35,17 @@
                                                 <span class="text-danger">کاور ندارد</span>
                                             @endif
                                         </td>
+                                        <td>{{ $area->view_count }}</td>
                                         <td width="15%">
                                             @switch($area->status)
                                                 @case("not-completed")
-                                                <span class="text-dark">پیش نویس</span>
+                                                    <span class="text-dark">پیش نویس</span>
                                                 @break
                                                 @case("checking")
-                                                <span class="text-warning">در حال بررسی</span>
+                                                    <span class="text-warning">در حال بررسی</span>
                                                 @break
-                                                @case("published")
-                                                <span class="text-warning">انتشار یافت</span>
+                                                @case(" published")
+                                                    <span class="text-warning">انتشار یافت</span>
                                                 @break
                                             @endswitch
                                         </td>

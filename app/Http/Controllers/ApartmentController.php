@@ -14,6 +14,7 @@ use App\Models\DocumentType;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class ApartmentController extends Controller
 {
@@ -198,6 +199,13 @@ class ApartmentController extends Controller
         } else {
             $data = $data->get()[0];
         }
+
+
+        if (!Session::get("apartment-" . $data->id)) {
+            Session::push("apartment-" . $data->id , true);
+            Apartment::where("id", $id)->update(["view_count" => $data->view_count  + 1]);
+        }
+
 
 
         $saved = 0;

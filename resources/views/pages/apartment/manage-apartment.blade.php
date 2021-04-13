@@ -14,7 +14,8 @@
                                 <th width="10%">کد</th>
                                 <th width="20%">عنوان</th>
                                 <th width="20%">کاور</th>
-                                <th width="20%">نوع آگهی</th>
+                                <th width="10%">نوع آگهی</th>
+                                <th width="10%">بازدید</th>
                                 <th width="15%">وضعیت</th>
                                 <th width="15%">مدیریت</th>
                             </tr>
@@ -34,9 +35,10 @@
                                                 <span class="text-danger">کاور ندارد</span>
                                             @endif
                                         </td>
-                                        <td width="20%">
+                                        <td width="10%">
                                             {{ $apartment->ads_type == '1' ? "فروش آپارتمان" : "رهن و اجاره آپارتمان" }}
                                         </td>
+                                        <td>{{$apartment->view_count}}</td>
                                         <td width="15%">
                                             @switch($apartment->status)
                                                 @case("not-completed")
