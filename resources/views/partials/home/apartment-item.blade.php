@@ -1,6 +1,6 @@
 <div class="villa-item" data-aos="zoom-in">
     <div class="villa-item-content">
-        <a href="/apartment/{{$item->id}}">
+        <a href="/apartment/{{ $item->id }}">
             <div class="villa-item-img">
 
                 <img src="{{ asset('covers/' . $item->cover) }}" alt="this is villa alt test">
@@ -10,7 +10,7 @@
                     <div class="normal-lable">عادی</div>
 
                 @endif
-                <div class="type-lable">{{ $item->ads_type == 2 ? 'اجاره' : 'فروش' }}</div>
+                <div class="type-lable">{{ $item->ads_type == 2 ? 'رهن' : 'فروش' }}</div>
             </div>
             <div class="villa-top-info">
                 <div class="w-50">
@@ -19,13 +19,13 @@
                         مازندران - رامسر
                     </span>
                 </div>
-                <div class="w-50">
+                {{-- <div class="w-50">
                     <ul>
                         <li>
                             <div class="my-rating"></div>
                         </li>
                     </ul>
-                </div>
+                </div> --}}
 
             </div>
             <h2>{{ $item->title }}</h2>
@@ -39,7 +39,7 @@
                         قیمت توافقی
                     @else
                         {{ $item->total_price }}
-
+                        تومان
                     @endif
                 @endif
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\AreaController;
 use App\Http\Controllers\CommentAnswerController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ParkingController;
 use App\Http\Controllers\PictureController;
 use App\Http\Controllers\PoolController;
@@ -44,9 +45,7 @@ use Tabuna\Breadcrumbs\Trail;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [IndexController::class, "index"]);
 
 Route::get('/about-us', function () {
     return view('about');
@@ -57,8 +56,8 @@ Route::get('/faq', function () {
     return view('partials.faq');
 });
 
-Route::get('/logout', [UserController::class , "logout"])->middleware("auth");
-Route::get('/login', [UserController::class , "loginForm"])->name("login");
+Route::get('/logout', [UserController::class, "logout"])->middleware("auth");
+Route::get('/login', [UserController::class, "loginForm"])->name("login");
 Route::get('/register', [UserController::class, "create"]);
 Route::post("/store-user", [UserController::class, "store"]);
 Route::post("/active-user", [UserController::class, "activeUser"]);
@@ -220,10 +219,10 @@ Route::get("/ticket/manage", [TicketController::class, "manageTickets"])->middle
 
 
 // SEARCH
-Route::get("/search/locations/{text}", [SearchController::class , "getLocations"]);
-Route::get("/search/get-all/{type}", [SearchController::class , "getAllData"]);
+Route::get("/search/locations/{text}", [SearchController::class, "getLocations"]);
+Route::get("/search/get-all/{type}", [SearchController::class, "getAllData"]);
 
-Route::get("/search", [SearchController::class , "getSearchData"]);
+Route::get("/search", [SearchController::class, "getSearchData"]);
 
 // COMMENT ANSWERS
 Route::post("/comment-answer/new", [CommentAnswerController::class, "newAnswer"])->middleware("auth");

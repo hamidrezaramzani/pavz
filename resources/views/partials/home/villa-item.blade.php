@@ -1,6 +1,6 @@
 <div class="villa-item" data-aos="zoom-in">
     <div class="villa-item-content">
-        <a href="/villa/{{$item->id}}">
+        <a href="/villa/{{ $item->id }}">
             <div class="villa-item-img">
 
                 <img src="{{ asset('covers/' . $item->cover) }}" alt="this is villa alt test">
@@ -10,23 +10,16 @@
                     <div class="normal-lable">عادی</div>
 
                 @endif
-                <div class="type-lable">{{$item->ads_type == 1 ? "اجاره" : "فروش"}}</div>
+                <div class="type-lable">{{ $item->ads_type == 1 ? 'اجاره' : 'فروش' }}</div>
             </div>
             <div class="villa-top-info">
                 <div class="w-50">
                     <span>
                         <i class="fas fa-map-marker"></i>
                         {{-- {{$state->name}} - {{$city->name/}} --}}
+                        مازندران / رامسر
                     </span>
-                </div>
-                <div class="w-50">
-                    <ul>
-                        <li>
-                            <div class="my-rating"></div>
-                        </li>
-                    </ul>
-                </div>
-
+                </div>            
             </div>
             <h2>{{ $item->title }}</h2>
             <p>
@@ -35,7 +28,7 @@
                     تومان
                     <span>/ هر شب</span>
                 @else
-                {{ $item->soldVillaPrices->total_price }}
+                    {{ $item->soldVillaPrices->agreed_price ? 'قیمت توافقی' : $item->soldVillaPrices->total_price . " تومان" }}
                 @endif
 
             </p>

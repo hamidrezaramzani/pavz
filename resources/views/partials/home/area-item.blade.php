@@ -1,6 +1,6 @@
 <div class="villa-item" data-aos="zoom-in">
     <div class="villa-item-content">
-        <a href="/area/{{$item->id}}">
+        <a href="/area/{{ $item->id }}">
             <div class="villa-item-img">
 
                 <img src="{{ asset('covers/' . $item->cover) }}" alt="this is villa alt test">
@@ -19,19 +19,19 @@
                         مازندران - رامسر
                     </span>
                 </div>
-                <div class="w-50">
+                {{-- <div class="w-50">
                     <ul>
                         <li>
                             <div class="my-rating"></div>
                         </li>
                     </ul>
-                </div>
+                </div> --}}
 
             </div>
             <h2>{{ $item->title }}</h2>
             <p>
-                {{ $item->total_price }}
-                تومان
+                {{ $item->agreed_price ? 'قیمت توافقی' : $item->total_price . "   تومان" }}
+              
             </p>
 
 
@@ -49,13 +49,13 @@
 
                     <li>
                         <i class="fa fa-home"></i>
-                        {{$item->main_border_width}} متر بر اصلی
+                        {{ $item->main_border_width }} متر بر اصلی
                     </li>
 
 
                     <li>
                         <i class="fa fa-users"></i>
-                        {{$item->areaType->name}}
+                        {{ $item->areaType->name }}
                     </li>
                 </ul>
             </div>

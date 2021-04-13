@@ -72,6 +72,8 @@
 
     </div>
     <div class="col-12 col-md-3">
-        <img src="{{ asset('images/pavz.png') }}" width="100" alt="pavz logo">
+        <a href="/">
+            <img src="{{ asset('images/pavz.png') }}" width="100" alt="pavz logo">
+        </a>
     </div>
 </div>
