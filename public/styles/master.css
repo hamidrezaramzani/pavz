@@ -1603,7 +1603,7 @@ footer .aboutus img {
 .user-options-dropdown li {
     width: 90%;
     box-sizing: border-box;
-    padding: 10px 0;
+    /* padding: 10px 0; */
 }
 
 .user-options-dropdown .dropdown-item {

@@ -16,9 +16,9 @@ class Profile extends Model
 
     protected $fillable  = [
         "fullname",
-        "email",
         "address",
         "telegram_id",
-        "image"
+        "image" , 
+        "user_id"
     ];
 }

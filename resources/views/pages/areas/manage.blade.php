@@ -14,8 +14,8 @@
                             <tr>
                                 <th width="10%">کد</th>
                                 <th width="20%">عنوان</th>
-                                <th width="10%">عنوان</th>
                                 <th width="20%">کاور</th>
+                                <th width="10%">بازدید</th>
                                 <th width="15%">وضعیت</th>
                                 <th width="25%">مدیریت</th>
                             </tr>

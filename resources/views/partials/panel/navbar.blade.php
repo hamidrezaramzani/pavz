@@ -41,8 +41,8 @@
                                 <i class="fa fa-question"></i>
                                 سوالات متداول
                             </a></li>
-                        <li><a class="dropdown-item" href="#">
-                            <i class="fa fa-dor" ></i>
+                        <li><a class="dropdown-item" href="/logout">
+                            <i class="fa fa-times" ></i>
                             خروج
                             </a></li>
                     </ul>

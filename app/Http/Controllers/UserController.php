@@ -36,7 +36,7 @@ class UserController extends Controller
     {
         if (Auth::check()) {
             return redirect("/panel");
-        }else{
+        } else {
             return view("register");
         }
     }
@@ -45,14 +45,15 @@ class UserController extends Controller
     {
         if (Auth::check()) {
             return redirect("/panel");
-        }else{
-            return view("login");            
+        } else {
+            return view("login");
         }
     }
 
     public function logout()
     {
         Auth::logout();
+        return redirect("/login");
     }
 
     /**
@@ -81,14 +82,13 @@ class UserController extends Controller
                 "activeCodeExpire" => $activeCodeExpire
             ]);
 
-            $profile = new Profile([
+            Profile::create([
                 "fullname" => "",
-                "email" => "",
                 "address" => "",
                 "telegram_id" => "",
                 "image" => "",
+                "user_id" => $newUser->id
             ]);
-            $newUser->profile()->save($profile);
         }
         // send sms with kavehnegar
     }
