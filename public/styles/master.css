@@ -1221,6 +1221,20 @@ footer .aboutus img {
     position: relative;
 }
 
+#agreement {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 0;
+}
+
+#agree-label {
+    position: absolute;
+    right: 40px;
+    top: 20px;
+    font: 13px is;
+}
+
 .login-box .right h3 {
     position: absolute;
     margin: auto;
@@ -1292,14 +1306,14 @@ footer .aboutus img {
     border-left: 1px solid #ededed;
 }
 
-.accordion {
+.sidebar .accordion {
     width: 100%;
     font-family: is;
     float: right;
     padding: 20px 0;
 }
 
-.accordion-item {
+.sidebar .accordion-item {
     width: 100%;
     min-height: 40px;
     height: auto;
@@ -1307,13 +1321,13 @@ footer .aboutus img {
     position: relative;
 }
 
-.accordion-item img {
+.sidebar .accordion-item img {
     margin-top: 5px;
     float: right;
     margin-left: 15px;
 }
 
-.accordion-item button>i {
+.sidebar .accordion-item button>i {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -1322,8 +1336,8 @@ footer .aboutus img {
     line-height: 45px;
 }
 
-.accordion-item button,
-.accordion-item>a {
+.sidebar .accordion-item button,
+.sidebar .accordion-item>a {
     width: 100%;
     height: 50px;
     border: none;
@@ -1339,27 +1353,27 @@ footer .aboutus img {
     line-height: 40px !important;
 }
 
-.accordion-item button:hover,
-.accordion-item>a:hover {
+.sidebar .accordion-item button:hover,
+.sidebar .accordion-item>a:hover {
     background: rgba(80, 69, 206, 0.06);
     color: #5941ad;
     transition: all 0.5s ease;
 }
 
-.accordion-item ul {
+.sidebar .accordion-item ul {
     display: block;
     height: 0;
     overflow: hidden;
 }
 
-.accordion-item ul li {
+.sidebar .accordion-item ul li {
     display: block;
     text-align: right;
     padding: 10px;
     background: #fdfdfd;
 }
 
-.accordion-item ul li a {
+.sidebar .accordion-item ul li a {
     font: 12px is;
     color: #988;
     display: block;
@@ -1368,22 +1382,22 @@ footer .aboutus img {
     transition: all 0.5s ease;
 }
 
-.accordion-item ul li a i {
+.sidebar .accordion-item ul li a i {
     font-size: 11px;
 }
 
-.sidebar-item-active {
+.sidebar .sidebar-item-active {
     background: rgba(80, 69, 206, 0.06) !important;
     color: #5941ad !important;
     transition: all 0.5s ease !important;
 }
 
-.accordion-item ul li a:hover {
+.sidebar .accordion-item ul li a:hover {
     color: #5941ad;
     transition: all 0.5s ease;
 }
 
-.accordion-item ul.show {
+.sidebar .accordion-item ul.show {
     height: auto;
 }
 
@@ -2679,4 +2693,22 @@ input:disabled {
 
 .map-item-link {
     text-decoration: none;
+}
+
+#rules-list ul li {
+    display: block;
+    text-align: right;
+    font: 13px is;
+    color: #383838;
+    padding: 10px 0;
+}
+
+.faq .accordion-button::after {
+    position: absolute;
+    left: 5px;
+}
+
+.faq .accordion-body {
+    font: 13px is;
+    color: #222;
 }

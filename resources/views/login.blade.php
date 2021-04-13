@@ -4,13 +4,15 @@
     <div class="container">
         <div class="row justify-content-center login-box">
             <div class="col-md-4 col-11 login-form">
-                <meta name="csrf-token" content="{{ csrf_token() }}" />
+                {{-- <meta name="csrf-token" content="{{ csrf_token() }}" /> --}}
+
                 <img src="{{ asset('images/dpavz.png') }}" alt="PAVZ logo">
                 <h3>ورود به حساب</h3>
                 <p>با ورود به سایت میتوانید به تمامی امکانات سایت دسترسی پیدا کنید.</p>
                 <br>
                 <br>
                 <form action="" id="login-form" method="POST">
+                    <input type="hidden" id="token" value="{{ csrf_token() }}">
                     <div class="inpg">
                         <input type="text" id="phonenumber" name="phonenumber" placeholder="شماره تلفن خود را وارد نمایید">
                         <span>
@@ -67,7 +69,7 @@
                 const data = {
                     phonenumber: $("#phonenumber").val(),
                     password: $("#password").val(),
-                    _token: CSRF_TOKEN
+                    _token: $("#token").val()
                 };
                 $.ajax({
                     method: "POST",
@@ -85,12 +87,21 @@
                         })
                     },
                     error: (err) => {
+                       if(err.status == 401){
                         Swal.fire({
                             title: 'خطا',
                             text: 'نام کاربری یا رمز عبور اشتباه است',
                             icon: 'error',
                             confirmButtonText: 'باشه'
                         })
+                       }else{
+                        Swal.fire({
+                            title: 'خطا',
+                            text: 'مشکلی در سرور وجود دارد',
+                            icon: 'error',
+                            confirmButtonText: 'باشه'
+                        })
+                       }
                     }
                 });
             },

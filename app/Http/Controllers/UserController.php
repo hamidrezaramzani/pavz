@@ -34,7 +34,25 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view("register");
+        if (Auth::check()) {
+            return redirect("/panel");
+        }else{
+            return view("register");
+        }
+    }
+
+    public function loginForm()
+    {
+        if (Auth::check()) {
+            return redirect("/panel");
+        }else{
+            return view("login");            
+        }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
     }
 
     /**

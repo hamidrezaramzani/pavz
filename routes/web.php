@@ -25,6 +25,7 @@ use App\Http\Controllers\VipController;
 use App\Models\Parking;
 use App\Models\Room;
 use App\Models\Ticket;
+use App\Models\User;
 use App\Models\VillaScore;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,9 +50,14 @@ Route::get('/', function () {
 Route::get('/about-us', function () {
     return view('about');
 });
-Route::get('/login', function () {
-    return view('login');
-})->name("login");
+
+
+Route::get('/faq', function () {
+    return view('partials.faq');
+});
+
+Route::get('/logout', [UserController::class , "logout"])->middleware("auth");
+Route::get('/login', [UserController::class , "loginForm"])->name("login");
 Route::get('/register', [UserController::class, "create"]);
 Route::post("/store-user", [UserController::class, "store"]);
 Route::post("/active-user", [UserController::class, "activeUser"]);

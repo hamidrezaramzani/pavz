@@ -52,24 +52,19 @@
 
 
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#AboutUs">درباره ما</a>
+                        <a class="nav-link active" aria-current="page" href="/about-us">درباره ما</a>
                     </li>
 
 
 
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#Contact">تماس با ما</a>
+                        <a class="nav-link active" aria-current="page" href="/about-us">تماس با ما</a>
                     </li>
 
 
 
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#Contact">قوانین ثبت آگهی</a>
-                    </li>
-
-
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#FAQ">سوالات متداول</a>
+                        <a class="nav-link active" aria-current="page" href="/faq">سوالات متداول</a>
                     </li>
                 </ul>
             </div>

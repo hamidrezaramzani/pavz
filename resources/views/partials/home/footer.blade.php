@@ -61,7 +61,7 @@
 
                 </style>
                 <div id="zarinpal">
-                    <script src="https://www.zarinpal.com/webservice/TrustCode" type="text/javascript"></script>
+                    {{-- <script src="https://www.zarinpal.com/webservice/TrustCode" type="text/javascript"></script> --}}
                 </div>
             </div>
         </div>
