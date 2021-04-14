@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ApartmentController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\CommentAnswerController;
@@ -227,3 +228,12 @@ Route::get("/search", [SearchController::class, "getSearchData"]);
 // COMMENT ANSWERS
 Route::post("/comment-answer/new", [CommentAnswerController::class, "newAnswer"])->middleware("auth");
 Route::get("/comment-answer/delete/{id}", [CommentAnswerController::class, "deleteAnswer"])->middleware("auth");
+
+// ADMIN ROUTES
+Route::get("/admin/users", [AdminController::class, "allUsers"])->middleware("admin");
+Route::get("/admin/new-comments", [AdminController::class, "newComments"])->middleware("admin");
+Route::get("/admin/reject-comments", [AdminController::class, "rejectComments"])->middleware("admin");
+Route::get("/admin/published-comments", [AdminController::class, "publishedComments"])->middleware("admin");
+
+Route::get("/admin/publish-comment/{id}", [AdminController::class, "publishComment"])->middleware("admin");
+Route::get("/admin/reject-comment/{id}", [AdminController::class, "rejectComment"])->middleware("admin");

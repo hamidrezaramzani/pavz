@@ -36,6 +36,12 @@ class AppBladeServiceProvider extends ServiceProvider
             // dd($profile);
             return $profile && $profile->fullname != "" && $profile->address;
         });
+
+
+        Blade::if("admin" , function ()
+        {
+            return Auth::user() && Auth::user()->level == "admin"; 
+        });
        
     }
 }

@@ -104,7 +104,7 @@
         </div>
 
 
-        
+
         <div class="accordion-item">
             <button>
                 <img src="{{ asset('images/icons/svg/shop.svg') }}" alt="AREA SVG">
@@ -164,7 +164,7 @@
                 <li>
                     <a href="/vip/factories">
                         <i class="far fa-circle"></i>
-                        فاکتور های خرید 
+                        فاکتور های خرید
                     </a>
                 </li>
             </ul>
@@ -191,7 +191,8 @@
                         تیکت های من
                     </a>
                 </li>
-            </ul>        </div>
+            </ul>
+        </div>
 
 
         <div class="accordion-item">
@@ -209,8 +210,155 @@
                 <li>
                     <a href="">تنظیمات</a>
                 </li>
+
             </ul>
         </div>
+
+
+        @admin
+
+
+        <div class="accordion-title">
+            <i class="far fa-circle"></i>
+            مدیریت سایت
+        </div>
+
+        <div class="accordion-item">
+            <button>
+                <img src="{{ asset('images/icons/svg/user.svg') }}" alt="USER SVG">
+                مدیریت کاربران
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <ul>
+                <li>
+                    <a href="">کل کاربران</a>
+                </li>
+
+                <li>
+                    <a href="">فاکتور های خرید کاربران</a>
+                </li>
+            </ul>
+        </div>
+
+
+
+        <div class="accordion-item">
+            <button>
+                <img src="{{ asset('images/icons/svg/user.svg') }}" alt="USER SVG">
+                مدیریت نظرات
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <ul>
+                <li>
+                    <a href="/admin/published-comments">
+                        نظر های ثبت شده
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/reject-comments">
+                        نظر های رد شده
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/new-comments">نظر های جدید</a>
+                </li>
+
+            </ul>
+        </div>
+
+
+
+        <div class="accordion-item">
+            <button>
+                <img src="{{ asset('images/icons/svg/user.svg') }}" alt="USER SVG">
+                مدیریت جواب نظرات
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <ul>
+                <li>
+                    <a href="/profile">
+                        جواب های ثبت شده
+                    </a>
+                </li>
+                <li>
+                    <a href="/profile">
+                        جواب های رد شده
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/new-comments">جواب های جدید</a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="accordion-item">
+            <button>
+                <img src="{{ asset('images/icons/svg/apartment.svg') }}" alt="AP SVG">
+                مدیریت آگهی ها
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <ul>
+                <li>
+                    <a href="">ویلای های جدید</a>
+                </li>
+
+                <li>
+                    <a href="">آپارتمان های جدید</a>
+                </li>
+
+                <li>
+                    <a href="/profile">
+                        زمین های جدید
+                    </a>
+                </li>
+                <li>
+                    <a href="">مغازه های جدید</a>
+                </li>
+
+            </ul>
+        </div>
+
+
+
+        <div class="accordion-item">
+            <button>
+                <img src="{{ asset('images/icons/svg/area.svg') }}" alt="USER SVG">
+                مدیریت جاذبه های گردشگری
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <ul>
+                <li>
+                    <a href="">جاذبه گردشگری جدید</a>
+                </li>
+
+                <li>
+                    <a href="">مدیریت</a>
+                </li>
+
+            </ul>
+        </div>
+
+
+
+        <div class="accordion-item">
+            <button>
+                <img src="{{ asset('images/icons/svg/ticket.svg') }}" alt="ticket">
+                مدیریت تیکت ها
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <ul>
+                <li>
+                    <a href="">تیکت های اخیر</a>
+                </li>
+
+                <li>
+                    <a href="">مدیریت</a>
+                </li>
+
+            </ul>
+        </div>
+        @endadmin
 
     </div>
 

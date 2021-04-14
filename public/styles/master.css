@@ -257,7 +257,7 @@ table {
         width: 100%;
     }
     .search-box input:focus {
-        box-shadow: none!important;
+        box-shadow: none !important;
     }
     .styled-select {
         width: 100% !important;
@@ -1300,7 +1300,8 @@ footer .aboutus img {
 }
 
 .sidebar {
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
     padding: 0;
     background: #fff;
     border-left: 1px solid #ededed;
@@ -1497,7 +1498,7 @@ footer .aboutus img {
 }
 
 .accordion-title-red {
-    background: indianred!important;
+    background: indianred !important;
 }
 
 .accordion-title:hover {
@@ -1903,10 +1904,10 @@ span#picture-name {
 .form input:focus,
 .form select:focus,
 .form textarea:focus {
-    box-shadow: none!important;
-    outline: none!important;
-    border-bottom: 1px solid #686868!important;
-    border-width: 20%!important;
+    box-shadow: none !important;
+    outline: none !important;
+    border-bottom: 1px solid #686868 !important;
+    border-width: 20% !important;
 }
 
 .form textarea {
@@ -1926,7 +1927,7 @@ span#picture-name {
     color: #686868;
     background: #f9f9f9;
     height: 55px;
-    border: none!important;
+    border: none !important;
 }
 
 .form select::after {
@@ -2006,12 +2007,12 @@ span#picture-name {
 
 .gallery-item {
     cursor: pointer;
-    transition: all .5s ease;
+    transition: all 0.5s ease;
 }
 
 .gallery-item img:hover {
     filter: grayscale(100%);
-    transition: all .5s ease;
+    transition: all 0.5s ease;
 }
 
 .villa-content h2 {
@@ -2147,7 +2148,7 @@ span#picture-name {
     margin: 0 5px;
 }
 
-.form input[type=submit] {
+.form input[type="submit"] {
     float: left;
     height: 33px;
     font-size: 13px;
@@ -2209,10 +2210,10 @@ span#picture-name {
     right: 0;
     bottom: 0;
     left: 0;
-    height: 30px!important;
-    width: 30px!important;
+    height: 30px !important;
+    width: 30px !important;
     transition: all 0.15s ease-out 0s;
-    background: #cbd1d8!important;
+    background: #cbd1d8 !important;
     border: none;
     color: #fff;
     cursor: pointer;
@@ -2225,18 +2226,18 @@ span#picture-name {
 }
 
 .option-input:hover {
-    background: #cbd1d8!important;
+    background: #cbd1d8 !important;
 }
 
 .option-input:checked {
-    background: #204cc5!important;
+    background: #204cc5 !important;
 }
 
 .option-input:checked::before {
     height: 30px;
     width: 30px;
     position: absolute;
-    content: '✔';
+    content: "✔";
     display: inline-block;
     font-size: 20px;
     text-align: center;
@@ -2249,7 +2250,7 @@ span#picture-name {
     -moz-animation: click-wave 0.65s;
     animation: click-wave 0.65s;
     background: #40e0d0;
-    content: '';
+    content: "";
     display: block;
     position: relative;
     z-index: 100;
@@ -2282,7 +2283,7 @@ span#picture-name {
 /* Important part */
 
 .modal-dialog {
-    overflow-y: initial !important
+    overflow-y: initial !important;
 }
 
 .modal-body {
@@ -2291,7 +2292,7 @@ span#picture-name {
 }
 
 .float-right {
-    float: right!important;
+    float: right !important;
 }
 
 .my-modal-items li h5 {
@@ -2329,7 +2330,7 @@ span#picture-name {
     display: none;
 }
 
-input[type=time]::-webkit-clear-button {
+input[type="time"]::-webkit-clear-button {
     -webkit-appearance: none;
     -moz-appearance: none;
     -o-appearance: none;
@@ -2529,7 +2530,7 @@ table {
 }
 
 .float-left {
-    float: left!important;
+    float: left !important;
 }
 
 .comment-text {
@@ -2544,7 +2545,7 @@ table {
 }
 
 input:disabled {
-    background: #ddd!important;
+    background: #ddd !important;
     cursor: not-allowed;
 }
 
@@ -2571,7 +2572,7 @@ input:disabled {
 }
 
 .space-item i {
-    font-size: 10px!important;
+    font-size: 10px !important;
 }
 
 .space-item span {
@@ -2624,7 +2625,7 @@ input:disabled {
     top: 50px;
     background: #fff;
     border-radius: 5px;
-    overflow: hidden!important;
+    overflow: hidden !important;
 }
 
 .locations ul li {
@@ -2714,7 +2715,7 @@ input:disabled {
 }
 
 #answer-comment-modal .modal-body {
-    height: 450px!important;
+    height: 450px !important;
 }
 
 #answer-form textarea {
@@ -2728,4 +2729,22 @@ input:disabled {
     background: #f3f4f7;
     border-radius: 4px;
     padding: 20px;
+}
+
+.center {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.page404 h1 {
+    font: 40px isblack;
+    color: #333;
+}
+
+.page404 p {
+    color: #686868;
+    font: 15px is;
 }
