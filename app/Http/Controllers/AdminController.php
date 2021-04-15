@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apartment;
 use App\Models\Comment;
 use App\Models\CommentAnswer;
 use App\Models\DocumentType;
@@ -58,6 +59,25 @@ class AdminController extends Controller
         return view("pages.admin.new-answers", ["answers" => $answers->get()]);
     }
 
+    public function requestedApartments()
+    {
+        $apartments = Apartment::where("status", "checking")->orderBy("created_at", "DESC");
+        return view("pages.admin.apartment.requested-apartments", ["apartments" => $apartments->get()]);
+    }
+
+    public function publishedApartments()
+    {
+
+        $apartments = Apartment::where("status", "published")->orderBy("created_at", "DESC");
+        return view("pages.admin.apartment.published-apartments", ["apartments" => $apartments->get()]);
+    }
+
+    public function rejectedApartments()
+    {
+        $apartments = Apartment::where("status", "rejected")->orderBy("created_at", "DESC");
+        return view("pages.admin.apartment.rejected-apartments", ["apartments" => $apartments->get()]);
+    }
+
     public function rejectedAnswers()
     {
 
@@ -98,14 +118,12 @@ class AdminController extends Controller
     {
         $villas = Villa::where("status", "published")->orderBy("created_at", "DESC")->get();
         return view("pages.admin.villa.published-villas", ["villas" => $villas]);
-        
     }
 
     public function rejectedVillas()
     {
         $villas = Villa::where("status", "rejected")->orderBy("created_at", "DESC")->get();
         return view("pages.admin.villa.rejected-villas", ["villas" => $villas]);
-        
     }
 
 
@@ -213,6 +231,89 @@ class AdminController extends Controller
             "icon" => "danger",
             "user_id" => $request->get("user_id"),
             "link" => "/villa/" . $request->get("id")
+        ]);
+        return response(["message" => "done"]);
+    }
+
+    public function showApartment($id)
+    {
+
+        if ($id == null) {
+            return redirect("/");
+        }
+        $data = Apartment::where([
+            ["id", $id]
+        ]);
+
+
+
+        $states = json_decode(file_get_contents(public_path("json/states.json")));
+        $cities = json_decode(file_get_contents(public_path("json/cities.json")));
+
+
+
+        $stateId = $data->get()[0]->state;
+        $state = array_filter($states, function ($value) use ($stateId) {
+            return $value->id == $stateId;
+        });
+
+
+
+        $cityId = $data->get()[0]->city;
+        $city = array_filter($cities, function ($value) use ($cityId) {
+            return $value->id == $cityId;
+        });
+
+
+
+        if ($data->get()->count() == 0) {
+            return redirect("/");
+        } else {
+            $data = $data->get()[0];
+        }
+
+
+
+        return view("pages.apartment.apartment", [
+            "data" =>  $data,
+            "state" => $state,
+            "city" => $city,
+            "saved" => 0
+        ]);
+    }
+
+    public function publishApartment(Request $request)
+    {
+        $request->validate([
+            "id" => "required|numeric",
+            "description" => "required|string|min:10",
+            "status" => "required|string",
+            "user_id" => "required|numeric"
+        ]);
+        Apartment::where("id", $request->get("id"))->update(["status" => "published"]);
+        Notification::create([
+            "text" => $request->get("description"),
+            "icon" => "success",
+            "user_id" => $request->get("user_id"),
+            "link" => "/apartment/" . $request->get("id")
+        ]);
+        return response(["message" => "done"]);
+    }
+
+    public function rejectApartment(Request $request)
+    {
+        $request->validate([
+            "id" => "required|numeric",
+            "description" => "required|string|min:10",
+            "status" => "required|string",
+            "user_id" => "required|numeric"
+        ]);
+        Apartment::where("id", $request->get("id"))->update(["status" => "rejected"]);
+        Notification::create([
+            "text" => $request->get("description"),
+            "icon" => "danger",
+            "user_id" => $request->get("user_id"),
+            "link" => "/apartment/" . $request->get("id")
         ]);
         return response(["message" => "done"]);
     }

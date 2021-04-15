@@ -331,15 +331,15 @@
             </button>
             <ul>
                 <li>
-                    <a href="">آپارتمان های جدید</a>
+                    <a href="/admin/requested-apartments">آپارتمان های جدید</a>
                 </li>
 
                 <li>
-                    <a href="">آپارتمان های ثبت شده</a>
+                    <a href="/admin/published-apartments">آپارتمان های ثبت شده</a>
                 </li>
 
                 <li>
-                    <a href="/profile">
+                    <a href="/admin/rejected-apartments">
                         آپارتمان رد شده
                     </a>
                 </li>
