@@ -234,6 +234,14 @@ Route::get("/admin/users", [AdminController::class, "allUsers"])->middleware("ad
 Route::get("/admin/new-comments", [AdminController::class, "newComments"])->middleware("admin");
 Route::get("/admin/reject-comments", [AdminController::class, "rejectComments"])->middleware("admin");
 Route::get("/admin/published-comments", [AdminController::class, "publishedComments"])->middleware("admin");
-
 Route::get("/admin/publish-comment/{id}", [AdminController::class, "publishComment"])->middleware("admin");
 Route::get("/admin/reject-comment/{id}", [AdminController::class, "rejectComment"])->middleware("admin");
+
+Route::get("/admin/new-answer-comments", [AdminController::class, "newAnswerComments"])->middleware("admin");
+Route::get("/admin/rejected-answer-comments", [AdminController::class, "rejectedAnswers"])->middleware("admin");
+Route::get("/admin/published-answer-comments", [AdminController::class, "publishedAnswers"])->middleware("admin");
+
+Route::get("/admin/publish-answer/{id}", [AdminController::class, "publishAnswer"])->middleware("admin");
+Route::get("/admin/reject-answer/{id}", [AdminController::class, "rejectAnswer"])->middleware("admin");
+
+

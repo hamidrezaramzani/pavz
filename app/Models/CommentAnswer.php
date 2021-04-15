@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class CommentAnswer extends Model
 {
     use HasFactory;
-    protected $fillable = ["description" , "comment_id" , "user_id"];
+    protected $fillable = ["description", "comment_id", "user_id"];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

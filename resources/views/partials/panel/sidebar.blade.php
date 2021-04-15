@@ -244,7 +244,7 @@
 
         <div class="accordion-item">
             <button>
-                <img src="{{ asset('images/icons/svg/user.svg') }}" alt="USER SVG">
+                <img src="{{ asset('images/icons/svg/ticket.svg') }}" alt="ticket">
                 مدیریت نظرات
                 <i class="fa fa-angle-down"></i>
             </button>
@@ -270,23 +270,23 @@
 
         <div class="accordion-item">
             <button>
-                <img src="{{ asset('images/icons/svg/user.svg') }}" alt="USER SVG">
+                <img src="{{ asset('images/icons/svg/ticket.svg') }}" alt="ticket">
                 مدیریت جواب نظرات
                 <i class="fa fa-angle-down"></i>
             </button>
             <ul>
                 <li>
-                    <a href="/profile">
+                    <a href="/admin/published-answer-comments">
                         جواب های ثبت شده
                     </a>
                 </li>
                 <li>
-                    <a href="/profile">
+                    <a href="/admin/rejected-answer-comments">
                         جواب های رد شده
                     </a>
                 </li>
                 <li>
-                    <a href="/admin/new-comments">جواب های جدید</a>
+                    <a href="/admin/new-answer-comments">جواب های جدید</a>
                 </li>
 
             </ul>
