@@ -245,3 +245,10 @@ Route::get("/admin/publish-answer/{id}", [AdminController::class, "publishAnswer
 Route::get("/admin/reject-answer/{id}", [AdminController::class, "rejectAnswer"])->middleware("admin");
 
 
+Route::get("/admin/new-villas", [AdminController::class, "requestedVillas"])->middleware("admin");
+Route::get("/admin/published-villas", [AdminController::class, "publishedVillas"])->middleware("admin");
+Route::get("/admin/rejected-villas", [AdminController::class, "rejectedVillas"])->middleware("admin");
+Route::get("/admin/show-villa/{id}", [AdminController::class, "showVilla"])->middleware("admin");
+Route::post("/admin/publish-villa", [AdminController::class, "publishVilla"])->middleware("admin");
+Route::post("/admin/reject-villa", [AdminController::class, "rejectVilla"])->middleware("admin");
+

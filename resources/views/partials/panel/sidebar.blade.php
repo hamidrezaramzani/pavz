@@ -220,7 +220,7 @@
 
         <div class="accordion-title">
             <i class="far fa-circle"></i>
-            مدیریت سایت
+            مدیریت نظرات سایت
         </div>
 
         <div class="accordion-item">
@@ -292,33 +292,120 @@
             </ul>
         </div>
 
+        
+        <div class="accordion-title">
+            <i class="far fa-circle"></i>
+            مدیریت آگهی ها
+        </div>
+
         <div class="accordion-item">
             <button>
-                <img src="{{ asset('images/icons/svg/apartment.svg') }}" alt="AP SVG">
-                مدیریت آگهی ها
+                <img src="{{ asset('images/icons/svg/villa.svg') }}" alt="AP SVG">
+                مدیریت آگهی های ویلا
                 <i class="fa fa-angle-down"></i>
             </button>
             <ul>
                 <li>
-                    <a href="">ویلای های جدید</a>
+                    <a href="/admin/new-villas">ویلای های جدید</a>
                 </li>
 
+                <li>
+                    <a href="/admin/published-villas">ویلا های ثبت شده</a>
+                </li>
+
+                <li>
+                    <a href="/admin/rejected-villas">
+                        ویلاهای رد شده
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+        
+        <div class="accordion-item">
+            <button>
+                <img src="{{ asset('images/icons/svg/apartment.svg') }}" alt="AP SVG">
+                مدیریت آگهی های آپارتمان
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <ul>
                 <li>
                     <a href="">آپارتمان های جدید</a>
                 </li>
 
                 <li>
+                    <a href="">آپارتمان های ثبت شده</a>
+                </li>
+
+                <li>
                     <a href="/profile">
-                        زمین های جدید
+                        آپارتمان رد شده
                     </a>
                 </li>
+            </ul>
+        </div>
+
+
+        
+        <div class="accordion-item">
+            <button>
+                <img src="{{ asset('images/icons/svg/area.svg') }}" alt="USER SVG">
+                مدیریت آگهی های زمین
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <ul>
+                <li>
+                    <a href="">زمین های جدید</a>
+                </li>
+
+                <li>
+                    <a href="">زمین های ثبت شده</a>
+                </li>
+
+                <li>
+                    <a href="/profile">
+                        زمین رد شده
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+
+
+
+        
+        <div class="accordion-item">
+            <button>
+                <img src="{{ asset('images/icons/svg/apartment.svg') }}" alt="AP SVG">
+                مدیریت آگهی های مغازه
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <ul>
                 <li>
                     <a href="">مغازه های جدید</a>
                 </li>
 
+                <li>
+                    <a href="">مغازه های ثبت شده</a>
+                </li>
+
+                <li>
+                    <a href="/profile">
+                        مغازه رد شده
+                    </a>
+                </li>
             </ul>
         </div>
 
+        
+        <div class="accordion-title">
+            <i class="far fa-circle"></i>
+            مدیریت دیگر بخش ها
+        </div>
 
 
         <div class="accordion-item">
