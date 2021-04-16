@@ -292,7 +292,7 @@
             </ul>
         </div>
 
-        
+
         <div class="accordion-title">
             <i class="far fa-circle"></i>
             مدیریت آگهی ها
@@ -322,7 +322,7 @@
         </div>
 
 
-        
+
         <div class="accordion-item">
             <button>
                 <img src="{{ asset('images/icons/svg/apartment.svg') }}" alt="AP SVG">
@@ -347,7 +347,7 @@
         </div>
 
 
-        
+
         <div class="accordion-item">
             <button>
                 <img src="{{ asset('images/icons/svg/area.svg') }}" alt="USER SVG">
@@ -356,20 +356,20 @@
             </button>
             <ul>
                 <li>
-                    <a href="">زمین های جدید</a>
+                    <a href="/admin/requested-areas">زمین های جدید</a>
                 </li>
 
                 <li>
-                    <a href="">زمین های ثبت شده</a>
+                    <a href="/admin/published-areas">زمین های ثبت شده</a>
                 </li>
 
                 <li>
-                    <a href="/profile">
+                    <a href="/admin/rejected-areas">
                         زمین رد شده
                     </a>
                 </li>
             </ul>
-        </div>
+        </div>  
 
 
 
@@ -377,7 +377,7 @@
 
 
 
-        
+
         <div class="accordion-item">
             <button>
                 <img src="{{ asset('images/icons/svg/apartment.svg') }}" alt="AP SVG">
@@ -401,7 +401,7 @@
             </ul>
         </div>
 
-        
+
         <div class="accordion-title">
             <i class="far fa-circle"></i>
             مدیریت دیگر بخش ها

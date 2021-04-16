@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Apartment;
+use App\Models\Area;
 use App\Models\Comment;
 use App\Models\CommentAnswer;
 use App\Models\DocumentType;
@@ -57,6 +58,22 @@ class AdminController extends Controller
 
         $answers = CommentAnswer::where("status", 0)->orderBy("created_at", "DESC");
         return view("pages.admin.new-answers", ["answers" => $answers->get()]);
+    }
+
+
+
+    public function requestedAreas()
+    {
+        $areas = Area::where("status", "checking")->orderBy("created_at", "DESC");
+        return view("pages.admin.area.requested-areas", ["areas" => $areas->get()]);
+    }
+
+
+    public function publishedAreas()
+    {
+        $areas = Area::where("status", "published")->orderBy("created_at", "DESC");
+        return view("pages.admin.area.published-areas", ["areas" => $areas->get()]);
+        
     }
 
     public function requestedApartments()
@@ -120,6 +137,11 @@ class AdminController extends Controller
         return view("pages.admin.villa.published-villas", ["villas" => $villas]);
     }
 
+    public function rejectedAreas()
+    {
+        $areas = Area::where("status", "rejected")->orderBy("created_at", "DESC");
+        return view("pages.admin.area.rejected-areas", ["areas" => $areas->get()]);
+    }
     public function rejectedVillas()
     {
         $villas = Villa::where("status", "rejected")->orderBy("created_at", "DESC")->get();
@@ -282,6 +304,53 @@ class AdminController extends Controller
         ]);
     }
 
+
+    public function showArea($id)
+    {
+
+
+        if ($id == null) {
+            return redirect("/");
+        }
+        $data = Area::where([
+            ["id", $id]
+        ]);
+
+
+
+        $states = json_decode(file_get_contents(public_path("json/states.json")));
+        $cities = json_decode(file_get_contents(public_path("json/cities.json")));
+
+
+
+
+        if ($data->get()->count()) {
+            $data = $data->get()[0];
+        } else {
+            return redirect("/");
+        }
+
+        $stateId = $data->get()[0]->state;
+        $state = array_filter($states, function ($value) use ($stateId) {
+            return $value->id == $stateId;
+        });
+
+
+
+        $cityId = $data->get()[0]->city;
+        $city = array_filter($cities, function ($value) use ($cityId) {
+            return $value->id == $cityId;
+        });
+
+
+        return view("pages.areas.area", [
+            "data" => $data,
+            "city" => $city,
+            "state" => $state,
+            "saved" => 0
+        ]);
+    }
+
     public function publishApartment(Request $request)
     {
         $request->validate([
@@ -314,6 +383,44 @@ class AdminController extends Controller
             "icon" => "danger",
             "user_id" => $request->get("user_id"),
             "link" => "/apartment/" . $request->get("id")
+        ]);
+        return response(["message" => "done"]);
+    }
+
+
+    public function publishArea(Request $request)
+    {
+        $request->validate([
+            "id" => "required|numeric",
+            "description" => "required|string|min:10",
+            "status" => "required|string",
+            "user_id" => "required|numeric"
+        ]);
+        Area::where("id", $request->get("id"))->update(["status" => "published"]);
+        Notification::create([
+            "text" => $request->get("description"),
+            "icon" => "success",
+            "user_id" => $request->get("user_id"),
+            "link" => "/area/" . $request->get("id")
+        ]);
+        return response(["message" => "done"]);
+    }
+
+
+    public function rejectArea(Request $request)
+    {
+        $request->validate([
+            "id" => "required|numeric",
+            "description" => "required|string|min:10",
+            "status" => "required|string",
+            "user_id" => "required|numeric"
+        ]);
+        Area::where("id", $request->get("id"))->update(["status" => "rejected"]);
+        Notification::create([
+            "text" => $request->get("description"),
+            "icon" => "danger",
+            "user_id" => $request->get("user_id"),
+            "link" => "/area/" . $request->get("id")
         ]);
         return response(["message" => "done"]);
     }

@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('styles/RBSlideshow.css') }}" />
     <link rel="stylesheet" href="{{ asset('styles/persian-datepicker.min.css') }}" />
     <link href="{{ asset('styles/mobiscroll.jquery.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('styles/responsive.css') }}" rel="stylesheet" />
 
 </head>
 

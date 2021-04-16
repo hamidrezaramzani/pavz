@@ -258,3 +258,11 @@ Route::get("/admin/rejected-apartments", [AdminController::class, "rejectedApart
 Route::get("/admin/show-apartment/{id}", [AdminController::class, "showApartment"])->middleware("admin");
 Route::post("/admin/publish-apartment", [AdminController::class, "publishApartment"])->middleware("admin");
 Route::post("/admin/reject-apartment", [AdminController::class, "rejectApartment"])->middleware("admin");
+
+Route::get("/admin/show-area/{id}", [AdminController::class, "showArea"])->middleware("admin");
+Route::post("/admin/publish-area", [AdminController::class, "publishArea"])->middleware("admin");
+Route::post("/admin/reject-area", [AdminController::class, "rejectArea"])->middleware("admin");
+Route::get("/admin/requested-areas", [AdminController::class, "requestedAreas"])->middleware("admin");
+
+Route::get("/admin/rejected-areas", [AdminController::class, "rejectedAreas"])->middleware("admin");
+Route::get("/admin/published-areas", [AdminController::class, "publishedAreas"])->middleware("admin");
