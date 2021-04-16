@@ -386,15 +386,15 @@
             </button>
             <ul>
                 <li>
-                    <a href="">مغازه های جدید</a>
+                    <a href="/admin/requested-shops">مغازه های جدید</a>
                 </li>
 
                 <li>
-                    <a href="">مغازه های ثبت شده</a>
+                    <a href="/admin/published-shops">مغازه های ثبت شده</a>
                 </li>
 
                 <li>
-                    <a href="/profile">
+                    <a href="/admin/rejected-shops">
                         مغازه رد شده
                     </a>
                 </li>

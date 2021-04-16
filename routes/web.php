@@ -266,3 +266,9 @@ Route::get("/admin/requested-areas", [AdminController::class, "requestedAreas"])
 
 Route::get("/admin/rejected-areas", [AdminController::class, "rejectedAreas"])->middleware("admin");
 Route::get("/admin/published-areas", [AdminController::class, "publishedAreas"])->middleware("admin");
+Route::get("/admin/requested-shops", [AdminController::class, "requestedShops"])->middleware("admin");
+Route::get("/admin/rejected-shops", [AdminController::class, "rejectedShops"])->middleware("admin");
+Route::get("/admin/published-shops", [AdminController::class, "publishedShops"])->middleware("admin");
+Route::get("/admin/show-shop/{id}", [AdminController::class, "showShop"])->middleware("admin");
+Route::post("/admin/publish-shop", [AdminController::class, "publishShop"])->middleware("admin");
+Route::post("/admin/reject-shop", [AdminController::class, "rejectShop"])->middleware("admin");

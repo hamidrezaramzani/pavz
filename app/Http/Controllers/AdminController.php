@@ -8,6 +8,7 @@ use App\Models\Comment;
 use App\Models\CommentAnswer;
 use App\Models\DocumentType;
 use App\Models\Notification;
+use App\Models\Shop;
 use App\Models\User;
 use App\Models\Villa;
 use Illuminate\Http\Request;
@@ -21,6 +22,27 @@ class AdminController extends Controller
     }
 
 
+    public function requestedShops()
+    {
+        $shops = Shop::where("status", "checking")->orderBy("created_at", "DESC");
+        return view("pages.admin.shop.requested-shops", ["data" => $shops->get()]);
+    }
+
+
+
+    public function rejectedShops()
+    {
+        $shops = Shop::where("status", "rejected")->orderBy("created_at", "DESC");
+        return view("pages.admin.shop.rejected-shops", ["data" => $shops->get()]);
+    }
+
+
+
+    public function publishedShops()
+    {
+        $shops = Shop::where("status", "published")->orderBy("created_at", "DESC");
+        return view("pages.admin.shop.published-shops", ["data" => $shops->get()]);
+    }
 
     public function newComments()
     {
@@ -73,7 +95,6 @@ class AdminController extends Controller
     {
         $areas = Area::where("status", "published")->orderBy("created_at", "DESC");
         return view("pages.admin.area.published-areas", ["areas" => $areas->get()]);
-        
     }
 
     public function requestedApartments()
@@ -423,5 +444,85 @@ class AdminController extends Controller
             "link" => "/area/" . $request->get("id")
         ]);
         return response(["message" => "done"]);
+    }
+
+    public function publishShop(Request $request)
+    {
+
+        $request->validate([
+            "id" => "required|numeric",
+            "description" => "required|string|min:10",
+            "status" => "required|string",
+            "user_id" => "required|numeric"
+        ]);
+        Shop::where("id", $request->get("id"))->update(["status" => "published"]);
+        Notification::create([
+            "text" => $request->get("description"),
+            "icon" => "success",
+            "user_id" => $request->get("user_id"),
+            "link" => "/shop/" . $request->get("id")
+        ]);
+        return response(["message" => "done"]);
+    }
+
+
+    public function rejectShop(Request $request)
+    {
+
+        $request->validate([
+            "id" => "required|numeric",
+            "description" => "required|string|min:10",
+            "status" => "required|string",
+            "user_id" => "required|numeric"
+        ]);
+        Shop::where("id", $request->get("id"))->update(["status" => "rejected"]);
+        Notification::create([
+            "text" => $request->get("description"),
+            "icon" => "danger",
+            "user_id" => $request->get("user_id"),
+            "link" => "/shop/" . $request->get("id")
+        ]);
+        return response(["message" => "done"]);
+    }
+
+    public function showShop($id)
+    {
+
+        if ($id == null) {
+            return redirect("/");
+        }
+        $data = Shop::where([
+            ["id", $id]
+        ]);
+
+        if ($data->get()->count() == 0) {
+            return redirect("/");
+        } else {
+            $data = $data->get()[0];
+        }
+
+        $states = json_decode(file_get_contents(public_path("json/states.json")));
+        $cities = json_decode(file_get_contents(public_path("json/cities.json")));
+
+
+
+        $stateId = $data->get()[0]->state;
+        $state = array_filter($states, function ($value) use ($stateId) {
+            return $value->id == $stateId;
+        });
+
+
+
+        $cityId = $data->get()[0]->city;
+        $city = array_filter($cities, function ($value) use ($cityId) {
+            return $value->id == $cityId;
+        });
+
+        return view("pages.shop.shop", [
+            "data" =>  $data,
+            "state" => $state,
+            "city" => $city,
+            "saved" => 0
+        ]);
     }
 }
