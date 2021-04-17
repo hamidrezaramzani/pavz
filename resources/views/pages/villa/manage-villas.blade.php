@@ -2,7 +2,7 @@
 @section('dashboard')
     <div class="container-fluid">
         <div class="row justify-content-center py-3">
-            <div class="col-12 col-md-12 dashboard-info-item-content is-checking p-5">                
+            <div class="col-12 col-md-12 dashboard-info-item-content is-checking p-5">
                 <h3>مدیریت آگهی های ویلا</h3>
                 <br>
                 <br>
@@ -36,18 +36,24 @@
                                                 <span class="text-danger">کاور ندارد</span>
                                             @endif
                                         </td>
-                                        <td width="10%">{{ $villa->ads_type == '1' ? 'اجاره ویلا' : 'فروش ویلا' }}</td>
-                                        <td width="10%">{{$villa->view_count}}</td>
+                                        <td width="10%">
+                                            @if ($villa->estate_type == 1)
+                                                {{ $villa->ads_type == '1' ? 'اجاره ویلا' : 'فروش ویلا' }}
+                                            @else
+                                                {{ $villa->ads_type == '1' ? 'اجاره سوییت' : 'فروش سوییت' }}
+                                            @endif
+                                        </td>
+                                        <td width="10%">{{ $villa->view_count }}</td>
                                         <td width="15%">
                                             @switch($villa->status)
-                                                @case("not-completed")
-                                                <span class="text-dark">پیش نویس</span>
+                                                @case(" not-completed")
+                                                    <span class="text-dark">پیش نویس</span>
                                                 @break
-                                                @case("checking")
-                                                <span class="text-warning">در حال بررسی</span>
+                                                @case(" checking")
+                                                    <span class="text-warning">در حال بررسی</span>
                                                 @break
-                                                @case("published")
-                                                <span class="text-success">انتشار یافت</span>
+                                                @case(" published")
+                                                    <span class="text-success">انتشار یافت</span>
                                                 @break
                                             @endswitch
                                         </td>
@@ -140,7 +146,7 @@
                         },
                         success: () => {
                             setBtnStatus(thisBtn)
-                            thisBtn.parents("tr").remove();                            
+                            thisBtn.parents("tr").remove();
                         },
                         error: () => {
                             setBtnStatus(thisBtn)

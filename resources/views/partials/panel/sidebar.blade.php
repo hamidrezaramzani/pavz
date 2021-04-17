@@ -35,21 +35,21 @@
         <div class="accordion-item">
             <button>
                 <img src="{{ asset('images/icons/svg/villa.svg') }}" alt="VILLA SVG">
-                مدیریت ویلا ها
+                مدیریت ویلا و سوییت ها
                 <i class="fa fa-angle-down"></i>
             </button>
             <ul>
                 <li>
                     <a href="/new-villa">
                         <i class="fa fa-plus" aria-hidden="true"></i>
-                        ثبت ویلای جدید
+                        ثبت ویلا یا سوییت جدید
                     </a>
                 </li>
 
                 <li>
                     <a href="/manage/villas">
                         <i class="far fa-circle"></i>
-                        نمایش ویلاهای من
+                        نمایش ویلا و سوییت های من
                     </a>
                 </li>
             </ul>
