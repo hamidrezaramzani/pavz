@@ -7,6 +7,7 @@ use App\Http\Controllers\CommentAnswerController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ParkingController;
 use App\Http\Controllers\PictureController;
 use App\Http\Controllers\PoolController;
@@ -25,6 +26,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VillasController;
 use App\Http\Controllers\VillaScoreController;
 use App\Http\Controllers\VipController;
+use App\Models\Notification;
 use App\Models\Parking;
 use App\Models\Room;
 use App\Models\Ticket;
@@ -276,3 +278,8 @@ Route::post("/admin/reject-shop", [AdminController::class, "rejectShop"])->middl
 Route::get("/admin/new-tickets", [AdminController::class, "allTickets"])->middleware("admin");
 Route::get("/admin/answer-ticket/{id}", [AdminController::class, "getTicketAndAnswer"])->middleware("admin");
 Route::post("/admin/answer-to-ticket", [AdminController::class, "answerToTicket"])->middleware("admin");
+
+
+// NOTIFICATION ROUTES
+Route::get("/notification/all", [NotificationController::class, "allNotifications"])->middleware("auth");
+

@@ -5,10 +5,11 @@
                 <i class="fa fa-search"></i>
             </button>
             <form action="">
-                <input type="text" class="form-control" placeholder="اینجا جستجو کن"11>
+                <input type="text" class="form-control" placeholder="اینجا جستجو کن" 11>
             </form>
         </div>
     </div>
+
 
     <div class="col-12 col-md-9">
         <ul>
@@ -20,30 +21,22 @@
 
                     </button>
                     <ul class="dropdown-menu user-options-dropdown" aria-labelledby="user-options">
-                        <li><a class="dropdown-item" href="#">
+                        <li><a class="dropdown-item" href="/">
                                 <i class="fa fa-home"></i>
                                 صفحه اصلی
                             </a></li>
-                        <li><a class="dropdown-item" href="#">
+                        <li><a class="dropdown-item" href="/panel">
                                 <i class="fa fa-bars"></i>
                                 پیشخوان
 
                             </a></li>
-                        <li><a class="dropdown-item" href="#">
-                                <i class="fas fa-dollar-sign"></i>
-                                بخش مالی
-                            </a></li>
-                        <li><a class="dropdown-item" href="#">
-                                <i class="fa fa-users"></i>
-                                دعوت از دوستان
-                            </a></li>
-                        <li><a class="dropdown-item" href="#">
+                        <li><a class="dropdown-item" href="/faq">
                                 <i class="fa fa-question"></i>
                                 سوالات متداول
                             </a></li>
                         <li><a class="dropdown-item" href="/logout">
-                            <i class="fa fa-times" ></i>
-                            خروج
+                                <i class="fa fa-times"></i>
+                                خروج
                             </a></li>
                     </ul>
                 </div>
@@ -51,21 +44,43 @@
 
 
             <li>
-                <a href="">
-                    <i class="far fa-bell"></i>
-                </a>
-            </li>
+                <div class="dropdown">
+                    <button class="btn-default btn pulse-item dropdown-toggle" type="button" id="notification-dropdown"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        @if ($notifications->count())
+                            <div></div>
+                        @endif
+                        <i class="far fa-bell"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="notification-dropdown">
+                        @if ($notifications->count())
+                            @foreach ($notifications as $item)
+                                <li>
+                                    <a class="dropdown-item" href="{{$item->link}}">
+                                        <div class="notification-status">
+                                            <img src="{{ asset('images/status/' .$item->icon     . '.png') }}" width="20" height="20"
+                                                alt="Danger">
+                                        </div>
+                                        <div class="notification-title">
+                                            {{ mb_substr($item->text, 0, 45) }} ...
+                                        </div>
+                                    </a>
+                                </li>
+                            @endforeach
 
-            <li>
-                <a href="">
-                    <i class="far fa-envelope"></i>
-                </a>
-            </li>
+                        @else
+                            <li>اعلانی یافت نشد</li>
+                        @endif
 
-            <li>
-                <a href="">
-                    <i class="far fa-flag"></i> 
-                </a>
+                        <br>
+                        <li>
+                            <a class="dropdown-item view-all-notifications" href="/notification/all">
+                                نمایش همه
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
             </li>
         </ul>
     </div>

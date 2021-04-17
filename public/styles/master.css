@@ -1418,7 +1418,7 @@ footer .aboutus img {
 }
 
 .dashboard-navbar ul li a {
-    font-size: 18px;
+    font-size: 22px;
     color: #777;
     display: block;
     text-align: right;
@@ -2747,4 +2747,86 @@ input:disabled {
 .page404 p {
     color: #686868;
     font: 15px is;
+}
+
+.pulse-item {
+    position: relative;
+}
+
+.pulse-item div {
+    width: 7px;
+    height: 7px;
+    background: red;
+    border-radius: 100%;
+    position: absolute;
+    top: 22px;
+    animation: pulse 1s ease-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        -webkit-transform: scale(1);
+        opacity: 1;
+    }
+    25% {
+        -webkit-transform: scale(1.05);
+        opacity: 0.8;
+    }
+    50% {
+        -webkit-transform: scale(1.1);
+        opacity: 0.5;
+    }
+    75% {
+        -webkit-transform: scale(1.15);
+        opacity: 0.3;
+    }
+    100% {
+        -webkit-transform: scale(1.2);
+        opacity: 0.2;
+    }
+}
+
+.pulse-item i {
+    font-size: 20px;
+    color: #686868;
+}
+
+.dropdown-toggle::after {
+    display: none!important;
+}
+
+.notification-status {
+    float: right;
+    margin-left: 5px;
+}
+
+.notification-title {
+    font: 13px is;
+    float: right;
+}
+
+.dropdown-menu li a {
+    float: right;
+    box-sizing: border-box;
+}
+
+.dropdown-menu {
+    width: 355px !important;
+    /* height: 400px !important; */
+}
+
+.dropdown-menu li {
+    width: 100%;
+}
+
+.view-all-notifications {
+    display: block!important;
+    text-align: center!important;
+    font: 12px is!important;
+    color: rgb(61, 61, 207)!important;
+}
+
+.notification-alert-item {
+    text-decoration: none;
+    font: 14px is;
 }

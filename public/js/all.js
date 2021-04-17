@@ -59,3 +59,11 @@ $("#btn-search").click(function () {
         });
     }
 });
+
+
+// if($("#notification-btn")){
+//     $("#notification-btn a").click(function (e) {
+//         e.preventDefault();
+//         console.log("Hi");
+//     });
+// }

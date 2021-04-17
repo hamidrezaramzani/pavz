@@ -61,11 +61,15 @@ class User extends Authenticatable
 
     public function areas()
     {
-        return $this->hasMany(Area::class);        
+        return $this->hasMany(Area::class);
     }
 
     public function shops()
     {
         return $this->hasMany(Shop::class);
+    }
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
     }
 }
