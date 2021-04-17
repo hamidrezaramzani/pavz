@@ -436,12 +436,13 @@
             </button>
             <ul>
                 <li>
-                    <a href="">تیکت های اخیر</a>
+                    <a href="/admin/new-tickets">تیکت های جدید</a>
                 </li>
 
                 <li>
-                    <a href="">مدیریت</a>
+                    <a href="/admin/last-tickets">تیکت های اخیر</a>
                 </li>
+
 
             </ul>
         </div>

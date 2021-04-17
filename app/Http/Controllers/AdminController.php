@@ -9,6 +9,8 @@ use App\Models\CommentAnswer;
 use App\Models\DocumentType;
 use App\Models\Notification;
 use App\Models\Shop;
+use App\Models\Ticket;
+use App\Models\TicketAnswer;
 use App\Models\User;
 use App\Models\Villa;
 use Illuminate\Http\Request;
@@ -524,5 +526,40 @@ class AdminController extends Controller
             "city" => $city,
             "saved" => 0
         ]);
+    }
+
+    public function allTickets()
+    {
+        $data = Ticket::where("status", "new")->orderBy("created_at", "DESC")->orderBy("priority", "DESC")->get();
+        return view("pages.admin.ticket.new-tickets", ["data" => $data]);
+    }
+
+    public function getTicketAndAnswer($id)
+    {
+        $data = Ticket::find($id);
+        return view("pages.admin.ticket.answer-ticket", ["data" => $data]);
+    }
+
+    public function answerToTicket(Request $request)
+    {
+        $request->validate([
+            "description" => "required|string|min:10|max:10000",
+            "id" => "required|numeric",
+            "status" => "required|string",
+        ]);
+
+        $ticketAnswer = TicketAnswer::create([
+            "description" => $request->get("description"),
+            "ticket_id" => $request->get("id")
+        ]);
+        $ticket = Ticket::where("id", $request->get("id"));
+        $ticket->update(["status" => $request->get("status")]);
+        Notification::create([
+            "text" => "تیکت جدید برای شما ارسال شده است",
+            "icon" => "success",
+            "user_id" => $ticket->get()[0]->user_id,
+            "link" => "/ticket/answer/"  . $ticketAnswer->id
+        ]);
+        return response(['message' => 'send']);
     }
 }

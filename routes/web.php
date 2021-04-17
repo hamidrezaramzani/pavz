@@ -272,3 +272,7 @@ Route::get("/admin/published-shops", [AdminController::class, "publishedShops"])
 Route::get("/admin/show-shop/{id}", [AdminController::class, "showShop"])->middleware("admin");
 Route::post("/admin/publish-shop", [AdminController::class, "publishShop"])->middleware("admin");
 Route::post("/admin/reject-shop", [AdminController::class, "rejectShop"])->middleware("admin");
+
+Route::get("/admin/new-tickets", [AdminController::class, "allTickets"])->middleware("admin");
+Route::get("/admin/answer-ticket/{id}", [AdminController::class, "getTicketAndAnswer"])->middleware("admin");
+Route::post("/admin/answer-to-ticket", [AdminController::class, "answerToTicket"])->middleware("admin");
