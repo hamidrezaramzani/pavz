@@ -21,14 +21,6 @@
                     </li>
 
 
-                    <li>
-                        <a href="">
-                            <i class="fab fa-google"></i>&nbsp;
-                            hrra13801396h@gmail.com
-                        </a>
-                    </li>
-
-
                 </ul>
             </div>
             <div class="col-11 col-md-7 aboutus">
@@ -54,14 +46,12 @@
                     #zarinpal {
                         margin: auto
                     }
-
                     #zarinpal img {
                         width: 80px;
                     }
-
                 </style>
                 <div id="zarinpal">
-                    {{-- <script src="https://www.zarinpal.com/webservice/TrustCode" type="text/javascript"></script> --}}
+                    <script src="https://www.zarinpal.com/webservice/TrustCode" type="text/javascript"></script>
                 </div>
             </div>
         </div>
@@ -116,26 +106,26 @@
                 <ul>
 
                     <li>
-                        <a href="">
+                        <a href="/login">
                             ورود و ثبت نام
                         </a>
                     </li>
 
                     <li>
-                        <a href="">
+                        <a href="/faq">
                             سوالات متداول
                         </a>
                     </li>
 
                     <li>
-                        <a href="">
+                        <a href="/about-us">
                             درباره ما
                         </a>
                     </li>
 
 
                     <li>
-                        <a href="">
+                        <a href="/about-us">
                             تماس با ما
                         </a>
                     </li>

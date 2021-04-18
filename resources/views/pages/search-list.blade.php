@@ -16,6 +16,7 @@
                 @case(3)
                 @case(4)
                     <div class="row">
+                        <h2 class="isbold">جستجوی سوییت و ویلا</h2>
                         @foreach ($data as $item)
                             <div class="col-12 col-md-5 mb-4">
                                 @include('partials.home.villa-item' , ["item" => $item])
