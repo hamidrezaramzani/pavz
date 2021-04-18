@@ -3,7 +3,8 @@
 /public/storage
 /storage/*.key
 /vendor
-/public/fonts/*
+*.ttf
+*.eot
 .env
 .env.backup
 .phpunit.result.cache
