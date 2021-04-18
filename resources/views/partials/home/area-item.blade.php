@@ -1,67 +1,46 @@
-<div class="villa-item" data-aos="zoom-in">
-    <div class="villa-item-content">
-        <a href="/area/{{ $item->id }}">
-            <div class="villa-item-img">
+<div class="ads-item">
+    <div class="vip-label">ویژه</div>
+    <div class="type-label">فروش</div>
+    <img src="{{ asset('covers/' . $item->cover) }}" alt="{{ $item->title }}">
+    <div class="ads-item-content">
+        <div class="ads-item-header">
+            <span class="float-right ads-item-location">
+                <i class="fas fa-map-marker-alt"></i>
+                مازندران / رامسر
+            </span>
+            <span class="float-left">
+                <button class="btn p-0">
+                    <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </button>
+            </span>
+            <span class="float-left mx-2">
+                <button class="btn p-0">
+                    <i class="fa fa-heart text-danger" aria-hidden="true"></i>
+                </button>
+            </span>
+        </div>
+        <div class="ads-item-body">
+            <a href="/area/{{ $item->id }}">
 
-                <img src="{{ asset('covers/' . $item->cover) }}" alt="this is villa alt test">
-                @if ($item['is_vip'])
-                    <div class="vip-lable">ویژه</div>
+                <h2>{{ $item->title }}</h2>
+
+                @if ($item->agreed_price)
+                    <h4 class="text-danger">قیمت توافقی</h4>
                 @else
-                    <div class="normal-lable">عادی</div>
-
+                    <h4>قیمت کل <span class="text-danger">{{ $item->total_price }}</span> تومان
+                    </h4>
                 @endif
-                <div class="type-lable">فروش</div>
-            </div>
-            <div class="villa-top-info">
-                <div class="w-50">
-                    <span>
-                        <i class="fas fa-map-marker"></i>
-                        مازندران - رامسر
-                    </span>
-                </div>
-                {{-- <div class="w-50">
-                    <ul>
-                        <li>
-                            <div class="my-rating"></div>
-                        </li>
-                    </ul>
-                </div> --}}
+            </a>
 
-            </div>
-            <h2>{{ $item->title }}</h2>
-            <p>
-                {{ $item->agreed_price ? 'قیمت توافقی' : $item->total_price . "   تومان" }}
-              
-            </p>
-
-
-            <div class="villa-properties">
-                <ul>
-                    <li>
-                        <i class="fa fa-hotel"></i>
-                        {{ $item->count_of_border }} بر
-                    </li>
-
-                    <li>
-                        <i class="fa fa-chart-area"></i>
-                        {{ $item->foundation }} متر متراژ
-                    </li>
-
-                    <li>
-                        <i class="fa fa-home"></i>
-                        {{ $item->main_border_width }} متر بر اصلی
-                    </li>
-
-
-                    <li>
-                        <i class="fa fa-users"></i>
-                        {{ $item->areaType->name }}
-                    </li>
-                </ul>
-            </div>
-
-        </a>
+        </div>
+        <br>
+        <br>
+        <div class="ads-item-user">
+            <img src="{{ asset($item->user->profile->image ? 'upload/' . $item->user->profile->image : 'images/user.png') }}"
+                width="50" height="50" alt="{{ $item->user->profile->fullname }}">
+            <h6>{{ $item->user->profile->fullname }}</h6>
+            <span>+ {{ $item->user->areas()->where('status', 'published')->count() }} ثبت آگهی زمین</span>
+        </div>
     </div>
-
 
 </div>

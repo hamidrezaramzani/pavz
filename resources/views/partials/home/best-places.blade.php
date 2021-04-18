@@ -2,8 +2,8 @@
 
     <x-title :title="'برترین شهر های ایران'"
         :description="'برترین شهر های ایران که بهترین ویلا ها را میتوانید در آن پیدا کنید'"></x-title>
-        <br>
-        <br>
+    <br>
+    <br>
     <div class="container">
         <div class="container">
             <div class="row justify-content-center best-cities">
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-11 col-md-3" data-aos="fade-down">
+                <div class="col-11 col-md-3 mb-4">
                     <div class="best-city-content">
                         <img src="{{ asset('images/cities/motelghoo.jpg') }}" alt="This is best place item">
                         <div class="place-effect"></div>
@@ -37,7 +37,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-11 col-md-3" data-aos="fade-down">
+
+                <br>
+                <br>
+                <div class="col-11 col-md-3 mb-4">
                     <div class="best-city-content">
                         <img src="{{ asset('images/cities/shiraz.jpg') }}" alt="This is best place item">
                         <div class="place-effect"></div>
@@ -47,7 +50,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-11 col-md-3" data-aos="fade-up"> 
+
+                <br>
+                <br>
+                <br>
+                <div class="col-11 col-md-3 mb-4">
                     <div class="best-city-content">
                         <img src="{{ asset('images/cities/kish.jpg') }}" alt="This is best place item">
                         <div class="place-effect"></div>
@@ -57,7 +64,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-11 col-md-3" data-aos="fade-up"> 
+                <div class="col-11 col-md-3 mb-4">
                     <div class="best-city-content">
                         <div class="place-effect"></div>
                         <img src="{{ asset('images/cities/rasht.jpg') }}" alt="This is best place item">

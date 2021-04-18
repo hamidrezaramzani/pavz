@@ -1,78 +1,51 @@
-<div class="villa-item" data-aos="zoom-in">
-    <div class="villa-item-content">
-        <a href="/apartment/{{ $item->id }}">
-            <div class="villa-item-img">
+<div class="ads-item">
+    <div class="vip-label">ویژه</div>
+    <div class="type-label">{{ $item->ads_type == 1 ? 'فروش' : 'رهن' }}</div>
+    <img src="{{ asset('covers/' . $item->cover) }}" alt="{{ $item->title }}">
+    <div class="ads-item-content">
+        <div class="ads-item-header">
+            <span class="float-right ads-item-location">
+                <i class="fas fa-map-marker-alt"></i>
+                مازندران / رامسر
+            </span>
+            <span class="float-left">
+                <button class="btn p-0">
+                    <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </button>
+            </span>
+            <span class="float-left mx-2">
+                <button class="btn p-0">
+                    <i class="fa fa-heart text-danger" aria-hidden="true"></i>
+                </button>
+            </span>
+        </div>
+        <div class="ads-item-body">
+            <a href="/apartment/{{ $item->id }}">
 
-                <img src="{{ asset('covers/' . $item->cover) }}" alt="this is villa alt test">
-                @if ($item['is_vip'])
-                    <div class="vip-lable">ویژه</div>
-                @else
-                    <div class="normal-lable">عادی</div>
+                <h2>{{ $item->title }}</h2>
+                @if ($item->ads_type == 1)
 
-                @endif
-                <div class="type-lable">{{ $item->ads_type == 2 ? 'رهن' : 'فروش' }}</div>
-            </div>
-            <div class="villa-top-info">
-                <div class="w-50">
-                    <span>
-                        <i class="fas fa-map-marker"></i>
-                        مازندران - رامسر
-                    </span>
-                </div>
-                {{-- <div class="w-50">
-                    <ul>
-                        <li>
-                            <div class="my-rating"></div>
-                        </li>
-                    </ul>
-                </div> --}}
-
-            </div>
-            <h2>{{ $item->title }}</h2>
-            <p>
-                @if ($item->ads_type == 2)
-                    {{ $item->mortgage }}
-                    تومان
-                    <span>/ رهن</span>
-                @else
                     @if ($item->agreed_price)
-                        قیمت توافقی
+                        <h4 class="text-danger">قیمت توافقی</h4>
                     @else
-                        {{ $item->total_price }}
-                        تومان
+                        <h4>قیمت کل <span class="text-danger">{{ $item->total_price }}</span> تومان
+                        </h4>
                     @endif
+
+                @else
+                    <h4>رهن <span class="text-danger">{{ $item->mortgage }}</span> تومان</h4>
                 @endif
+            </a>
 
-            </p>
-
-
-            <div class="villa-properties">
-                <ul>
-                    <li>
-                        <i class="fa fa-hotel"></i>
-                        {{ $item->floors }} طبقه
-                    </li>
-
-                    <li>
-                        <i class="fa fa-chart-area"></i>
-                        {{ $item->foundation }} متر
-                    </li>
-
-                    <li>
-                        <i class="fa fa-home"></i>
-                        {{ $item->unites }} واحد
-                    </li>
-
-
-                    <li>
-                        <i class="fa fa-users"></i>
-                        {{ $item->accountType->name }}
-                    </li>
-                </ul>
-            </div>
-
-        </a>
+        </div>
+        <br>
+        <br>
+        <div class="ads-item-user">
+            <img src="{{ asset($item->user->profile->image ? 'upload/' . $item->user->profile->image : 'images/user.png') }}"
+                width="50" height="50" alt="{{ $item->user->profile->fullname }}">
+            <h6>{{ $item->user->profile->fullname }}</h6>
+            <span>+ {{ $item->user->apartments()->where('status', 'published')->count() }} ثبت آگهی آپارتمان</span>
+        </div>
     </div>
-
 
 </div>

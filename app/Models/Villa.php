@@ -96,4 +96,5 @@ class Villa extends Model
     {
         return $this->hasMany(Reserve::class);
     }
+
 }

@@ -1,15 +1,12 @@
 const header = document.getElementById("my-header");
-const logo = header.querySelector("img");
+const logo = document.getElementById("navbar-logo");
 const goToTop = document.getElementById("gototop");
 
 goToTop.addEventListener("click", function () {
     scrollTo({ top: 0 });
 });
 
-
-
 $(document).ready(function () {
-    
     $(".owl-carousel").owlCarousel({
         items: 4,
         dots: true,
@@ -30,11 +27,6 @@ $(document).ready(function () {
             },
         },
     });
-
-    $(".my-rating").starRating({
-        initialRating: 4,
-        starSize: 25,
-    });
 });
 
 AOS.init();
@@ -45,15 +37,16 @@ function scrollDocument() {
     if (y >= scrollHeader) {
         goToTop.style.display = "inline";
         header.classList.add("fixed-header");
-        logo.src = "http://localhost:8000/images/dpavz.png";
+        console.log(logo);
+        logo.src = logo.getAttribute("data-dark-src");
     } else {
         goToTop.style.display = "none";
         header.classList.remove("fixed-header");
-        logo.src = "http://localhost:8000/images/pavz.png";
+        logo.src =  logo.getAttribute("data-light-src");
     }
 }
 window.addEventListener("scroll", scrollDocument);
-
+window.addEventListener("load", scrollDocument);
 $(function () {
     $('[data-toggle="tooltip"]').tooltip();
 });

@@ -1,5 +1,6 @@
 @extends('layout.content' , ["title" => "اجاره و خرید ویلا زمین و آپارتمان و پیدا کردن پیمانکار های حرفه ای | پاوز"])
 @section('content')
+    @include('partials.loading')
     @include('partials.navbar')
     @include('partials.home.header')
     @include('partials.home.best-places')
@@ -8,9 +9,7 @@
     @include('partials.home.best-apartments')
     @include('partials.home.best-areas')
     @include('partials.home.best-shops')
-    @include('partials.home.attractions-tourist')
     @include('partials.home.footer')
-    @include('partials.languages')
     @include('partials.gototop')
 @endsection
 @push('scripts')
