@@ -1,4 +1,4 @@
-<div class="villa-item" data-aos="zoom-in">
+{{-- <div class="villa-item" data-aos="zoom-in">
     <div class="villa-item-content">
         <a href="/villa/{{ $item->id }}">
             <div class="villa-item-img">
@@ -16,7 +16,6 @@
                 <div class="w-50">
                     <span>
                         <i class="fas fa-map-marker"></i>
-                        {{-- {{$state->name}} - {{$city->name/}} --}}
                         مازندران / رامسر
                     </span>
                 </div>            
@@ -62,5 +61,56 @@
         </a>
     </div>
 
+
+</div> --}}
+
+<div class="ads-item">
+    <div class="vip-label">ویژه</div>
+    <div class="type-label">{{ $item->ads_type == 1 ? 'اجاره' : 'فروش' }}</div>
+    <img src="{{ asset('covers/' . $item->cover) }}" alt="{{ $item->title }}">
+    <div class="ads-item-content">
+        <div class="ads-item-header">
+            <span class="float-right ads-item-location">
+                <i class="fas fa-map-marker-alt"></i>
+                مازندران / رامسر
+            </span>
+            <span class="float-left">
+                <button class="btn p-0">
+                    <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </button>
+            </span>
+            <span class="float-left mx-2">
+                <button class="btn p-0">
+                    <i class="fa fa-heart text-danger" aria-hidden="true"></i>
+                </button>
+            </span>
+        </div>
+        <div class="ads-item-body">
+            <a href="/villa/{{ $item->id }}">
+
+                <h2>{{ $item->title }}</h2>
+                @if ($item->ads_type == 1)
+                    <h4>هر شب <span class="text-danger">{{ $item->rentPrices->middweek }}</span> تومان</h4>
+
+                @else
+                    @if ($item->soldVillaPrices->agreed_price)
+                        <h4 class="text-danger">قیمت توافقی</h4>
+                    @else
+                        <h4>قیمت کل <span class="text-danger">{{ $item->soldVillaPrices->total_price }}</span> تومان
+                        </h4>
+                    @endif
+                @endif
+            </a>
+
+        </div>
+        <br>
+        <br>
+        <div class="ads-item-user">
+            <img src="{{ asset($item->user->profile->image ? 'upload/' . $item->user->profile->image : 'images/user.png') }}"
+                width="50" height="50" alt="{{ $item->user->profile->fullname }}">
+            <h6>{{ $item->user->profile->fullname }}</h6>
+            <span>+ {{$item->user->villas()->where("status" , "published")->count()}} ثبت آگهی ویلا</span>
+        </div>
+    </div>
 
 </div>

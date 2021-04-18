@@ -1,0 +1,89 @@
+@media (min-width: 320px) and (max-width: 801px) {
+    @font-face {
+        @font-face {
+            font-family: "is";
+            src: url(../fonts/mobile/iranyekanwebmediumfanum.ttf) format("truetype");
+        }
+        @font-face {
+            font-family: "isblack";
+            src: url(../fonts/mobile/iranyekanwebblackfanum.ttf) format("truetype");
+        }
+    }
+    .best-villas {
+        padding-top: 100px !important;
+    }
+    .title h2 {
+        font-size: 25px !important;
+    }
+    .title a {
+        display: none;
+    }
+    .title p {
+        text-align: center !important;
+    }
+    .services ul li {
+        width: 60%;
+        display: block !important;
+        margin: 10px auto !important;
+    }
+    .services ul li a {
+        display: block;
+        text-align: center;
+    }
+    .search-box {
+        width: 90% !important;
+        height: 150px !important;
+    }
+    .welcome-box h1 {
+        font-size: 30px;
+    }
+    .welcome-box p {
+        padding: 10px;
+        font-size: 14px;
+        /* width: 80%; */
+        /* text-align: center; */
+    }
+    .search-box button {
+        width: 100% !important;
+    }
+    .search-box .input-g {
+        width: 100%;
+    }
+    .locations {
+        z-index: 99999999999;
+    }
+    .search-box input {
+        width: 100% !important;
+    }
+    .search-box input:focus {
+        box-shadow: none !important;
+    }
+    .styled-select {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    .styled-select select {
+        width: 100% !important;
+    }
+    .top-header {
+        padding: 0 !important;
+    }
+    .navbar-brand {
+        margin: 0 !important;
+    }
+    .navbar-toggler {
+        color: #fff !important;
+    }
+    .navbar-toggler i {
+        font-size: 25px;
+    }
+    .top-header img {
+        width: 80px;
+    }
+    .villa-item h2 {
+        font-size: 17px;
+    }
+    .villa-properties ul li {
+        margin: 0 !important;
+    }
+}

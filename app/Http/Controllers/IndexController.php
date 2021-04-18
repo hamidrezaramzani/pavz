@@ -13,7 +13,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-        
+
         $villas = Villa::where([
             ["is_vip", 1],
             ["status", "published"]
@@ -33,9 +33,9 @@ class IndexController extends Controller
         ]);
         return view('index', [
             "villas" => $villas->get(),
-            "apartments" => $apartments->get() ,
-            "areas" => $areas->get() , 
-            "shops" => $shops->get() , 
+            "apartments" => $apartments->get(),
+            "areas" => $areas->get(),
+            "shops" => $shops->get(),
         ]);
     }
 }
