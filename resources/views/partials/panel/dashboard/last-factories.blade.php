@@ -41,7 +41,7 @@
                     <td>1</td>
                     <td>خرید دوره 1 ماهه</td>
                     <td>4 دی 1400</td>                                            
-                    <td>
+                    <td>    
                         <span class="text-success">موفق</span>
                     </td>                    
                 </tr>

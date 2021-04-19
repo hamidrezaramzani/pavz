@@ -558,7 +558,7 @@ class AdminController extends Controller
             "text" => "تیکت جدید برای شما ارسال شده است",
             "icon" => "success",
             "user_id" => $ticket->get()[0]->user_id,
-            "link" => "/ticket/answer/"  . $ticketAnswer->id
+            "link" => "/tickets/show-answer/"  . $ticketAnswer->id
         ]);
         return response(['message' => 'send']);
     }

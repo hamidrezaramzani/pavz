@@ -9,4 +9,8 @@ class Ticket extends Model
 {
     use HasFactory;
     protected $fillable = ["title", "description", "priority", "attach", "user_id"];
+    public function answers()
+    {
+        return $this->hasMany(TicketAnswer::class);
+    }
 }

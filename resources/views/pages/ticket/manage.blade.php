@@ -13,9 +13,10 @@
                         <thead>
                             <tr>
                                 <th width="10%">کد</th>
-                                <th width="40%">عنوان</th>
+                                <th width="25%">عنوان</th>
                                 <th width="25%">وضعیت</th>
                                 <th width="25%">پیوست</th>
+                                <th width="25%">تعداد پاسخ</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -24,21 +25,31 @@
                                 @foreach ($data as $item)
                                     <tr>
                                         <td width="10%">{{ $item->id }}</td>
-                                        <td width="40%">{{ $item->title }}</td>
+                                        <td width="25%">{{ $item->title }}</td>
                                         <td width="25%">
                                             @switch($item->status)
-                                                @case("new")
-                                                جدید
-                                                @break
-                                                @case("answer")
+                                            @case("answer")
                                                 پاسخ داده شد
-                                                @break
-                                                @case("closed")
+                                            @break
+                                            @case("closed")
                                                 بسته شد
-                                                @break
-                                            @endswitch
+                                            @break
+                                            @case("wait")
+                                                منتظر پاسخ کاربر
+                                            @break
+                                            @case("done")
+                                                انجام شد
+                                            @break
+                                            @case("new")
+                                                جدید
+                                            @break                                    
+        
+                                        @endswitch
                                         </td>
                                         <td width="25%">{{ $item->attach ? 'دارد' : 'ندارد' }}</td>
+                                        <td width="25%">
+                                            <a href="/tickets/show-answer/{{ $item->id }}">{{$item->answers()->get()->count()}} پاسخ</a>
+                                        </td>
                                     </tr>
                                 @endforeach
 
@@ -53,4 +64,3 @@
         </div>
     </div>
 @endsection
-
