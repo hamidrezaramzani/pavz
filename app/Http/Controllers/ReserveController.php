@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\NewReserveRequest;
+use App\Models\Notification;
 use App\Models\Reserve;
 use App\Models\Villa;
 use Illuminate\Http\Request;
@@ -13,6 +14,13 @@ class ReserveController extends Controller
     public function newReserve(NewReserveRequest $request)
     {
         $data = $request->except("_token");
+
+        Notification::create([
+            "text" => "درخواست رزرو جدیدی برای شما ارسال شده است",
+            "icon" => "success",
+            "user_id" => $request->get("user_id"),
+            "link" => "/reserves/manage"
+        ]);
         Reserve::create($data);
         return response(["message" => "reserve sended"]);
     }

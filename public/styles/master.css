@@ -2908,10 +2908,28 @@ input:disabled {
     display: none;
 }
 
-set-password-box {
+.set-password-box {
     display: none;
 }
 
-et-password-box {
+.reset-password-box {
     display: none;
+}
+
+.ui-datepicker-month {
+    font: 13px is;
+    border: 1px solid #eee;
+}
+
+.ui-datepicker-year {
+    font: 13px is;
+    border: 1px solid #eee;
+}
+
+.ui-datepicker-calendar tr th {
+    color: #0a5299;
+}
+
+.ui-datepicker-calendar tr {
+    font: 13px is;
 }

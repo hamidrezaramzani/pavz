@@ -16,6 +16,14 @@ L.marker({
     lng: $("#lng").val(),
 }).addTo(mymap);
 
+$(".datepicker").datepicker({
+    minDate: "-0d",
+    maxDate: "+12m +0d",
+    changeMonth: true, // True if month can be selected directly, false if only prev/next
+    changeYear: true,
+    yearRange: "c-0:c+2",
+});
+
 $(document).ready(function () {
     function setScore(name, score) {
         const url = `/scores/${name}/${$("#id").val()}/${score}`;
@@ -225,97 +233,6 @@ var now = new Date(),
     min = new Date(currYear, currMonth, currDay),
     max = new Date(currYear, currMonth + 6, currDay);
 
-$("#reserve")
-    .mobiscroll()
-    .datepicker({
-        display: "inline",
-        controls: ["calendar"],
-        min: min,
-        locale: mobiscroll.localeFa,
-        selectMultiple: true,
-        max: max,
-        themeVariant: "light",
-        onPageLoading: function (event, inst) {
-            // getPrices(event.firstDay, function callback(bookings) {
-            //     inst.setOptions({
-            //         labels: bookings.labels,
-            //         invalid: bookings.invalid
-            //     });
-            // });
-        },
-        onChange: function (event) {
-            console.log(event);
-        },
-    });
-
-function getPrices(d, callback) {
-    var invalid = [],
-        labels = [];
-
-    mobiscroll.util.http.getJson(
-        "//trial.mobiscroll.com/getprices/?year=" +
-            d.getFullYear() +
-            "&month=" +
-            d.getMonth(),
-        function (bookings) {
-            for (var i = 0; i < bookings.length; ++i) {
-                var booking = bookings[i],
-                    d = new Date(booking.d);
-
-                if (booking.price > 0) {
-                    labels.push({
-                        start: d,
-                        title: "$" + booking.price,
-                        textColor: "#e1528f",
-                    });
-                } else {
-                    invalid.push(d);
-                }
-            }
-            callback({ labels: labels, invalid: invalid });
-        },
-        "jsonp"
-    );
-}
-const m = moment.from("1400/01/19", "fa", "YYYY/MM/DD");
-console.log(m);
-$("#date-in")
-    .mobiscroll()
-    .datepicker({
-        controls: ["calendar"],
-        locale: mobiscroll.localeFa,
-        min: min,
-        max: max,
-        themeVariant: "light",
-        invalid: [m._i.slice(0, -3)],
-    });
-
-$("#date-out")
-    .mobiscroll()
-    .datepicker({
-        controls: ["calendar"],
-        locale: mobiscroll.localeFa,
-        min: min,
-        max: max,
-        themeVariant: "light",
-        invalid: [m._i.slice(0, -3)],
-        onChange: (event) => {
-            const start = $("#date-in").val();
-            const end = event.valueText;
-
-            const startDate = new Date(start);
-            const endDate = new Date(end);
-            if (startDate <= endDate == false) {
-                Swal.fire({
-                    title: "خطا",
-                    text: "تاریخ خروج نباید کم تر از تاریخ ورود باشد",
-                    icon: "error",
-                    confirmButtonText: "باشه",
-                });
-            }
-        },
-    });
-
 $.validator.addMethod(
     "regex",
     function (value, element, regexp) {
@@ -346,8 +263,9 @@ $("#reserve-form").validate({
             guests: $("#guests").val(),
             _token: $("#token").val(),
             villa_id: $("#id").val(),
+            user_id: $("#user_id").val(),
         };
-
+        
         $.ajax({
             method: "POST",
             url: "/reserve/new",
@@ -493,7 +411,6 @@ $("#answer-form").validate({
     },
 });
 
-
 $(".delete-answer").click(function () {
     const btn = $(this);
     const id = btn.attr("id");
@@ -502,13 +419,13 @@ $(".delete-answer").click(function () {
         text: "آیا واقعا میخواهید این پاسخ را پاک کنید؟",
         icon: "question",
         confirmButtonText: "بله",
-        showCancelButton : true , 
-        cancelButtonText : "خیر" 
-    }).then(({isConfirmed}) => {
-        if(isConfirmed){
+        showCancelButton: true,
+        cancelButtonText: "خیر",
+    }).then(({ isConfirmed }) => {
+        if (isConfirmed) {
             $.ajax({
-                method : "GET" , 
-                url : "/comment-answer/delete/" + id , 
+                method: "GET",
+                url: "/comment-answer/delete/" + id,
                 beforeSend: () => {
                     btn.find("div").prop("disabled", true);
                     btn.find("div").show();
@@ -535,7 +452,7 @@ $(".delete-answer").click(function () {
                         icon: "error",
                         confirmButtonText: "باشه",
                     });
-                },  
+                },
             });
         }
     });

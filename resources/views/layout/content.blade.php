@@ -16,8 +16,7 @@
     <link rel="stylesheet" href="{{ asset('styles/chart.min.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/leaflet.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/RBSlideshow.css') }}" />
-    <link rel="stylesheet" href="{{ asset('styles/persian-datepicker.min.css') }}" />
-    <link href="{{ asset('styles/mobiscroll.jquery.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('styles/bootstrap-datepicker.css') }}" />
     <link href="{{ asset('styles/responsive.css') }}" rel="stylesheet" />
 
 

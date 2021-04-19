@@ -91,7 +91,6 @@ $("document").ready(function () {
 function scrollDocument() {
     const scrollHeader = document.getElementById("header").offsetHeight - 100;
     const y = scrollY;
-    console.log(y, scrollHeader);
     if (y >= scrollHeader) {
         goToTop.style.display = "inline";
         header.classList.add("fixed-header");

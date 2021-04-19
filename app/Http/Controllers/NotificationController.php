@@ -13,6 +13,6 @@ class NotificationController extends Controller
     {
         $data = Notification::where("user_id", Auth::id());
         $data->update(["status" => "seen"]);
-        return view("pages.notifications.all", ["data" => $data->get()]);
+        return view("pages.notifications.all", ["data" => $data->orderBy("created_at" , "desc")->get()]);
     }
 }

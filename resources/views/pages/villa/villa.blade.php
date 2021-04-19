@@ -31,12 +31,14 @@
                     <form action="" class="form" id="reserve-form">
                         <div class="w-50 float-right p-1">
                             <span>از تاریخ</span>
-                            <input name="date-in" class="date-in form-control bg-white text-right" id="date-in">
+                            <input name="date-in" class="date-in datepicker form-control bg-white text-right" id="date-in">
                         </div>
+
+                        <input type="hidden" name="user_id" id="user_id" value="{{$data->user->id}}">
 
                         <div class="w-50 float-right form-group p-1">
                             <span>تا تاریخ</span>
-                            <input name="date-out" class="form-control date-out bg-white text-right" id="date-out">
+                            <input name="date-out" class="form-control datepicker date-out bg-white text-right" id="date-out">
                         </div>
                         
                         <div class="form-group float-right w-100 mt-2">
@@ -87,12 +89,13 @@
     <script src="{{ asset('js/multi-animated-counter.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/jquery.star-rating-svg.min.js') }}"></script>
-    <script src="{{ asset('js/mobiscroll.jquery.min.js') }}"></script>
     <script src="{{ asset('js/leaflet.js') }}"></script>
     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('js/additional-methods.min.js') }}"></script>
     <script src="{{ asset('js/moment.js') }}"></script>
     <script src="{{ asset('js/persian-date.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.fa.min.js') }}"></script>
     <script src="{{ asset('js/save.js') }}"></script>
     <script src="{{ asset('js/villa.js') }}"></script>
 @endpush
