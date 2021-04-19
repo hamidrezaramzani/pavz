@@ -5,11 +5,10 @@
     <br>    
     <br>
     <div class="row justify-content-center dashboard-info">
-        @include('partials.panel.dashboard.last-comments')
         @include('partials.panel.dashboard.last-reserves')
         @include('partials.panel.dashboard.last-tickets')
         @include('partials.panel.dashboard.vip')
-        @include('partials.panel.dashboard.last-at')                                       
+        @include('partials.panel.dashboard.last-factories')                                       
     </div>
 </div> 
    

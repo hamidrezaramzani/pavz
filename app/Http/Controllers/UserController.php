@@ -7,13 +7,17 @@ use App\Http\Requests\LoginUserRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\SubmitProfilePictureRequest;
 use App\Models\Profile;
+use App\Models\Reserve;
+use App\Models\Ticket;
 use App\Models\User;
+use Carbon\Carbon;
 use DateTime;
 use Error;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use \Morilog\Jalali\Jalalian;
 
 class UserController extends Controller
 {
@@ -153,7 +157,14 @@ class UserController extends Controller
 
     public function panel()
     {
-        return view("dashboard");
+        $reserves = Reserve::where("user_id", Auth::id())->limit(6);
+        $tickets = Ticket::where("user_id", Auth::id())->limit(6);
+
+        foreach ($tickets as $item) {
+            # code...
+        }
+
+        return view("dashboard", ["reserves" => $reserves->get(), "tickets" => $tickets->get()]);
     }
 
     public function profile()

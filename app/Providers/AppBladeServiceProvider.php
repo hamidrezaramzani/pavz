@@ -51,5 +51,6 @@ class AppBladeServiceProvider extends ServiceProvider
         Blade::if("admin", function () {
             return Auth::user() && Auth::user()->level == "admin";
         });
+
     }
 }

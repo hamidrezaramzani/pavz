@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Reserve extends Model
 {
     use HasFactory;    
-    protected $fillable = ["start" , "end" , "fullname" , "guests" , "phonenumber" , "villa_id"];
+    protected $fillable = ["start" , "end" , "fullname" , "guests" , "phonenumber" , "villa_id" , "user_id"];
 }
