@@ -1,6 +1,12 @@
 const locationBox = $(".locations");
 locationBox.hide();
+const header = document.getElementById("my-header");
+const logo = document.getElementById("navbar-logo");
+const goToTop = document.getElementById("gototop");
 
+goToTop.addEventListener("click", function () {
+    scrollTo({ top: 0 });
+});
 function setName(dom) {
     const name = dom.getAttribute("data-name");
     locationBox.hide();
@@ -41,6 +47,7 @@ $("#location-name").keyup(function () {
         },
     });
 });
+AOS.init();
 
 $("#btn-search").click(function () {
     const name = $("#location-name").val();
@@ -74,7 +81,27 @@ $("#close-responsive-menu-header").click(function () {
     $(".responsive-menu").hide();
 });
 
-
 $("document").ready(function () {
     $("#loading-box").hide();
-})
+});
+
+function scrollDocument() {
+    const scrollHeader = document.getElementById("header").offsetHeight - 100;
+    const y = scrollY;
+    console.log(y, scrollHeader);
+    if (y >= scrollHeader) {
+        goToTop.style.display = "inline";
+        header.classList.add("fixed-header");
+        logo.src = logo.getAttribute("data-dark-src");
+    } else {
+        goToTop.style.display = "none";
+        header.classList.remove("fixed-header");
+        logo.src = logo.getAttribute("data-light-src");
+    }
+}
+window.addEventListener("scroll", scrollDocument);
+window.addEventListener("load", scrollDocument);
+
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+});

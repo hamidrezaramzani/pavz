@@ -430,7 +430,7 @@ table {
 }
 
 .ads-item {
-    height: auto;
+    height: 450px!important;
     padding: 30px;
     position: relative;
 }
@@ -440,18 +440,18 @@ table {
     height: 290px;
     border-radius: 10px;
     object-fit: cover;
-    transition: all .5s ease;
+    transition: all 0.5s ease;
 }
 
 .ads-item>img:hover {
     filter: grayscale(100%);
-    transition: all .5s ease;
+    transition: all 0.5s ease;
     z-index: -1;
 }
 
 .ads-item-content {
     width: 80%;
-    height: 180px;
+    height: 280px;
     position: absolute;
     background: #fff;
     bottom: -100px;
@@ -460,7 +460,7 @@ table {
     margin: auto;
     border-radius: 10px;
     padding: 15px;
-    border: 1px solid #efefef;
+    border: 1px solid rgb(248, 247, 247);
     /* box-shadow: 0 0 5px #ccc; */
 }
 
@@ -494,11 +494,11 @@ table {
 }
 
 .ads-item-location {
-    color: #0470dc!important;
+    color: #0470dc !important;
 }
 
 .owl-item {
-    height: 500px!important;
+    height: 500px !important;
 }
 
 .ads-item-header span {
@@ -507,7 +507,7 @@ table {
 }
 
 .ads-item-user img {
-    width: 35px!important;
+    width: 35px !important;
     height: 35px;
     float: right;
     margin-left: 5px;
@@ -541,7 +541,7 @@ table {
     border-radius: 5px;
     color: #fff;
     font: 12px is;
-    z-index: 999999999999999;
+    z-index: 44444444;
 }
 
 .type-label {
@@ -553,7 +553,7 @@ table {
     border-radius: 5px;
     color: #fff;
     font: 12px is;
-    z-index: 999999999999999;
+    z-index: 44444444;
 }
 
 
@@ -960,7 +960,7 @@ table {
 .possibilities-items p {
     color: #888;
     line-height: 35px;
-    font: 12px is;
+    font: 13px is;
     margin-top: 5px;
     display: block;
 }
@@ -1076,7 +1076,7 @@ footer .aboutus img {
 
 .login-box {
     margin: 10rem 0;
-    height: 700px;
+    height: auto;
     background: #fff;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
     border-radius: 10px;
@@ -1200,7 +1200,7 @@ footer .aboutus img {
     right: 0;
     left: 0;
     top: 0;
-    font: 50px isbold;
+    font: 40px isbold;
     color: #fff;
     display: block;
     height: 100px;
@@ -2245,7 +2245,7 @@ span#picture-name {
 }
 
 .modal-body {
-    height: 80vh;
+    height: auto;
     overflow-y: auto;
 }
 
@@ -2835,7 +2835,7 @@ input:disabled {
 }
 
 .fixed-header .navbar-toggler {
-    color: #333!important;
+    color: #333 !important;
 }
 
 #loading-box {
@@ -2869,7 +2869,31 @@ input:disabled {
     color: #fff;
 }
 
-display: block;
-color: #fff;
+.prev-arrow {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    padding: 5px;
+    border-radius: 100%;
+    border: none;
+    color: #333;
+}
 
+.next-arrow {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    padding: 5px;
+    border-radius: 100%;
+    border: none;
+    z-index: 99999999;
+    color: #333;
+}
+
+#set-password-box {
+    display: none;
 }

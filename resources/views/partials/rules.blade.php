@@ -75,8 +75,7 @@
                 </ul>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Understood</button>
+                <button type="button" class="btn btn-secondary is" data-bs-dismiss="modal">برگشت</button>
             </div>
         </div>
     </div>

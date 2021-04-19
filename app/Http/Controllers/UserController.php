@@ -17,14 +17,26 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+
+    public function resetPassword(Request $request)
     {
-        //
+        $phonenumber = $request->get("phonenumber");
+        $code = $request->get("code");
+        $password = $request->get("password");
+        $user = User::where([
+            ["activeCode", $code],
+            ["phonenumber", $phonenumber]
+        ]);
+        if ($user->count()) {
+            $user->update([
+                "password" => Hash::make($password),
+                "activeCode" => 0
+            ]);
+            return response(["message" => "password changed"]);
+        } else {
+            return response(["message" => "user not found"], 401);
+        }
     }
 
     /**
@@ -93,50 +105,6 @@ class UserController extends Controller
         // send sms with kavehnegar
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-    }
-
 
 
     public function isPhoneNumberDuplicate($phonenumber = null)
@@ -184,7 +152,7 @@ class UserController extends Controller
 
 
     public function panel()
-    {        
+    {
         return view("dashboard");
     }
 
@@ -228,5 +196,19 @@ class UserController extends Controller
             "telegram_id" => $request->get("telegram_id"),
         ]);
         return back()->with("user-info", "update");
+    }
+
+    public function checkPhonenumberAndSendCode(Request $request)
+    {
+        $phonenumber = $request->get("phonenumber");
+        $user = User::where("phonenumber", $phonenumber);
+        if ($user->count()) {
+            $activeCode = rand(1000, 9999);
+            // send SMS with kave negar
+            $user->update(["activeCode" => $activeCode]);
+            return response(["message" => "sended"]);
+        } else {
+            return response(["message" => "phonenumber not found"], 401);
+        }
     }
 }

@@ -1,12 +1,48 @@
-const header = document.getElementById("my-header");
-const logo = document.getElementById("navbar-logo");
-const goToTop = document.getElementById("gototop");
 
-goToTop.addEventListener("click", function () {
-    scrollTo({ top: 0 });
-});
 
 $(document).ready(function () {
+    $(".my-slider").slick({
+        dots: true,
+        infinite: true,
+        speed: 600,
+        slidesToShow: 4,
+        slidesToScroll: 1,        
+        swipeToSlide: true,
+        rtl: true,
+        // autoplay : true , 
+        arrows : true ,
+        nextArrow : "<button class='prev-arrow'><i class='fa fa-arrow-left'></i></button>" , 
+        prevArrow : "<button class='next-arrow'><i class='fa fa-arrow-right'></i></button>" , 
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    infinite: true,
+                    dots: true,
+                },
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+        ],
+    });
+
     $(".owl-carousel").owlCarousel({
         items: 4,
         dots: true,
@@ -29,24 +65,4 @@ $(document).ready(function () {
     });
 });
 
-AOS.init();
 
-function scrollDocument() {
-    const scrollHeader = document.getElementById("header").offsetHeight;
-    const y = scrollY;
-    if (y >= scrollHeader) {
-        goToTop.style.display = "inline";
-        header.classList.add("fixed-header");
-        console.log(logo);
-        logo.src = logo.getAttribute("data-dark-src");
-    } else {
-        goToTop.style.display = "none";
-        header.classList.remove("fixed-header");
-        logo.src =  logo.getAttribute("data-light-src");
-    }
-}
-window.addEventListener("scroll", scrollDocument);
-window.addEventListener("load", scrollDocument);
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip();
-});

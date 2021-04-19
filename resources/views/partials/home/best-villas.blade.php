@@ -4,10 +4,10 @@
         :linkTitle="'ویلا های بیشتر'"></x-title>
     <br>
     <div class="container-fluid">
-        <div class="owl-carousel best-villas-slider">
+        <div class="my-slider">
             @foreach ($villas as $item)
                 @include('partials.home.villa-item' , ["item" => $item])
             @endforeach
         </div>
-    </div>    
+    </div>
 </div>

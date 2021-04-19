@@ -4,7 +4,7 @@
 
 
     <div class="container-fluid">
-        <div class="owl-carousel best-apartments-box">
+        <div class="my-slider best-apartments-box">
             @foreach ($apartments as $item)
                 @include('partials.home.apartment-item' , ["item" => $item])
             @endforeach

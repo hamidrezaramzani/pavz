@@ -43,7 +43,7 @@
                     <button type="submit">ثبت نام</button>
                     <br>
                     <ul>
-                        <li><a href="/">قبلا ثبت نام کرده ام</a></li>
+                        <li><a href="/login">قبلا ثبت نام کرده ام</a></li>
                     </ul>
                 </form>
             </div>

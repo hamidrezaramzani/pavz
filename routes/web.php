@@ -70,6 +70,10 @@ Route::get("/panel", [UserController::class, "panel"])->name("dashboard")->middl
 Route::get("/new-villa", [VillasController::class, "newVilla"])->name("new-villa")->middleware("auth")->breadcrumbs(fn (Trail $trail) => $trail->parent("dashboard")->push("ثبت ویلای جدید", route("new-villa")));;
 Route::post("/create-villa", [VillasController::class, "createVilla"])->middleware("auth");
 Route::post("/update-specification-form", [VillasController::class, "updateSpecificationForm"])->middleware("auth");
+Route::post("/user/send-new-code", [UserController::class, "checkPhonenumberAndSendCode"]);
+Route::post("/user/reset-password", [UserController::class, "resetPassword"]);
+
+
 
 Route::get("/edit-villa/{id}", [VillasController::class, "editVilla"])->name("edit-villa")->middleware("auth");
 Route::get("/get-cities/{id}", [VillasController::class, "getCities"]);
