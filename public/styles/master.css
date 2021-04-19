@@ -1263,6 +1263,8 @@ footer .aboutus img {
     padding: 0;
     background: #fff;
     border-left: 1px solid #ededed;
+    max-width: auto;
+    z-index: 99999999999999999999;
 }
 
 .sidebar .accordion {
@@ -1425,7 +1427,7 @@ footer .aboutus img {
 .top-sidebar a:nth-child(2) {
     font-size: 20px;
     color: #555;
-    line-height: 60px;
+    line-height: 30px;
     transition: all 0.5s ease;
     float: left;
 }
@@ -2253,6 +2255,14 @@ span#picture-name {
     float: right !important;
 }
 
+#notification-dropdown {
+    line-height: 50px!important;
+}
+
+#notification-dropdown i {
+    line-height: 50px!important;
+}
+
 .my-modal-items li h5 {
     display: block;
     text-align: right;
@@ -2895,5 +2905,13 @@ input:disabled {
 }
 
 #set-password-box {
+    display: none;
+}
+
+set-password-box {
+    display: none;
+}
+
+et-password-box {
     display: none;
 }

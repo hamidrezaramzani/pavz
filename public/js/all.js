@@ -4,9 +4,12 @@ const header = document.getElementById("my-header");
 const logo = document.getElementById("navbar-logo");
 const goToTop = document.getElementById("gototop");
 
-goToTop.addEventListener("click", function () {
-    scrollTo({ top: 0 });
-});
+if (goToTop) {
+    goToTop.addEventListener("click", function () {
+        scrollTo({ top: 0 });
+    });
+}
+
 function setName(dom) {
     const name = dom.getAttribute("data-name");
     locationBox.hide();
@@ -99,9 +102,20 @@ function scrollDocument() {
         logo.src = logo.getAttribute("data-light-src");
     }
 }
-window.addEventListener("scroll", scrollDocument);
-window.addEventListener("load", scrollDocument);
+if (goToTop) {
+    window.addEventListener("scroll", scrollDocument);
+    window.addEventListener("load", scrollDocument);
+}
 
 $(function () {
     $('[data-toggle="tooltip"]').tooltip();
+});
+
+$("#sidebar-toggle").click(function () {
+    $(".sidebar").show();
+});
+
+$("#close-sidebar").click(function (e) {
+    e.preventDefault();
+    $(".sidebar").hide();
 });

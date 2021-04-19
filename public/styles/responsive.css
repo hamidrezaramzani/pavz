@@ -93,4 +93,11 @@
     .villa-properties ul li {
         margin: 0 !important;
     }
+    .responsive-sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 0;
+        overflow-y: scroll!important;
+    }
 }

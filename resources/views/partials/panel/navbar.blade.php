@@ -1,18 +1,19 @@
 <div class="row dashboard-navbar">
-    <div class="col-12 col-md-3 pt-3">
+    <div class="col-5 pt-3">
         <div class="navbar-search-box">
             <button>
                 <i class="fa fa-search"></i>
             </button>
             <form action="">
-                <input type="text" class="form-control" placeholder="اینجا جستجو کن" 11>
+                <input type="text" class="form-control" placeholder="اینجا جستجو کن">
             </form>
         </div>
     </div>
 
 
-    <div class="col-12 col-md-9">
+    <div class="col-7">
         <ul>
+
             <li>
                 <div class="dropdown">
                     <button class="btn dropdown-toggle" type="button" id="user-options" data-bs-toggle="dropdown"
@@ -56,10 +57,10 @@
                         @if ($notifications->count())
                             @foreach ($notifications as $item)
                                 <li>
-                                    <a class="dropdown-item" href="{{$item->link}}">
+                                    <a class="dropdown-item" href="{{ $item->link }}">
                                         <div class="notification-status">
-                                            <img src="{{ asset('images/status/' .$item->icon     . '.png') }}" width="20" height="20"
-                                                alt="Danger">
+                                            <img src="{{ asset('images/status/' . $item->icon . '.png') }}" width="20"
+                                                height="20" alt="Danger">
                                         </div>
                                         <div class="notification-title">
                                             {{ mb_substr($item->text, 0, 45) }} ...
@@ -69,7 +70,7 @@
                             @endforeach
 
                         @else
-                            <li>اعلانی یافت نشد</li>
+                            <li class="d-block text-center text-dark is pt-4">اعلانی یافت نشد</li>
                         @endif
 
                         <br>
@@ -81,6 +82,12 @@
 
                     </ul>
                 </div>
+            </li>
+
+            <li class="d-block d-md-none">
+                <button class="btn" id="sidebar-toggle">
+                    <i class="fa fa-bars"></i>
+                </button>
             </li>
         </ul>
     </div>

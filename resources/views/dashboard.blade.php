@@ -1,7 +1,7 @@
 @extends('layout.panel' , ["title" => "پیشخوان | پاوز"])
 @section('dashboard')
 <div class="container-fluid">
-    @include('partials.panel.statistics.statistics')
+    {{-- @include('partials.panel.statistics.statistics') --}}
     <br>
     <br>
     <div class="row justify-content-center dashboard-info">

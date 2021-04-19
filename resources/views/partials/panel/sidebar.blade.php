@@ -1,4 +1,4 @@
-<div class="col-12 col-md-2 sidebar">
+<div class="col-12 col-md-2 sidebar  d-md-block responsive-sidebar" style="display: none">
     <div class="float-right w-100 h-auto top-sidebar">
 
 
@@ -6,8 +6,8 @@
             <img src="{{ asset('images/dpavz.png') }}" alt="pavz logo" width="100">
         </a>
 
-        <a href="/">
-            <i class="fa fa-bars"></i>
+        <a href="/" class="d-block d-md-none" id="close-sidebar">
+            <i class="fa fa-times"></i>
         </a>
 
     </div>
@@ -369,7 +369,7 @@
                     </a>
                 </li>
             </ul>
-        </div>  
+        </div>
 
 
 
