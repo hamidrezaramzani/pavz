@@ -18,9 +18,12 @@
                 @include('pages.villa.sections.rules' , ["data" => $data])
                 @include('pages.villa.sections.pricing' , ["data" => $data])
                 @include('pages.villa.sections.address' , ["data" => $data])
+                @if ($data->ads_type == 1)
                 @include('pages.villa.sections.scores' , ["data" => $data])
                 @include('pages.add-comment' , ["data" => $data])
-                @include('pages.comments' , ["data" => $data])
+                @include('pages.comments' , ["data" => $data])    
+                @endif
+                
             </div>
             <div class="col-12 col-md-4">
 

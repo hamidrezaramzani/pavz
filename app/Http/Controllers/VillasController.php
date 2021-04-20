@@ -286,11 +286,24 @@ class VillasController extends Controller
         $user = Auth::user();
         $villa = $user->villas()->where("id", $id);
         if ($villa) {
-            if ($villa->get()[0]->cover) {
-                unlink(public_path("covers") . "/" . $villa->get()[0]->cover);
-            }
+
+            $cover = $villa->get()[0]->cover;
             $pictures = Villa::find($id)->pictures()->get();
+            $saves = Villa::find($id)->saves()->get();
+            $likes = Villa::find($id)->likes()->get();
             $villa->delete();
+            if ($cover) {
+                unlink(public_path("covers") . "\\" . $cover);
+            }
+
+
+            foreach ($saves as $save) {
+                $save->delete();
+            }
+
+            foreach ($likes as $like) {
+                $like->delete();
+            }
             foreach ($pictures as $picture) {
                 $picture->delete();
                 unlink(public_path("villa_pictures") . "/" . $picture->url);

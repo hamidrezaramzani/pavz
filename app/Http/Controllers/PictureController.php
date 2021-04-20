@@ -20,8 +20,8 @@ class PictureController extends Controller
 
         $level = $villa->level;
         $mainLevel =  $level < $request->get("level") ? $request->get("level") : $level;
-        $villa->update(["level" => $mainLevel]);
 
+        Villa::where("id", $id)->update(["level" => $mainLevel]);
 
         if ($request->file("cover")) {
             $fileName = time() . '.' . $request->file("cover")->extension();

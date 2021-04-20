@@ -106,7 +106,7 @@ if ($("#lat").val()) {
 
 function moveToSelectedCity() {
     const option = $("#city option:selected");
-    if (option && option.value != 0) {
+    if (option && option.value > 0) {
         lat = option.attr("lat");
         long = option.attr("long");
         mymap.setView([lat, long]);
