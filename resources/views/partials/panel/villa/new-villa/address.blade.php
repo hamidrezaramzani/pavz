@@ -2,6 +2,8 @@
     <form action="" class="form" id="address-form">
         <h3>آدرس ملک</h3>
         <input type="hidden" value="{{ csrf_token() }}" id="address_token">
+        <input type="hidden" value="{{ $data->lat }}" id="lat">
+        <input type="hidden" value="{{ $data->long }}" id="long">
         <div class="form-group">
             <label for="address">آدرس:</label>
             <textarea name="address" id="address" class="form-control"

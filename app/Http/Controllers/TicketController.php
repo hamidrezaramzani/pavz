@@ -49,7 +49,12 @@ class TicketController extends Controller
         $ticket = Ticket::where([
             ["id", $id],
             ["user_id", Auth::id()]
-        ])->get()[0];
+        ])->get();
+        if ($ticket->count()) {
+            $ticket = $ticket[0];
+        } else {
+            return redirect("/panel");
+        }
         $answers = $ticket->answers();
 
         return view("pages.ticket.show-answer", ["data" => $answers->orderBy("created_at", "DESC")->get(), "ticket" => $ticket]);

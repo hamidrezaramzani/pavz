@@ -7,18 +7,33 @@
 
                 <input type="hidden" id="rules_token" value="{{ csrf_token() }}">
                 <h3>مقررات زمانی ملک</h3>
-                <div class="accordion-title">
+                <br>
+                <br>
+                <div class="accordion-title h-auto">
                     <i class="far fa-circle"></i>
-                    مقررات زمانی که مهمانان آن ها را در نظر می گیرند
+                    ساعت های تحویل خروج بایستی به فرمت
+                    09:00 AM
+                    یا
+                    15:00 PM
+                    باشد
+
+                    <br>
+                    <br>
+                    AM : یعنی قبل از ظهر
+                    <br>
+                    <br>
+                    PM : یعنی بعد از ظهر
                 </div>
 
-
+                <br>
+                <br>
 
                 <div class="form-group">
                     <label for="delivery_time">ساعت تحویل ویلا به مشتری:</label>
                     <input type="time" value="{{ $data->rules->delivery_time ?? null }}" name="delivery_time"
                         id="delivery_time" class="form-control"
                         placeholder="زمانی که شما یا کلیددار اقامتگاه را به مهمان تحویل می دهید">
+
                 </div>
 
 
@@ -60,20 +75,20 @@
                             @switch($data->rules->animal)
                                 @case(0)
 
-                                <option value="0">مجاز نیست</option>
-                                <option value="1">مجاز است</option>
-                                <option value="2">در بیرون ملک</option>
+                                    <option value="0">مجاز نیست</option>
+                                    <option value="1">مجاز است</option>
+                                    <option value="2">در بیرون ملک</option>
                                 @break
                                 @case(1)
-                                <option value="1">مجاز است</option>
-                                <option value="0">مجاز نیست</option>
-                                <option value="2">در بیرون ملک</option>
+                                    <option value="1">مجاز است</option>
+                                    <option value="0">مجاز نیست</option>
+                                    <option value="2">در بیرون ملک</option>
                                 @break
                                 @default
-                                <option value="2">در بیرون ملک</option>
-                                <option value="0">مجاز نیست</option>
-                                <option value="1">مجاز است</option>
-    
+                                    <option value="2">در بیرون ملک</option>
+                                    <option value="0">مجاز نیست</option>
+                                    <option value="1">مجاز است</option>
+
                             @endswitch
 
                         @else
@@ -93,21 +108,21 @@
                             @switch($data->rules->smoke)
                                 @case(0)
 
-                                <option value="0">مجاز نیست</option>
-                                <option value="1">مجاز است</option>
-                                <option value="2">در بیرون ملک</option>
+                                    <option value="0">مجاز نیست</option>
+                                    <option value="1">مجاز است</option>
+                                    <option value="2">در بیرون ملک</option>
                                 @break
                                 @case(1)
-                                <option value="1">مجاز است</option>
+                                    <option value="1">مجاز است</option>
 
-                                <option value="0">مجاز نیست</option>
-                                <option value="2">در بیرون ملک</option>
+                                    <option value="0">مجاز نیست</option>
+                                    <option value="2">در بیرون ملک</option>
                                 @break
-                                @default                            
+                                @default
                                     <option value="2">در بیرون ملک</option>
                                     <option value="0">مجاز نیست</option>
                                     <option value="1">مجاز است</option>
-                                
+
                             @endswitch
                         @else
                             <option value="2">در بیرون ملک</option>
@@ -125,16 +140,16 @@
                         @if (isset($data->rules->party))
                             @switch($data->rules->party)
                                 @case(0)
-                                <option value="0">مجاز نیست</option>
-                                <option value="1">مجاز است</option>
-                                <option value="2">باید با صاحبخانه هماهنگ شود</option>
+                                    <option value="0">مجاز نیست</option>
+                                    <option value="1">مجاز است</option>
+                                    <option value="2">باید با صاحبخانه هماهنگ شود</option>
                                 @break
                                 @case(1)
-                                <option value="1">مجاز است</option>
-                                <option value="0">مجاز نیست</option>
-                                <option value="2">باید با صاحبخانه هماهنگ شود</option>
+                                    <option value="1">مجاز است</option>
+                                    <option value="0">مجاز نیست</option>
+                                    <option value="2">باید با صاحبخانه هماهنگ شود</option>
                                 @break
-                                @default                            
+                                @default
                                     <option value="2">باید با صاحبخانه هماهنگ شود</option>
                                     <option value="0">مجاز نیست</option>
                                     <option value="1">مجاز است</option>

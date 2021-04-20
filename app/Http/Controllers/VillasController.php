@@ -38,7 +38,7 @@ class VillasController extends Controller
     public function getSingleVilla($id = null)
     {
 
-        if ($id == null) 
+        if ($id == null)
             return redirect("/");
 
         $data =  Villa::with([
@@ -52,7 +52,7 @@ class VillasController extends Controller
             },
             "pictures", "rentPrices", "villaTypes", "documents", "soldVillaPrices",
         ]);
-        
+
         $data = Villa::where([
             ["id", $id],
             ["status", "published"]
@@ -63,9 +63,9 @@ class VillasController extends Controller
         else
             return redirect("/");
 
-            
+
         if (!Session::get("villa-" . $data->id)) {
-            Session::push("villa-" . $data->id , true);
+            Session::push("villa-" . $data->id, true);
             Villa::where("id", $id)->update(["view_count" => $data->view_count  + 1]);
         }
 
@@ -194,6 +194,13 @@ class VillasController extends Controller
         ]);
     }
 
+
+
+    public function checkLevel($currentLevel, $nextLevel)
+    {
+        return $currentLevel < $nextLevel ? $nextLevel : $currentLevel;
+    }
+
     public function updateLevel($currentLevel, $nextLevel, $villa)
     {
         if ($currentLevel < $nextLevel) {
@@ -206,9 +213,9 @@ class VillasController extends Controller
         $data = $request->except("_token", "level");
 
         $villa = Villa::where("id", $request->get("id"));
-        $villa->update($data);
         $level = $villa->get()[0]->level;
-        $this->updateLevel($level, $request->get("level"), $villa);
+        $data["level"] = $this->checkLevel($level, $request->get("level"));
+        $villa->update($data);
         return response(["message" => "update successfully"], 200);
     }
 
@@ -217,8 +224,9 @@ class VillasController extends Controller
         $data = $request->except("_token");
         $villa = Villa::where("id", $data["id"]);
         $level = $villa->get()[0]->level;
+
+        $data["level"] = $this->checkLevel($level, $request->get("level"));
         $villa->update($data);
-        $this->updateLevel($level, $request->get("level"), $villa);
         return response(["message" => "updated"], 200);
     }
 
@@ -227,8 +235,8 @@ class VillasController extends Controller
         $data = $request->except("_token");
         $villa = Villa::where("id", $data["id"]);
         $level = $villa->get()[0]->level;
+        $data["level"] = $this->checkLevel($level, $request->get("level"));
         $villa->update($data);
-        $this->updateLevel($level, $data["level"], $villa);
         return response(["message" => "updated"], 200);
     }
 
@@ -237,9 +245,9 @@ class VillasController extends Controller
 
         $data = $request->except("_token");
         $villa = Villa::where("id", $data["id"]);
-        $villa->update($data);
         $level = $villa->get()[0]->level;
-        $this->updateLevel($level, $data["level"], $villa);
+        $data["level"] = $this->checkLevel($level, $request->get("level"));
+        $villa->update($data);
         return response(["message" => "updated"], 200);
     }
 
@@ -247,12 +255,15 @@ class VillasController extends Controller
     {
         $data = $request->except("_token");
         $villa = Villa::where("id", $data["id"]);
-        $villa->update($data);
         $level = $villa->get()[0]->level;
-        $this->updateLevel($level, $data["level"], $villa);
+        $data["level"] = $this->checkLevel($level, $request->get("level"));
+        $villa->update($data);
+
         return response(["message" => "updated"], 200);
     }
 
+
+    /// MUST BE CHANGED
     public function setStatus($id = null)
     {
         $villa = Villa::where("id", $id);

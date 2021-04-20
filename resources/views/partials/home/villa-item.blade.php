@@ -80,9 +80,23 @@
                 </button>
             </span>
             <span class="float-left mx-2">
-                <button class="btn p-0">
-                    <i class="fa fa-heart text-danger" aria-hidden="true"></i>
-                </button>
+                @auth
+                    @if ($item->likes()->where('user_id', auth()->user()->id)->count())
+                        <button class="btn p-0 btn-villa-like" data-id="{{ $item->id }}">
+                            <i class="fas fa-heart text-danger" aria-hidden="true"></i>
+                        </button>
+                    @else
+                        <button class="btn p-0 btn-villa-like" data-id="{{ $item->id }}">
+                            <i class="far fa-heart text-danger" aria-hidden="true"></i>
+                        </button>
+                    @endif
+                @else
+
+                    <button class="btn p-0 btn-villa-like" data-id="{{ $item->id }}">
+                        <i class="far fa-heart text-danger" aria-hidden="true"></i>
+                    </button>
+                @endauth
+
             </span>
         </div>
         <div class="ads-item-body">
@@ -109,7 +123,7 @@
             <img src="{{ asset($item->user->profile->image ? 'upload/' . $item->user->profile->image : 'images/user.png') }}"
                 width="50" height="50" alt="{{ $item->user->profile->fullname }}">
             <h6>{{ $item->user->profile->fullname }}</h6>
-            <span>+ {{$item->user->villas()->where("status" , "published")->count()}} ثبت آگهی ویلا</span>
+            <span>+ {{ $item->user->villas()->where('status', 'published')->count() }} ثبت آگهی ویلا</span>
         </div>
     </div>
 

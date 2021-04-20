@@ -7,6 +7,7 @@ use App\Http\Controllers\CommentAnswerController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ParkingController;
 use App\Http\Controllers\PictureController;
@@ -288,3 +289,5 @@ Route::post("/admin/answer-to-ticket", [AdminController::class, "answerToTicket"
 // NOTIFICATION ROUTES
 Route::get("/notification/all", [NotificationController::class, "allNotifications"])->middleware("auth");
 
+// LIKE ROUTES
+Route::get("/like/villa/{id}", [LikeController::class, "likeVilla"])->middleware("auth");

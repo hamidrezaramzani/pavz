@@ -12,10 +12,10 @@
                 <form action="/create-villa" method="POST" class="form">
                     @csrf
                     <div class="form-group" id="first-s-input">
-                        <label for="ads_type">این آگهی جهت :</label>
+                        <label for="ads_type">نوع آگهی :</label>
                         <select name="ads_type" id="ads_type" name="ads_type" class="form-control">
-                            <option value="1">اجاره ویلا است</option>
-                            <option value="2">فروش ویلا است</option>
+                            <option value="1">اجاره</option>
+                            <option value="2">فروش</option>
                         </select>
                     </div>
                     <br>

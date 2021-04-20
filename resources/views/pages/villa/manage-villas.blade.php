@@ -46,13 +46,13 @@
                                         <td width="10%">{{ $villa->view_count }}</td>
                                         <td width="15%">
                                             @switch($villa->status)
-                                                @case(" not-completed")
+                                                @case("not-completed")
                                                     <span class="text-dark">پیش نویس</span>
                                                 @break
-                                                @case(" checking")
+                                                @case("checking")
                                                     <span class="text-warning">در حال بررسی</span>
                                                 @break
-                                                @case(" published")
+                                                @case("published")
                                                     <span class="text-success">انتشار یافت</span>
                                                 @break
                                             @endswitch
@@ -127,7 +127,7 @@
             const id = $(this).attr("id");
             const thisBtn = $(this);
             Swal.fire({
-                title: "حذف ویلا",
+                title: "حذف آگهی",
                 text: "آیا واقعا میخواهید این آگهی را حذف کنید؟",
                 icon: "question",
                 confirmButtonText: "بله",

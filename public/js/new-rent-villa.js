@@ -365,7 +365,11 @@ function renderRooms(rooms) {
             possibilities.forEach((item2) => {
                 if (item2.checked) {
                     li.append(
-                        `<span><i class="fa fa-check text-success"></i>&nbsp;${item2.name}</span>`
+                        `<span><i class="fa fa-check text-success"></i>&nbsp;${item2.text}</span>`
+                    );
+                }else{
+                    li.append(
+                        `<span><i class="fa fa-times text-danger"></i>&nbsp;${item2.text}</span>`
                     );
                 }
             });
@@ -1083,7 +1087,7 @@ $("#picture-form").validate({
 
         cover.append("_token", $("#hi_token").val());
         cover.append("id", $("#id_").val());
-        cover.append("level", "8");
+        cover.append("level", 8);
 
         pictures.append("_token", $("#hi_token").val());
         pictures.append("id", $("#id_").val());

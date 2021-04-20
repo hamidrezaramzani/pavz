@@ -1,4 +1,4 @@
-<section style="display: {{$show ? "block" : "none"}};">
+<section style="display: {{ $show ? 'block' : 'none' }};">
     <form action="" id="general-specifications" method="POST" class="form">
 
         <input type="hidden" name="s_csrf" value="{{ csrf_token() }}" id="s_csrf">
@@ -12,7 +12,7 @@
         </div>
         <br>
         <div class="accordion-title">
-        <i class="far fa-circle"></i>
+            <i class="far fa-circle"></i>
             برای عنوان بهتر است برای جذاب تر بودن آگهی شما برای مهمان ها از مزیت ها و امکانات خوب ملک خود مانند استخر و
             ... در نظر بگیرید
         </div>
@@ -55,20 +55,23 @@
                 @if ($state[0])
                     @foreach ($state[1] as $item)
                         @if ($item->id == $data->city)
-                            <option long="{{$item->longitude}}" lat="{{$item->latitude}}" value="{{ $item->id }}">{{ $item->name }}</option>
+                            <option long="{{ $item->longitude }}" lat="{{ $item->latitude }}"
+                                value="{{ $item->id }}">{{ $item->name }}</option>
                         @endif
                     @endforeach
                     <option value="0">شهر مورد نظر خود را انتخاب کنید</option>
                     @foreach ($state[1] as $item)
                         @if ($item->id != $data->city)
-                            <option long="{{$item->longitude}}" lat="{{$item->latitude}}" value="{{ $item->id }}">{{ $item->name }}</option>
+                            <option long="{{ $item->longitude }}" lat="{{ $item->latitude }}"
+                                value="{{ $item->id }}">{{ $item->name }}</option>
                         @endif
 
                     @endforeach
                 @else
                     <option value="0">شهر مورد نظر را انتخاب کنید</option>
                     @foreach ($state[1] as $item)
-                        <option long="{{$item->longitude}}" lat="{{$item->latitude}}"  value="{{ $item->id }}">{{ $item->name }}</option>
+                        <option long="{{ $item->longitude }}" lat="{{ $item->latitude }}"
+                            value="{{ $item->id }}">{{ $item->name }}</option>
                     @endforeach
                 @endif
             </select>
@@ -104,6 +107,12 @@
 
 
 
+        <br>
+
+        <div class="accordion-title">
+            <i class="far fa-circle"></i>
+            در این فیلد می توانید انتخاب کنید برای سوییت آگهی میزارید و یا ویلا ...
+        </div>
 
         <div class="form-group">
             <label for="estate_type">نوع اقامتگاه:</label>
@@ -111,19 +120,19 @@
                 @if ($data->estate_type)
                     @if ($data->estate_type == 1)
                         <option value="1">ویلا</option>
-                        <option value="2">سوییت - آپارتمان</option>
+                        <option value="2">سوییت</option>
                         <option value="0">نوع اقامتگاه را انتخاب کنید</option>
 
                     @else
-                    <option value="2">سوییت - آپارتمان</option>
-                    <option value="1">ویلا</option>
-                    <option value="0">نوع اقامتگاه را انتخاب کنید</option>
+                        <option value="2">سوییت</option>
+                        <option value="1">ویلا</option>
+                        <option value="0">نوع اقامتگاه را انتخاب کنید</option>
                     @endif
 
                 @else
                     <option value="0">نوع اقامتگاه را انتخاب کنید</option>
                     <option value="1">ویلا</option>
-                    <option value="2">سوییت - آپارتمان</option>
+                    <option value="2">سوییت</option>
                 @endif
 
             </select>
@@ -134,9 +143,9 @@
             <button type="submit" class="btn btn-sm btn-primary is">ادامه
                 <div id="sd-loading" class="spinner-border spinner-border-sm" role="status" style="display: none">
                     <span class="sr-only">Loading...</span>
-                  </div>
+                </div>
             </button>
-            
+
         </div>
         <br>
 

@@ -1,7 +1,10 @@
-<section style="display: {{$show ? "block" : "none"}};">
+<section style="display: {{$show ? "block" : "none"}};" class="px-3">
     <form action="" id="picture-form" class="form">
         <h3>اضافه کردن تصاویر ملک</h3>
-
+        <div class="alert alert-sm alert-danger is " style="font-size: 13px;text-align: right">
+            <i class="far fa-image"></i>
+            با کلیک بر روی هر عکس میتوانید آن را از لیست خود حذف نمایید
+        </div>
         <div id="cover-image-box" style="display:{{ $data->cover ? 'block' : 'none' }}">
 
             @if ($data->cover)

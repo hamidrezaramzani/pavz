@@ -5,11 +5,14 @@
             <i class="far fa-circle"></i>
             بعد از صحت اطمینان از اطلاعات ویلا آن را برای بررسی بفرستید. در زمان بررسی نمیتواند این بخش را تغییر دهید
         </div>
-    @include("partials.vip-advantage");
+        @include("partials.vip-advantage");
         @if ($data->status == 'not-completed')
             <button type="submit" class="btn btn-primary btn-sm is">ارسال برای بررسی و انتشار در سایت</button>
-        @elseif($data->status == "published")
-            <button type="submit" class="btn btn-warning btn-sm is">ثبت ویرایش و بررسی برای اعمال(در زمان بررسی آگهی در سایت قابل مشاهده نخواهد بود)</button>
+        @elseif($data->status == "reject")
+            <button type="submit" class="btn btn-warning btn-sm is">ارسال برای بررسی مجدد</button>
+        @else
+            <button type="submit" class="btn btn-success btn-sm is" disabled>منتشر شده است</button>
+
         @endif
     </form>
 </section>

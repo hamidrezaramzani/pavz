@@ -97,6 +97,13 @@ mymap.on("click", function (e) {
     marker = L.marker(e.latlng).addTo(mymap);
 });
 
+if ($("#lat").val()) {
+    L.marker({
+        lat: $("#lat").val(),
+        lng: $("#long").val(),
+    }).addTo(mymap);
+}
+
 function moveToSelectedCity() {
     const option = $("#city option:selected");
     if (option && option.value != 0) {
@@ -105,6 +112,8 @@ function moveToSelectedCity() {
         mymap.setView([lat, long]);
     }
 }
+
+moveToSelectedCity();
 
 $("#address-step").click(function () {
     const lat = $(this).attr("data-lat");
@@ -167,5 +176,3 @@ $(".price-counter").keyup(function () {
     const text = Num2persian(price);
     $(this).parents(".form-group").find("span").text(text);
 });
-
-

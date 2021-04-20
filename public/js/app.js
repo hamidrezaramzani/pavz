@@ -43,3 +43,50 @@ $(document).ready(function () {
         ],
     });
 });
+
+function like(btn, type) {
+    const id = btn.attr("data-id");
+    $.ajax({
+        method: "GET",
+        url: `/like/${type}/${id}`,
+        beforeSend: () => {
+            btn.find("i").removeAttr("class");
+            btn.find("i").addClass("fas fa-spinner fa-spin");
+            btn.prop("disabled", true);
+        },
+        success: (response) => {
+            btn.find("i").removeAttr("class");
+            btn.prop("disabled", false);
+            if (response.type == "delete") {
+                btn.find("i").addClass("far text-danger fa-heart");
+            } else {
+                btn.find("i").addClass("fas text-danger fa-heart");
+            }
+        },
+        error: (err) => {
+            btn.find("i").removeAttr("class");
+            btn.find("i").addClass("fas text-danger fa-heart");
+            btn.prop("disabled", false);
+            if (err.status == 401) {
+                Swal.fire({
+                    title: "خطا",
+                    text: "برای پسندیدن باید به حساب خود ورود کنید",
+                    icon: "error",
+                    confirmButtonText: "باشه",
+                });
+                return;
+            } else {
+                Swal.fire({
+                    title: "خطا",
+                    text: "مشکلی در سرور وجود دارد",
+                    icon: "error",
+                    confirmButtonText: "باشه",
+                });
+            }
+        },
+    });
+}
+
+$(".btn-villa-like").click(function () {
+    like($(this), "villa");
+});

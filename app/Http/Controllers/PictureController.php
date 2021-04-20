@@ -19,9 +19,8 @@ class PictureController extends Controller
         $villa = $villa->get()[0];
 
         $level = $villa->level;
-        $VillaController = new VillasController();
-        $VillaController->updateLevel($level, $request->get("level"), $villa);
-
+        $mainLevel =  $level < $request->get("level") ? $request->get("level") : $level;
+        $villa->update(["level" => $mainLevel]);
 
 
         if ($request->file("cover")) {
