@@ -46,6 +46,7 @@ $(document).ready(function () {
 
 function like(btn, type) {
     const id = btn.attr("data-id");
+    const defaultClass = btn.find("i").attr("class");
     $.ajax({
         method: "GET",
         url: `/like/${type}/${id}`,
@@ -65,7 +66,7 @@ function like(btn, type) {
         },
         error: (err) => {
             btn.find("i").removeAttr("class");
-            btn.find("i").addClass("fas text-danger fa-heart");
+            btn.find("i").addClass(defaultClass);
             btn.prop("disabled", false);
             if (err.status == 401) {
                 Swal.fire({
@@ -89,4 +90,8 @@ function like(btn, type) {
 
 $(".btn-villa-like").click(function () {
     like($(this), "villa");
+});
+
+$(".btn-apartment-like").click(function () {
+    like($(this), "apartment");
 });

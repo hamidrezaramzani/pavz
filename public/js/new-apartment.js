@@ -247,10 +247,10 @@ $("#possibilities-form").validate({
             beforeSend: () => {
                 $("#pb-loading").show();
             },
-            success: (response) => {
+            success: () => {
                 nextForm(form);
-                console.log(response);
                 $("#pb-loading").hide();
+                moveToSelectedCity();
             },
 
             error: () => {

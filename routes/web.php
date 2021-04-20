@@ -291,3 +291,4 @@ Route::get("/notification/all", [NotificationController::class, "allNotification
 
 // LIKE ROUTES
 Route::get("/like/villa/{id}", [LikeController::class, "likeVilla"])->middleware("auth");
+Route::get("/like/apartment/{id}", [LikeController::class, "likeApartment"])->middleware("auth");

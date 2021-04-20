@@ -36,6 +36,12 @@ class ApartmentController extends Controller
         return redirect("/edit-apartment/$apartment->id");
     }
 
+    public function checkLevel($currentLevel, $nextLevel)
+    {
+        return $currentLevel < $nextLevel ? $nextLevel : $currentLevel;
+    }
+
+
     public function editApartment($id = null)
     {
         if ($id == null) {
@@ -96,7 +102,7 @@ class ApartmentController extends Controller
         $data = $request->except("_token", "aid");
         $apartment = Apartment::where("id", $request->get("aid"));
         $level = $apartment->get()[0]->level;
-        $this->updateLevel($level, $request->get("level"), $apartment);
+        $data["level"] = $this->checkLevel($level, $request->get("level"));
         $apartment->update($data);
         return response(["message" => "update successfuly"]);
     }
@@ -104,6 +110,9 @@ class ApartmentController extends Controller
     public function updatePossibilities(UpdatePossibilitiesRequest $request)
     {
         $data = $request->except("_token", "aid");
+        $apartment = Apartment::where("id", $request->get("aid"));
+        $level = $apartment->get()[0]->level;
+        $data["level"] = $this->checkLevel($level, $request->get("level"));
         Apartment::where("id", $request->get("aid"))->update($data);
         return response(["message" => "update successfuly"]);
     }
@@ -111,6 +120,9 @@ class ApartmentController extends Controller
     public function updateAddress(UpdateApartmentAddressRequest $request)
     {
         $data = $request->except("_token", "aid");
+        $apartment = Apartment::where("id", $request->get("aid"));
+        $level = $apartment->get()[0]->level;
+        $data["level"] = $this->checkLevel($level, $request->get("level"));
         Apartment::where("id", $request->get("aid"))->update($data);
         return response(["message" => "update successfuly"]);
     }
@@ -119,6 +131,9 @@ class ApartmentController extends Controller
     {
 
         $data = $request->except("_token", "aid");
+        $apartment = Apartment::where("id", $request->get("aid"));
+        $level = $apartment->get()[0]->level;
+        $data["level"] = $this->checkLevel($level, $request->get("level"));
         Apartment::where("id", $request->get("aid"))->update($data);
         return response(["message" => "update successfuly"]);
     }
@@ -127,12 +142,16 @@ class ApartmentController extends Controller
     {
 
         $data = $request->except("_token", "aid");
+        $apartment = Apartment::where("id", $request->get("aid"));
+        $level = $apartment->get()[0]->level;
+        $data["level"] = $this->checkLevel($level, $request->get("level"));
         Apartment::where("id", $request->get("aid"))->update($data);
         return response(["message" => "update successfuly"]);
     }
 
     public function setApartmentStatus($status, $id)
     {
+
         Apartment::where("id", $id)->update(["status" => $status]);
         return response(["message" => "status updated"], 200);
     }
@@ -152,10 +171,19 @@ class ApartmentController extends Controller
                 unlink(public_path("covers") . "/" . $apartment->get()[0]->cover);
             }
             $pictures = Apartment::find($id)->pictures()->get();
+            $saves = Apartment::find($id)->saves()->get();
+            $likes = Apartment::find($id)->likes()->get();
             $apartment->delete();
             foreach ($pictures as $picture) {
                 $picture->delete();
                 unlink(public_path("apartment_pictures") . "/" . $picture->url);
+            }
+            foreach ($saves as $save) {
+                $save->delete();
+            }
+
+            foreach ($likes as $like) {
+                $like->delete();
             }
             return response(["message" => "apartment deleted"], 200);
         } else {
@@ -202,7 +230,7 @@ class ApartmentController extends Controller
 
 
         if (!Session::get("apartment-" . $data->id)) {
-            Session::push("apartment-" . $data->id , true);
+            Session::push("apartment-" . $data->id, true);
             Apartment::where("id", $id)->update(["view_count" => $data->view_count  + 1]);
         }
 
@@ -212,13 +240,13 @@ class ApartmentController extends Controller
         if (Auth::check() && $data->saves()->where("user_id", Auth::id())->get()->count()) {
             $saved = 1;
         }
-        
+
 
 
         return view("pages.apartment.apartment", [
             "data" =>  $data,
             "state" => $state,
-            "city" => $city , 
+            "city" => $city,
             "saved" => $saved
         ]);
     }

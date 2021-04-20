@@ -36,19 +36,22 @@
                                             @endif
                                         </td>
                                         <td width="10%">
-                                            {{ $apartment->ads_type == '1' ? "فروش آپارتمان" : "رهن و اجاره آپارتمان" }}
+                                            {{ $apartment->ads_type == '1' ? 'فروش آپارتمان' : 'رهن و اجاره آپارتمان' }}
                                         </td>
-                                        <td>{{$apartment->view_count}}</td>
+                                        <td>{{ $apartment->view_count }}</td>
                                         <td width="15%">
                                             @switch($apartment->status)
                                                 @case("not-completed")
-                                                <span class="text-dark">پیش نویس</span>
+                                                    <span class="text-dark">پیش نویس</span>
                                                 @break
                                                 @case("checking")
-                                                <span class="text-warning">در حال بررسی</span>
+                                                    <span class="text-warning">در حال بررسی</span>
                                                 @break
                                                 @case("published")
-                                                <span class="text-warning">انتشار یافت</span>
+                                                    <span class="text-success">انتشار یافت</span>
+                                                @break
+                                                @case("rejected")
+                                                    <span class="text-danger">رد شد</span>
                                                 @break
                                             @endswitch
                                         </td>
@@ -108,8 +111,7 @@
         $(".btn-apartment-delete").click(function() {
             const btn = $(this);
             const id = btn.attr("id");
-            $(`#ap-${id}`).show();
-            btn.prop("disabled", true);
+
 
             Swal.fire({
                 title: "حذف آپارتمان",
@@ -123,7 +125,8 @@
                 isConfirmed
             }) => {
                 if (isConfirmed) {
-
+                    $(`#ap-${id}`).show();
+                    btn.prop("disabled", true);
                     $.ajax({
                         method: "GET",
                         url: "/apartment/delete/" + id,

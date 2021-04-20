@@ -297,6 +297,11 @@ class VillasController extends Controller
             }
 
 
+            foreach ($pictures as $picture) {
+                $picture->delete();
+                unlink(public_path("villa_pictures") . "/" . $picture->url);
+            }
+
             foreach ($saves as $save) {
                 $save->delete();
             }
@@ -304,10 +309,7 @@ class VillasController extends Controller
             foreach ($likes as $like) {
                 $like->delete();
             }
-            foreach ($pictures as $picture) {
-                $picture->delete();
-                unlink(public_path("villa_pictures") . "/" . $picture->url);
-            }
+            
             return response(["message" => "villa deleted"], 200);
         } else {
             return response(["message" => "villa not found"], 400);
