@@ -141,7 +141,7 @@
         </div>
 
 
-        
+
         <div class="accordion-item">
             <a href="/saves/manage">
                 <img src="{{ asset('images/icons/svg/save.svg') }}" alt="manage saves">
@@ -244,6 +244,26 @@
 
                 <li>
                     <a href="">فاکتور های خرید کاربران</a>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+        <div class="accordion-item">
+            <button>
+                <img src="{{ asset('images/icons/svg/shop.svg') }}" alt="USER SVG">
+                مدیریت تخفیف ها
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <ul>
+                <li>
+                    <a href="/discount/new">تخفیف جدید</a>
+                </li>
+
+                <li>
+                    <a href="/discount/manage">مدیریت تخفیف ها</a>
                 </li>
             </ul>
         </div>

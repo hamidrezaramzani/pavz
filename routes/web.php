@@ -5,6 +5,7 @@ use App\Http\Controllers\ApartmentController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\CommentAnswerController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LikeController;
@@ -27,6 +28,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VillasController;
 use App\Http\Controllers\VillaScoreController;
 use App\Http\Controllers\VipController;
+use App\Models\Discount;
 use App\Models\Notification;
 use App\Models\Parking;
 use App\Models\Room;
@@ -295,3 +297,11 @@ Route::get("/like/villa/{id}", [LikeController::class, "likeVilla"])->middleware
 Route::get("/like/apartment/{id}", [LikeController::class, "likeApartment"])->middleware("auth");
 Route::get("/like/area/{id}", [LikeController::class, "likeArea"])->middleware("auth");
 Route::get("/like/shop/{id}", [LikeController::class, "likeShop"])->middleware("auth");
+
+
+//  DISCOUNT ROUTES
+Route::get("/discount/new", [DiscountController::class, "newDiscount"])->middleware("admin");
+Route::post("/discount/create", [DiscountController::class, "createDiscount"])->middleware("admin");
+Route::get("/discount/manage", [DiscountController::class, "manageDiscounts"])->middleware("admin");
+Route::get("/discount/delete/{id}", [DiscountController::class, "deleteDiscount"])->middleware("admin");
+
