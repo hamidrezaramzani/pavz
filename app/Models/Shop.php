@@ -18,6 +18,12 @@ class Shop extends Model
     {
         return $this->morphMany(Save::class, "saveable");
     }
+
+    public function likes()
+    {
+        return $this->morphMany(Like::class, "likeable");
+    }
+
     public function document()
     {
         return $this->hasOne(DocumentType::class, "id", "document_type");

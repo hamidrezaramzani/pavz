@@ -96,8 +96,10 @@ $(".btn-apartment-like").click(function () {
     like($(this), "apartment");
 });
 
-
-
 $(".btn-area-like").click(function () {
     like($(this), "area");
+});
+
+$(".btn-shop-like").click(function () {
+    like($(this), "shop");
 });

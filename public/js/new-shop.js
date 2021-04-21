@@ -106,6 +106,7 @@ $("#possibilities-form").validate({
         const data = {
             possibilities: JSON.stringify(getAllInputs("#possibilities")),
             id: $("#id").val(),
+            level : 2 , 
             _token: $("#token").val(),
         };
         $.ajax({
@@ -115,8 +116,9 @@ $("#possibilities-form").validate({
             beforeSend: () => {
                 $("#pb-loading").show();
             },
-            success: (res) => {
+            success: () => {
                 $("#pb-loading").hide();
+                moveToSelectedCity();
                 nextForm(form);
             },
             error: () => {

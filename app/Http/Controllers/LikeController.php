@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Apartment;
 use App\Models\Area;
 use App\Models\Like;
+use App\Models\Shop;
 use App\Models\Villa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -53,6 +54,22 @@ class LikeController extends Controller
             $area = Area::find($id);
             $like = new Like(["user_id" => Auth::id()]);
             $like->likeable()->associate($area)->save();
+            return response(["message" => "deleted" , "type" => "like"]);
+
+        }
+    }
+
+    
+    public function likeShop($id)
+    {
+        $like = Shop::find($id)->likes()->where(["user_id" => Auth::id()]);
+        if ($like->count()) {
+            $like->delete();
+            return response(["message" => "deleted" , "type" => "delete"]);
+        } else {
+            $shop = Shop::find($id);
+            $like = new Like(["user_id" => Auth::id()]);
+            $like->likeable()->associate($shop)->save();
             return response(["message" => "deleted" , "type" => "like"]);
 
         }

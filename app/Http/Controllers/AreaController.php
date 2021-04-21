@@ -143,10 +143,20 @@ class AreaController extends Controller
                 unlink(public_path("covers") . "/" . $area->get()[0]->cover);
             }
             $pictures = Area::find($id)->pictures()->get();
+            $saves = Area::find($id)->saves()->get();
+            $likes = Area::find($id)->likes()->get();
             $area->delete();
             foreach ($pictures as $picture) {
                 $picture->delete();
                 unlink(public_path("area_pictures") . "/" . $picture->url);
+            }
+
+            foreach ($likes as $like) {
+                $like->delete();
+            }
+
+            foreach ($saves as $save) {
+                $save->delete();
             }
             return response(["message" => "area deleted"], 200);
         } else {

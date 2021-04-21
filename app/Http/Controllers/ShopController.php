@@ -92,9 +92,18 @@ class ShopController extends Controller
         ]);
     }
 
+    public function checkLevel($currentLevel, $nextLevel)
+    {
+        return $currentLevel < $nextLevel ? $nextLevel : $currentLevel;
+    }
+
+
     public function updateSpecification(UpdateShopSpecification $request)
     {
         $data = $request->except(["_token", "id"]);
+        $shop = Shop::where("id", $request->get("id"));
+        $level = $shop->get()[0]->level;
+        $data["level"] = $this->checkLevel($level, $request->get("level"));
         Shop::where("id", $request->get("id"))->update($data);
         return response(["message" => "shop updated"]);
     }
@@ -105,6 +114,9 @@ class ShopController extends Controller
             "possibilities" => "required|string"
         ]);
         $data = $request->except(["_token", "id"]);
+        $shop = Shop::where("id", $request->get("id"));
+        $level = $shop->get()[0]->level;
+        $data["level"] = $this->checkLevel($level, $request->get("level"));
         Shop::where("id", $request->get("id"))->update($data);
         return response(["message" => "possibilities updated"]);
     }
@@ -112,6 +124,9 @@ class ShopController extends Controller
     public function updateAddress(UpdateShopAddressRequest $request)
     {
         $data = $request->except(["_token", "id"]);
+        $shop = Shop::where("id", $request->get("id"));
+        $level = $shop->get()[0]->level;
+        $data["level"] = $this->checkLevel($level, $request->get("level"));
         Shop::where("id", $request->get("id"))->update($data);
         return response(["message" => "address updated"]);
     }
@@ -119,6 +134,9 @@ class ShopController extends Controller
     public function updateRentPricing(UpdateShopRentPricingRequest $request)
     {
         $data = $request->except(["_token", "id"]);
+        $shop = Shop::where("id", $request->get("id"));
+        $level = $shop->get()[0]->level;
+        $data["level"] = $this->checkLevel($level, $request->get("level"));
         Shop::where("id", $request->get("id"))->update($data);
         return response(["message" => "rent price updated"]);
     }
@@ -128,6 +146,9 @@ class ShopController extends Controller
     public function updateSoldPricing(UpdateShopSoldPricingRequest $request)
     {
         $data = $request->except(["_token", "id"]);
+        $shop = Shop::where("id", $request->get("id"));
+        $level = $shop->get()[0]->level;
+        $data["level"] = $this->checkLevel($level, $request->get("level"));
         Shop::where("id", $request->get("id"))->update($data);
         return response(["message" => "sold price updated"]);
     }
