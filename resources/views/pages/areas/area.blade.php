@@ -36,6 +36,7 @@
     <script>
         let lat = $("#lat").val();
         let long = $("#lng").val();
+        console.log(lat , long);
         let latlong = [lat, long];
         var mymap = L.map("mapid").setView([lat, long], 15);
         L.tileLayer(

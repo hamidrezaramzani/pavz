@@ -115,18 +115,22 @@
                     <input type="number" name="total_price"
                         value="{{ $data->soldVillaPrices ? $data->soldVillaPrices->total_price : null }}"
                         {{ $data->soldVillaPrices && $data->soldVillaPrices->agreed_price ? 'disabled' : '' }}
-                        id="total_price" class="form-control" placeholder="قیمت کل ملک برای فروش را وارد نمایید">
-                </div>
+                        id="total_price" class="form-control price-counter" placeholder="قیمت کل ملک برای فروش را وارد نمایید">
+                        <span class="is price-text"></span>
+                
+                    </div>
             </div>
 
 
             <div>
                 <div class="form-group">
                     <label for="price_per_meter">قیمت به ازای هر متر:</label>
-                    <input type="number" name="price_per_meter" id="price_per_meter" class="form-control"
+                    <input type="number" name="price_per_meter" id="price_per_meter" class="form-control price-counter"
                         value="{{ $data->soldVillaPrices ? $data->soldVillaPrices->price_per_meter : null }}"
                         {{ $data->soldVillaPrices && $data->soldVillaPrices->agreed_price ? 'disabled' : '' }}
                         placeholder="قیمت کل ملک برای فروش را وارد نمایید">
+                    <span class="is price-text"></span>
+
                 </div>
             </div>
 

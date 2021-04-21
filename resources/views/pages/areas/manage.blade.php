@@ -44,8 +44,11 @@
                                                 @case("checking")
                                                     <span class="text-warning">در حال بررسی</span>
                                                 @break
-                                                @case(" published")
+                                                @case("published")
                                                     <span class="text-warning">انتشار یافت</span>
+                                                @break
+                                                @case("rejected")
+                                                    <span class="text-warning">رد شده</span>
                                                 @break
                                             @endswitch
                                         </td>

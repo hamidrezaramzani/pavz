@@ -13,10 +13,23 @@
                     <i class="fa fa-share-alt" aria-hidden="true"></i>
                 </button>
             </span>
-            <span class="float-left mx-2">
-                <button class="btn p-0">
-                    <i class="fa fa-heart text-danger" aria-hidden="true"></i>
+            <span class="float-left mx-2">                
+                @auth
+                @if ($item->likes()->where('user_id', auth()->user()->id)->count())
+                    <button class="btn p-0 btn-area-like" data-id="{{ $item->id }}">
+                        <i class="fas fa-heart text-danger" aria-hidden="true"></i>
+                    </button>
+                @else
+                    <button class="btn p-0 btn-area-like" data-id="{{ $item->id }}">
+                        <i class="far fa-heart text-danger" aria-hidden="true"></i>
+                    </button>
+                @endif
+            @else
+
+                <button class="btn p-0 btn-area-like" data-id="{{ $item->id }}">
+                    <i class="far fa-heart text-danger" aria-hidden="true"></i>
                 </button>
+            @endauth
             </span>
         </div>
         <div class="ads-item-body">

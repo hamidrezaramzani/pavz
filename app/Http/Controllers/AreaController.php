@@ -76,6 +76,9 @@ class AreaController extends Controller
     public function updateSpecification(UpdateAreaSpecificationRequest $request)
     {
         $data = $request->except(["id", "_token"]);
+        $area = Area::where("id", $request->get("id"));
+        $level = $area->get()[0]->level;
+        $data["level"] = $this->checkLevel($level, $request->get("level"));
         Area::where("id", $request->get("id"))->update($data);
         return response(["message" => "updated"], 200);
     }
@@ -83,6 +86,9 @@ class AreaController extends Controller
     public function updateDocuments(UpdateAreaDocumentRequest $request)
     {
         $data = $request->except(["id", "_token"]);
+        $area = Area::where("id", $request->get("id"));
+        $level = $area->get()[0]->level;
+        $data["level"] = $this->checkLevel($level, $request->get("level"));
         Area::where("id", $request->get("id"))->update($data);
         return response(["message" => "updated"], 200);
     }
@@ -91,13 +97,26 @@ class AreaController extends Controller
     {
 
         $data = $request->except(["id", "_token"]);
+        $area = Area::where("id", $request->get("id"));
+        $level = $area->get()[0]->level;
+        $data["level"] = $this->checkLevel($level, $request->get("level"));
         Area::where("id", $request->get("id"))->update($data);
         return response(["message" => "updated"], 200);
     }
 
+    public function checkLevel($currentLevel, $nextLevel)
+    {
+        return $currentLevel < $nextLevel ? $nextLevel : $currentLevel;
+    }
+
+
+
     public function updatePricing(UpdateAreaPricingRequest $request)
     {
         $data = $request->except(["id", "_token"]);
+        $area = Area::where("id", $request->get("id"));
+        $level = $area->get()[0]->level;
+        $data["level"] = $this->checkLevel($level, $request->get("level"));
         Area::where("id", $request->get("id"))->update($data);
         return response(["message" => "updated"], 200);
     }
@@ -163,7 +182,7 @@ class AreaController extends Controller
 
 
         if (!Session::get("area-" . $data->id)) {
-            Session::push("area-" . $data->id , true);
+            Session::push("area-" . $data->id, true);
             Area::where("id", $id)->update(["view_count" => $data->view_count  + 1]);
         }
 
