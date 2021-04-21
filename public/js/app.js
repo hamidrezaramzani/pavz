@@ -103,3 +103,34 @@ $(".btn-area-like").click(function () {
 $(".btn-shop-like").click(function () {
     like($(this), "shop");
 });
+
+$(".share-item").click(function () {
+    $("#copy-link-btn").attr(
+        "copy-button-text",
+        window.location.origin +
+            "/" +
+            $(this).attr("data-type") +
+            "/" +
+            $(this).attr("data-id")
+    );
+    $("#share-telegram-btn").attr(
+        "href",
+        `https://t.me/share/url?url=${
+            window.location.origin +
+            "/" +
+            $(this).attr("data-type") +
+            "/" +
+            $(this).attr("data-id")
+        }&text=${$(this).parents(".ads-item-content").find("h2").text()}`
+    );
+    $("#share-modal").modal("show");
+});
+
+$("#copy-link-btn").click(function () {
+    const text = $(this).attr("copy-button-text");
+    const el = document.createElement("input");
+    el.value = text;
+    el.select();
+    el.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+});

@@ -75,7 +75,7 @@
                 مازندران / رامسر
             </span>
             <span class="float-left">
-                <button class="btn p-0">
+                <button class="btn p-0 share-item" data-type="villa" data-id="{{ $item->id }}">
                     <i class="fa fa-share-alt" aria-hidden="true"></i>
                 </button>
             </span>
