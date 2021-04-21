@@ -52,11 +52,14 @@
                 </div>
             @endforeach
         </div>
-    @break
-    @default
+    @break    
 
 @endswitch
-
+<br>
+<br>
+<br>
+<br>
+<br>
 </div>
 </div>
 
@@ -80,10 +83,10 @@ let long = $("#long").val();
 let latlong = [lat, long];
 var mymap = L.map("mapid").setView([lat, long], 15);
 L.tileLayer(
-    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    maxZoom: 15 , 
-    minZoom : 5
+"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+maxZoom: 15,
+minZoom: 5
 }
 ).addTo(mymap);
 
@@ -92,78 +95,80 @@ mymap.invalidateSize(true);
 }, 0);
 
 
-function setPriceTemplate(item , price ) {
-    return `<a href="/villa/${item.id}" class="map-item-link">
-                    <div class="map-item">
-                        <img src='{{ asset('covers/${item.cover}') }}' alt='maptime logo gif' width='150px'/>
-                        <br/>
-                        <h3 class="map-item-title">${item.title}</h3>
-                        <br/>
-                        <h4>                                                    
-                            ${price} 
-                        </h4>
-                    </div>
-                </a>    
-            `;
+function setPriceTemplate(item, price) {
+return `<a href="/villa/${item.id}" class="map-item-link">
+<div class="map-item">
+<img src='{{ asset('covers/${item.cover}') }}' alt='maptime logo gif' width='150px'/>
+<br/>
+<h3 class="map-item-title">${item.title}</h3>
+<br/>
+<h4>                                                    
+${price} 
+</h4>
+</div>
+</a>    
+`;
 }
 
 function getTemplate(type, item) {
-    let template = ``;
-    switch (type) {
-        case 1:
-            template = setPriceTemplate(item , item.sold_villa_prices.agreed_price ? "قیمت توافقی" :  item.sold_villa_prices.total_price + " تومان")
-        break;
-        case 2:
-            template = setPriceTemplate(item , item.rentPrices.midweek + " / هرشب")
-        break
-        case 3:
-            template = setPriceTemplate(item , item.sold_villa_prices.agreed_price ? "قیمت توافقی" :  item.sold_villa_prices.total_price + " تومان")
-        break    
-        case 4:
-            template = setPriceTemplate(item , item.rentPrices.midweek + " / هرشب")
-        break;
-        case 5:
-            template = setPriceTemplate(item ,item.agreed_price ? "قیمت توافقی" :  item.total_price + " تومان")
-        break;
-        case 6:
-            template = setPriceTemplate(item ,item.mortgage + "تومان / رهن")
-        break;
-        case 7:
-            template = setPriceTemplate(item ,item.total_price + " تومان")
-        break;
-        case 8:
-            template = setPriceTemplate(item ,item.agreed_price ? "قیمت توافقی" :  item.total_price + " تومان")
-        break;
-        case 9:
-            template = setPriceTemplate(item ,item.mortgage + "تومان / رهن ")
-        break;
+let template = ``;
+switch (type) {
+case 1:
+template = setPriceTemplate(item, item.sold_villa_prices.agreed_price ? "قیمت توافقی" : item
+.sold_villa_prices.total_price + " تومان")
+break;
+case 2:
+template = setPriceTemplate(item, item.rentPrices.midweek + " / هرشب")
+break
+case 3:
+template = setPriceTemplate(item, item.sold_villa_prices.agreed_price ? "قیمت توافقی" : item
+.sold_villa_prices.total_price + " تومان")
+break
+case 4:
+template = setPriceTemplate(item, item.rentPrices.midweek + " / هرشب")
+break;
+case 5:
+template = setPriceTemplate(item, item.agreed_price ? "قیمت توافقی" : item.total_price + " تومان")
+break;
+case 6:
+template = setPriceTemplate(item, item.mortgage + "تومان / رهن")
+break;
+case 7:
+template = setPriceTemplate(item, item.total_price + " تومان")
+break;
+case 8:
+template = setPriceTemplate(item, item.agreed_price ? "قیمت توافقی" : item.total_price + " تومان")
+break;
+case 9:
+template = setPriceTemplate(item, item.mortgage + "تومان / رهن ")
+break;
 
-    }
+}
 
-    return template;
+return template;
 }
 
 $.ajax({
-    method: "GET",
-    url: "/search/get-all/" + $("#type").val(),
-    success: ({
-        type,
-        data
-        }) => {
-            data.forEach(item => {
-                const marker = L.marker([item.lat, item.long]).on("click", function(e) {
-                let lat = e.latlng.lat;
-                let lng = e.latlng.lng;
-                var customPopup = getTemplate(type, item);
-                var customOptions = {
-                'maxWidth': '400',
-                'width': '400',
-                'className': 'popupCustom'
-                }
-                marker.bindPopup(customPopup, customOptions);
-                }).addTo(mymap);
-            });
-    }
+method: "GET",
+url: "/search/get-all/" + $("#type").val(),
+success: ({
+type,
+data
+}) => {
+data.forEach(item => {
+const marker = L.marker([item.lat, item.long]).on("click", function(e) {
+let lat = e.latlng.lat;
+let lng = e.latlng.lng;
+var customPopup = getTemplate(type, item);
+var customOptions = {
+'maxWidth': '400',
+'width': '400',
+'className': 'popupCustom'
+}
+marker.bindPopup(customPopup, customOptions);
+}).addTo(mymap);
+});
+}
 });
 
 </script>

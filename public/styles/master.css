@@ -2357,7 +2357,11 @@ table {
 }
 
 .swal2-modal {
-    font-family: is;
+    font-family: is!important;
+}
+
+.swal2-container {
+    font-family: is!important;
 }
 
 .form-group {
@@ -2931,4 +2935,8 @@ input:disabled {
 
 .ui-datepicker-calendar tr {
     font: 13px is;
+}
+
+.nav-tabs button {
+    font-size: 12px;
 }

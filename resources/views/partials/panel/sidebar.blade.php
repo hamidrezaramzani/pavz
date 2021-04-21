@@ -141,6 +141,14 @@
         </div>
 
 
+        
+        <div class="accordion-item">
+            <a href="/saves/manage">
+                <img src="{{ asset('images/icons/svg/save.svg') }}" alt="manage saves">
+                ذخیره ها
+            </a>
+        </div>
+
 
         <div class="accordion-item">
             <button>

@@ -42,14 +42,19 @@
         let lat = $("#lat").val();
         let long = $("#lng").val();
         let latlong = [lat, long];
-        var mymap = L.map("mapid").setView([lat, long], 15);
+        var mymap = L.map("mapid").setView([lat, long], 12);
         L.tileLayer(
             "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }
         ).addTo(mymap);
 
-        L.marker([lat, long]).addTo(mymap);
+        var circle = L.circle([lat, long], {
+            color: 'magenta',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 500
+        }).addTo(mymap);
 
         setInterval(() => {
             mymap.invalidateSize(true);

@@ -65,4 +65,39 @@ class SaveController extends Controller
         // $picture->pictureable()->associate($villa);
         // $picture->save();
     }
+
+    public function manageSaves()
+    {
+
+        $areaSaves = Save::where([
+            ["user_id" , Auth::id()] , 
+            ["saveable_type" , "App\Models\Area"] , 
+        ]);
+        
+
+        $villaSaves = Save::where([
+            ["user_id" , Auth::id()] , 
+            ["saveable_type" , "App\Models\Villa"] , 
+        ]);
+        
+
+
+        $shopSaves = Save::where([
+            ["user_id" , Auth::id()] , 
+            ["saveable_type" , "App\Models\Shop"] , 
+        ]);
+        
+
+        $apartmentSaves = Save::where([
+            ["user_id" , Auth::id()] , 
+            ["saveable_type" , "App\Models\Apartment"] , 
+        ]);
+        
+        return view("pages.saves" , [
+            "villas" => $villaSaves->get() , 
+            "areas" => $areaSaves->get() , 
+            "shops" => $shopSaves->get() , 
+            "apartments" => $apartmentSaves->get()
+        ]);
+    }
 }

@@ -7,13 +7,14 @@
                 <br>
                 <br>
                 <a href="/new-apartment" class="btn btn-sm btn-primary is m-3">+ ثبت آگهی رایگان</a>
-                <div class="table-resposive">
+                <div class="table-responsive">
                     <table class="table text-center table-striped table-hover">
                         <thead>
                             <tr>
                                 <th width="10%">کد</th>
                                 <th width="20%">عنوان</th>
-                                <th width="20%">کاور</th>
+                                <th width="10%">کاور</th>
+                                <th width="10%">تعداد لایک</th>
                                 <th width="10%">نوع آگهی</th>
                                 <th width="10%">بازدید</th>
                                 <th width="15%">وضعیت</th>
@@ -35,6 +36,7 @@
                                                 <span class="text-danger">کاور ندارد</span>
                                             @endif
                                         </td>
+                                        <td width="10%">{{$apartment->likes()->count()}}</td>
                                         <td width="10%">
                                             {{ $apartment->ads_type == '1' ? 'فروش آپارتمان' : 'رهن و اجاره آپارتمان' }}
                                         </td>

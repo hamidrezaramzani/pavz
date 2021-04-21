@@ -218,6 +218,7 @@ Route::get("/shop/{id}", [ShopController::class, "getShop"]);
 Route::get("/vip/buy", [VipController::class, "newVip"])->middleware("auth");
 // SAVE ROUTES
 Route::get("/save/{type}/{id}", [SaveController::class, "saveAds"])->middleware("auth");
+Route::get("/saves/manage", [SaveController::class, "manageSaves"])->middleware("auth");
 
 
 // TICKETS

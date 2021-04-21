@@ -1,5 +1,7 @@
-<section style="display: {{$show ? "block" : "none"}};">
-    <form action="/apartment/set-status/{{ $data->status == "not-completed" || "published" ? "checking" : "not-completed" }}/{{ $data->id }}" class="form" id="finish-form">
+<section style="display: {{ $show ? 'block' : 'none' }};">
+    <form
+        action="/apartment/set-status/{{ $data->status == 'not-completed' || 'rejected' ? 'checking' : 'not-completed' }}/{{ $data->id }}"
+        class="form" id="finish-form">
         <h3>مرحله نهایی</h3>
         <div class="accordion-title">
             <i class="far fa-circle"></i>
@@ -19,13 +21,17 @@
                 </div>
             </button>
         @elseif($data->status == "published")
+            <button type="submit" class="btn btn-success btn-sm is" disabled>
+                این آگهی منتشر شده است
+            </button>
+        @else
             <button type="submit" class="btn btn-warning btn-sm is">
                 ثبت ویرایش و بررسی برای اعمال(در زمان بررسی آگهی در سایت قابل مشاهده نخواهد بود)
                 <div id="finish-loading" class="spinner-border spinner-border-sm" role="status" style="display: none">
                     <span class="sr-only">Loading...</span>
                 </div>
             </button>
-    
+
         @endif
     </form>
 </section>

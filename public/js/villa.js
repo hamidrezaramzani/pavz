@@ -1,7 +1,7 @@
 let lat = $("#lat").val();
 let long = $("#lng").val();
 let latlong = [lat, long];
-var mymap = L.map("mapid").setView([lat, long], 15);
+var mymap = L.map("mapid").setView(latlong, 13);
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -11,9 +11,11 @@ setInterval(() => {
     mymap.invalidateSize(true);
 }, 0);
 
-L.marker({
-    lat: $("#lat").val(),
-    lng: $("#lng").val(),
+var circle = L.circle(latlong, {
+    color: "magenta",
+    fillColor: "#f03",
+    fillOpacity: 0.5,
+    radius: 500,
 }).addTo(mymap);
 
 $(".datepicker").datepicker({
@@ -265,7 +267,7 @@ $("#reserve-form").validate({
             villa_id: $("#id").val(),
             user_id: $("#user_id").val(),
         };
-        
+
         $.ajax({
             method: "POST",
             url: "/reserve/new",

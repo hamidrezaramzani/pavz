@@ -36,7 +36,7 @@
     <script>
         let lat = $("#lat").val();
         let long = $("#lng").val();
-        console.log(lat , long);
+        console.log(lat, long);
         let latlong = [lat, long];
         var mymap = L.map("mapid").setView([lat, long], 15);
         L.tileLayer(
@@ -44,9 +44,11 @@
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }
         ).addTo(mymap);
-        L.marker({
-            lat,
-            lng: long
+        var circle = L.circle([lat, long], {
+            color: 'magenta',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 500
         }).addTo(mymap);
         setInterval(() => {
             mymap.invalidateSize(true);
@@ -62,7 +64,7 @@
             $(".slideshow").hide();
         });
 
-        
+
 
 
         $(".saved-ads").click(function() {

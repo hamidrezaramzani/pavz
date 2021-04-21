@@ -8,7 +8,7 @@
                 <br>
                 @include("partials.vip-advantage");
 
-                <div class="table-resposive">
+                <div class="table-responsive">
                     <table class="table text-center table-striped table-hover">
                         <thead>
                             <tr>

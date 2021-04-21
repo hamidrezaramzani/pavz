@@ -8,7 +8,7 @@
                 <br>
 
                 <a href="/shop/new" class="btn btn-sm btn-primary is m-3">+ ثبت آگهی رایگان</a>
-                <div class="table-resposive">
+                <div class="table-responsive">
                     <table class="table text-center table-striped table-hover">
                         <thead>
                             <tr>

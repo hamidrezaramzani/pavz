@@ -2106,6 +2106,13 @@
         "longitude": 50.658333
     },
     {
+        "id": 350,
+        "province": 27,
+        "name": " سلمان شهر",
+        "latitude": 36.7025,
+        "longitude": 51.1951
+    },
+    {
         "id": 302,
         "province": 27,
         "name": " ساری",
@@ -2279,6 +2286,14 @@
         "name": " قشم",
         "latitude": 26.8118673,
         "longitude": 55.8913207
+    },
+
+    {
+        "id": 351,
+        "province": 29,
+        "name": "کیش",
+        "latitude": 26.5325,
+        "longitude": 53.9868
     },
     {
         "id": 327,
