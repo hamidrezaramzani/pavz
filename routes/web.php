@@ -304,4 +304,5 @@ Route::get("/discount/new", [DiscountController::class, "newDiscount"])->middlew
 Route::post("/discount/create", [DiscountController::class, "createDiscount"])->middleware("admin");
 Route::get("/discount/manage", [DiscountController::class, "manageDiscounts"])->middleware("admin");
 Route::get("/discount/delete/{id}", [DiscountController::class, "deleteDiscount"])->middleware("admin");
-
+Route::get("/discount/apply/{code}", [DiscountController::class, "applyCode"])->middleware("auth");
+Route::post("/discount/get-price", [DiscountController::class, "getPrice"])->middleware("auth");

@@ -15,9 +15,9 @@ class VipSeeder extends Seeder
     public function run()
     {
         $data = [
-            ["title" => "یک ماهه" , "duration" => 30 , "price" => 100000] , 
-            ["title" => "سه ماهه" , "duration" => 60 , "price" => 200000] , 
-            ["title" => "شش ماهه" , "duration" => 90 , "price" => 400000] , 
+            ["title" => "یک ماهه" , "duration" => 30 , "price" => 1000000] , 
+            ["title" => "سه ماهه" , "duration" => 60 , "price" => 2000000] , 
+            ["title" => "شش ماهه" , "duration" => 90 , "price" => 4000000] , 
         ];
 
         foreach ($data as $item) {

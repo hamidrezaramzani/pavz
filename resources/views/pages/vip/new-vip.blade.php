@@ -6,7 +6,9 @@
                 <h3>خرید اشتراک ویژه</h3>
                 <br>
                 <br>
-                @include("partials.vip-advantage");
+                @include("partials.vip-advantage")
+                <input type="hidden" id="token" value="{{ csrf_token() }}">
+
 
                 <div class="table-responsive">
                     <table class="table text-center table-striped table-hover">
@@ -23,31 +25,179 @@
                             @foreach ($data as $index => $item)
                                 <tr>
 
-                                    <th width="25%">{{ $index + 1 }}</th>
-                                    <th width="25%">{{ $item->title }}</th>
-                                    <th width="25%">{{ $item->price }} تومان</th>
-                                    <th width="25%">
-                                        <a href="/zarinpall">
-                                            خرید
-                                        </a>
-                                    </th>
+                                    <td width="25%">{{ $index + 1 }}</td>
+                                    <td width="25%">{{ $item->title }}</td>
+                                    <td width="25%">{{ $item->price }} ریال</td>
+                                    <td width="25%">
+                                        <button class="btn btn-sm btn-primary is" data-code="" data-id="{{ $item->id }}"
+                                            onclick="buy(this)">
+                                            <span>خرید</span>
+                                            <div class="spinner-border spinner-border-sm" role="status"
+                                                style="display: none">
+                                                <span class="sr-only">Loading...</span>
+                                            </div>
+                                        </button>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
-                <br>
-                <br>
-                {{-- <div class="alert alert-info vip-advantages">
-                    <h4>
-                        <i class="fa fa-circle fa-xs"></i>
-                        مزایای خرید اشتراک ویژه
-                    </h4>
+                <form action="" class="form" id="apply-discount-form">
+                    <div class="form-group">
+                        <label for="code">کد تخفیف دارید؟ وارد کنید:</label>
+                        <input type="text" name="code" id="code" class="form-control" placeholder="کد تخفیف را وارد نمایید">
+                    </div>
                     <br>
-                    <span></span>
-                </div> --}}
+                    <button class="btn btn btn-primary is">
+                        اعمال
+                        <div id="apply-loading" class="spinner-border spinner-border-sm" role="status"
+                            style="display: none">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </button>
+                </form>
+                <br>
+                <br>
             </div>
 
         </div>
     </div>
 @endsection
+@push('scripts')
+
+    <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('js/additional-methods.min.js') }}"></script>
+
+    <script>
+        let code = "";
+
+        function buy(e) {
+            let code = e.getAttribute("data-code");
+            let id = e.getAttribute("data-id");
+
+            $.ajax({
+                method: "POST",
+                url: "/discount/get-price",
+                data: {
+                    id,
+                    code,
+                    _token: $("#token").val()
+                },
+                beforeSend: () => {
+                    e.setAttribute("disabled", true);
+                    e.querySelector("span").innerText = "در حال انتقال به درگاه"
+                    e.querySelector("div").style.display = "inline-block";
+
+                },
+                success: (response) => {
+                    console.log(response);
+                    $.ajax({
+                        method: "POST",
+                        url: "https://api.zarinpal.com/pg/v4/payment/request.json",
+                        data: {
+                            merchant_id: "",
+                            amount: response.price,
+                            description: "خرید اشتراک در پاوز",
+                            callback_url: "http://localhost:8000/payment/callback"
+                        },
+                        success: (response) => {
+                            location.replace("https://www.zarinpal.com/pg/StartPay/" + response
+                                .authority);
+                        },
+                        error: () => {
+                            Swal.fire({
+                                title: "خطا",
+                                text: "مشکلی در سمت درگاه وجود دارد. لطفا به مدیریت اطلاع دهید",
+                                icon: "error",
+                                confirmButtonText: "باشه",
+                            });
+                        }
+                    });
+
+                },
+                error: (err) => {
+                    e.setAttribute("disabled", false);
+                    e.querySelector("span").innerText = "خرید"
+                    e.querySelector("div").style.display = "none";
+                    Swal.fire({
+                        title: "خطا",
+                        text: "مشکلی در سرور وجود دارد",
+                        icon: "error",
+                        confirmButtonText: "باشه",
+                    });
+                }
+            });
+        }
+
+        $("#apply-discount-form").validate({
+            submitHandler: () => {
+                code = $("#code").val();
+                $.ajax({
+                    method: "GET",
+                    url: "/discount/apply/" + $("#code").val(),
+                    beforeSend: () => {
+                        $("#apply-loading").show();
+                    },
+                    success: (response) => {
+                        $("#apply-loading").hide();
+                        $("tbody").html("");
+
+                        response.data.forEach(item => {
+                            $("tbody").append(`
+                                                                                                    <tr>
+                                                                                                        <td width="25%">${item.id}</td>
+                                                                                                        <td width="25%">${item.title}</td>
+                                                                                                        <td width="25%"><s class="text-danger">${item.prevPrice} ریال</s> &nbsp; ${item.price} ریال</td>
+                                                                                                        <td width="25%">
+                                                                                                            <button class="btn btn-sm btn-primary is" data-code="${code}" data-id="${item.id}" onclick="buy(this)">
+                                                                                                                <span>خرید</span>
+                                                                                                                    <div class="spinner-border spinner-border-sm" role="status"
+                                                                                                                        style="display: none">
+                                                                                                                        <span class="sr-only">Loading...</span>
+                                                                                                                    </div>
+                                                                                                                </button>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    `);
+                        });
+                    },
+                    error: (err) => {
+                        $("#apply-loading").hide();
+                        if (err.status == 400) {
+                            Swal.fire({
+                                title: "خطا",
+                                text: "این کد تخفیف وجود ندارد",
+                                icon: "error",
+                                confirmButtonText: "باشه",
+                            });
+
+                        } else {
+                            Swal.fire({
+                                title: "خطا",
+                                text: "مشکلی در سرور وجود دارد",
+                                icon: "error",
+                                confirmButtonText: "باشه",
+                            });
+
+                        }
+                    }
+                });
+            },
+            rules: {
+                code: {
+                    required: true,
+                    minlength: 3
+                }
+            },
+            messages: {
+                code: {
+                    required: "پر کردن این فیلد الزامی می باشد",
+                    minlength: "حداقل باید 3 حرف باشد"
+                }
+            }
+        });
+
+    </script>
+
+@endpush

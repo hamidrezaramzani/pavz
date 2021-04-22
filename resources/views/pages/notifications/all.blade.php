@@ -7,31 +7,14 @@
                 <br>
                 <br>
                 @foreach ($data as $item)
-                    @switch($item->icon)
-                        @case("danger")
-                            <a href="{{ $item->link }}" class="notification-alert-item">
-                                <div class="alert alert-danger" role="alert">
-                                    {{ $item->text }}
-                                </div>
-                            </a>
-
-                        @break
-                        @case("success")
-                            <a href="{{ $item->link }}" class="notification-alert-item">
-                                <div class="alert alert-success" role="alert">
-                                    {{ $item->text }}
-                                </div>
-                            </a>
-                        @break
-                        @case("warning")
-                            <a href="{{ $item->link }}" class="notification-alert-item">
-                                <div class="alert alert-warning" role="alert">
-                                    {{ $item->text }}
-                                </div>
-                            </a>
-                        @break
-
-                    @endswitch
+                    <a href="{{ $item->link }}" class="notification-alert-item">
+                        <div class="alert text-dark" role="alert">
+                            <img src="{{ asset('images/status/' . $item->icon . '.png') }}" alt="Danger icon" width="30"
+                                height="30">
+                            {{ jdate($item->created_at)->format('%A %d %B %Y') }} - 
+                            {{ $item->text }}
+                        </div>
+                    </a>
                 @endforeach
             </div>
 

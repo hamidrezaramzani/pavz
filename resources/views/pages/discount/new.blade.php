@@ -18,7 +18,7 @@
 
                     <div class="form-group">
                         <label for="percent">درصد تخفیف:</label>
-                        <input type="text" name="percent" id="percent" class="form-control"
+                        <input type="number" name="percent" id="percent" class="form-control"
                             placeholder="درصد تخفیف خود را وارد نمایید" />
                     </div>
                     <input type="hidden" id="token" value="{{ csrf_token() }}">

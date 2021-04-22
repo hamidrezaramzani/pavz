@@ -430,7 +430,7 @@ table {
 }
 
 .ads-item {
-    height: 450px!important;
+    height: 450px !important;
     padding: 30px;
     position: relative;
 }
@@ -2255,11 +2255,11 @@ span#picture-name {
 }
 
 #notification-dropdown {
-    line-height: 50px!important;
+    line-height: 50px !important;
 }
 
 #notification-dropdown i {
-    line-height: 50px!important;
+    line-height: 50px !important;
 }
 
 .my-modal-items li h5 {
@@ -2357,11 +2357,11 @@ table {
 }
 
 .swal2-modal {
-    font-family: is!important;
+    font-family: is !important;
 }
 
 .swal2-container {
-    font-family: is!important;
+    font-family: is !important;
 }
 
 .form-group {
@@ -2939,4 +2939,13 @@ input:disabled {
 
 .nav-tabs button {
     font-size: 12px;
+}
+
+.notification-alert-item div {
+    line-height: 30px;
+}
+
+.notification-alert-item div img {
+    float: right;
+    margin-left: 10px;
 }

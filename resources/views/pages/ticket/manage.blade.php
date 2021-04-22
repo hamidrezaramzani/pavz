@@ -54,7 +54,7 @@
                                 @endforeach
 
                             @else
-                                <td colspan="6" class="text-center text-danger is">آگهی ثبت نشده است</td>
+                                <td colspan="6" class="text-center text-danger is">تیکتی ثبت نشده است</td>
                             @endif
                         </tbody>
                     </table>
