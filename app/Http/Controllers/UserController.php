@@ -6,6 +6,7 @@ use App\Http\Requests\ActiveUserRequest;
 use App\Http\Requests\LoginUserRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\SubmitProfilePictureRequest;
+use App\Models\Like;
 use App\Models\Profile;
 use App\Models\Reserve;
 use App\Models\Ticket;
@@ -122,9 +123,6 @@ class UserController extends Controller
                 "user_id" => $newUser->id
             ]);
         }
-
-
-    
     }
 
 
@@ -194,6 +192,7 @@ class UserController extends Controller
             "fullname" => $profile->fullname ?? null,
             "address" => $profile->address ?? null,
             "telegram_id" => $profile->telegram_id ?? null,
+            "user" => $user
 
         ]);
     }
@@ -236,5 +235,34 @@ class UserController extends Controller
         } else {
             return response(["message" => "phonenumber not found"], 401);
         }
+    }
+
+    public function getUser($id)
+    {
+        $user = User::where("id", $id);
+        if (!$user->count()) {
+            return redirect("/");
+        }
+        $user = $user->get()[0];
+
+        $villas = $user->villas()->where(["status" => "published"]);
+        $apartments = $user->apartments()->where(["status" => "published"]);
+        $areas = $user->areas()->where(["status" => "published"]);
+        $shops = $user->shops()->where(["status" => "published"]);
+
+        $likes = Like::where("user_id" , $id);
+        $states = json_decode(file_get_contents(public_path("json/states.json")));
+        $cities = json_decode(file_get_contents(public_path("json/cities.json")));
+
+        return view("pages.user.user", [
+            "villas" => $villas->get(),
+            "states" => $states,
+            "cities" => $cities,
+            "apartments" => $apartments->get() ,
+            "areas" => $areas->get() ,
+            "shops" => $shops->get() ,
+            "user" =>$user, 
+            "likes" => $likes->get()->count()
+        ]);
     }
 }

@@ -9,7 +9,6 @@
             <label for="title">عنوان آگهی:</label>
             <input type="text" name="title" id="title" class="form-control drafted_input"
                 placeholder="عنوان آگهی خود را وارد نمایید" value="{{ $data->title ?? null }}">
-
         </div>
 
         <br>

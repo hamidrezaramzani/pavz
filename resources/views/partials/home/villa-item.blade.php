@@ -120,12 +120,14 @@
         </div>
         <br>
         <br>
+        <a href="/user/{{$item->user->id}}">
         <div class="ads-item-user">
             <img src="{{ asset($item->user->profile->image ? 'upload/' . $item->user->profile->image : 'images/user.png') }}"
                 width="50" height="50" alt="{{ $item->user->profile->fullname }}">
             <h6>{{ $item->user->profile->fullname }}</h6>
             <span>+ {{ $item->user->villas()->where('status', 'published')->count() }} ثبت آگهی ویلا</span>
         </div>
+    </a>
     </div>
 
 </div>
