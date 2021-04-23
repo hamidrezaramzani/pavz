@@ -18,6 +18,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use \Morilog\Jalali\Jalalian;
+use Kavenegar;
+use Kavenegar\Exceptions\ApiException;
+use Kavenegar\Exceptions\HttpException;
 
 class UserController extends Controller
 {
@@ -80,11 +83,24 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        // after : بررسی کن که آیا کد معرفی وجود داره یا نه اگه وجود داشت به اون کاربر یکی اضافه کن
+
         $activeCode = rand(1000, 9999);
         $activeCodeExpire = now()->addMinute(2);
         $phonenumber = $request->get("phonenumber");
         $user = User::where([["phonenumber", $phonenumber], ["isReady", 0]])->count();
+
+        try {
+            $sender = "2000500666";
+            $message = "کد تاییدی ثبت نام پاوز : " . $activeCode;
+            $receptor = array($phonenumber);
+            $result = Kavenegar::Send($sender, $receptor, $message);
+            $this->format($result);
+        } catch (ApiException $e) {
+            return response(["message" => $e->errorMessage()], 400);
+        } catch (HttpException $e) {
+            return response(["message" => $e->errorMessage()], 400);
+        }
+
         if ($user) {
             User::where("phonenumber", $phonenumber)->update([
                 "activeCode" => $activeCode,
@@ -106,7 +122,9 @@ class UserController extends Controller
                 "user_id" => $newUser->id
             ]);
         }
-        // send sms with kavehnegar
+
+
+    
     }
 
 
@@ -160,9 +178,6 @@ class UserController extends Controller
         $reserves = Reserve::where("user_id", Auth::id())->limit(6);
         $tickets = Ticket::where("user_id", Auth::id())->limit(6);
 
-        foreach ($tickets as $item) {
-            # code...
-        }
 
         return view("dashboard", ["reserves" => $reserves->get(), "tickets" => $tickets->get()]);
     }

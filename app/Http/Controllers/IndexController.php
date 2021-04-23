@@ -14,6 +14,10 @@ class IndexController extends Controller
     public function index()
     {
 
+
+        $states = json_decode(file_get_contents(public_path("json/states.json")));
+        $cities = json_decode(file_get_contents(public_path("json/cities.json")));
+
         $villas = Villa::where([
             ["is_vip", 1],
             ["status", "published"]
@@ -36,6 +40,8 @@ class IndexController extends Controller
             "apartments" => $apartments->get(),
             "areas" => $areas->get(),
             "shops" => $shops->get(),
+            "states" => $states,
+            "cities" => $cities
         ]);
     }
 }

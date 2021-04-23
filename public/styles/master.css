@@ -235,7 +235,7 @@ table {
     display: block;
     text-align: center;
     color: #fff;
-    font: 13px is;
+    font: 12px is;
 }
 
 .search-box {
@@ -2948,4 +2948,13 @@ input:disabled {
 .notification-alert-item div img {
     float: right;
     margin-left: 10px;
+}
+
+#zarinpal {
+    margin: 0 auto;
+    display: block;
+}
+
+#zarinpal img {
+    width: 80px;
 }

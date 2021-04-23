@@ -1,4 +1,4 @@
-<div class="section best-areas">
+<div class="section best-areas" id="areas">
     <x-title :title="'برترین زمین های ایران'"
         :description="'اینجا برترین زمین های ایران در بهترین جاهای ایران وجود دارد'"></x-title>
     <div class="container-fluid">

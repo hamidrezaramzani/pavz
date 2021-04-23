@@ -6,7 +6,7 @@
         <div class="ads-item-header">
             <span class="float-right ads-item-location">
                 <i class="fas fa-map-marker-alt"></i>
-                مازندران / رامسر
+                {{ $states[$item->state - 1]->name }} / {{$cities[$item->city - 1]->name}}
             </span>
             <span class="float-left">
                 <button class="btn p-0 share-item"  data-type="area" data-id="{{ $item->id }}">

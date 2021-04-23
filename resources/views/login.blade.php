@@ -26,7 +26,12 @@
                             <i class="fa fa-lock"></i>
                         </span>
                     </div>
-                    <button type="submit">ورود به حساب</button>
+                    <button type="submit">ورود به حساب
+                        <div id="login-loading" class="spinner-border spinner-border-sm" role="status"
+                            style="display: none">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </button>
                     <br>
                     <ul>
                         <li><a href="/register">حسابی در پاوز ندارم</a></li>
@@ -285,7 +290,14 @@
                     method: "POST",
                     url: "/login-user",
                     data: data,
+                    beforeSend: () => {
+                        $("#login-loading").parents("button").prop("disabled", true);
+                        $("#login-loading").show();
+                    },
                     success: (response) => {
+
+                        $("#login-loading").parent().prop("disabled", false);
+                        $("#login-loading").hide();
                         Swal.fire({
                             title: 'انجام شد',
                             text: 'ورود با موفقیت انجام شد',
@@ -297,6 +309,9 @@
                         })
                     },
                     error: (err) => {
+
+                        $("#login-loading").parents("button").prop("disabled", false);
+                        $("#login-loading").hide();
                         if (err.status == 401) {
                             Swal.fire({
                                 title: 'خطا',

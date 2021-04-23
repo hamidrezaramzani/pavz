@@ -42,14 +42,6 @@
             </div>
 
             <div class="col-11 col-md-2">
-                <style>
-                    #zarinpal {
-                        margin: auto
-                    }
-                    #zarinpal img {
-                        width: 80px;
-                    }
-                </style>
                 <div id="zarinpal">
                     <script src="https://www.zarinpal.com/webservice/TrustCode" type="text/javascript"></script>
                 </div>
@@ -64,34 +56,34 @@
                 </h4>
                 <ul>
                     <li>
-                        <a href="">
-                            مازندران - رامسر
+                        <a href="/search/?name=تهران&type=2">
+                            تهران
                         </a>
                     </li>
 
                     <li>
-                        <a href="">
-                            گیلان - ماسوله
-                        </a>
-                    </li>
-
-
-                    <li>
-                        <a href="">
-                            تهران - سعادت آباد
+                        <a href="/search/?name=رامسر&type=2">
+                            رامسر
                         </a>
                     </li>
 
 
                     <li>
-                        <a href="">
-                            مازندران - بابل
+                        <a href="/search/?name=رشت&type=2">
+                            رشت
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="/search/?name=کیش&type=2">
+                            کیش
                         </a>
                     </li>
 
                     <li>
-                        <a href="">
-                            گیلان - رشت
+                        <a href="/search/?name=سلمان شهر&type=2">
+                            متل قو
                         </a>
                     </li>
 
@@ -136,28 +128,35 @@
             </div>
             <div class="col-11 col-md-3">
                 <h4>
-                    <span>مقاله ها</span>
+                    <span>امکانات</span>
                 </h4>
                 <ul>
 
                     <li>
-                        <a href="">
-                            بهترین خانه برای اجاره کدام است
+                        <a href="/#villas">
+                            ویلا های ویژه
                         </a>
                     </li>
 
                     <li>
-                        <a href="">
-                            مهم ترین کار ها برای معامله امن
+                        <a href="/#apartments">
+                            آپارتمان های ویژه
                         </a>
                     </li>
 
                     <li>
-                        <a href="">
-                            نکات مهم در ثبت آگهی
+                        <a href="/#areas">
+                            زمین های ویژه
                         </a>
                     </li>
 
+
+                    
+                    <li>
+                        <a href="/#shops">
+                            مغازه های ویژه
+                        </a>
+                    </li>
                 </ul>
 
             </div>
@@ -166,26 +165,21 @@
                     <span>راهنما</span>
                 </h4>
                 <ul>
+                    
 
                     <li>
-                        <a href="">
-                            قوانین و مقررات
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="">
+                        <a href="/faq">
                             سوالات متداول
                         </a>
                     </li>
 
                     <li>
-                        <a href="">
+                        <a href="/about-us">
                             تماس با ما
                         </a>
                     </li>
 
-                    <li><a href="">درباره ما</a></li>
+                    <li><a href="/about-us">درباره ما</a></li>
                 </ul>
             </div>
         </div>

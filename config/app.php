@@ -183,6 +183,7 @@ return [
 
         /* MY SERVICE PROVIDERS */
 
+        Kavenegar\Laravel\ServiceProvider::class,
         AppBladeServiceProvider::class
     ],
 
@@ -235,7 +236,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Kavenegar' => Kavenegar\Laravel\Facade::class,
     ],
 
 ];

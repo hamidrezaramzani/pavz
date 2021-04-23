@@ -2,6 +2,7 @@ const locationBox = $(".locations");
 locationBox.hide();
 const header = document.getElementById("my-header");
 const logo = document.getElementById("navbar-logo");
+const logo2 = document.getElementById("responsive-navbar-logo");
 const goToTop = document.getElementById("gototop");
 
 if (goToTop) {
@@ -92,13 +93,16 @@ function scrollDocument() {
     const scrollHeader = document.getElementById("header").offsetHeight - 100;
     const y = scrollY;
     if (y >= scrollHeader) {
+        console.log("Ok");
         goToTop.style.display = "inline";
         header.classList.add("fixed-header");
         logo.src = logo.getAttribute("data-dark-src");
+        logo2.src = logo.getAttribute("data-dark-src");
     } else {
         goToTop.style.display = "none";
         header.classList.remove("fixed-header");
         logo.src = logo.getAttribute("data-light-src");
+        logo2.src = logo.getAttribute("data-light-src");
     }
 }
 if (goToTop) {

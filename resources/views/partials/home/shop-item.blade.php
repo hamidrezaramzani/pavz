@@ -6,30 +6,30 @@
         <div class="ads-item-header">
             <span class="float-right ads-item-location">
                 <i class="fas fa-map-marker-alt"></i>
-                مازندران / رامسر
+                {{ $states[$item->state - 1]->name }} / {{ $cities[$item->city - 1]->name }}
             </span>
             <span class="float-left">
-                <button class="btn p-0 share-item"  data-type="shop" data-id="{{ $item->id }}">
+                <button class="btn p-0 share-item" data-type="shop" data-id="{{ $item->id }}">
                     <i class="fa fa-share-alt" aria-hidden="true"></i>
                 </button>
             </span>
             <span class="float-left mx-2">
                 @auth
-                @if ($item->likes()->where('user_id', auth()->user()->id)->count())
-                    <button class="btn p-0 btn-shop-like" data-id="{{ $item->id }}">
-                        <i class="fas fa-heart text-danger" aria-hidden="true"></i>
-                    </button>
+                    @if ($item->likes()->where('user_id', auth()->user()->id)->count())
+                        <button class="btn p-0 btn-shop-like" data-id="{{ $item->id }}">
+                            <i class="fas fa-heart text-danger" aria-hidden="true"></i>
+                        </button>
+                    @else
+                        <button class="btn p-0 btn-shop-like" data-id="{{ $item->id }}">
+                            <i class="far fa-heart text-danger" aria-hidden="true"></i>
+                        </button>
+                    @endif
                 @else
+
                     <button class="btn p-0 btn-shop-like" data-id="{{ $item->id }}">
                         <i class="far fa-heart text-danger" aria-hidden="true"></i>
                     </button>
-                @endif
-            @else
-
-                <button class="btn p-0 btn-shop-like" data-id="{{ $item->id }}">
-                    <i class="far fa-heart text-danger" aria-hidden="true"></i>
-                </button>
-            @endauth
+                @endauth
             </span>
         </div>
         <div class="ads-item-body">

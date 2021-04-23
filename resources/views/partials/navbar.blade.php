@@ -4,7 +4,7 @@
             <i class="fa fa-times"></i>
         </button>
         <a href="/">
-            <img src="{{ asset('images/dpavz.png') }}" width="80px" alt="Dark Pavz Logo">
+            <img src="{{ asset('images/dpavz.png') }}"  width="80px" alt="Dark Pavz Logo">
         </a>
     </div>
     <br>
@@ -19,21 +19,30 @@
         </li>
 
         <li>
-            <a href="/">
+            <a href="/#villas">
                 <i class="fa fa-home"></i>
                 آگهی های ویلا
             </a>
         </li>
 
         <li>
-            <a href="/">
+            <a href="/#apartments">
                 <i class="fa fa-industry" aria-hidden="true"></i>
                 آگهی های آپارتمان
             </a>
         </li>
 
+
+        
         <li>
-            <a href="/">
+            <a href="/#areas">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+                آگهی های زمین
+            </a>
+        </li>
+
+        <li>
+            <a href="/#shops">
                 <i class="fas fa-shopping-cart"></i>
                 آگهی های مغازه
             </a>
@@ -90,7 +99,7 @@
                 @endguest
             </div>
             <a href="/" class="d-block d-md-none">
-                <img src="{{ asset('images/pavz.png') }}" width="100" alt="pavz logo">
+                <img src="{{ asset('images/pavz.png') }}" id="responsive-navbar-logo" width="100" alt="pavz logo">
             </a>
 
             <button class="navbar-toggler" id="navbar-menu-btn" type="button" data-bs-toggle="collapse"
@@ -104,21 +113,21 @@
 
 
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#Villas">ویلا</a>
+                        <a class="nav-link" aria-current="page" href="/#villas">ویلا</a>
                     </li>
 
 
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#Areas">زمین</a>
+                        <a class="nav-link" aria-current="page" href="/#areas">زمین</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#Apartments">آپارتمان</a>
+                        <a class="nav-link" aria-current="page" href="/#apartments">آپارتمان</a>
                     </li>
 
 
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#shops">مغازه</a>
+                        <a class="nav-link active" aria-current="page" href="/#shops">مغازه</a>
                     </li>
 
 

@@ -20,6 +20,10 @@
     <link href="{{ asset('styles/responsive.css') }}" rel="stylesheet" />
 
 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta name="description" content="{{isset($description) ? $description : ""}}">
+
 </head>
 
 <body>

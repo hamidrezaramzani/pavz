@@ -64,6 +64,7 @@
 
 </div> --}}
 
+
 <div class="ads-item">
     <div class="vip-label">ویژه</div>
     <div class="type-label">{{ $item->ads_type == 1 ? 'اجاره' : 'فروش' }}</div>
@@ -72,8 +73,8 @@
         <div class="ads-item-header">
             <span class="float-right ads-item-location">
                 <i class="fas fa-map-marker-alt"></i>
-                مازندران / رامسر
-            </span>
+                {{ $states[$item->state - 1]->name }} / {{$cities[$item->city - 1]->name}}
+                        </span>
             <span class="float-left">
                 <button class="btn p-0 share-item" data-type="villa" data-id="{{ $item->id }}">
                     <i class="fa fa-share-alt" aria-hidden="true"></i>

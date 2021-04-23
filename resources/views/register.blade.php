@@ -25,12 +25,7 @@
                         </span>
                     </div>
 
-                    <div class="inpg">
-                        <input type="text" id="identifier-code" name="code" placeholder="کد معرف را وارد نمایید(اختیاری)">
-                        <span>
-                            <i class="fa fa-envelope"></i>
-                        </span>
-                    </div>
+
 
                     <div class="form-group form-check">
                         <input type="checkbox" class="form-check-input" name="agreement" id="agreement">
@@ -40,7 +35,13 @@
                     <br>
                     <br>
 
-                    <button type="submit">ثبت نام</button>
+                    <button type="submit">ثبت نام
+
+                        <div id="register-loading" class="spinner-border spinner-border-sm" role="status"
+                            style="display: none">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </button>
                     <br>
                     <ul>
                         <li><a href="/login">قبلا ثبت نام کرده ام</a></li>
@@ -146,10 +147,15 @@
                     data: {
                         _token: CSRF_TOKEN,
                         phonenumber: $("#phonenumber").val(),
-                        password: $("#password").val(),
-                        identifierCode: $("#identifier-code").val()
+                        password: $("#password").val(),                        
                     },
-                    success: (response) => {
+                    beforeSend: () => {
+                        $("#register-loading").parents("disabled", true)
+                        $("#register-loading").show();
+                    },
+                    success: (response) => {                        
+                        $("#register-loading").parents("disabled", false)
+                        $("#register-loading").hide();
                         $("#sent-code-p").text(
                             `کد ارسالی به شماره تلفن ${$("#phonenumber").val()} را وارد نمایید`)
                         $("#activeAccountModal").modal("show");
@@ -166,6 +172,8 @@
 
                     },
                     error: (err) => {
+                        $("#register-loading").parents("disabled", false)
+                        $("#register-loading").hide();
                         Swal.fire({
                             title: 'خطا',
                             text: 'خطایی به وجود آمده است. به سرور اطلاع دهید',
@@ -194,7 +202,7 @@
                 phonenumber: {
                     required: "شماره تلفن نمیتواند خالی باشد"
                 },
-                agreement : "قوانین و مقررات را قبول کنید" , 
+                agreement: "قوانین و مقررات را قبول کنید",
                 password: {
                     required: "رمز عبور نمیتواند خالی باشد",
                     minlength: "رمز عبور حداقل باید 6 کاراکتر داشته باشد",
