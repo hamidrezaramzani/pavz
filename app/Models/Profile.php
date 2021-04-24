@@ -11,14 +11,15 @@ class Profile extends Model
 
     public function user()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     protected $fillable  = [
         "fullname",
-        "address",
+        "instagram_id",
+        "bio",
         "telegram_id",
-        "image" , 
+        "image",
         "user_id"
     ];
 }

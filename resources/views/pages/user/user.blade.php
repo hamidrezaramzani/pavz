@@ -7,7 +7,7 @@
     <div class="row user-profile-header py-5">
         <div class="col-12 col-md-8 px-5 py-5">
             <h2>{{ $user->profile->fullname }}</h2>
-            <p>{{$user->profile->address}}</p>
+            <p>{{$user->profile->bio}}</p>
         </div>
         <div class="col-12 col-md-4 px-5 py-5">
             <a href="https://t.me/{{$user->profile->telegram_id}}" class="btn btn-sm btn-info is text-light float-left mx-3">
@@ -56,20 +56,20 @@
                         <tbody>
                             <tr>
                                 <th>تاریخ عضویت</th>
-                                <td>6 دی 99</td>
+                                <td>{{jdate($user->created_at)->format("%d %B %Y")}}</td>
                             </tr>
 
                             <tr>
                                 <th>اینستاگرام</th>
                                 <td>
-                                    <a href="">برقراری تماس</a>
+                                    <a href="https://instagram.com/{{$user->profile->instagram_id}}" class="btn btn-sm btn-danger">ارتباط</a>
                                 </td>
                             </tr>
 
                             <tr>
                                 <th>تلگرام</th>
                                 <td>
-                                    <a href="">برقراری تماس</a>
+                                    <a href="https://t.me/{{$user->profile->telegram_id}}" class="btn btn-sm btn-info">ارتباط</a>
                                 </td>
                             </tr>
                         </tbody>

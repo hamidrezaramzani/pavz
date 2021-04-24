@@ -117,8 +117,9 @@ class UserController extends Controller
 
             Profile::create([
                 "fullname" => "",
-                "address" => "",
+                "bio" => "",
                 "telegram_id" => "",
+                "instagram_id" => "",
                 "image" => "",
                 "user_id" => $newUser->id
             ]);
@@ -192,7 +193,7 @@ class UserController extends Controller
             "fullname" => $profile->fullname ?? null,
             "address" => $profile->address ?? null,
             "telegram_id" => $profile->telegram_id ?? null,
-            "user" => $user
+            "user" => $profile
 
         ]);
     }
@@ -210,6 +211,13 @@ class UserController extends Controller
         }
         $user->profile()->update(["image" => $fileName]);
         return redirect("/profile")->with("profile", "update");
+    }
+
+    public function changeUserProfile(Request $request)
+    {
+        $data = $request->except("_token");
+        Auth::user()->profile->update($data);
+        return response(["message" => "profile updated"]);
     }
 
     public function submitUserInfo(Request $request)

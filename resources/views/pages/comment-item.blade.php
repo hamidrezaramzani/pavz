@@ -6,10 +6,10 @@
     <div class="user-title">
         <h4>
             {{ $comment->user->profile->fullname }}
-
+            <span class="float-left">{{ jdate($comment->created_at)->format('%d %B %Y - %H:%M') }}</span>
             @if (Auth::id() == $data->user->id)
-                <button class="btn btn-sm  float-left text-secondary answer-comment-btn">
-                    <i class="fa fa-share"></i>
+                <button class="btn btn-sm  float-left text-primary answer-comment-btn">
+                    پاسخ
                 </button>
             @endif
         </h4>
@@ -20,14 +20,14 @@
         </p>
     </div>
     @if ($comment->commentAnswers()->count())
-        @foreach ($comment->commentAnswers()->get() as $item)            
-            <div class="comment-answer user-title" >
+        @foreach ($comment->commentAnswers()->get() as $item)
+            <div class="comment-answer user-title">
                 <h4>
                     <i class="fa fa-square fa-xs"></i> جواب میزبان:
 
-                    <button class="btn btn-sm float-left ml-3 btn-danger delete-answer"  id="{{$item->id}}">
+                    <button class="btn btn-sm float-left ml-3 btn-danger delete-answer" id="{{ $item->id }}">
                         <i class="fa fa-trash"></i>
-                        <div  class="spinner-border spinner-border-sm" role="status" style="display: none">
+                        <div class="spinner-border spinner-border-sm" role="status" style="display: none">
                             <span class="sr-only">Loading...</span>
                         </div>
                     </button>
