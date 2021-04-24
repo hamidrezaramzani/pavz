@@ -1,10 +1,13 @@
-<div class="comments w-100 d-block">
+<div class="comments w-100 d-block my-3">
     <ul>
         @foreach ($comments as $comment)
             @include('pages.comment-item' , ["comment" => $comment])
         @endforeach
     </ul>
 </div>
+<br>
+<br>
+<br>
 
 
 <div class="modal fade" id="answer-comment-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

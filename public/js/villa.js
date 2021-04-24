@@ -17,6 +17,22 @@ var circle = L.circle(latlong, {
     fillOpacity: 0.5,
     radius: 500,
 }).addTo(mymap);
+let disabledValues = [];
+$.ajax({
+    method: "GET",
+    url: "/villa/get-reserves/" + $("#id").val(),
+    success: (response) => {
+        disabledValues = response.dates;
+    },
+});
+
+function setZero(date) {
+    if (date > 10) {
+        return date;
+    } else {
+        return "0" + date;
+    }
+}
 
 $(".datepicker").datepicker({
     minDate: "-0d",
@@ -24,6 +40,20 @@ $(".datepicker").datepicker({
     changeMonth: true, // True if month can be selected directly, false if only prev/next
     changeYear: true,
     yearRange: "c-0:c+2",
+    beforeShowDay: (date) => {
+        var allDates =
+            date.getFullYear() +
+            "-" +
+            setZero(date.getMonth() + 1) +
+            "-" +
+            setZero(date.getDate());
+
+        if (disabledValues.includes(allDates)) {
+            return [false , "" , "رزرو شده است"]    
+        }
+        return [true , "" , "قابل رزرو است"]    
+        
+    },
 });
 
 $(document).ready(function () {

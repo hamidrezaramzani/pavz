@@ -10,13 +10,16 @@ use App\Http\Requests\SpecificationFormRequest;
 use App\Models\Comment;
 use App\Models\DocumentType;
 use App\Models\Picture;
+use App\Models\Reserve;
 use App\Models\SpecialPlace;
 use App\Models\User;
 use App\Models\Villa;
 use App\Models\VillaType;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Morilog\Jalali\Jalalian;
 
 class VillasController extends Controller
 {
@@ -309,10 +312,34 @@ class VillasController extends Controller
             foreach ($likes as $like) {
                 $like->delete();
             }
-            
+
             return response(["message" => "villa deleted"], 200);
         } else {
             return response(["message" => "villa not found"], 400);
         }
+    }
+
+    public function getReserves($id)
+    {
+
+        $dates = [];
+        $reserves = Reserve::where([
+            ["villa_id", $id],
+            ["status", "confirm"]
+        ]);
+        foreach ($reserves->get() as $item) {
+            $start = Jalalian::fromFormat("Y-m-d", $item->start)->toCarbon()->toDateString();
+            $end = Jalalian::fromFormat("Y-m-d", $item->end)->toCarbon()->toDateString();;
+
+            $period = CarbonPeriod::create($start,$end);
+
+            $singleDays = $period->toArray();
+            foreach ($singleDays as $item) {
+                $date = Jalalian::fromCarbon($item);                            
+                array_push($dates , $date->format("Y-m-d"));
+            }
+        }
+
+        return response(["dates" => $dates]);
     }
 }

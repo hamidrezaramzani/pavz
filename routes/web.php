@@ -96,6 +96,7 @@ Route::post("/villa/update/address", [VillasController::class, "updateAddressInf
 Route::get("/villa/set-status/{id}", [VillasController::class, "setStatus"])->middleware("auth");;
 Route::get("/manage/villas", [VillasController::class, "manageVillas"])->middleware("auth");;
 Route::get("/villa/delete/{id}", [VillasController::class, "deleteVillas"])->middleware("auth");;
+Route::get("/villa/get-reserves/{id}", [VillasController::class, "getReserves"]);
 
 
 
