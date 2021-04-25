@@ -489,3 +489,9 @@ $(".delete-answer").click(function () {
         }
     });
 });
+
+
+$("#reserve-faq").click(function (e) {
+    e.preventDefault();
+    $("#reserveFaqModal").modal("show");
+})

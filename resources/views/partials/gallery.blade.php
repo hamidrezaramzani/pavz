@@ -32,7 +32,7 @@
             <img src="{{ asset($folder . '/' . $images[4]->url) }}" width="100%" height="275" alt="image">
         </div>
     </div>
-    <div class="row">
+    <div class="row d-block d-md-none">
         <div class="col-12">
             <div class="gallery-slider">
                 @foreach ($images as $item)

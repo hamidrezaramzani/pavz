@@ -6,7 +6,7 @@
         <div class="product-item-header">
             <span class="float-right product-item-location">
                 <i class="fas fa-map-marker-alt"></i>
-                {{ $states[$item->state - 1]->name }} / {{$cities[$item->city - 1]->name}}
+                {{ $states[$item->state - 1]->name }} / {{ $cities[$item->city - 1]->name }}
             </span>
             <span class="float-left">
                 <button class="btn p-0 share-item" data-type="apartment" data-id="{{ $item->id }}">
@@ -53,11 +53,15 @@
         </div>
         <br>
         <br>
+
         <div class="product-item-user">
-            <img src="{{ asset($item->user->profile->image ? 'upload/' . $item->user->profile->image : 'images/user.png') }}"
-                width="50" height="50" alt="{{ $item->user->profile->fullname }}">
-            <h6>{{ $item->user->profile->fullname }}</h6>
-            <span>+ {{ $item->user->apartments()->where('status', 'published')->count() }} ثبت آگهی آپارتمان</span>
+            <a href="/user/{{ $item->user->id }}">
+                <img src="{{ asset($item->user->profile->image ? 'upload/' . $item->user->profile->image : 'images/user.png') }}"
+                    width="50" height="50" alt="{{ $item->user->profile->fullname }}">
+                <h6>{{ $item->user->profile->fullname }}</h6>
+                <span>+ {{ $item->user->apartments()->where('status', 'published')->count() }} ثبت آگهی
+                    آپارتمان</span>
+            </a>
         </div>
     </div>
 

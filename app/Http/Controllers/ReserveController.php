@@ -22,6 +22,7 @@ class ReserveController extends Controller
             "link" => "/reserves/manage"
         ]);
         Reserve::create($data);
+        // فرستادن یک پیام به میزبان که بفهمه یه درخواست رزرو براش اومده
         return response(["message" => "reserve sended"]);
     }
 
@@ -42,7 +43,7 @@ class ReserveController extends Controller
         }
 
         Reserve::where("id", $id)->update(["status" => $status]);
-        // sms beraye oun yaro mire
+        // پیام میفرستیم که لغو کرد یا قبول کرد
         return redirect("/reserves/manage");
     }
 }

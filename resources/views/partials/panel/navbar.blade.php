@@ -1,17 +1,6 @@
-<div class="row dashboard-navbar">
-    <div class="col-5 pt-3">
-        <div class="navbar-search-box">
-            <button>
-                <i class="fa fa-search"></i>
-            </button>
-            <form action="">
-                <input type="text" class="form-control" placeholder="اینجا جستجو کن">
-            </form>
-        </div>
-    </div>
+<div class="row dashboard-navbar">    
 
-
-    <div class="col-7">
+    <div class="col-12">
         <ul>
 
             <li>

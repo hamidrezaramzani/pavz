@@ -237,7 +237,7 @@ class UserController extends Controller
         $user = User::where("phonenumber", $phonenumber);
         if ($user->count()) {
             $activeCode = rand(1000, 9999);
-            // send SMS with kave negar
+            // یه پیامک میفرستیم به کاربر برای کد بازیابی
             $user->update(["activeCode" => $activeCode]);
             return response(["message" => "sended"]);
         } else {

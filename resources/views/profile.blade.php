@@ -39,7 +39,7 @@
                 <br>
                 <div class="alert alert-block is notes alert-danger">
                     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                    برای ثبت آگهی باید اطلاعاتی که با * قرمز مشخص شده اند کامل شده باشند
+                    برای ثبت آگهی پروفایل خود را تکمیل کنید
                 </div>
                 <form action="/submit-user-info" method="POST" class="user-profile-form form" id="profile-form">
 

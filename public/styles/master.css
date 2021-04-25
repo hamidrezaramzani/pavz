@@ -103,7 +103,7 @@ section {
 
 body {
     line-height: 1;
-    background: aliceblue;
+    background: #fff;
 }
 
 ol,
@@ -3079,4 +3079,8 @@ input:disabled {
     height: 250px;
     object-fit: cover;
     border-radius: 5px;
+}
+
+#reserve-faq {
+    font: 13px is;
 }

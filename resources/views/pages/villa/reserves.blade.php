@@ -5,6 +5,49 @@
             <div class="col-12 col-md-12 dashboard-info-item-content is-checking p-5">
                 <h3>مدیریت درخواست های رزرو</h3>
                 <br>
+                <div class="accordion-title">
+                    <i class="far fa-circle"></i>
+                    قبلا از رد کردن یا قبول کردن رزرو به نکات زیر حتما توجه کنید
+                </div>
+        
+                <br>
+
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                آیا میشود بعد از قبول کردن رزرو آن را لغو کرد؟
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                              <p class="is text-right">
+                                خیر. برای قبولی یا لغو رزرو باید بسیار دقت کنید زیرا بعد از ثبت آن دیگر نمیتوانید وضعیت آن را تغییر دهید
+                              </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                بعد از قبول کردن رزرو چگونه با مهمان در ارتباط باشم؟
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                              <p class="is text-right">
+                                بعد از قبول کردن رزرو توسط شما پیامکی مبنی بر قبولی رزرو به همراه شماره تلفن شما برای مهمان ارسال میشود همچنین شما میتوانید با تماس گرفتن با مهمان با وی در تماس باشید
+                              </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <br>
 
                 <div class="table-responsive">
