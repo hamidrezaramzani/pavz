@@ -430,13 +430,13 @@ table {
     text-decoration: none;
 }
 
-.ads-item {
-    height: 350px !important;
+.product-item {
+    height: 420px !important;
     padding: 30px;
     position: relative;
 }
 
-.ads-item>img {
+.product-item>img {
     width: 100%;
     height: 290px;
     border-radius: 10px;
@@ -444,15 +444,15 @@ table {
     transition: all 0.5s ease;
 }
 
-.ads-item>img:hover {
+.product-item>img:hover {
     filter: grayscale(100%);
     transition: all 0.5s ease;
     z-index: -1;
 }
 
-.ads-item-content {
+.product-item-content {
     width: 80%;
-    height: auto;
+    height: 300px;
     position: absolute;
     background: #fff;
     bottom: -100px;
@@ -465,36 +465,36 @@ table {
     /* box-shadow: 0 0 5px #ccc; */
 }
 
-.ads-item-content a {
+.product-item-content a {
     text-decoration: none;
 }
 
-.ads-item-header {
+.product-item-header {
     float: right;
     width: 100%;
     height: auto;
     margin-bottom: 15px;
 }
 
-.ads-item-body {
+.product-item-body {
     float: right;
     width: 100%;
     height: auto;
     margin-bottom: 15px;
 }
 
-.ads-item-body h2 {
+.product-item-body h2 {
     font: 15px isbold;
     color: #333;
 }
 
-.ads-item-body h4 {
+.product-item-body h4 {
     margin-top: 10px;
     font: 13px is;
     color: #555;
 }
 
-.ads-item-location {
+.product-item-location {
     color: #0470dc !important;
 }
 
@@ -502,12 +502,12 @@ table {
     height: 500px !important;
 }
 
-.ads-item-header span {
+.product-item-header span {
     font: 13px is;
     color: #444;
 }
 
-.ads-item-user img {
+.product-item-user img {
     width: 35px !important;
     height: 35px;
     float: right;
@@ -517,7 +517,7 @@ table {
     border-radius: 100%;
 }
 
-.ads-item-user h6 {
+.product-item-user h6 {
     font: 12px is;
     margin-top: 5px;
     float: right;
@@ -526,7 +526,7 @@ table {
     padding: 0;
 }
 
-.ads-item-user span {
+.product-item-user span {
     font: 10px is;
     margin-top: 2px;
     float: right;
@@ -3061,4 +3061,22 @@ input:disabled {
 
 .profile-details table tr td {
     color: #6288f0;
+}
+
+.gallery-slide {
+    height: 250px!important;
+}
+
+.gallery-item-responsive {
+    width: 100%;
+    height: 250px!important;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.gallery-item-responsive img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
 }

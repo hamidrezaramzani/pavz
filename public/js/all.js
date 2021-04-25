@@ -93,7 +93,6 @@ function scrollDocument() {
     const scrollHeader = document.getElementById("header").offsetHeight - 100;
     const y = scrollY;
     if (y >= scrollHeader) {
-        console.log("Ok");
         goToTop.style.display = "inline";
         header.classList.add("fixed-header");
         logo.src = logo.getAttribute("data-dark-src");

@@ -1,10 +1,10 @@
-<div class="ads-item">
+<div class="product-item">
     <div class="vip-label">ویژه</div>
     <div class="type-label">فروش</div>
     <img src="{{ asset('covers/' . $item->cover) }}" alt="{{ $item->title }}">
-    <div class="ads-item-content">
-        <div class="ads-item-header">
-            <span class="float-right ads-item-location">
+    <div class="product-item-content">
+        <div class="product-item-header">
+            <span class="float-right product-item-location">
                 <i class="fas fa-map-marker-alt"></i>
                 {{ $states[$item->state - 1]->name }} / {{$cities[$item->city - 1]->name}}
             </span>
@@ -32,7 +32,7 @@
             @endauth
             </span>
         </div>
-        <div class="ads-item-body">
+        <div class="product-item-body">
             <a href="/area/{{ $item->id }}">
 
                 <h2>{{ $item->title }}</h2>
@@ -48,7 +48,7 @@
         </div>
         <br>
         <br>
-        <div class="ads-item-user">
+        <div class="product-item-user">
             <img src="{{ asset($item->user->profile->image ? 'upload/' . $item->user->profile->image : 'images/user.png') }}"
                 width="50" height="50" alt="{{ $item->user->profile->fullname }}">
             <h6>{{ $item->user->profile->fullname }}</h6>

@@ -22,6 +22,7 @@ class IndexController extends Controller
             ["is_vip", 1],
             ["status", "published"]
         ]);
+
         $apartments = Apartment::where([
             ["is_vip", 1],
             ["status", "published"]

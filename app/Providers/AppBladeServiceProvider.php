@@ -44,7 +44,7 @@ class AppBladeServiceProvider extends ServiceProvider
             $user = User::find(Auth::id());
             $profile = $user->profile;
             // dd($profile);
-            return $profile && $profile->fullname != "" && $profile->address;
+            return $profile && $profile->fullname;
         });
 
 

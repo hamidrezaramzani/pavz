@@ -1,6 +1,6 @@
 <div class="col-12 gallery">
 
-    <div class="row">
+    <div class="row d-none d-md-flex">
         <div class="col-12">
 
             @if ($saved)
@@ -32,7 +32,20 @@
             <img src="{{ asset($folder . '/' . $images[4]->url) }}" width="100%" height="275" alt="image">
         </div>
     </div>
-    <a href="" class="is show-more-images" style="font-size: 13px">برای دیدن عکس های بیشتر کلیک کنید</a>
+    <div class="row">
+        <div class="col-12">
+            <div class="gallery-slider">
+                @foreach ($images as $item)
+                <div class="gallery-item-responsive">
+                    <img src="{{ asset($folder . '/' . $item->url) }}" alt="Villa Camera">
+                </div>    
+                @endforeach
+                                
+            </div>
+        </div>
+    </div>
+    
+    <a href="" class="d-none d-md-block is show-more-images" style="font-size: 13px">برای دیدن عکس های بیشتر کلیک کنید</a>
 
     <br>
     <br>

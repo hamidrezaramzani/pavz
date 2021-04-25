@@ -42,6 +42,22 @@ $(document).ready(function () {
             // instead of a settings object
         ],
     });
+
+    $(".gallery-slider").slick({
+        dots: false,
+        infinite: false,
+        speed: 600,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        swipeToSlide: true,
+        rtl: true,
+        // autoplay : true ,
+        arrows: true,
+        nextArrow:
+            "<button class='prev-arrow'><i class='fa fa-arrow-left'></i></button>",
+        prevArrow:
+            "<button class='next-arrow'><i class='fa fa-arrow-right'></i></button>",
+    });
 });
 
 function like(btn, type) {
