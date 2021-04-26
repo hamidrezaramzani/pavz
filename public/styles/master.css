@@ -2861,8 +2861,8 @@ input:disabled {
 }
 
 #loading-box-item {
-    width: 150px;
-    height: 50px;
+    width: 200px;
+    height: 200px;
     position: absolute;
     top: 0;
     right: 0;
@@ -2877,10 +2877,10 @@ input:disabled {
 }
 
 #loading-box-item h3 {
-    font: 13px isbold;
+    font: 13px is;
     text-align: center;
     display: block;
-    color: #fff;
+    color: aqua;
 }
 
 .prev-arrow {

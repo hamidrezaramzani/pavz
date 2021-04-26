@@ -29,6 +29,7 @@ use App\Http\Controllers\VillasController;
 use App\Http\Controllers\VillaScoreController;
 use App\Http\Controllers\VipController;
 use App\Models\Discount;
+use App\Models\Index;
 use App\Models\Notification;
 use App\Models\Parking;
 use App\Models\Room;
@@ -61,6 +62,12 @@ Route::get('/about-us', function () {
 Route::get('/faq', function () {
     return view('partials.faq');
 });
+
+
+
+
+Route::get('/index/get-by-id/{id}/{type}', [IndexController::class, "getById"]);
+
 
 Route::get('/logout', [UserController::class, "logout"])->middleware("auth");
 Route::get('/login', [UserController::class, "loginForm"])->name("login");

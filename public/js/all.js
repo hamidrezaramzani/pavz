@@ -121,3 +121,59 @@ $("#close-sidebar").click(function (e) {
     e.preventDefault();
     $(".sidebar").hide();
 });
+
+
+$("#search-by-id").click(function (e) {
+    e.preventDefault()
+    $("#findByIdModal").modal("show");
+})
+
+$("#find-by-id-btn").click(function (e) {
+    e.preventDefault();
+    const data = {
+        id : $("#id-item").val() , 
+        type : $("#type").val() , 
+        
+    } ;
+    if (!data.id) {
+        Swal.fire({
+            title: "خطا",
+            text: "شناسه را وارد نمایید",
+            icon: "error",
+            confirmButtonText: "باشه",
+        });
+        return;
+    }
+
+    $.ajax({
+        method : "GET" , 
+        url : `/index/get-by-id/${data.id}/${data.type}` , 
+        beforeSend: () => {
+            $("#find-loading").show();
+        },
+        success: (res) => {
+            $("#find-loading").hide();
+            location.replace(res.url);
+        },
+        error: (err) => {
+            $("#find-loading").hide();
+
+            if (err.status) {
+                Swal.fire({
+                    title: "خطا",
+                    text: "پیدا نشد",
+                    icon: "error",
+                    confirmButtonText: "باشه",
+                });
+            }else{
+                Swal.fire({
+                    title: "خطا",
+                    text: "مشکلی در سرور وجود دارد",
+                    icon: "error",
+                    confirmButtonText: "باشه",
+                });
+            }
+            
+        },
+    });
+})

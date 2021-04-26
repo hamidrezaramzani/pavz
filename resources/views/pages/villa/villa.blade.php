@@ -84,104 +84,106 @@
                             میگیرد؟</a>
 
                     </div>
-                @endif
 
+                    
                 <div class="modal fade" id="reserveFaqModal" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="reserveFaqModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="reserveFaqModalLabel">رزرو ویلا چگونه انجام میگیرد؟</h5>
-                            </div>
-                            <div class="modal-body">
-                                <div class="accordion" id="accordionExample">
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingOne">
-                                            <button class="accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                                aria-expanded="false" aria-controls="collapseOne">
-                                                رزرو چگونه انجام میگیرد؟
-                                            </button>
-                                        </h2>
-                                        <div id="collapseOne" class="accordion-collapse collapse"
-                                            aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                            <div class="accordion-body">
-                                                <p class="is text-right">
-                                                    شما با پر کردن فیلد های زیر میتوانید درخواست رزرو خود را برای میزبان
-                                                    ارسال کنید.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingOne">
-                                            <button class="accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                                aria-expanded="false" aria-controls="collapseTwo">
-                                                بعد از درخواست رزرو چگونه از وضعیت آن خبردار بشویم؟
-                                            </button>
-                                        </h2>
-                                        <div id="collapseTwo" class="accordion-collapse collapse"
-                                            aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                            <div class="accordion-body">
-                                                <p class="is text-right">
-                                                    بعد از ثبت درخواست رزرو شما این درخواست برای میزبان ارسال میشود و میزبان
-                                                    در صورت آمادگی قبول شدن یا رد شدن درخواست شما را تایید میکند. و پیامی به
-                                                    شماره شما برای تعیین کردن اینکه رزرو ویلای شما موفقیت آمیز بود یا نه
-                                                    ارسال میشود.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingOne">
-                                            <button class="accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                                aria-expanded="false" aria-controls="collapseThree">
-                                                چگونه با میزبان تماس بگیرم؟
-                                            </button>
-                                        </h2>
-                                        <div id="collapseThree" class="accordion-collapse collapse"
-                                            aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                            <div class="accordion-body">
-                                                <p class="is text-right">
-                                                    بعد از قبول کردن رزرو شماره تلفن میزبان برای شما ارسال میشود و شما
-                                                    میتوانید با میزبان تماس بگیرید
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingOne">
-                                            <button class="accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                                aria-expanded="false" aria-controls="collapseThree">
-                                                چگونه میتوانم رزرو را لغو کنم
-                                            </button>
-                                        </h2>
-                                        <div id="collapseThree" class="accordion-collapse collapse"
-                                            aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                            <div class="accordion-body">
-                                                <p class="is text-right">
-                                                    برای لغو میتوانید با میزبان تماس بگیرید و به او بگویید که تغاضای لغو را دارید و میزبان هم درخواست شما را لغو میکند.
-                                                </p>
-                                            </div>
+                tabindex="-1" aria-labelledby="reserveFaqModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="reserveFaqModalLabel">رزرو ویلا چگونه انجام میگیرد؟</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                            aria-expanded="false" aria-controls="collapseOne">
+                                            رزرو چگونه انجام میگیرد؟
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse"
+                                        aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <p class="is text-right">
+                                                شما با پر کردن فیلد های زیر میتوانید درخواست رزرو خود را برای میزبان
+                                                ارسال کنید.
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
-                                <br>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                            aria-expanded="false" aria-controls="collapseTwo">
+                                            بعد از درخواست رزرو چگونه از وضعیت آن خبردار بشویم؟
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse"
+                                        aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <p class="is text-right">
+                                                بعد از ثبت درخواست رزرو شما این درخواست برای میزبان ارسال میشود و میزبان
+                                                در صورت آمادگی قبول شدن یا رد شدن درخواست شما را تایید میکند. و پیامی به
+                                                شماره شما برای تعیین کردن اینکه رزرو ویلای شما موفقیت آمیز بود یا نه
+                                                ارسال میشود.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                            aria-expanded="false" aria-controls="collapseThree">
+                                            چگونه با میزبان تماس بگیرم؟
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse"
+                                        aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <p class="is text-right">
+                                                بعد از قبول کردن رزرو شماره تلفن میزبان برای شما ارسال میشود و شما
+                                                میتوانید با میزبان تماس بگیرید
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                            aria-expanded="false" aria-controls="collapseThree">
+                                            چگونه میتوانم رزرو را لغو کنم
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse"
+                                        aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <p class="is text-right">
+                                                برای لغو میتوانید با میزبان تماس بگیرید و به او بگویید که تغاضای لغو را دارید و میزبان هم درخواست شما را لغو میکند.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Understood</button>
-                            </div>
+                            <br>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary is" data-bs-dismiss="modal">برگشت</button>
                         </div>
                     </div>
                 </div>
+            </div>
+
+                @endif
+
 
             </div>
         </div>

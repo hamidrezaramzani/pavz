@@ -1,4 +1,4 @@
-<div class="section best-places">
+<div class="section best-places" id="best-places">
 
     <x-title :title="'برترین شهر های ایران'"
         :description="'برترین شهر های ایران که بهترین ویلا ها را میتوانید در آن پیدا کنید'"></x-title>

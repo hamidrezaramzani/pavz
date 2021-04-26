@@ -7,7 +7,7 @@
 
         <div class="form-group">
             <label for="title">عنوان آگهی:</label>
-            <input type="text" name="title" id="title" class="form-control drafted_input"
+            <input type="text" name="title" id="title" class="form-control"
                 placeholder="عنوان آگهی خود را وارد نمایید" value="{{ $data->title ?? null }}">
         </div>
 
@@ -19,7 +19,7 @@
 
         <div class="form-group">
             <label for="state">استان:</label>
-            <select name="state" id="state" name="state" class="form-control drafted_input">
+            <select name="state" id="state" name="state" class="form-control">
                 @if ($data->state)
                     @foreach ($states as $item)
                         @if ($item->id == $data->state)
@@ -48,7 +48,7 @@
 
         <div class="form-group">
             <label for="city">شهر:</label>
-            <select name="city" id="city" name="city" class="form-control drafted_input">
+            <select name="city" id="city" name="city" class="form-control">
                 @if ($data->state)
                     @if ($data->city && $data->city != 0)
                         <option value="{{ $cities[$data->city - 1]->id }}"
@@ -82,7 +82,7 @@
         <div class="form-group">
             <label for="state">نوع کاربری:</label>
 
-            <select name="area_type" id="area_type" name="area_type" class="form-control drafted_input">
+            <select name="area_type" id="area_type" name="area_type" class="form-control">
                 @if ($data->area_type)
                     @foreach ($areaTypes as $item)
                         @if ($item->id == $data->state)

@@ -45,4 +45,59 @@ class IndexController extends Controller
             "cities" => $cities
         ]);
     }
+
+    public function getById($id, $type)
+    {
+        switch ($type) {
+            case 1:
+
+                $villa = Villa::where([
+                    ["id", $id],
+                    ["status", "published"]
+                ]);
+                if ($villa->count()) {
+                    return response(["url" => "/villa/" . $id]);
+                } else {
+                    return response(["message" => "not found"], 400);
+                }
+                break;
+            case 2:
+                $apartment = Apartment::where([
+                    ["id", $id],
+                    ["status", "published"]
+                ]);
+                if ($apartment->count()) {
+                    return response(["url" => "/apartment/" . $id]);
+                } else {
+                    return response(["message" => "not found"], 400);
+                }
+                break;
+
+            case 3:
+                $area = Area::where([
+                    ["id", $id],
+                    ["status", "published"]
+                ]);
+                if ($area->count()) {
+                    return response(["url" => "/shop/" . $id]);
+                } else {
+                    return response(["message" => "not found"], 400);
+                }
+                break;
+
+            default:
+            case 2:
+                $shop = Shop::where([
+                    ["id", $id],
+                    ["status", "published"]
+                ]);
+                if ($shop->count()) {
+                    return response(["url" => "/shop/" . $id]);
+                } else {
+                    return response(["message" => "not found"], 400);
+                }
+                break;
+                break;
+        }
+    }
 }
