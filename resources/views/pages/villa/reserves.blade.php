@@ -9,26 +9,11 @@
                     <i class="far fa-circle"></i>
                     قبلا از رد کردن یا قبول کردن رزرو به نکات زیر حتما توجه کنید
                 </div>
-        
+
                 <br>
 
                 <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                آیا میشود بعد از قبول کردن رزرو آن را لغو کرد؟
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                              <p class="is text-right">
-                                خیر. برای قبولی یا لغو رزرو باید بسیار دقت کنید زیرا بعد از ثبت آن دیگر نمیتوانید وضعیت آن را تغییر دهید
-                              </p>
-                            </div>
-                        </div>
-                    </div>
+             
 
 
                     <div class="accordion-item">
@@ -41,9 +26,10 @@
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingOne"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                              <p class="is text-right">
-                                بعد از قبول کردن رزرو توسط شما پیامکی مبنی بر قبولی رزرو به همراه شماره تلفن شما برای مهمان ارسال میشود همچنین شما میتوانید با تماس گرفتن با مهمان با وی در تماس باشید
-                              </p>
+                                <p class="is text-right">
+                                    بعد از قبول کردن رزرو توسط شما پیامکی مبنی بر قبولی رزرو به همراه شماره تلفن شما برای
+                                    مهمان ارسال میشود همچنین شما میتوانید با تماس گرفتن با مهمان با وی در تماس باشید
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -83,14 +69,14 @@
                                         <td width="10%">
                                             @switch($item1->status)
                                                 @case("new")
-                                                <span class="text-warning">درخواست جدید</span>
+                                                    <span class="text-warning">درخواست جدید</span>
                                                 @break
                                                 @case("confirm")
-                                                <span class="text-success">تایید شد</span>
+                                                    <span class="text-success">تایید شد</span>
                                                 @break
                                                 @case("reject")
-                                                <span class="text-danger">رد شد</span>
-                                            @endswitch
+                                                    <span class="text-danger">رد شد</span>
+                                                @endswitch
                                         </td>
                                         <td width="10%">
                                             @if ($item1->status == 'new')
@@ -100,6 +86,15 @@
                                                 <a href="/reserve/set/reject/{{ $item1->id }}"
                                                     class="select-reserve-status btn btn-sm btn-danger"><i
                                                         class="fa fa-times"></i></a>
+                                            @elseif ($item1->status == "confirm")
+                                                <a href="/reserve/set/reject/{{ $item1->id }}"
+                                                    class="select-reserve-status btn btn-sm btn-danger"><i
+                                                        class="fa fa-times"></i></a>
+
+                                            @elseif($item1->status == "reject")
+                                                <a href="/reserve/set/confirm/{{ $item1->id }}"
+                                                    class="select-reserve-status btn btn-sm btn-success"><i
+                                                        class="fa fa-check"></i></a>
                                             @endif
                                         </td>
                                     </tr>
