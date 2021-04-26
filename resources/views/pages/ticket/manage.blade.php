@@ -15,7 +15,7 @@
                                 <th width="10%">کد</th>
                                 <th width="25%">عنوان</th>
                                 <th width="25%">وضعیت</th>
-                                <th width="25%">پیوست</th>
+                                <th width="25%">تاریخ ثبت</th>
                                 <th width="25%">تعداد پاسخ</th>
                             </tr>
                         </thead>
@@ -46,7 +46,7 @@
         
                                         @endswitch
                                         </td>
-                                        <td width="25%">{{ $item->attach ? 'دارد' : 'ندارد' }}</td>
+                                        <td width="25%">{{ jdate($item->created_at)->format("%d %B %Y %H:%M")}}</td>
                                         <td width="25%">
                                             <a href="/tickets/show-answer/{{ $item->id }}">{{$item->answers()->get()->count()}} پاسخ</a>
                                         </td>

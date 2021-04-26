@@ -14,7 +14,8 @@
                             <tr>
                                 <th width="10%">کد</th>
                                 <th width="20%">عنوان</th>
-                                <th width="20%">کاور</th>
+                                <th width="10%">کاور</th>
+                                <th width="10%">لایک</th>
                                 <th width="10%">نوع آگهی</th>
                                 <th width="10%">بازدید</th>
                                 <th width="15%">وضعیت</th>
@@ -36,6 +37,7 @@
                                                 <span class="text-danger">کاور ندارد</span>
                                             @endif
                                         </td>
+                                        <td>{{$item->likes()->count()}}</td>
                                         <td width="10%">{{ $item->ads_type == '1' ? "فروش مغازه" : "اجاره مغازه" }}</td>
                                         <td width="10%">{{$item->view_count}}</td>
                                         <td width="15%">

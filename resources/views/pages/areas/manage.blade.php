@@ -14,7 +14,8 @@
                             <tr>
                                 <th width="10%">کد</th>
                                 <th width="20%">عنوان</th>
-                                <th width="20%">کاور</th>
+                                <th width="10%">کاور</th>
+                                <th width="10%">لایک</th>
                                 <th width="10%">بازدید</th>
                                 <th width="15%">وضعیت</th>
                                 <th width="25%">مدیریت</th>
@@ -35,6 +36,7 @@
                                                 <span class="text-danger">کاور ندارد</span>
                                             @endif
                                         </td>
+                                        <td>{{$area->likes()->count()}}</td>
                                         <td>{{ $area->view_count }}</td>
                                         <td width="15%">
                                             @switch($area->status)
@@ -68,7 +70,7 @@
                                     </thead>
                                 @endforeach
                             @else
-                                <td colspan="6" class="text-center text-danger is">آگهی ثبت نشده است</td>
+                                <td colspan="7" class="text-center text-danger is">آگهی ثبت نشده است</td>
                             @endif
                         </tbody>
                     </table>
