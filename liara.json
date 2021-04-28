@@ -1,0 +1,7 @@
+{
+    "app": "testpavz",
+    "disks": [{
+        "name": "pavz",
+        "mountTo": "public"
+    }]
+}

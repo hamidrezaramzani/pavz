@@ -156,13 +156,7 @@
                 بخش مالی
                 <i class="fa fa-angle-down"></i>
             </button>
-            <ul>
-                <li>
-                    <a href="/vip/status">
-                        <i class="far fa-circle"></i>
-                        وضعیت حساب ویژه
-                    </a>
-                </li>
+            <ul>                
                 <li>
                     <a href="/vip/buy">
                         <i class="far fa-circle"></i>
@@ -170,9 +164,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/vip/factories">
+                    <a href="/payment/all">
                         <i class="far fa-circle"></i>
-                        فاکتور های خرید
+                        پرداخت ها
                     </a>
                 </li>
             </ul>

@@ -1,19 +1,24 @@
-@extends('layout.content' , ["title" => "ورود به پنل | پاوز"])
+@extends('layout.content' , ["title" => "ورود به پنل | پاوز" , "description" => "خوشحالیم که شما را دوباره ببینم. با ورود به سایت میتوانید به تمامی خدمات سایت در پنل کاربری دسترسی داشته باشید."])
 @section('content')
-    @include('partials.home.header')
-    @include('partials.navbar')
-    <div class="container">
-        <div class="row justify-content-center login-box">
-            <div class="col-md-4 col-11 login-form">
-                {{-- <meta name="csrf-token" content="{{ csrf_token() }}" /> --}}
-
-                <img src="{{ asset('images/dpavz.png') }}" alt="PAVZ logo">
+<style>
+    body{
+        overflow-x: hidden
+    }
+</style>
+<img src="{{ asset('images/wave.svg') }}" alt="SVG WAVE" class="top-wave d-md-none">
+    @include('partials.loading')
+    <div class="row justify-content-center login-box">
+        <div class="col-md-4 col-11 login-form">
+            <div class="login-form-content">
+                
+                <img src="{{ asset('images/person.png') }}" alt="Person image" width="350">
                 <h3>ورود به حساب</h3>
                 <p>با ورود به سایت میتوانید به تمامی امکانات سایت دسترسی پیدا کنید.</p>
                 <br>
                 <br>
-                <form action="" id="login-form" method="POST">
+                <form action="" id="login-form" method="POST" class="form">
                     <input type="hidden" id="token" value="{{ csrf_token() }}">
+
                     <div class="inpg">
                         <input type="text" id="phonenumber" name="phonenumber" placeholder="شماره تلفن خود را وارد نمایید">
                         <span>
@@ -39,20 +44,18 @@
                     </ul>
                 </form>
             </div>
-            <div class="col-md-8 col-11 right">
-                <div class="effect"></div>
-                <h3>خوش برگشتید
-                    <br>
-                    <p>
-                        خوشحالیم که شما را دوباره ببینم. با ورود به سایت میتوانید به تمامی خدمات سایت در پنل کاربری دسترسی
-                        داشته باشید.
-                    </p>
-                    <a href="/register" class="btn btn-sn btn-outline-light is">ثبت نام</a>
-                </h3>
-            </div>
+        </div>
+        <div class="col-md-8 col-11 d-none d-md-flex  right">
+            <h3>خوش برگشتید
+                <br>
+                <p>
+                    خوشحالیم که شما را دوباره ببینم. با ورود به سایت میتوانید به تمامی خدمات سایت در پنل کاربری دسترسی
+                    داشته باشید.
+                </p>
+                <a href="/register" class="btn btn-sn btn-outline-light is">ثبت نام</a>
+            </h3>
         </div>
     </div>
-    <!-- Modal -->
     <div class="modal fade" id="lost-password-modal" tabindex="-1" aria-labelledby="loastPasswordModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -114,8 +117,6 @@
         </div>
     </div>
 
-    @include('partials.home.footer')
-    @include('partials.gototop')
 
 @endsection
 @push('scripts')

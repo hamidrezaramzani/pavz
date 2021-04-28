@@ -31,7 +31,7 @@
                     <br>
                     <button class="btn btn-sm btn-primary is" id="find-by-id-btn">
                         جستجو
-                        <div id="find-loading" class="spinner-border spinner-border-sm" role="status" style="display: none">
+                        <div id="find-loading" class="spinner-border spinner-border-sm" role="status" >
                             <span class="sr-only">Loading...</span>
                         </div>
         

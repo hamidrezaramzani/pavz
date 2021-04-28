@@ -86,7 +86,13 @@
                 </div>
                 <br>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-sm btn-primary is">ادامه</button>
+                    <button type="submit" class="btn btn-sm btn-primary is">ادامه
+                        
+                    <div id="rent-villa-prices-loading" class="spinner-border spinner-border-sm" role="status"
+                    style="display: none">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                    </button>
                 </div>
             </div>
         </form>

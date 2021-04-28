@@ -62,6 +62,6 @@ class DiscountController extends Controller
             $price = $percent * $price / 100;
         }
 
-        return response(["price" => $price]);
+        return response(["price" => $price ]);
     }
 }

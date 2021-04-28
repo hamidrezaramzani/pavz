@@ -1,4 +1,4 @@
-<div data-aos="zoom-in" class="title">
+<div class="title">
     @if ($mode == 'light')
         <h2>
             {{ $title }}

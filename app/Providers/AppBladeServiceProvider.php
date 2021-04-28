@@ -42,8 +42,7 @@ class AppBladeServiceProvider extends ServiceProvider
 
         Blade::if("isfullready", function () {
             $user = User::find(Auth::id());
-            $profile = $user->profile;
-            // dd($profile);
+            $profile = $user->profile;            
             return $profile && $profile->fullname;
         });
 

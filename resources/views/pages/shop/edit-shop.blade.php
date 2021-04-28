@@ -23,12 +23,6 @@
                     <br>
                     @include('partials.panel.shop.new-shop.form-steps')
                     <div class="p-3 sections">
-                        {{-- @include('partials.panel.shop.new-shop.specification')
-                        @include('partials.panel.shop.new-shop.possibilities')
-                        @include('partials.panel.shop.new-shop.address')
-                        @include('partials.panel.shop.new-shop.pricing')
-                        @include('partials.panel.shop.new-shop.pictures')
-                        @include('partials.panel.shop.new-shop.finish') --}}
                         @foreach ($forms as $key => $form)
                             @if ($key == $data->level)
                                 @include('partials.panel.shop.new-shop.' . $form , ["show" => true])

@@ -367,7 +367,7 @@ function renderRooms(rooms) {
                     li.append(
                         `<span><i class="fa fa-check text-success"></i>&nbsp;${item2.text}</span>`
                     );
-                }else{
+                } else {
                     li.append(
                         `<span><i class="fa fa-times text-danger"></i>&nbsp;${item2.text}</span>`
                     );
@@ -380,7 +380,6 @@ function renderRooms(rooms) {
 
 $("#new-room-form").validate({
     submitHandler: () => {
-        
         const data = {
             id: Math.ceil(Math.random() * 5555),
             room_title: $("#room_title").val(),
@@ -419,7 +418,6 @@ $("#new-room-form").validate({
         room_title: "پر کردن این فیلد الزامی میباشد",
     },
 });
-
 
 function changeModalView(btn, status) {
     const id = btn.attr("modal");
@@ -530,7 +528,7 @@ function renderPools(pools) {
 }
 
 $("#new-pool-form").validate({
-    submitHandler: () => {        
+    submitHandler: () => {
         const data = {
             id: Math.ceil(Math.random() * 5555),
             pool_type: $("#type_pool").val(),
@@ -577,7 +575,6 @@ $("#new-pool-form").validate({
         },
     },
 });
-
 
 $("#spaces").validate({
     submitHandler: (form) => {
@@ -798,14 +795,20 @@ $("#address-form").validate({
             id: $("#id_").val(),
             level: 5,
         };
+        $("#address-loading").parent().prop("disabled", true);
+        $("#address-loading").show();
         $.ajax({
             method: "POST",
             url: "/villa/update/address",
             data,
             success: () => {
+                $("#address-loading").parent().prop("disabled", false);
+                $("#address-loading").hide();
                 nextForm(form);
             },
             error: () => {
+                $("#address-loading").parent().prop("disabled", false);
+                $("#address-loading").hide();
                 Swal.fire({
                     title: "خطا",
                     text: "مشکلی در سرور وجود دارد",
@@ -848,10 +851,17 @@ $("#rules-form").validate({
             method: "POST",
             url: "/rule/update",
             data,
+            beforeSend: () => {
+                $("#rules-loading").show();
+            },
+
             success: () => {
+                $("#rules-loading").hide();
+
                 nextForm(form);
             },
             error: () => {
+                $("#rules-loading").hide();
                 Swal.fire({
                     title: "خطا",
                     text: "مشکلی در سرور وجود دارد",
@@ -860,6 +870,22 @@ $("#rules-form").validate({
                 });
             },
         });
+    },
+    rules: {
+        delivery_time: {
+            required: true,
+        },
+        discharge_time: {
+            required: true,
+        },
+    },
+    messages: {
+        delivery_time: {
+            required: "پر کردن این فیلد الزامی می باشد",
+        },
+        discharge_time: {
+            required: "پر کردن این فیلد الزامی می باشد",
+        },
     },
 });
 
@@ -877,14 +903,19 @@ $("#pricing-form").validate({
             _token: $("#rent_price_token").val(),
             level: 7,
         };
+        $("#rent-villa-prices-loading").show();
         $.ajax({
             method: "POST",
             url: "/rent-price/update",
             data,
             success: () => {
+                $("#rent-villa-prices-loading").hide();
+
                 nextForm(form);
             },
             error: () => {
+                $("#rent-villa-prices-loading").show();
+
                 Swal.fire({
                     title: "خطا",
                     text: "مشکلی در سرور وجود دارد",
@@ -970,7 +1001,7 @@ $("#cover").change(function (e) {
                         isCover = true;
                         const img = document.createElement("img");
                         img.src = target.result;
-                        img.classList.add("cover-image");
+                        img.classList.add("cover-image");                        
                         $("#cover-image-box").append(img);
                         $("#cover-image-box").show();
                     };
@@ -1085,6 +1116,8 @@ $("#picture-form").validate({
             return;
         }
 
+        $("#pictures-loading").parent().prop("disabled", true);
+        $("#pictures-loading").show();
         cover.append("_token", $("#hi_token").val());
         cover.append("id", $("#id_").val());
         cover.append("level", 8);
@@ -1130,9 +1163,13 @@ $("#picture-form").validate({
 
         Promise.all([updateCoverPromise, updatePicturesPromise])
             .then(() => {
+                $("#pictures-loading").parent().prop("disabled", false);
+                $("#pictures-loading").hide();
                 nextForm(form);
             })
             .catch(() => {
+                $("#pictures-loading").parent().prop("disabled", false);
+                $("#pictures-loading").hide();
                 Swal.fire({
                     title: "خطا",
                     text: "مشکلی در سرور وجود دارد",

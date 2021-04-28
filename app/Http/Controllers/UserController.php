@@ -90,17 +90,17 @@ class UserController extends Controller
         $phonenumber = $request->get("phonenumber");
         $user = User::where([["phonenumber", $phonenumber], ["isReady", 0]])->count();
 
-        try {
-            $sender = "2000500666";
-            $message = "کد تاییدی ثبت نام پاوز : " . $activeCode;
-            $receptor = array($phonenumber);
-            $result = Kavenegar::Send($sender, $receptor, $message);
-            $this->format($result);
-        } catch (ApiException $e) {
-            return response(["message" => $e->errorMessage()], 400);
-        } catch (HttpException $e) {
-            return response(["message" => $e->errorMessage()], 400);
-        }
+        // try {
+        //     $sender = "2000500666";
+        //     $message = "کد تاییدی ثبت نام پاوز : " . $activeCode;
+        //     $receptor = array($phonenumber);
+        //     $result = Kavenegar::Send($sender, $receptor, $message);
+        //     $this->format($result);
+        // } catch (ApiException $e) {
+        //     return response(["message" => $e->errorMessage()], 400);
+        // } catch (HttpException $e) {
+        //     return response(["message" => $e->errorMessage()], 400);
+        // }
 
         if ($user) {
             User::where("phonenumber", $phonenumber)->update([
@@ -202,7 +202,7 @@ class UserController extends Controller
     {
 
         $fileName = time() . '.' . $request->file("image")->extension();
-        $request->file("image")->move(public_path("upload"), $fileName);
+        $request->file("image")->move(public_path("/upload"), $fileName);
         $id = Auth::id();
         $user = User::find($id);
         $image = $user->profile->image;

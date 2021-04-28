@@ -1,31 +1,33 @@
 @extends('layout.content' , ["title" => "ثبت نام | پاوز"])
 @section('content')
-    @include('partials.home.header')
-    @include('partials.navbar')
-    <div class="container">
-        <meta name="csrf-token" content="{{ csrf_token() }}" />
-        <div class="row justify-content-center login-box">
-            <div class="col-md-4 col-11 login-form">
-                <img src="{{ asset('images/dpavz.png') }}" alt="PAVZ logo">
-                <h3>ثبت نام حساب</h3>
+@include('partials.loading')
+
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <div class="row justify-content-center login-box">
+        <div class="col-md-4 col-11  login-form">
+            <div class="login-form-content">
+                <img src="{{ asset('images/person.png') }}" alt="Person Image" width="350">
+                <h3>ثبت نام</h3>
                 <p>با ثبت نام میتوانید به تمامی امکانات سایت دسترسی پیدا کنید.</p>
                 <br>
                 <br>
                 <form action="" id="register-form" method="POST">
-                    <div class="inpg">
-                        <input type="text" id="phonenumber" name="phonenumber" placeholder="شماره تلفن خود را وارد نمایید">
-                        <span>
-                            <i class="fa fa-phone"></i>
-                        </span>
-                    </div>
-                    <div class="inpg">
-                        <input type="password" id="password" name="password" placeholder="رمز عبور خود را وارد نمایید">
-                        <span>
-                            <i class="fa fa-lock"></i>
-                        </span>
-                    </div>
+                    <div class="form">
+                        <div class="inpg">
+                            <input type="text" id="phonenumber" name="phonenumber"
+                                placeholder="شماره تلفن خود را وارد نمایید">
+                            <span>
+                                <i class="fa fa-phone"></i>
+                            </span>
+                        </div>
+                        <div class="inpg">
+                            <input type="password" id="password" name="password" placeholder="رمز عبور خود را وارد نمایید">
+                            <span>
+                                <i class="fa fa-lock"></i>
+                            </span>
+                        </div>
 
-
+                    </div>
 
                     <div class="form-group form-check">
                         <input type="checkbox" class="form-check-input" name="agreement" id="agreement">
@@ -48,17 +50,17 @@
                     </ul>
                 </form>
             </div>
-            <div class="col-md-8 col-11 right">
-                <div class="effect"></div>
-                <h3>حساب جدید
-                    <br>
-                    <p>
-                        با ورود به سایت میتوانید به تمامی خدمات سایت در پنل کاربری دسترسی
-                        داشته باشید.
-                    </p>
-                    <a href="/login" class="btn btn-sn btn-outline-light is">ورود</a>
-                </h3>
-            </div>
+        </div>
+        <div class="col-md-8 col-11 d-none d-md-flex right">
+            <div class="effect"></div>
+            <h3>حساب جدید
+                <br>
+                <p>
+                    با ورود به سایت میتوانید به تمامی خدمات سایت در پنل کاربری دسترسی
+                    داشته باشید.
+                </p>
+                <a href="/login" class="btn btn-sn btn-outline-light is">ورود</a>
+            </h3>
         </div>
     </div>
 
@@ -95,9 +97,6 @@
 
 
     @include('partials.rules')
-    @include('partials.home.footer')
-    @include('partials.languages')
-    @include('partials.gototop')
 @endsection
 @push('scripts')
     <script src="{{ asset('js/aos.js') }}"></script>
@@ -147,13 +146,13 @@
                     data: {
                         _token: CSRF_TOKEN,
                         phonenumber: $("#phonenumber").val(),
-                        password: $("#password").val(),                        
+                        password: $("#password").val(),
                     },
                     beforeSend: () => {
                         $("#register-loading").parents("disabled", true)
                         $("#register-loading").show();
                     },
-                    success: (response) => {                        
+                    success: (response) => {
                         $("#register-loading").parents("disabled", false)
                         $("#register-loading").hide();
                         $("#sent-code-p").text(

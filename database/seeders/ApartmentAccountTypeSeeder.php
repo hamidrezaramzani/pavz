@@ -15,7 +15,6 @@ class ApartmentAccountTypeSeeder extends Seeder
     public function run()
     {
         $data = ["مسکونی", "تجاری", "اداری", "صنعتی"];
-        // ApartmentAccountTypes::truncate();
         foreach ($data as $value) {
             ApartmentAccountTypes::create(["name" => $value]);
         }

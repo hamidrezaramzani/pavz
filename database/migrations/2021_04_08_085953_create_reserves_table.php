@@ -19,8 +19,8 @@ class CreateReservesTable extends Migration
             $table->text("fullname");
             $table->text("phonenumber");
             $table->text("start");
-            $table->text("status")->default("new");
-            $table->text("end");
+            $table->string("status")->default("new");
+            $table->text("end");    
             $table->unsignedBigInteger("villa_id");
             
             $table->foreign("villa_id")->references("id")->on("villas")->onDelete("cascade");

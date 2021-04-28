@@ -1,4 +1,4 @@
-<div class="welcome-box" data-aos="fade-up">
+<div class="welcome-box">
     <h1>به 
         <span class="text-info">پاوز</span>
          خوش آمدید</h1>

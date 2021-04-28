@@ -51,7 +51,6 @@ $("#location-name").keyup(function () {
         },
     });
 });
-AOS.init();
 
 $("#btn-search").click(function () {
     const name = $("#location-name").val();

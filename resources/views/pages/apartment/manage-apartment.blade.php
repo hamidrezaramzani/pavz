@@ -71,7 +71,7 @@
                                     </thead>
                                 @endforeach
                             @else
-                                <td colspan="7" class="text-center text-danger is">آگهی ثبت نشده است</td>
+                                <td colspan="8" class="text-center text-danger is">آگهی ثبت نشده است</td>
                             @endif
                         </tbody>
                     </table>

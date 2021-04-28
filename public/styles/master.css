@@ -1076,28 +1076,45 @@ footer .aboutus img {
 }
 
 .login-box {
-    margin: 10rem 0;
+    height: 100vh;
+    margin-left: 0;
+    border-radius: 3px;
+    overflow-x: hidden!important;
+}
+
+.login-form {
+    position: relative;
+    box-sizing: border-box;
+}
+
+.top-wave {
+    /* width: 100%; */
+    /* right: 0; */
+    /* top: -50px; */
+    position: absolute;
+    transform: rotate(180deg);
+    height: 350px;
+    /* z-index: -1; */
+    /* display: block;   */
+}
+
+.login-form-content {
+    padding: 5em 0;
+    width: 80%;
     height: auto;
-    background: #fff;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
 }
 
 .login-box .right {
-    background: url(../images/cities/ramsar.jpg);
+    background: url(../images/login.jpg);
     background-position: center;
     background-size: cover;
     position: relative;
-}
-
-.login-box .effect {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: linear-gradient(135deg, #62277470 0%, #c5336470 100%);
 }
 
 .login-form {
@@ -1196,16 +1213,18 @@ footer .aboutus img {
 
 .login-box .right h3 {
     position: absolute;
+    width: 60%;
     margin: auto;
-    bottom: 0;
-    right: 0;
+    bottom: 3em;
+    /* right: 0; */
     left: 0;
-    top: 0;
+    /* top: 0; */
     font: 40px isbold;
     color: #fff;
     display: block;
     height: 100px;
     text-align: center;
+    padding: 0 10px;
 }
 
 .login-box .right p {
@@ -3083,4 +3102,12 @@ input:disabled {
 
 #reserve-faq {
     font: 13px is;
+}
+
+.navbar-rtl {
+    direction: rtl;
+}
+
+#find-loading {
+    display: none;
 }

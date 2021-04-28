@@ -99,7 +99,7 @@
                             merchant_id: "",
                             amount: response.price,
                             description: "خرید اشتراک در پاوز",
-                            callback_url: "http://localhost:8000/payment/callback"
+                            callback_url: "http://localhost:8000/payment/callback?id=5"
                         },
                         success: (response) => {
                             location.replace("https://www.zarinpal.com/pg/StartPay/" + response
@@ -145,21 +145,21 @@
 
                         response.data.forEach(item => {
                             $("tbody").append(`
-                                                                                                    <tr>
-                                                                                                        <td width="25%">${item.id}</td>
-                                                                                                        <td width="25%">${item.title}</td>
-                                                                                                        <td width="25%"><s class="text-danger">${item.prevPrice} ریال</s> &nbsp; ${item.price} ریال</td>
-                                                                                                        <td width="25%">
-                                                                                                            <button class="btn btn-sm btn-primary is" data-code="${code}" data-id="${item.id}" onclick="buy(this)">
-                                                                                                                <span>خرید</span>
-                                                                                                                    <div class="spinner-border spinner-border-sm" role="status"
-                                                                                                                        style="display: none">
-                                                                                                                        <span class="sr-only">Loading...</span>
-                                                                                                                    </div>
-                                                                                                                </button>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    `);
+                                                                                                        <tr>
+                                                                                                            <td width="25%">${item.id}</td>
+                                                                                                            <td width="25%">${item.title}</td>
+                                                                                                            <td width="25%"><s class="text-danger">${item.prevPrice} ریال</s> &nbsp; ${item.price} ریال</td>
+                                                                                                            <td width="25%">
+                                                                                                                <button class="btn btn-sm btn-primary is" data-code="${code}" data-id="${item.id}" onclick="buy(this)">
+                                                                                                                    <span>خرید</span>
+                                                                                                                        <div class="spinner-border spinner-border-sm" role="status"
+                                                                                                                            style="display: none">
+                                                                                                                            <span class="sr-only">Loading...</span>
+                                                                                                                        </div>
+                                                                                                                    </button>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        `);
                         });
                     },
                     error: (err) => {

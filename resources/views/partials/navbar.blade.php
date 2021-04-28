@@ -108,7 +108,7 @@
         </button>
     </div>
     <div class="col-12 col-md-6 d-none d-md-flex justify-content-center">
-        <nav class="navbar navbar-expand-lg" style="direction: rtl">
+        <nav class="navbar navbar-expand-lg navbar-rtl">
             <div class="d-none d-md-block navbar-collapse" id="menu">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
