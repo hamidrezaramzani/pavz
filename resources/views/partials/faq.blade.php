@@ -1,4 +1,4 @@
-@extends('layout.content' , ["title" => "سوالات متداول"])
+@extends('layout.content' , ["title" => "سوالات متداول" , "description" => "سوالات متداولی که درباره سایت پاوز دارید را میتوانید در اینجا مشاهده نمایید"])
 @section('content')
     @include('partials.navbar')
     @include('partials.home.header')
@@ -69,13 +69,5 @@
         </div>
     </div>
     @include('partials.home.footer')
-    @include('partials.languages')
     @include('partials.gototop')
 @endsection
-@push('scripts')
-    <script src="{{ asset('js/jquery.star-rating-svg.min.js') }}"></script>
-    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('js/aos.js') }}"></script>
-    <script src="{{ asset('js/multi-animated-counter.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
-@endpush

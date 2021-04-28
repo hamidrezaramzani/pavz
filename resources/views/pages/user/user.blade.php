@@ -42,7 +42,7 @@
                                 <span>{{
                                     $villas->count()  + $apartments->count() + $areas->count() + $shops->count()
                                     }}</span>
-                                <span>آکهی ها</span>
+                                <span>آگهی ها</span>
                             </li>
                             <li>
                                 <span>{{$likes}}</span>

@@ -100,4 +100,9 @@ class IndexController extends Controller
                 break;
         }
     }
+
+    public function helpVilla()
+    {
+        return view("pages.help.villa");
+    }
 }

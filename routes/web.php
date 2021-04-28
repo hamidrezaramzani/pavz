@@ -77,7 +77,7 @@ Route::post("/active-user", [UserController::class, "activeUser"]);
 Route::post("/login-user", [UserController::class, "login"]);
 Route::get('/is-phonenumber-duplicate/{phonenumber}', [UserController::class, "isPhoneNumberDuplicate"]);
 Route::get("/panel", [UserController::class, "panel"])->name("dashboard")->middleware("auth")->breadcrumbs(fn (Trail  $trail) => $trail->push("پیشخوان", route("dashboard")));
-Route::get("/new-villa", [VillasController::class, "newVilla"])->name("new-villa")->middleware("auth")->breadcrumbs(fn (Trail $trail) => $trail->parent("dashboard")->push("ثبت ویلای جدید", route("new-villa")));;
+Route::get("/new-villa", [VillasController::class, "newVilla"])->name("new-villa")->middleware("auth")->breadcrumbs(fn (Trail $trail) => $trail->parent("dashboard")->push("ثبت ویلا یا سوئیت جدید", route("new-villa")));;
 Route::post("/create-villa", [VillasController::class, "createVilla"])->middleware("auth");
 Route::post("/update-specification-form", [VillasController::class, "updateSpecificationForm"])->middleware("auth");
 Route::post("/user/send-new-code", [UserController::class, "checkPhonenumberAndSendCode"]);
@@ -316,3 +316,7 @@ Route::get("/discount/manage", [DiscountController::class, "manageDiscounts"])->
 Route::get("/discount/delete/{id}", [DiscountController::class, "deleteDiscount"])->middleware("admin");
 Route::get("/discount/apply/{code}", [DiscountController::class, "applyCode"])->middleware("auth");
 Route::post("/discount/get-price", [DiscountController::class, "getPrice"])->middleware("auth");
+
+
+// HELP ROUTES
+Route::get("/help/villa", [IndexController::class, "helpVilla"])->middleware("auth");

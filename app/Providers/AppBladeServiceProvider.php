@@ -38,6 +38,12 @@ class AppBladeServiceProvider extends ServiceProvider
             ])->limit(5)->get());
         });
 
+
+        view()->composer('*', function ($view) {
+            $view->with('user', Auth::user());
+        });
+
+
         Blade::component('if-is-not-null', IfIsNotNull::class);
 
         Blade::if("isfullready", function () {

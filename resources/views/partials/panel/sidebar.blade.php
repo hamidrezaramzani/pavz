@@ -172,6 +172,61 @@
             </ul>
         </div>
 
+        
+        <div class="accordion-item">
+            <button>
+                <img src="{{ asset('images/icons/svg/user.svg') }}" alt="help svg icon">
+                راهنما
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <ul>
+                <li>
+                    <a href="/help/villa">
+                        <i class="far fa-circle" aria-hidden="true"></i>
+                        ویلا
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/ticket/manage">
+                        <i class="far fa-circle"></i>
+                        آپارتمان
+                    </a>
+                </li>
+
+                
+                <li>
+                    <a href="/ticket/manage">
+                        <i class="far fa-circle"></i>
+                        زمین
+                    </a>
+                </li>
+
+
+                
+                <li>
+                    <a href="/ticket/manage">
+                        <i class="far fa-circle"></i>
+                        مغازه
+                    </a>
+                </li>
+
+                
+                <li>
+                    <a href="/ticket/manage">
+                        <i class="far fa-circle"></i>
+                        رزرو
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/ticket/manage">
+                        <i class="far fa-circle"></i>
+                        ثبت آگهی ویژه
+                    </a>
+                </li>
+            </ul>
+        </div>
 
         <div class="accordion-item">
             <button>

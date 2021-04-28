@@ -1,5 +1,5 @@
 <div class="row dashboard-navbar">    
-
+    
     <div class="col-12">
         <ul>
 
@@ -7,8 +7,12 @@
                 <div class="dropdown">
                     <button class="btn dropdown-toggle" type="button" id="user-options" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <img src="{{ asset('images/user.png') }}" width="40" alt="User Profile Picture">
-
+                        <img src="{{ asset($user->profile->image ? "upload/" . $user->profile->image : 'images/user.png') }}" height="40" width="40" alt="User Profile Picture">
+                        <h6 class="float-right mx-2">{{$user->profile->fullname}}
+                            <br>
+                            <span class="float-right">{{$user->level == "admin" ? "مدیر سایت" : "کاربر"}}</span>
+                        </h6>
+                        
                     </button>
                     <ul class="dropdown-menu user-options-dropdown" aria-labelledby="user-options">
                         <li><a class="dropdown-item" href="/">
@@ -73,7 +77,7 @@
                 </div>
             </li>
 
-            <li class="d-block d-md-none">
+            <li class="d-block float-right d-md-none">
                 <button class="btn" id="sidebar-toggle">
                     <i class="fa fa-bars"></i>
                 </button>

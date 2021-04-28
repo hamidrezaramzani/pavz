@@ -1,12 +1,12 @@
-@extends('layout.panel' , ["title" => "ثبت ویلای جدید | پاوز"])
+@extends('layout.panel' , ["title" => "ثبت ویلا یا سوئیت جدید | پاوز"])
 @section('dashboard')
     <div class="container-fluid">
         <div class="row justify-content-center py-3 dashboard-info-item-content">
             @isfullready
             <div class="col-12 col-md-12 dashboard-info-item-content p-3">
 
-                @include('partials.panel.items.title' , ["title" => "ثبت ویلای جدید" , "description" => "میتوانید از این بخش
-                آگهی ویلای خود را ثبت کنید."])
+                @include('partials.panel.items.title' , ["title" => "ثبت ویلا یا سوییت جدید" , "description" => "میتوانید از این بخش
+                آگهی ویلا یا سوئیت خود را ثبت کنید."])
                 <br>
 
                 <form action="/create-villa" method="POST" class="form">
