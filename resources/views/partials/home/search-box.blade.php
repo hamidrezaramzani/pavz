@@ -23,7 +23,7 @@
             </select>
         </div>
         <button id="btn-search" type="button">
-            <i class="fa fa-search"></i>
+            <span class="d-inline d-md-none">جستجو</span> <i class="fa fa-search"></i>
         </button>
     </form>
 </div>

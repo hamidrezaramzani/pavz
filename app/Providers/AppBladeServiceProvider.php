@@ -40,7 +40,7 @@ class AppBladeServiceProvider extends ServiceProvider
 
 
         view()->composer('*', function ($view) {
-            $view->with('user', Auth::user());
+            $view->with('loginUser', Auth::user());
         });
 
 

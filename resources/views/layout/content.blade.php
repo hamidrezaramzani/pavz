@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html dir="rtl" lang="fa">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,22 +15,19 @@
     <link rel="stylesheet" href="{{ asset('styles/leaflet.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/RBSlideshow.css') }}" />
     <link rel="stylesheet" href="{{ asset('styles/bootstrap-datepicker.css') }}" />
+    <link href="{{ asset('styles/responsive.css') }}" rel="stylesheet" />
 
     <link rel="icon" type="image/png" href="{{ asset('images/pavz.png') }}" />
     <link rel="apple-touch-icon" href="{{ asset('images/pavz.png') }}">
-    <link href="{{ asset('styles/responsive.css') }}" rel="stylesheet" />
-
-
     <meta name="theme-color" content="#0470dc">
+    <meta name="description" content="{{ isset($description) ? $description : '' }}">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <meta name="description" content="{{ isset($description) ? $description : '' }}">
 
 </head>
 
 <body>
     @yield('content')
-
 </body>
 <script src="{{ asset('js/jquery.js') }}"></script>
 <script src="{{ asset('js/popper.min.js') }}"></script>

@@ -1,4 +1,4 @@
-<div class="col-11 col-md-4">
+<div class="col-11 col-md-4 my-3">
     <div class="dashboard-info-item-content p-3">
         <div id="chart5"></div>
         <table class="table table-hover text-center">

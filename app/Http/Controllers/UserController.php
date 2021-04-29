@@ -252,7 +252,6 @@ class UserController extends Controller
             return redirect("/");
         }
         $user = $user->get()[0];
-
         $villas = $user->villas()->where(["status" => "published"]);
         $apartments = $user->apartments()->where(["status" => "published"]);
         $areas = $user->areas()->where(["status" => "published"]);

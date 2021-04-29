@@ -157,24 +157,23 @@
             </div>
             <div class="col-11 col-md-3">
                 <h4>
-                    <span>راهنما</span>
+                    <span>شبکه های اجتماعی</span>
                 </h4>
                 <ul>
                     
 
                     <li>
-                        <a href="/faq">
-                            سوالات متداول
+                        <a href="https://t.me/pavz_official">
+                            <i class="fab fa-xs fa-telegram"></i> تلگرام
                         </a>
                     </li>
 
+                    
                     <li>
-                        <a href="/about-us">
-                            تماس با ما
+                        <a href="https://instagram.com/pavz_official">
+                            <i class="fab fa-xs fa-instagram"></i> اینستاگرام
                         </a>
                     </li>
-
-                    <li><a href="/about-us">درباره ما</a></li>
                 </ul>
             </div>
         </div>

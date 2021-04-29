@@ -482,24 +482,6 @@
         </div>
 
 
-        <div class="accordion-item">
-            <button>
-                <img src="{{ asset('images/icons/svg/area.svg') }}" alt="USER SVG">
-                مدیریت جاذبه های گردشگری
-                <i class="fa fa-angle-down"></i>
-            </button>
-            <ul>
-                <li>
-                    <a href="">جاذبه گردشگری جدید</a>
-                </li>
-
-                <li>
-                    <a href="">مدیریت</a>
-                </li>
-
-            </ul>
-        </div>
-
 
 
         <div class="accordion-item">

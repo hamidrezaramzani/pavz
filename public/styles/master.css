@@ -2636,6 +2636,7 @@ input:disabled {
     background: #fff;
     border-radius: 5px;
     overflow: hidden !important;
+    display: none;
 }
 
 .locations ul li {

@@ -1,7 +1,6 @@
 <div class="section welcome" id="header">
     <div class="header-effect"></div>
     @include('partials.home.welcome-box')
-    @include('partials.gototop')
     <div class="modal fade" id="findByIdModal" data-bs-backdrop="static" data-bs-keyboard="false"
     tabindex="-1" aria-labelledby="findByIdLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

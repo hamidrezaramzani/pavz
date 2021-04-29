@@ -4,6 +4,11 @@
     @include('partials.home.header')
     @include('partials.navbar')
     @include('partials.share')
+    <style>
+        body{
+            overflow-x: hidden
+        }
+    </style>
     <div class="row user-profile-header py-5">
         <div class="col-12 col-md-8 px-5 py-5">
             <h2>{{ $user->profile->fullname }}</h2>

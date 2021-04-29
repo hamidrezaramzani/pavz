@@ -7,10 +7,10 @@
                 <div class="dropdown">
                     <button class="btn dropdown-toggle" type="button" id="user-options" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <img src="{{ asset($user->profile->image ? "upload/" . $user->profile->image : 'images/user.png') }}" height="40" width="40" alt="User Profile Picture">
-                        <h6 class="float-right mx-2">{{$user->profile->fullname}}
+                        <img src="{{ asset($loginUser->profile->image ? "upload/" . $loginUser->profile->image : 'images/user.png') }}" height="40" width="40" alt="User Profile Picture">
+                        <h6 class="float-right mx-2">{{$loginUser->profile->fullname}}
                             <br>
-                            <span class="float-right">{{$user->level == "admin" ? "مدیر سایت" : "کاربر"}}</span>
+                            <span class="float-right">{{$loginUser->level == "admin" ? "مدیر سایت" : "کاربر"}}</span>
                         </h6>
                         
                     </button>
