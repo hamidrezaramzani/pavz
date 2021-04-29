@@ -3,5 +3,10 @@
     "disks": [{
         "name": "pavz",
         "mountTo": "public"
-    }]
+    }],
+    "laravel": {
+        "configCache": true,
+        "routeCache": true
+    },
+    "platform": "laravel"
 }

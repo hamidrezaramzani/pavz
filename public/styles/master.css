@@ -1841,10 +1841,6 @@ span#picture-name {
     z-index: -1;
 }
 
-.form-steps ul li.active::after {
-    /* background: #afedf5; */
-}
-
 .form-steps ul li.active i {
     color: #7f6efd;
     background: rgb(115, 102, 255, 0.06);
