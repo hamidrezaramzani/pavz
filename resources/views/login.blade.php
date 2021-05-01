@@ -51,6 +51,7 @@
                     داشته باشید.
                 </p>
                 <a href="/register" class="btn btn-sn btn-outline-light is">ثبت نام</a>
+                <a href="/" class="btn btn-sn btn-outline-light is">صفحه اصلی</a>
             </h3>
         </div>
     </div>

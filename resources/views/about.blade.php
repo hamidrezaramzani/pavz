@@ -1,4 +1,4 @@
-@extends('layout.content' , ["title" => "درباره پاوز"])
+@extends('layout.content' , ["title" => "درباره پاوز" , "description" => "درباره وبسایت پاوز"])
 @section('content')
 
     <div class="container py-5">

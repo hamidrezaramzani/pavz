@@ -197,9 +197,8 @@ table {
 }
 
 .register-ads:hover {
-    background: #39c0ed;
+    background: #fff;
     color: #111 !important;
-    border: #39c0ed;
 }
 
 #menu ul li a:hover {
@@ -2729,6 +2728,22 @@ input:disabled {
 .faq .accordion-button::after {
     position: absolute;
     left: 5px;
+}
+
+.faq-header {
+    width: 100%;
+    height: 50vh;
+    background: url(../images/cities/ramsar.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.faq-header h1 {
+    font: 24px isbold;
+    color: #fff;
 }
 
 .faq .accordion-body {

@@ -34,7 +34,7 @@
             <div class="col-12 col-md-3 px-3 my-3 my-md-0">
                 <div class="profile-details">
                     <div class="profile-details-img">
-                        <img src="{{ asset($user->profile->image ? 'upload/' . $user->profile->image : 'images/user.png') }}"
+                        <img src="{{ asset($user->profile->image ? 'user/upload/' . $user->profile->image : 'images/user.png') }}"
                             alt="">
                     </div>
                     <div class="profile-details-count">

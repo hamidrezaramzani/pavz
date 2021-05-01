@@ -60,6 +60,8 @@
                     داشته باشید.
                 </p>
                 <a href="/login" class="btn btn-sn btn-outline-light is">ورود</a>
+                <a href="/" class="btn btn-sn btn-outline-light is">صفحه اصلی</a>
+
             </h3>
         </div>
     </div>

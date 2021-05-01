@@ -1,14 +1,17 @@
-@extends('layout.content' , ["title" => "سوالات متداول" , "description" => "سوالات متداولی که درباره سایت پاوز دارید را میتوانید در اینجا مشاهده نمایید"])
+@extends('layout.content' , ["title" => "سوالات متداول" , "description" => "سوالات متداولی که درباره سایت پاوز دارید را
+میتوانید در اینجا مشاهده نمایید"])
 @section('content')
-    @include('partials.navbar')
-    @include('partials.home.header')
+    
+    <div class="row">
+        <div class="col-12 faq-header">
+            <h1>سوالات متداول  وبسایت پاوز</h1>
+        </div>
+    </div>
 
-    <div class="container py-5">
-        <div class="row text-center about-us justify-content-center my-5">
-            <div class="col-12 col-md-8 p-5 faq">
-                <br>
-                <br>
-                <h2>سوالات متداول</h2>
+    <div class="container">
+        <div class="row text-center about-us justify-content-center">            
+            <div class="col-12 col-md-12 faq">
+                <br>            
                 <br>
                 <div class="accordion" id="accordionExample">
                     <div class="accordion-item">
@@ -66,8 +69,8 @@
 
                 </div>
             </div>
+
         </div>
     </div>
-    @include('partials.home.footer')
-    @include('partials.gototop')
+
 @endsection
