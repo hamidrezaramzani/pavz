@@ -1,11 +1,7 @@
 @extends('layout.content' , ["title" => "ورود به پنل | پاوز" , "description" => "خوشحالیم که شما را دوباره ببینم. با ورود به سایت میتوانید به تمامی خدمات سایت در پنل کاربری دسترسی داشته باشید."])
 @section('content')
-<style>
-    body{
-        overflow-x: hidden
-    }
-</style>
-<img src="{{ asset('images/wave.svg') }}" alt="SVG WAVE" class="top-wave d-md-none">
+
+<div class="login-back-background d-block d-md-none"></div>
     @include('partials.loading')
     <div class="row justify-content-center login-box">
         <div class="col-md-4 col-11 login-form">
@@ -42,6 +38,8 @@
                         <li><a href="/register">حسابی در پاوز ندارم</a></li>
                         <li><a href="/" id="lost-password">رمز عبور خود را فراموش کرده اید؟</a></li>
                     </ul>
+                    <br>
+                    <br>
                 </form>
             </div>
         </div>

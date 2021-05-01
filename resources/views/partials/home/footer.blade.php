@@ -39,9 +39,7 @@
             </div>
 
             <div class="col-11 col-md-2">
-                <div id="zarinpal">
-                    <script src="https://www.zarinpal.com/webservice/TrustCode" type="text/javascript"></script>
-                </div>
+                
             </div>
         </div>
         <br>

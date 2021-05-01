@@ -1,5 +1,5 @@
 {
-    "app": "testpavz",
+    "app": "pavz",
     "disks": [{
         "name": "pavz",
         "mountTo": "public"

@@ -17,15 +17,13 @@
     <link rel="stylesheet" href="{{ asset('styles/bootstrap-datepicker.css') }}" />
     <link href="{{ asset('styles/responsive.css') }}" rel="stylesheet" />
 
-    <link rel="icon" type="image/png" href="{{ asset('images/pavz.png') }}" />
-    <link rel="apple-touch-icon" href="{{ asset('images/pavz.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}" />
+    <link rel="apple-touch-icon" href="{{ asset('images/logo.png') }}">
     <meta name="theme-color" content="#0470dc">
     <meta name="description" content="{{ isset($description) ? $description : '' }}">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
 </head>
-
 <body>
     @yield('content')
 </body>

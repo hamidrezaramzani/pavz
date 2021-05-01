@@ -156,11 +156,11 @@ table {
     background: url(../images/bg.jpg) !important;
     background-size: cover !important;
     background-position: bottom !important;
+    height: 100vh;
 }
 
 .header-effect {
     width: 100%;
-    height: 100vh;
     position: relative;
     background: rgba(0, 0, 0, 0.5);
 }
@@ -1096,6 +1096,21 @@ footer .aboutus img {
     height: 350px;
     /* z-index: -1; */
     /* display: block;   */
+}
+
+.login-back-background {
+    width: 100%;
+    height: 260px;
+    background: #7F7FD5;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    position: absolute;
+    top: -10px;
+    left: 0;
+    transform: rotateX(5deg)
 }
 
 .login-form-content {
@@ -3128,9 +3143,12 @@ input:disabled {
     display: none;
 }
 
+
+/* Help Site Styles */
+
 .help-text {
     font: 15px is!important;
-    color: #333!important;
+    color: #252525!important;
     display: block!important;
     text-align: right!important;
     width: 100%!important;

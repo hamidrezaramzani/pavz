@@ -22,6 +22,7 @@ use \Morilog\Jalali\Jalalian;
 use Kavenegar;
 use Kavenegar\Exceptions\ApiException;
 use Kavenegar\Exceptions\HttpException;
+use Kavenegar\KavenegarApi;
 
 class UserController extends Controller
 {
@@ -90,17 +91,20 @@ class UserController extends Controller
         $phonenumber = $request->get("phonenumber");
         $user = User::where([["phonenumber", $phonenumber], ["isReady", 0]])->count();
 
-        // try {
-        //     $sender = "2000500666";
-        //     $message = "کد تاییدی ثبت نام پاوز : " . $activeCode;
-        //     $receptor = array($phonenumber);
-        //     $result = Kavenegar::Send($sender, $receptor, $message);
-        //     $this->format($result);
-        // } catch (ApiException $e) {
-        //     return response(["message" => $e->errorMessage()], 400);
-        // } catch (HttpException $e) {
-        //     return response(["message" => $e->errorMessage()], 400);
-        // }
+        try{
+            $sender = "10008663";
+            $message = "کد تایید حساب پاوز: " . $activeCode;
+            $receptor = array($phonenumber);
+            $result = Kavenegar::Send($sender,$receptor,$message);            
+        }
+        catch(\Kavenegar\Exceptions\ApiException $e){
+            // در صورتی که خروجی وب سرویس 200 نباشد این خطا رخ می دهد
+            echo $e->errorMessage();
+        }
+        catch(\Kavenegar\Exceptions\HttpException $e){
+            // در زمانی که مشکلی در برقرای ارتباط با وب سرویس وجود داشته باشد این خطا رخ می دهد
+            echo $e->errorMessage();
+        }
 
         if ($user) {
             User::where("phonenumber", $phonenumber)->update([
@@ -238,6 +242,21 @@ class UserController extends Controller
         if ($user->count()) {
             $activeCode = rand(1000, 9999);
             // یه پیامک میفرستیم به کاربر برای کد بازیابی
+            try{
+                $sender = "10008663";
+                $message = "کد بازیابی پاوز: " . $activeCode;
+                $receptor = array($phonenumber);
+                $result = Kavenegar::Send($sender,$receptor,$message);            
+            }
+            catch(\Kavenegar\Exceptions\ApiException $e){
+                // در صورتی که خروجی وب سرویس 200 نباشد این خطا رخ می دهد
+                echo $e->errorMessage();
+            }
+            catch(\Kavenegar\Exceptions\HttpException $e){
+                // در زمانی که مشکلی در برقرای ارتباط با وب سرویس وجود داشته باشد این خطا رخ می دهد
+                echo $e->errorMessage();
+            }
+    
             $user->update(["activeCode" => $activeCode]);
             return response(["message" => "sended"]);
         } else {
@@ -257,7 +276,7 @@ class UserController extends Controller
         $areas = $user->areas()->where(["status" => "published"]);
         $shops = $user->shops()->where(["status" => "published"]);
 
-        $likes = Like::where("user_id" , $id);
+        $likes = Like::where("user_id", $id);
         $states = json_decode(file_get_contents(public_path("json/states.json")));
         $cities = json_decode(file_get_contents(public_path("json/cities.json")));
 
@@ -265,10 +284,10 @@ class UserController extends Controller
             "villas" => $villas->get(),
             "states" => $states,
             "cities" => $cities,
-            "apartments" => $apartments->get() ,
-            "areas" => $areas->get() ,
-            "shops" => $shops->get() ,
-            "user" =>$user, 
+            "apartments" => $apartments->get(),
+            "areas" => $areas->get(),
+            "shops" => $shops->get(),
+            "user" => $user,
             "likes" => $likes->get()->count()
         ]);
     }
