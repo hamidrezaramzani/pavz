@@ -1,7 +1,7 @@
 <li class="comment-item">
     <input type="hidden" class="comment-id-input" value="{{ $comment->id }}">
     <div class="user-img">
-        <img src="{{ asset('upload/' . $comment->user->profile->image) }}" alt="User Logo">
+        <img src="{{ asset('user/upload/' . $comment->user->profile->image) }}" alt="User Logo">
     </div>
     <div class="user-title">
         <h4>

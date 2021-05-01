@@ -11,7 +11,7 @@
                 <button class="btn btn-sm btn-danger" id="delete-cover-btn" type="button">
                     <i class="fa fa-trash"></i>
                 </button>
-                <img class="cover-image" src="{{ asset('covers/' . $data->cover) }}" alt="Villa Cover">
+                <img class="cover-image" src="{{ asset('user/covers/' . $data->cover) }}" alt="Villa Cover">
             @endif
         </div>
 
@@ -35,7 +35,7 @@
                     @foreach ($data->pictures as $picture)
                         <li id="{{$picture->id}}" saved="true">
                             
-                            <img src="{{ asset('villa_pictures/'.$picture->url) }}" alt="Villa Picture">
+                            <img src="{{ asset('user/villa_pictures/'.$picture->url) }}" alt="Villa Picture">
                         </li>
                     @endforeach
                 @endif

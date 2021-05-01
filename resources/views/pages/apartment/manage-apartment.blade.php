@@ -31,7 +31,7 @@
                                         <td width="20%">
                                             @if ($apartment->cover)
                                                 <button class="btn btn-warning btn-sm show-villa-pic"
-                                                    src="{{ asset('covers/' . $apartment->cover) }}">نمایش تصویر</button>
+                                                    src="{{ asset('user/covers/' . $apartment->cover) }}">نمایش تصویر</button>
                                             @else
                                                 <span class="text-danger">کاور ندارد</span>
                                             @endif

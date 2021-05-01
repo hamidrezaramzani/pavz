@@ -206,12 +206,12 @@ class UserController extends Controller
     {
 
         $fileName = time() . '.' . $request->file("image")->extension();
-        $request->file("image")->move(public_path("/upload"), $fileName);
+        $request->file("image")->move(public_path("user/upload"), $fileName);
         $id = Auth::id();
         $user = User::find($id);
         $image = $user->profile->image;
         if ($image) {
-            unlink(public_path("upload/" . $image));
+            unlink(public_path("user/upload/" . $image));
         }
         $user->profile()->update(["image" => $fileName]);
         return redirect("/profile")->with("profile", "update");

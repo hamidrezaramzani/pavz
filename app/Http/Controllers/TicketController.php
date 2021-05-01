@@ -26,7 +26,7 @@ class TicketController extends Controller
         $fileName = null;
         if ($file) {
             $fileName = time() . rand(1, 9999) . '.' . $file->extension();
-            $file->move(public_path("tickets"), $fileName);
+            $file->move(public_path("user/tickets"), $fileName);
         }
 
         $data["attach"] = $fileName;

@@ -2,7 +2,7 @@
     "app": "pavz",
     "disks": [{
         "name": "pavz",
-        "mountTo": "public"
+        "mountTo": "public/user"
     }],
     "laravel": {
         "configCache": true,

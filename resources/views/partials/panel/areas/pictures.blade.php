@@ -16,7 +16,7 @@
         <br>
         <div id="cover-image-box" style="display:{{ $data->cover ? 'block' : 'none' }}">
             @if ($data->cover)
-                <img class="cover-image" src="{{ asset('covers/' . $data->cover) }}" alt="Villa Cover">
+                <img class="cover-image" src="{{ asset('user/covers/' . $data->cover) }}" alt="Villa Cover">
             @endif
         </div>
 
@@ -33,7 +33,7 @@
                 @if (count($data->pictures))
                     @foreach ($data->pictures as $picture)
                         <li id="{{ $picture->id }}" saved="true">
-                            <img src="{{ asset('area_pictures/' . $picture->url) }}"
+                            <img src="{{ asset('user/area_pictures/' . $picture->url) }}"
                                 alt="Area Pictures">
                         </li>
                     @endforeach

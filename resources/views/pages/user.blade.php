@@ -1,5 +1,5 @@
 <div class="user-call-info mt-4">
-    <img src="{{ asset($data->user->profile->image ? 'upload/' . $data->user->profile->image : 'images/user.png') }}"
+    <img src="{{ asset($data->user->profile->image ? 'user/upload/' . $data->user->profile->image : 'images/user.png') }}"
         alt="">
     <h3>{{ $data->user->profile->fullname }}</h3>
     <br>

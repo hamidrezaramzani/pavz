@@ -9,7 +9,7 @@
                     <h3 class="text-light">تصویر کاربر</h3>
                     <div class="user-image">
                         @if ($image)
-                            <img src="{{ asset('upload/' . $image) }}" id="user-image" alt="User Profile Picture">
+                            <img src="{{ asset('user/upload/' . $image) }}" id="user-image" alt="User Profile Picture">
 
                         @else
                             <img src="{{ asset('images/user.png') }}" id="user-image" alt="User Profile Picture">

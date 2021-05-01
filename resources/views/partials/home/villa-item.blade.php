@@ -1,7 +1,7 @@
 <div class="product-item">
     <div class="vip-label">ویژه</div>
     <div class="type-label">{{ $item->ads_type == 1 ? 'اجاره' : 'فروش' }}</div>
-    <img src="{{ asset('covers/' . $item->cover) }}" alt="{{ $item->title }}">
+    <img src="{{ asset('user/covers/' . $item->cover) }}" alt="{{ $item->title }}">
     <div class="product-item-content">
         <div class="product-item-header">
             <span class="float-right product-item-location">
@@ -55,7 +55,7 @@
         <br>
         <a href="/user/{{$item->user->id}}">
         <div class="product-item-user">
-            <img src="{{ asset($item->user->profile->image ? 'upload/' . $item->user->profile->image : 'images/user.png') }}"
+            <img src="{{ asset($item->user->profile->image ? 'user/upload/' . $item->user->profile->image : 'images/user.png') }}"
                 width="50" height="50" alt="{{ $item->user->profile->fullname }}">
             <h6>{{ $item->user->profile->fullname }}</h6>
             <span>+ {{ $item->user->villas()->where('status', 'published')->count() }} ثبت آگهی ویلا</span>

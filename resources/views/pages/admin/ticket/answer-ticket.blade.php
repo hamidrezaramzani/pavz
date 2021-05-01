@@ -9,7 +9,7 @@
                 <p class="is d-block text-right" style="text-align: right!important">{{ $data->description }}</p>
                 <br>
                 @if ($data->attach)
-                    <a class="is" href="{{ asset('tickets/' . $data->attach) }}">دانلود فایل پوست</a>
+                    <a class="is" href="{{ asset('user/tickets/' . $data->attach) }}">دانلود فایل پوست</a>
                 @else
                     <span class="text-danger">فایل پیوست ندارد</span>
                 @endif
