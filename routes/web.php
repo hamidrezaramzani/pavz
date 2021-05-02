@@ -11,6 +11,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ParkingController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PictureController;
 use App\Http\Controllers\PoolController;
 use App\Http\Controllers\RateController;
@@ -324,3 +325,8 @@ Route::get("/help/villa", [IndexController::class, "helpVilla"])->middleware("au
 
 
 Route::get("/callback", [VipController::class, "buyVip"])->middleware("auth");
+
+
+// PAYMENTS
+Route::get("/payments/all", [PaymentController::class, "all"])->middleware("auth");
+

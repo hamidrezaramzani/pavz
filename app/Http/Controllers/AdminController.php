@@ -13,6 +13,7 @@ use App\Models\Ticket;
 use App\Models\TicketAnswer;
 use App\Models\User;
 use App\Models\Villa;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -244,6 +245,22 @@ class AdminController extends Controller
     }
 
 
+    public function checkUserIsVip($id)
+    {
+
+        $user = User::find($id);
+        $vip = 0;    
+        $date = Carbon::parse($user->expire_vip);
+        $now = Carbon::now();
+        $days = $date->diffInDays($now);
+        if ($days > 0) {
+            $vip = 1;
+        }
+        return $vip;
+    }
+
+
+
     public function publishVilla(Request $request)
     {
         $request->validate([
@@ -252,7 +269,8 @@ class AdminController extends Controller
             "status" => "required|string",
             "user_id" => "required|numeric"
         ]);
-        Villa::where("id", $request->get("id"))->update(["status" => "published"]);
+        $vip = $this->checkUserIsVip($request->get("user_id"));      
+        Villa::where("id", $request->get("id"))->update(["status" => "published", "is_vip" => $vip]);
         Notification::create([
             "text" => $request->get("description"),
             "icon" => "success",
@@ -382,7 +400,8 @@ class AdminController extends Controller
             "status" => "required|string",
             "user_id" => "required|numeric"
         ]);
-        Apartment::where("id", $request->get("id"))->update(["status" => "published"]);
+        $vip = $this->checkUserIsVip($request->get("user_id"));        
+        Apartment::where("id", $request->get("id"))->update(["status" => "published" , "is_vip" => $vip]);
         Notification::create([
             "text" => $request->get("description"),
             "icon" => "success",
@@ -419,7 +438,8 @@ class AdminController extends Controller
             "status" => "required|string",
             "user_id" => "required|numeric"
         ]);
-        Area::where("id", $request->get("id"))->update(["status" => "published"]);
+        $vip = $this->checkUserIsVip($request->get("user_id"));        
+        Area::where("id", $request->get("id"))->update(["status" => "published" , "is_vip" => $vip]);
         Notification::create([
             "text" => $request->get("description"),
             "icon" => "success",
@@ -457,7 +477,8 @@ class AdminController extends Controller
             "status" => "required|string",
             "user_id" => "required|numeric"
         ]);
-        Shop::where("id", $request->get("id"))->update(["status" => "published"]);
+        $vip = $this->checkUserIsVip($request->get("user_id"));        
+        Shop::where("id", $request->get("id"))->update(["status" => "published" ,  "is_vip" => $vip]);
         Notification::create([
             "text" => $request->get("description"),
             "icon" => "success",

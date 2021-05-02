@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Notification;
 use App\Models\User;
 use App\View\Components\IfIsNotNull;
+use Carbon\Carbon;
 use Doctrine\DBAL\Schema\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
@@ -43,12 +44,26 @@ class AppBladeServiceProvider extends ServiceProvider
             $view->with('loginUser', Auth::user());
         });
 
+        view()->composer('*', function ($view) {
+
+            $vip = false;
+            if (Auth::check()) {
+                $user = User::find(Auth::id());
+                $date = Carbon::parse($user->expire_vip);
+                $now = Carbon::now();
+                $days = $date->diffInDays($now);
+                $vip = $days > 0;
+            }
+
+            $view->with('isVip', $vip);
+        });
+
 
         Blade::component('if-is-not-null', IfIsNotNull::class);
 
         Blade::if("isfullready", function () {
             $user = User::find(Auth::id());
-            $profile = $user->profile;            
+            $profile = $user->profile;
             return $profile && $profile->fullname;
         });
 
@@ -56,6 +71,5 @@ class AppBladeServiceProvider extends ServiceProvider
         Blade::if("admin", function () {
             return Auth::user() && Auth::user()->level == "admin";
         });
-
     }
 }

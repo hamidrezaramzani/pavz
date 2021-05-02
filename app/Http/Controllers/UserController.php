@@ -7,6 +7,7 @@ use App\Http\Requests\LoginUserRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\SubmitProfilePictureRequest;
 use App\Models\Like;
+use App\Models\Payment;
 use App\Models\Profile;
 use App\Models\Reserve;
 use App\Models\Ticket;
@@ -91,17 +92,15 @@ class UserController extends Controller
         $phonenumber = $request->get("phonenumber");
         $user = User::where([["phonenumber", $phonenumber], ["isReady", 0]])->count();
 
-        try{
+        try {
             $sender = "10008663";
             $message = "کد تایید حساب پاوز: " . $activeCode;
             $receptor = array($phonenumber);
-            $result = Kavenegar::Send($sender,$receptor,$message);            
-        }
-        catch(\Kavenegar\Exceptions\ApiException $e){
+            $result = Kavenegar::Send($sender, $receptor, $message);
+        } catch (\Kavenegar\Exceptions\ApiException $e) {
             // در صورتی که خروجی وب سرویس 200 نباشد این خطا رخ می دهد
             echo $e->errorMessage();
-        }
-        catch(\Kavenegar\Exceptions\HttpException $e){
+        } catch (\Kavenegar\Exceptions\HttpException $e) {
             // در زمانی که مشکلی در برقرای ارتباط با وب سرویس وجود داشته باشد این خطا رخ می دهد
             echo $e->errorMessage();
         }
@@ -180,9 +179,21 @@ class UserController extends Controller
     {
         $reserves = Reserve::where("user_id", Auth::id())->limit(6);
         $tickets = Ticket::where("user_id", Auth::id())->limit(6);
+        $payments = Payment::where("user_id", Auth::id())->limit(6);
+        $diff = null;
+        if (Auth::user()->expire_vip) {
+            $date = Carbon::parse(Auth::user()->expire_vip);
+            $now = Carbon::now();
 
+            $diff = $date->diffInDays($now);
+        }
 
-        return view("dashboard", ["reserves" => $reserves->get(), "tickets" => $tickets->get()]);
+        return view("dashboard", [
+            "reserves" => $reserves->get(),
+            "tickets" => $tickets->get(),
+            "days" => $diff , 
+            "payments" => $payments->get()
+        ]);
     }
 
     public function profile()
@@ -242,21 +253,19 @@ class UserController extends Controller
         if ($user->count()) {
             $activeCode = rand(1000, 9999);
             // یه پیامک میفرستیم به کاربر برای کد بازیابی
-            try{
+            try {
                 $sender = "10008663";
                 $message = "کد بازیابی پاوز: " . $activeCode;
                 $receptor = array($phonenumber);
-                $result = Kavenegar::Send($sender,$receptor,$message);            
-            }
-            catch(\Kavenegar\Exceptions\ApiException $e){
+                $result = Kavenegar::Send($sender, $receptor, $message);
+            } catch (\Kavenegar\Exceptions\ApiException $e) {
                 // در صورتی که خروجی وب سرویس 200 نباشد این خطا رخ می دهد
                 echo $e->errorMessage();
-            }
-            catch(\Kavenegar\Exceptions\HttpException $e){
+            } catch (\Kavenegar\Exceptions\HttpException $e) {
                 // در زمانی که مشکلی در برقرای ارتباط با وب سرویس وجود داشته باشد این خطا رخ می دهد
                 echo $e->errorMessage();
             }
-    
+
             $user->update(["activeCode" => $activeCode]);
             return response(["message" => "sended"]);
         } else {

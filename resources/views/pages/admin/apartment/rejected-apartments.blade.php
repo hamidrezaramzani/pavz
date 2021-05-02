@@ -53,7 +53,7 @@
                                         </td>
                                         <td width="15%">
                                             <a href="{{ $apartment->id }}" data-user-id="{{ $apartment->user_id }}"
-                                                id="publish-btn" class="btn btn-sm btn-success is">قبول</a>
+                                                class="publish-btn btn btn-sm btn-success is">قبول</a>
                                             &nbsp;
                                
                                             <a href="/admin/show-apartment/{{ $apartment->id }}"
@@ -142,7 +142,7 @@
         let userId = null;
         let url = "";
 
-        $("#publish-btn").click(function name(e) {
+        $(".publish-btn").click(function name(e) {
             e.preventDefault();
             status = "published";
             id = $(this).attr("href");

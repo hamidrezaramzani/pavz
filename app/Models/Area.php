@@ -37,10 +37,11 @@ class Area extends Model
         return $this->morphToMany(Save::class, "saveable");
     }
 
-    
     public function likes()
     {
-        return $this->morphToMany(Like::class, "likeable");
+        return $this->morphMany(Like::class, "likeable");
     }
 
+
+    
 }

@@ -110,6 +110,7 @@ $("#documents-form").validate({
             success: () => {
                 $("#d-loading").hide();
                 nextForm(form);
+                moveToSelectedCity();
             },
             error: (err) => {
                 console.log(err);

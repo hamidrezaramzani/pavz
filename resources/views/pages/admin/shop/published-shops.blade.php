@@ -52,7 +52,7 @@
                                         </td>
                                         <td width="15%">                                            
                                             <a href="{{ $item->id }}" data-user-id="{{ $item->user_id }}"
-                                                id="reject-btn" class="btn btn-sm btn-danger is">رد</a>
+                                                class="reject-btn btn btn-sm btn-danger is">رد</a>
                                             &nbsp;
                                             <a href="/admin/show-shop/{{ $item->id }}"
                                                 class="btn btn-sm btn-primary is">تماشا</a>
@@ -153,14 +153,13 @@
         let url = "";
 
 
-        $("#reject-btn").click(function name(e) {
+        $(".reject-btn").click(function name(e) {
             e.preventDefault();
             status = "rejected";
             id = $(this).attr("href");
             userId = $(this).attr("data-user-id");
             url = "/admin/reject-shop";
             $("#notification-form-modal").modal("show");
-
         });
 
 

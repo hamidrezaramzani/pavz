@@ -51,7 +51,7 @@
 
                                         <td width="15%">                                 
                                             <a href="{{ $area->id }}" data-user-id="{{ $area->user_id }}"
-                                                id="reject-btn" class="btn btn-sm btn-danger is">رد</a>
+                                                class="reject-btn btn btn-sm btn-danger is">رد</a>
                                             &nbsp;
                                             <a href="/admin/show-area/{{ $area->id }}"
                                                 class="btn btn-sm btn-primary is">تماشا</a>
@@ -141,7 +141,7 @@
         let id = null;
         let userId = null;
         let url = "";
-        $("#reject-btn").click(function name(e) {
+        $(".reject-btn").click(function name(e) {
             e.preventDefault();
             status = "rejected";
             id = $(this).attr("href");

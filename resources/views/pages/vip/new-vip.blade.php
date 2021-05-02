@@ -5,8 +5,7 @@
             <div class="col-12 col-md-12 dashboard-info-item-content is-checking p-5">
                 <h3>خرید اشتراک ویژه</h3>
                 <br>
-                <br>
-                @include("partials.vip-advantage")
+                <br>                
                 <input type="hidden" id="token" value="{{ csrf_token() }}">
 
 

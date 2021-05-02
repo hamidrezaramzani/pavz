@@ -7,7 +7,11 @@
             بعد از صحت اطمینان از اطلاعات مغازه آن را برای بررسی بفرستید. در زمان بررسی نمیتواند این بخش را تغییر
             دهید
         </div>
-        @include("partials.vip-advantage");
+        <br>
+        <br>
+        @unless($isVip)
+            @include("partials.vip-advantage");
+        @endunless
 
         @if ($data->status == 'not-completed')
             <button type="submit" class="btn btn-primary btn-sm is">ارسال برای بررسی و انتشار در سایت

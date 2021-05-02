@@ -3,7 +3,7 @@
         <h3>
 
             آخرین تراکنش ها
-            <a href="">همه موارد</a>
+            <a href="/payment/all">همه موارد</a>
         </h3>
         <br>
         <br>
@@ -18,43 +18,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>خرید دوره 1 ماهه</td>
-                        <td>4 دی 1400</td>
-                        <td>
-                            <span class="text-success">موفق</span>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>1</td>
-                        <td>خرید دوره 1 ماهه</td>
-                        <td>4 دی 1400</td>
-                        <td>
-                            <span class="text-success">موفق</span>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>1</td>
-                        <td>خرید دوره 1 ماهه</td>
-                        <td>4 دی 1400</td>
-                        <td>
-                            <span class="text-success">موفق</span>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td>خرید دوره 1 ماهه</td>
-                        <td>4 دی 1400</td>
-                        <td>
-                            <span class="text-success">موفق</span>
-                        </td>
-                    </tr>
+                    @foreach ($payments as $index => $item)
+                        <tr>
+                            <td>{{$index + 1}}</td>
+                            <td>{{ $item->vip->title }}</td>
+                            <td>{{ jdate($item->created_at)->format('%Y/%m/%d - %A') }}</td>
+                            <td>
+                                @if ($item->status == 100)
+                                    <span class="text-success">موفق</span>
+                                @else
+                                    <span class="text-danger">ناموفق</span>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
 
                 </tbody>
             </table>

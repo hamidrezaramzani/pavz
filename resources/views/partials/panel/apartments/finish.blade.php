@@ -11,7 +11,9 @@
         </div>
         <br>
         <br>
-        @include("partials.vip-advantage");
+        @unless ($isVip)
+        @include("partials.vip-advantage");        
+    @endunless
 
 
         @if ($data->status == 'not-completed')
