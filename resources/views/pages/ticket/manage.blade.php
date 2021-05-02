@@ -25,7 +25,7 @@
                                 @foreach ($data as $item)
                                     <tr>
                                         <td width="10%">{{ $item->id }}</td>
-                                        <td width="25%">{{ $item->title }}</td>
+                                        <td width="25%"><a href="/tickets/show-answer/{{ $item->id }}">{{ $item->title }}</a></td>
                                         <td width="25%">
                                             @switch($item->status)
                                             @case("answer")
@@ -47,9 +47,7 @@
                                         @endswitch
                                         </td>
                                         <td width="25%">{{ jdate($item->created_at)->format("%d %B %Y %H:%M")}}</td>
-                                        <td width="25%">
-                                            <a href="/tickets/show-answer/{{ $item->id }}">{{$item->answers()->get()->count()}} پاسخ</a>
-                                        </td>
+                                        
                                     </tr>
                                 @endforeach
 

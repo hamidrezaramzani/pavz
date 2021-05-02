@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html dir="rtl" lang="fa">
 <head>
+    <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -16,13 +17,11 @@
     <link rel="stylesheet" href="{{ asset('styles/RBSlideshow.css') }}" />
     <link rel="stylesheet" href="{{ asset('styles/bootstrap-datepicker.css') }}" />
     <link href="{{ asset('styles/responsive.css') }}" rel="stylesheet" />
-
+<meta name="google-site-verification" content="80Dy3X7vUH1Zk5c7NKmt0i0pdNGhZ7qyvbNxjaQyaC8" />
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}" />
     <link rel="apple-touch-icon" href="{{ asset('images/logo.png') }}">
     <meta name="theme-color" content="#0470dc">
     <meta name="description" content="{{ isset($description) ? $description : '' }}">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
 <body>
     @yield('content')

@@ -39,7 +39,7 @@
             </div>
 
             <div class="col-11 col-md-2">
-                
+                <script src="https://static.idpay.ir/trust.js?id=71572160&width=64"></script>
             </div>
         </div>
         <br>

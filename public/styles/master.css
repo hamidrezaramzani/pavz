@@ -3168,3 +3168,17 @@ input:disabled {
     text-align: right!important;
     width: 100%!important;
 }
+
+.error-payment h1 {
+    display: block;
+    text-align: center;
+    font: 26px isbold;
+    color: red;
+}
+
+.success-payment h1 {
+    display: block;
+    text-align: center;
+    font: 26px isbold;
+    color: green;
+}

@@ -320,3 +320,7 @@ Route::post("/discount/get-price", [DiscountController::class, "getPrice"])->mid
 
 // HELP ROUTES
 Route::get("/help/villa", [IndexController::class, "helpVilla"])->middleware("auth");
+
+
+
+Route::get("/callback", [VipController::class, "buyVip"])->middleware("auth");

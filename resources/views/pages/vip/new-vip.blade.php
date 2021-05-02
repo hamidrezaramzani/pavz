@@ -71,7 +71,7 @@
 
     <script>
         let code = "";
-
+        
         function buy(e) {
             let code = e.getAttribute("data-code");
             let id = e.getAttribute("data-id");
@@ -91,35 +91,8 @@
 
                 },
                 success: (response) => {
-                    console.log(response);
-                    $.ajax({
-                        method: "POST",
-                        url: "https://api.idpay.ir/v1.1/payment",
-                        beforeSend: (xhr) => {
-                            xhr.setRequestHeader("X-API-KEY",
-                                "35511992-ab3a-43b1-b989-f3e916278c36")
-                            xhr.setRequestHeader("X-SANDBOX", 1)
-
-                        },
-                        data: {
-                            order_id: 1,
-                            amount: response.price,
-                            callback: "http://localhost:8000/payment/callback"
-                        },
-                        success: (response) => {
-                            console.log(response);
-                            location.replace(response.link);
-                        },
-                        error: () => {
-                            Swal.fire({
-                                title: "خطا",
-                                text: "مشکلی در سمت درگاه وجود دارد. لطفا به مدیریت اطلاع دهید",
-                                icon: "error",
-                                confirmButtonText: "باشه",
-                            });
-                        }
-                    });
-
+                    let res = JSON.parse(response);
+                    location.href = res.link;               
                 },
                 error: (err) => {
                     e.setAttribute("disabled", false);

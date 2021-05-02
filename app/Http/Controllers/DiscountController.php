@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Discount;
 use App\Models\Vip;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DiscountController extends Controller
 {
@@ -49,6 +50,24 @@ class DiscountController extends Controller
         return response(["data" => $vips], 200);
     }
 
+
+    public function getPriceDuration($vip)
+    {
+        $duration = $vip->duration;
+        $month = "";
+        switch ($duration) {
+            case '30':
+                $month = "1";
+                break;
+            case "60":
+                $month = "3";
+                break;
+            case "90":
+                $month = "6";
+                break;
+        }
+        return $month;
+    }
     public function getPrice(Request $request)
     {
         $request->validate([
@@ -62,6 +81,24 @@ class DiscountController extends Controller
             $price = $percent * $price / 100;
         }
 
-        return response(["price" => $price ]);
+        $params = array(
+            'order_id' => $data["id"],
+            'amount' => $price,
+            'desc' => 'خرید اشتراک ویژه ' . $this->getPriceDuration(Vip::find($data["id"])) . " ماهه ",
+            'callback' => 'https://pavz.ir/callback',
+            "name" => Auth::user()->profile->fullname
+        );
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://api.idpay.ir/v1.1/payment');
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($params));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json',
+            'X-API-KEY: ' . env("API_IDPAY"),            
+        ));
+        $result = curl_exec($ch);
+        curl_close($ch);
+        return response($result);
     }
 }
