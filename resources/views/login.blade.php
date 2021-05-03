@@ -1,12 +1,11 @@
 @extends('layout.content' , ["title" => "ورود به پنل | پاوز" , "description" => "خوشحالیم که شما را دوباره ببینم. با ورود به سایت میتوانید به تمامی خدمات سایت در پنل کاربری دسترسی داشته باشید."])
 @section('content')
 
-<div class="login-back-background d-block d-md-none"></div>
+{{-- <div class="login-back-background d-block d-md-none"></div> --}}
     @include('partials.loading')
     <div class="row justify-content-center login-box">
         <div class="col-md-4 col-11 login-form">
-            <div class="login-form-content">
-                
+            <div class="login-form-content">                
                 <img src="{{ asset('images/person.png') }}" alt="Person image" width="350">
                 <h3>ورود به حساب</h3>
                 <p>با ورود به سایت میتوانید به تمامی امکانات سایت دسترسی پیدا کنید.</p>

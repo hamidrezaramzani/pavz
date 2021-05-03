@@ -105,4 +105,11 @@
     .answer-ticket {
         width: 100%;
     }
+    .login-form-content {
+        padding: 0!important;
+        width: 100%;
+    }
+    .login-form-content form {
+        padding: 0 30px;
+    }
 }
