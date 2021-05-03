@@ -45,7 +45,7 @@
         <br>
         <br>
         <div class="row justify-content-center">
-            <div class="col-11 col-md-3">
+            <div class="col-6 col-md-3">
                 <h4>
                     <span>شهر های برتر</span>
                 </h4>
@@ -86,7 +86,7 @@
                 </ul>
 
             </div>
-            <div class="col-11 col-md-3">
+            <div class="col-6 col-md-3">
                 <h4>
                     <span>لینک های مفید</span>
                 </h4>
@@ -121,7 +121,7 @@
                 </ul>
 
             </div>
-            <div class="col-11 col-md-3">
+            <div class="col-6 col-md-3">
                 <h4>
                     <span>امکانات</span>
                 </h4>
@@ -153,7 +153,7 @@
                 </ul>
 
             </div>
-            <div class="col-11 col-md-3">
+            <div class="col-6 col-md-3">
                 <h4>
                     <span>شبکه های اجتماعی</span>
                 </h4>

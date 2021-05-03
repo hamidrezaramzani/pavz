@@ -285,11 +285,11 @@
             </button>
             <ul>
                 <li>
-                    <a href="">کل کاربران</a>
+                    <a href="/admin/all-users">کل کاربران</a>
                 </li>
 
                 <li>
-                    <a href="">پرداختی های شما</a>
+                    <a href="/admin/all-payments">پرداختی های شما</a>
                 </li>
             </ul>
         </div>

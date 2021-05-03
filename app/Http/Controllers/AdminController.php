@@ -8,6 +8,7 @@ use App\Models\Comment;
 use App\Models\CommentAnswer;
 use App\Models\DocumentType;
 use App\Models\Notification;
+use App\Models\Payment;
 use App\Models\Shop;
 use App\Models\Ticket;
 use App\Models\TicketAnswer;
@@ -23,6 +24,12 @@ class AdminController extends Controller
     {
         $users = User::all()->sortByDesc("created_at");
         return view("pages.admin.users", ["users" => $users]);
+    }
+
+    public function allPayments()
+    {
+        $payments = Payment::all()->sortByDesc("created_at");
+        return view("pages.admin.payments", ["payments" => $payments]);
     }
 
 
@@ -595,4 +602,10 @@ class AdminController extends Controller
         ]);
         return response(['message' => 'send']);
     }
+
+    // public function allUsers()
+    // {
+    //     $users = User::all();
+    //     return view("pages.admin.all-users" , ["users" => $users]);
+    // }
 }

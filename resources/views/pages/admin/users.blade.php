@@ -12,7 +12,8 @@
                         <thead>
                             <tr>
                                 <th width="10%">کد</th>
-                                <th width="40%">نام و نام خانوادگی</th>
+                                <th width="20%">نام و نام خانوادگی</th>
+                                <th width="20%">شماره تلفن</th>
                                 <th width="20%">پروفایل</th>
                                 <th width="30%">مقام</th>
                             </tr>
@@ -24,10 +25,11 @@
                                     <tr>
                                         <td width="10%">{{ $user->id }}</td>
                                         <td width="40%">{{ $user->profile->fullname }}</td>
+                                        <td width="20%">{{ $user->phonenumber }}</td>
                                         <td width="20%">
                                             @if ($user->profile->image)
                                                 <button class="btn btn-warning btn-sm show-area-pic"
-                                                    src="{{ asset('upload/' . $user->profile->image) }}">نمایش
+                                                    src="{{ asset('user/upload/' . $user->profile->image) }}">نمایش
                                                     تصویر</button>
                                             @else
                                                 <span class="text-danger">پروفایل ندارد</span>

@@ -304,6 +304,11 @@ Route::get("/admin/answer-ticket/{id}", [AdminController::class, "getTicketAndAn
 Route::post("/admin/answer-to-ticket", [AdminController::class, "answerToTicket"])->middleware("admin");
 Route::get("/admin/last-tickets", [AdminController::class, "getLastTickets"])->middleware("admin");
 
+
+Route::get("/admin/all-users", [AdminController::class, "allUsers"])->middleware("admin");
+Route::get("/admin/all-payments", [AdminController::class, "allPayments"])->middleware("admin");
+
+
 // NOTIFICATION ROUTES
 Route::get("/notification/all", [NotificationController::class, "allNotifications"])->middleware("auth");
 

@@ -36,13 +36,11 @@
         height: 150px !important;
     }
     .welcome-box h1 {
-        font-size: 30px;
+        font-size: 35px;
     }
     .welcome-box p {
         padding: 10px;
         font-size: 14px;
-        /* width: 80%; */
-        /* text-align: center; */
     }
     .search-box button {
         width: 100% !important;
@@ -55,10 +53,10 @@
     }
     .search-box input {
         width: 100% !important;
-        height: 40px;
+        height: 46px;
     }
     .search-box .input-g {
-        height: 40px;
+        height: 46px;
     }
     .search-box input:focus {
         box-shadow: none !important;
