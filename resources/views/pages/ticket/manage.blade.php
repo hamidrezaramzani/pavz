@@ -16,7 +16,6 @@
                                 <th width="25%">عنوان</th>
                                 <th width="25%">وضعیت</th>
                                 <th width="25%">تاریخ ثبت</th>
-                                <th width="25%">تعداد پاسخ</th>
                             </tr>
                         </thead>
                         <tbody>

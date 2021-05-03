@@ -14,39 +14,75 @@
                     <span class="text-danger">فایل پیوست ندارد</span>
                 @endif
                 <hr>
-                <form action="" class="form" id="answer-ticket-form">
-
-
-                    <div class="form-group">
-                        <label for="description">متن پاسخ:</label>
-                        <textarea name="description" id="description" class="form-control"
-                            style="height: 150px;resize: none"></textarea>
-
+                @foreach ($answers as $item)
+                @if ($item->type == 'admin')
+                    <div class="answer-ticket">
+                        <h3>
+                            پاسخ از : {{ $item->user->profile->fullname }}
+                            <span class="float-left"><span
+                                    class="text-secondary">{{ jdate($item->created_at)->format('%Y/%m/%d - %H:i') }}</span>
+                                - #{{ $item->id }}</span>
+                        </h3>
+                        <br>
+                        <p>{{ $item->description }}</p>
                     </div>
-                    <br>
-
-                    <input type="hidden" id="id" value="{{ $data->id }}">
-                    <input type="hidden" id="token" value="{{ csrf_token() }}">
-                    <div class="form-group">
-                        <label for="status">وضعیت:</label>
-                        <select name="status" id="status" name="status" class="form-control">
-                            <option value="answer">پاسخ پشتیبان</option>
-                            <option value="closed">بسته شد</option>
-                            <option value="wait">منتظر پاسخ کاربر</option>
-                            <option value="done">انجام شد</option>
-                        </select>
+                @else
+                    <div class="answer-ticket user-answer">
+                        <h3>
+                            پاسخ از : {{ $item->user->profile->fullname }}
+                            <span class="float-left"><span
+                                    class="text-secondary">{{ jdate($item->created_at)->format('%Y/%m/%d - %H:i') }}</span>
+                                - #{{ $item->id }}</span>
+                        </h3>
+                        <br>
+                        <p>{{ $item->description }}</p>
                     </div>
+                @endif
+            @endforeach
 
 
-                    <br>
-                    <button id="btn-send-ticket" class="btn btn-sm btn-primary is">
-                        تایید
-                        <div id="sd-loading" class="spinner-border spinner-border-sm" role="status" style="display: none">
-                            <span class="sr-only">Loading...</span>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div>
+                    <form action="" class="form" id="answer-ticket-form">
+
+
+                        <div class="form-group">
+                            <label for="description">متن پاسخ:</label>
+                            <textarea name="description" id="description" class="form-control"
+                                style="height: 150px;resize: none"></textarea>
+    
                         </div>
+                        <br>
+    
+                        <input type="hidden" id="id" value="{{ $data->id }}">
+                        <input type="hidden" id="token" value="{{ csrf_token() }}">
+                        <div class="form-group">
+                            <label for="status">وضعیت:</label>
+                            <select name="status" id="status" name="status" class="form-control">
+                                <option value="answer">پاسخ پشتیبان</option>
+                                <option value="closed">بسته شد</option>
+                                <option value="wait">منتظر پاسخ کاربر</option>
+                                <option value="done">انجام شد</option>
+                            </select>
+                        </div>
+    
+    
+                        <br>
+                        <button id="btn-send-ticket" class="btn btn-sm btn-primary is">
+                            تایید
+                            <div id="sd-loading" class="spinner-border spinner-border-sm" role="status" style="display: none">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+    
+                        </button>
+                    </form>
 
-                    </button>
-                </form>
+                </div>
+           
             </div>
 
         </div>

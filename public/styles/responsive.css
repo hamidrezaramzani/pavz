@@ -102,4 +102,7 @@
         overflow-y: scroll!important;
         z-index: 99999999999999999999;
     }
+    .answer-ticket {
+        width: 100%;
+    }
 }

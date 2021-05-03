@@ -3182,3 +3182,52 @@ input:disabled {
     font: 26px isbold;
     color: green;
 }
+
+.answer-ticket {
+    background: rgb(244, 247, 250);
+    width: 60%;
+    height: auto;
+    border-radius: 5px;
+    display: block;
+    padding: 15px;
+    float: right;
+    margin: 10px 0;
+}
+
+.ticket {
+    background: rgb(248, 240, 255);
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    display: block;
+    padding: 15px;
+    float: right;
+    margin: 10px 0;
+}
+
+.answer-ticket span,
+.ticket span {
+    font-size: 12px;
+}
+
+.answer-ticket h3,
+.ticket h3 {
+    font: 15px isbold!important;
+}
+
+.answer-ticket p,
+.ticket p {
+    display: block;
+    font: 13px is;
+    float: right;
+    color: #333;
+}
+
+.ticket a {
+    font: 11px is;
+}
+
+.user-answer {
+    background: rgb(244, 250, 245);
+    float: left;
+}

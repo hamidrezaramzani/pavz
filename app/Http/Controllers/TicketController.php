@@ -57,6 +57,6 @@ class TicketController extends Controller
         }
         $answers = $ticket->answers();
 
-        return view("pages.ticket.show-answer", ["data" => $answers->orderBy("created_at", "DESC")->get(), "ticket" => $ticket]);
+        return view("pages.ticket.show-answer", ["answers" => $answers->orderBy("created_at", "DESC")->get(), "ticket" => $ticket]);
     }
 }

@@ -24,6 +24,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\SoldVillaPriceController;
 use App\Http\Controllers\SpecialPlaceController;
+use App\Http\Controllers\TicketAnswerController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VillasController;
@@ -239,6 +240,9 @@ Route::get("/ticket/new", [TicketController::class, "newTicket"])->middleware("a
 Route::post("/ticket/create", [TicketController::class, "createTicket"])->middleware("auth");
 Route::get("/ticket/manage", [TicketController::class, "manageTickets"])->middleware("auth");
 Route::get("/tickets/show-answer/{id}", [TicketController::class, "showTicketAnswers"])->middleware("auth");
+Route::post("/ticket/answer-user", [TicketAnswerController::class, "answerTicketUser"])->middleware("auth");
+
+
 
 
 // SEARCH
@@ -298,7 +302,7 @@ Route::post("/admin/reject-shop", [AdminController::class, "rejectShop"])->middl
 Route::get("/admin/new-tickets", [AdminController::class, "allTickets"])->middleware("admin");
 Route::get("/admin/answer-ticket/{id}", [AdminController::class, "getTicketAndAnswer"])->middleware("admin");
 Route::post("/admin/answer-to-ticket", [AdminController::class, "answerToTicket"])->middleware("admin");
-
+Route::get("/admin/last-tickets", [AdminController::class, "getLastTickets"])->middleware("admin");
 
 // NOTIFICATION ROUTES
 Route::get("/notification/all", [NotificationController::class, "allNotifications"])->middleware("auth");

@@ -15,6 +15,7 @@ use App\Models\User;
 use App\Models\Villa;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -24,6 +25,12 @@ class AdminController extends Controller
         return view("pages.admin.users", ["users" => $users]);
     }
 
+
+    public function getLastTickets()
+    {
+        $data = Ticket::all();
+        return view("pages.admin.ticket.last-tickets", ["data" => $data]);
+    }
 
     public function requestedShops()
     {
@@ -249,7 +256,7 @@ class AdminController extends Controller
     {
 
         $user = User::find($id);
-        $vip = 0;    
+        $vip = 0;
         $date = Carbon::parse($user->expire_vip);
         $now = Carbon::now();
         $days = $date->diffInDays($now);
@@ -269,7 +276,7 @@ class AdminController extends Controller
             "status" => "required|string",
             "user_id" => "required|numeric"
         ]);
-        $vip = $this->checkUserIsVip($request->get("user_id"));      
+        $vip = $this->checkUserIsVip($request->get("user_id"));
         Villa::where("id", $request->get("id"))->update(["status" => "published", "is_vip" => $vip]);
         Notification::create([
             "text" => $request->get("description"),
@@ -400,8 +407,8 @@ class AdminController extends Controller
             "status" => "required|string",
             "user_id" => "required|numeric"
         ]);
-        $vip = $this->checkUserIsVip($request->get("user_id"));        
-        Apartment::where("id", $request->get("id"))->update(["status" => "published" , "is_vip" => $vip]);
+        $vip = $this->checkUserIsVip($request->get("user_id"));
+        Apartment::where("id", $request->get("id"))->update(["status" => "published", "is_vip" => $vip]);
         Notification::create([
             "text" => $request->get("description"),
             "icon" => "success",
@@ -438,8 +445,8 @@ class AdminController extends Controller
             "status" => "required|string",
             "user_id" => "required|numeric"
         ]);
-        $vip = $this->checkUserIsVip($request->get("user_id"));        
-        Area::where("id", $request->get("id"))->update(["status" => "published" , "is_vip" => $vip]);
+        $vip = $this->checkUserIsVip($request->get("user_id"));
+        Area::where("id", $request->get("id"))->update(["status" => "published", "is_vip" => $vip]);
         Notification::create([
             "text" => $request->get("description"),
             "icon" => "success",
@@ -477,8 +484,8 @@ class AdminController extends Controller
             "status" => "required|string",
             "user_id" => "required|numeric"
         ]);
-        $vip = $this->checkUserIsVip($request->get("user_id"));        
-        Shop::where("id", $request->get("id"))->update(["status" => "published" ,  "is_vip" => $vip]);
+        $vip = $this->checkUserIsVip($request->get("user_id"));
+        Shop::where("id", $request->get("id"))->update(["status" => "published",  "is_vip" => $vip]);
         Notification::create([
             "text" => $request->get("description"),
             "icon" => "success",
@@ -558,7 +565,11 @@ class AdminController extends Controller
     public function getTicketAndAnswer($id)
     {
         $data = Ticket::find($id);
-        return view("pages.admin.ticket.answer-ticket", ["data" => $data]);
+        $answers = $data->answers();
+        return view("pages.admin.ticket.answer-ticket", [
+            "data" => $data,
+            "answers" => $answers->orderBy("created_at", "DESC")->get()
+        ]);
     }
 
     public function answerToTicket(Request $request)
@@ -571,7 +582,8 @@ class AdminController extends Controller
 
         $ticketAnswer = TicketAnswer::create([
             "description" => $request->get("description"),
-            "ticket_id" => $request->get("id")
+            "ticket_id" => $request->get("id"),
+            "user_id" => Auth::id()
         ]);
         $ticket = Ticket::where("id", $request->get("id"));
         $ticket->update(["status" => $request->get("status")]);

@@ -4,82 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\TicketAnswer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TicketAnswerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+   public function answerTicketUser(Request $request)
+   {
+       TicketAnswer::create([
+        "description" => $request->get("description") , 
+        "user_id" => Auth::id() , 
+        "type" => "user" , 
+        "ticket_id" => $request->get("id")
+       ]);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\TicketAnswer  $ticketAnswer
-     * @return \Illuminate\Http\Response
-     */
-    public function show(TicketAnswer $ticketAnswer)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\TicketAnswer  $ticketAnswer
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(TicketAnswer $ticketAnswer)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TicketAnswer  $ticketAnswer
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, TicketAnswer $ticketAnswer)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\TicketAnswer  $ticketAnswer
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(TicketAnswer $ticketAnswer)
-    {
-        //
-    }
+       return response(["message" => "ticket answer created"]);
+   }
 }
