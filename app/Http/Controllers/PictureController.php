@@ -12,8 +12,12 @@ use Illuminate\Support\Facades\Storage;
 
 class PictureController extends Controller
 {
+    
     public function updateVillaCover(Request $request)
     {
+        ini_set("upload_max_filesize" , "40M");
+        ini_set("post_max_size " , "40M");
+
         $id = $request->get("id");
         $villa = Villa::where("id", $id);
         $villa = $villa->get()[0];
@@ -39,6 +43,9 @@ class PictureController extends Controller
     public function updateShopCover(Request $request)
     {
 
+        ini_set("upload_max_filesize" , "40M");
+        ini_set("post_max_size " , "40M");
+
         $id = $request->get("id");
         $shop = Shop::find($id);
         if ($shop->level < $request->get("level")) {
@@ -59,6 +66,9 @@ class PictureController extends Controller
 
     public function updateShopPictures(Request $request)
     {
+
+        ini_set("upload_max_filesize" , "40M");
+        ini_set("post_max_size " , "40M");
 
         $id = $request->get("id");
         $deletedPictures = json_decode($request->get("deleted_pictures"));
@@ -87,6 +97,9 @@ class PictureController extends Controller
     public function updateVillaPictures(Request $request)
     {
 
+        ini_set("upload_max_filesize" , "40M");
+        ini_set("post_max_size " , "40M");
+
         $id = $request->get("id");
         $deletedPictures = json_decode($request->get("deleted_pictures"));
 
@@ -112,6 +125,7 @@ class PictureController extends Controller
 
     public function getVillaPictures($id = null)
     {
+        
         $data = Villa::find($id)->pictures();
         $isCover = Villa::find($id)->cover;
         return response([
@@ -145,6 +159,9 @@ class PictureController extends Controller
 
     public function updateApartmentCover(Request $request)
     {
+        ini_set("upload_max_filesize" , "40M");
+        ini_set("post_max_size " , "40M");
+
 
         if ($request->file("cover")) {
             $id = $request->get("id");
@@ -166,6 +183,9 @@ class PictureController extends Controller
 
     public function updateAreaCover(Request $request)
     {
+        ini_set("upload_max_filesize" , "40M");
+        ini_set("post_max_size " , "40M");
+
 
         if ($request->file("cover")) {
             $id = $request->get("id");
@@ -186,6 +206,9 @@ class PictureController extends Controller
 
     public function updateApartmentPictures(Request $request)
     {
+        ini_set("upload_max_filesize" , "40M");
+        ini_set("post_max_size " , "40M");
+
         $id = $request->get("id");
         $deletedPictures = json_decode($request->get("deleted_pictures"));
 
@@ -212,6 +235,9 @@ class PictureController extends Controller
 
     public function updateAreaPictures(Request $request)
     {
+        ini_set("upload_max_filesize" , "40M");
+        ini_set("post_max_size " , "40M");
+
         $id = $request->get("id");
         $deletedPictures = json_decode($request->get("deleted_pictures"));
 

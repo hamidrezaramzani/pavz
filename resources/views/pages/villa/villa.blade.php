@@ -190,13 +190,12 @@
     </div>
 
     @include('partials.home.footer')
+    @include('partials.gototop')
 
 @endsection
 @push('scripts')
     <script src="{{ asset('js/RBSlideshow.js') }}"></script>
-    <script src="{{ asset('js/aos.js') }}"></script>
-    <script src="{{ asset('js/multi-animated-counter.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/myapp.js') }}"></script>
     <script src="{{ asset('js/jquery.star-rating-svg.min.js') }}"></script>
     <script src="{{ asset('js/leaflet.js') }}"></script>
     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>

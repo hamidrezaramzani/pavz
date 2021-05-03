@@ -108,7 +108,6 @@ class VillasController extends Controller
         if (Auth::check() && $data->get()[0]->saves()->where("user_id", Auth::id())->get()->count()) {
             $saved = 1;
         }
-
         return view("pages.villa.villa", [
             "data" => $data,
             "state" => $state,

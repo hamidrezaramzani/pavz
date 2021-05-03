@@ -48,7 +48,7 @@
         </div>
         <br>
         <br>
-        <a href="/user/{{ $item->user->id }}">
+        <a href="/user-info/{{ $item->user->id }}">
             <div class="product-item-user">
                 <img src="{{ asset($item->user->profile->image ? 'user/upload/' . $item->user->profile->image : 'images/user.png') }}"
                     width="50" height="50" alt="{{ $item->user->profile->fullname }}">

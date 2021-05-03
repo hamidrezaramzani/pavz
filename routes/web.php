@@ -88,7 +88,7 @@ Route::post("/user/reset-password", [UserController::class, "resetPassword"]);
 
 
 Route::post("/user/change-profile", [UserController::class, "changeUserProfile"]);
-Route::get("/user/{id}", [UserController::class, "getUser"]);
+
 Route::get("/edit-villa/{id}", [VillasController::class, "editVilla"])->name("edit-villa")->middleware("auth");
 Route::get("/get-cities/{id}", [VillasController::class, "getCities"]);
 Route::get("/villa/{id}", [VillasController::class, "getSingleVilla"]);
@@ -339,3 +339,4 @@ Route::get("/callback", [VipController::class, "buyVip"])->middleware("auth");
 // PAYMENTS
 Route::get("/payments/all", [PaymentController::class, "all"])->middleware("auth");
 
+Route::get("/user-info/{id}", [UserController::class, "getUser"]);

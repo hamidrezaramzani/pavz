@@ -275,10 +275,12 @@ class UserController extends Controller
 
     public function getUser($id)
     {
+        
         $user = User::where("id", $id);
         if (!$user->count()) {
             return redirect("/");
         }
+        
         $user = $user->get()[0];
         $villas = $user->villas()->where(["status" => "published"]);
         $apartments = $user->apartments()->where(["status" => "published"]);

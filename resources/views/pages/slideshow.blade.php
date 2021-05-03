@@ -4,7 +4,7 @@
       <div id="RBSlideshow">
           <ul>
               @foreach ($images as $item)
-                  <li><img src="{{ asset($folder . '/' . $item->url) }}" alt="image" /></li>
+                  <li><img src="{{ asset("user/" . $folder . '/' . $item->url) }}" alt="image" /></li>
               @endforeach
           </ul>
       </div>

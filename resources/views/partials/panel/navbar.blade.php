@@ -19,6 +19,11 @@
                                 <i class="fa fa-home"></i>
                                 صفحه اصلی
                             </a></li>
+                            <li><a class="dropdown-item" href="/profile">
+                                <i class="fa fa-user"></i>
+                                تغییر پروفایل
+
+                            </a></li>
                         <li><a class="dropdown-item" href="/panel">
                                 <i class="fa fa-bars"></i>
                                 پیشخوان

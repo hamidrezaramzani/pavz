@@ -16,7 +16,7 @@
     @include('partials.gototop')
 @endsection
 @push('scripts')
-        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/myapp.js') }}"></script>
     <!-- Google Analytics -->
     <script>
         (function(i, s, o, g, r, a, m) {

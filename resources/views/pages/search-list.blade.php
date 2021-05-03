@@ -3,80 +3,77 @@
     <input type="hidden" id="lat" value="{{ $lat }}">
     <input type="hidden" id="long" value="{{ $long }}">
     <input type="hidden" id="type" value="{{ $type }}">
+    @include('partials.loading')
     @include('partials.navbar')
+    @include('partials.gototop')
     @include('partials.home.header')
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-5">
-            <div id="mapid"></div>
-        </div>
-        <div class="col-12 col-md-7 p-4">
-            @switch($type)
-                @case(1)
-                @case(2)
-                @case(3)
-                @case(4)
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-5">
+                <div id="mapid"></div>
+            </div>
+            <div class="col-12 col-md-7 p-4">
+                @switch($type)
+                    @case(1)
+                    @case(2)
+                    @case(3)
+                    @case(4)
+                        <div class="row">
+                            <h2 class="isbold">جستجوی سوییت و ویلا</h2>
+                            @foreach ($data as $item)
+                                <div class="col-12 col-md-5 mb-4">
+                                    @include('partials.home.villa-item' , ["item" => $item])
+                                </div>
+                            @endforeach
+                        </div>
+                    @break
+                @case(5)
+                @case(6)
                     <div class="row">
-                        <h2 class="isbold">جستجوی سوییت و ویلا</h2>
                         @foreach ($data as $item)
                             <div class="col-12 col-md-5 mb-4">
-                                @include('partials.home.villa-item' , ["item" => $item])
+                                @include('partials.home.apartment-item' , ["item" => $item])
                             </div>
                         @endforeach
                     </div>
                 @break
-            @case(5)
-            @case(6)
+            @case(7)
                 <div class="row">
                     @foreach ($data as $item)
                         <div class="col-12 col-md-5 mb-4">
-                            @include('partials.home.apartment-item' , ["item" => $item])
+                            @include('partials.home.area-item' , ["item" => $item])
                         </div>
                     @endforeach
                 </div>
             @break
-        @case(7)
+        @case(8)
+        @case(9)
             <div class="row">
                 @foreach ($data as $item)
                     <div class="col-12 col-md-5 mb-4">
-                        @include('partials.home.area-item' , ["item" => $item])
+                        @include('partials.home.shop-item' , ["item" => $item])
                     </div>
                 @endforeach
             </div>
         @break
-    @case(8)
-    @case(9)
-        <div class="row">
-            @foreach ($data as $item)
-                <div class="col-12 col-md-5 mb-4">
-                    @include('partials.home.shop-item' , ["item" => $item])
-                </div>
-            @endforeach
-        </div>
-    @break    
 
-@endswitch
-<br>
-<br>
-<br>
-<br>
-<br>
+    @endswitch
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 </div>
 </div>
+</div>
+
 
 @include('partials.home.footer')
 
 @endsection
 @push('scripts')
-<script src="{{ asset('js/aos.js') }}"></script>
-<script src="{{ asset('js/multi-animated-counter.js') }}"></script>
-<script src="{{ asset('js/app.js') }}"></script>
-<script src="{{ asset('js/jquery.star-rating-svg.min.js') }}"></script>
-<script src="{{ asset('js/mobiscroll.jquery.min.js') }}"></script>
 <script src="{{ asset('js/leaflet.js') }}"></script>
-<script src="{{ asset('js/jquery.validate.min.js') }}"></script>
-<script src="{{ asset('js/additional-methods.min.js') }}"></script>
-<script src="{{ asset('js/moment.js') }}"></script>
-<script src="{{ asset('js/persian-date.min.js') }}"></script>
 <script>
 let lat = $("#lat").val();
 let long = $("#long").val();

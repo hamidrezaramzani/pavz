@@ -72,8 +72,8 @@
                 <div class="col-11 col-md-3 mb-4">
                     <a href="/search/?name=رشت&type=2">
                         <div class="best-city-content">
-                            <div class="place-effect"></div>
                             <img src="{{ asset('images/cities/rasht.jpg') }}" alt="ویلا های بکر در رشت">
+                            <div class="place-effect"></div>
                             <div class="place-info">
                                 <h3>رشت</h3>
                             </div>
