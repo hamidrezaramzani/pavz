@@ -82,12 +82,12 @@ Route::get("/panel", [UserController::class, "panel"])->name("dashboard")->middl
 Route::get("/new-villa", [VillasController::class, "newVilla"])->name("new-villa")->middleware("auth")->breadcrumbs(fn (Trail $trail) => $trail->parent("dashboard")->push("ثبت ویلا یا سوئیت جدید", route("new-villa")));;
 Route::post("/create-villa", [VillasController::class, "createVilla"])->middleware("auth");
 Route::post("/update-specification-form", [VillasController::class, "updateSpecificationForm"])->middleware("auth");
-Route::post("/user/send-new-code", [UserController::class, "checkPhonenumberAndSendCode"]);
-Route::post("/user/reset-password", [UserController::class, "resetPassword"]);
+Route::post("/send-new-code", [UserController::class, "checkPhonenumberAndSendCode"]);
+Route::post("/reset-password", [UserController::class, "resetPassword"]);
 
 
 
-Route::post("/user/change-profile", [UserController::class, "changeUserProfile"]);
+Route::post("/change-profile", [UserController::class, "changeUserProfile"]);
 
 Route::get("/edit-villa/{id}", [VillasController::class, "editVilla"])->name("edit-villa")->middleware("auth");
 Route::get("/get-cities/{id}", [VillasController::class, "getCities"]);
@@ -247,9 +247,9 @@ Route::post("/ticket/answer-user", [TicketAnswerController::class, "answerTicket
 
 // SEARCH
 Route::get("/search/locations/{text}", [SearchController::class, "getLocations"]);
-Route::get("/search/get-all/{type}", [SearchController::class, "getAllData"]);
+Route::get("/search/get-all", [SearchController::class, "getSearchData"]);
 
-Route::get("/search", [SearchController::class, "getSearchData"]);
+Route::get("/search", [SearchController::class, "getSearchList"]);
 
 // COMMENT ANSWERS
 Route::post("/comment-answer/new", [CommentAnswerController::class, "newAnswer"])->middleware("auth");

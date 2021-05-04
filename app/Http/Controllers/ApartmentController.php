@@ -168,7 +168,7 @@ class ApartmentController extends Controller
         $apartment = $user->apartments()->where("id", $id);
         if ($apartment->count()) {
             if ($apartment->get()[0]->cover) {
-                unlink(public_path("covers") . "/" . $apartment->get()[0]->cover);
+                unlink(public_path("user/covers") . "/" . $apartment->get()[0]->cover);
             }
             $pictures = Apartment::find($id)->pictures()->get();
             $saves = Apartment::find($id)->saves()->get();
@@ -176,7 +176,7 @@ class ApartmentController extends Controller
             $apartment->delete();
             foreach ($pictures as $picture) {
                 $picture->delete();
-                unlink(public_path("apartment_pictures") . "/" . $picture->url);
+                unlink(public_path("user/apartment_pictures") . "/" . $picture->url);
             }
             foreach ($saves as $save) {
                 $save->delete();

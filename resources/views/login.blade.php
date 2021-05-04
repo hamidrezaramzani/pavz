@@ -140,7 +140,7 @@
                 };
 
                 $.ajax({
-                    url: "/user/reset-password",
+                    url: "/reset-password",
                     method: "POST",
                     data,
                     beforeSend: () => {
@@ -214,7 +214,7 @@
         $("#lost-phonenumber-form").validate({
             submitHandler: () => {
                 $.ajax({
-                    url: "/user/send-new-code",
+                    url: "/send-new-code",
                     method: "POST",
                     data: {
                         phonenumber: $("#lostPhoneNumber").val(),

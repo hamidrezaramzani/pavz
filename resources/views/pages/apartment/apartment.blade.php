@@ -1,6 +1,8 @@
 @extends('layout.content' , ["title" => "اجاره و خرید ویلا زمین و آپارتمان و پیدا کردن پیمانکار های حرفه ای | پاوز"])
 @section('content')
-    @include('pages.slideshow' , ["images" => $data->pictures()->get() , "folder" => "apartment_pictures"])
+@include('partials.gototop')
+
+@include('pages.slideshow' , ["images" => $data->pictures()->get() , "folder" => "apartment_pictures"])
 
     @include('partials.navbar')
     @include('partials.home.header')
@@ -29,9 +31,7 @@
 @push('scripts')
     <link rel="stylesheet" href="{{ asset('styles/persian-datepicker.min.css') }}" />
     <script src="{{ asset('js/RBSlideshow.js') }}"></script>
-    <script src="{{ asset('js/aos.js') }}"></script>
-    <script src="{{ asset('js/multi-animated-counter.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/myapp.js') }}"></script>
     <script src="{{ asset('js/jquery.star-rating-svg.min.js') }}"></script>
     <script src="{{ asset('js/persian-date.min.js') }}"></script>
     <script src="{{ asset('js/persian-datepicker.min.js') }}"></script>

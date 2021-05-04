@@ -140,7 +140,7 @@ class AreaController extends Controller
         $area = $user->areas()->where("id", $id);
         if ($area->count()) {
             if ($area->get()[0]->cover) {
-                unlink(public_path("covers") . "/" . $area->get()[0]->cover);
+                unlink(public_path("user/covers") . "/" . $area->get()[0]->cover);
             }
             $pictures = Area::find($id)->pictures()->get();
             $saves = Area::find($id)->saves()->get();
@@ -148,7 +148,7 @@ class AreaController extends Controller
             $area->delete();
             foreach ($pictures as $picture) {
                 $picture->delete();
-                unlink(public_path("area_pictures") . "/" . $picture->url);
+                unlink(public_path("user/area_pictures") . "/" . $picture->url);
             }
 
             foreach ($likes as $like) {

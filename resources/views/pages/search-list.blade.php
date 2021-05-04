@@ -1,8 +1,10 @@
 @extends('layout.content' , ["title" => "اجاره و خرید ویلا زمین و آپارتمان و پیدا کردن پیمانکار های حرفه ای | پاوز"])
-@section('content')
+@section('content')    
     <input type="hidden" id="lat" value="{{ $lat }}">
     <input type="hidden" id="long" value="{{ $long }}">
     <input type="hidden" id="type" value="{{ $type }}">
+    <input type="hidden" id="name" value="{{ $name }}">
+    <input type="hidden" id="for" value="{{ $for }}">
     @include('partials.loading')
     @include('partials.navbar')
     @include('partials.gototop')
@@ -12,12 +14,9 @@
             <div class="col-12 col-md-5">
                 <div id="mapid"></div>
             </div>
-            <div class="col-12 col-md-7 p-4">
-                @switch($type)
-                    @case(1)
-                    @case(2)
-                    @case(3)
-                    @case(4)
+            <div class="col-12 col-md-7 p-4">                
+                @switch($for)
+                    @case("Villa")               
                         <div class="row">
                             <h2 class="isbold">جستجوی سوییت و ویلا</h2>
                             @foreach ($data as $item)
@@ -27,8 +26,7 @@
                             @endforeach
                         </div>
                     @break
-                @case(5)
-                @case(6)
+                @case("Apartment")                
                     <div class="row">
                         @foreach ($data as $item)
                             <div class="col-12 col-md-5 mb-4">
@@ -37,7 +35,7 @@
                         @endforeach
                     </div>
                 @break
-            @case(7)
+            @case("Area")
                 <div class="row">
                     @foreach ($data as $item)
                         <div class="col-12 col-md-5 mb-4">
@@ -46,8 +44,7 @@
                     @endforeach
                 </div>
             @break
-        @case(8)
-        @case(9)
+        @case("Shop")        
             <div class="row">
                 @foreach ($data as $item)
                     <div class="col-12 col-md-5 mb-4">
@@ -92,80 +89,26 @@ mymap.invalidateSize(true);
 }, 0);
 
 
-function setPriceTemplate(item, price) {
-return `<a href="/villa/${item.id}" class="map-item-link">
-<div class="map-item">
-<img src='{{ asset('covers/${item.cover}') }}' alt='maptime logo gif' width='150px'/>
-<br/>
-<h3 class="map-item-title">${item.title}</h3>
-<br/>
-<h4>                                                    
-${price} 
-</h4>
-</div>
-</a>    
-`;
-}
 
-function getTemplate(type, item) {
-let template = ``;
-switch (type) {
-case 1:
-template = setPriceTemplate(item, item.sold_villa_prices.agreed_price ? "قیمت توافقی" : item
-.sold_villa_prices.total_price + " تومان")
-break;
-case 2:
-template = setPriceTemplate(item, item.rentPrices.midweek + " / هرشب")
-break
-case 3:
-template = setPriceTemplate(item, item.sold_villa_prices.agreed_price ? "قیمت توافقی" : item
-.sold_villa_prices.total_price + " تومان")
-break
-case 4:
-template = setPriceTemplate(item, item.rentPrices.midweek + " / هرشب")
-break;
-case 5:
-template = setPriceTemplate(item, item.agreed_price ? "قیمت توافقی" : item.total_price + " تومان")
-break;
-case 6:
-template = setPriceTemplate(item, item.mortgage + "تومان / رهن")
-break;
-case 7:
-template = setPriceTemplate(item, item.total_price + " تومان")
-break;
-case 8:
-template = setPriceTemplate(item, item.agreed_price ? "قیمت توافقی" : item.total_price + " تومان")
-break;
-case 9:
-template = setPriceTemplate(item, item.mortgage + "تومان / رهن ")
-break;
 
-}
+var popup = L.popup();
 
-return template;
+function onMapClick(item) {
+    
+    popup
+        .setLatLng([item.lat  , item.long])
+        .setContent("<a href='/" + $("#for").val().toLowerCase() +"/" + item.id +"' class='more-info-link'>جزئیات بیشتر</a>")
+        .openOn(mymap);
 }
 
 $.ajax({
-method: "GET",
-url: "/search/get-all/" + $("#type").val(),
-success: ({
-type,
-data
-}) => {
-data.forEach(item => {
-const marker = L.marker([item.lat, item.long]).on("click", function(e) {
-let lat = e.latlng.lat;
-let lng = e.latlng.lng;
-var customPopup = getTemplate(type, item);
-var customOptions = {
-'maxWidth': '400',
-'width': '400',
-'className': 'popupCustom'
-}
-marker.bindPopup(customPopup, customOptions);
-}).addTo(mymap);
-});
-}
+    method: "GET",
+    url: "/search/get-all?name=" + $("#name").val()+"&type=" + $("#type").val() + "&for=" + $("#for").val(),
+    success: (response) => {
+        response.forEach(item => {
+            L.marker([item.lat , item.long]).addTo(mymap).on("click" , onMapClick.bind(this ,item));
+        });   
+    }
 });
 
 </script>

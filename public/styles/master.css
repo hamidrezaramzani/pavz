@@ -3235,3 +3235,10 @@ input:disabled {
     background: rgb(244, 250, 245);
     float: left;
 }
+
+.more-info-link {
+    display: block;
+    text-align: center;
+    font: 15px is;
+    color: #222;
+}

@@ -6,20 +6,18 @@
             <div class="locations">
                 <ul></ul>                                    
             </div>
-        </div>
+        </div>        
         <div class="styled-select">
             <i class="fa fa-building"></i>
             <select name="type" id="type-input" property="voucherCategoryClass">
                 <option value="0">دنبال چی هستی؟</option>
-                <option value="1">خرید ویلا</option>
-                <option value="2">اجاره ویلا</option>
-                <option value="3">اجاره سوییت</option>
-                <option value="4">فروش سوییت</option>
-                <option value="5">خرید آپارتمان</option>
-                <option value="6">اجاره آپارتمان</option>
-                <option value="7">خرید زمین</option>
-                <option value="8">خرید مغازه</option>
-                <option value="9">اجاره مغازه</option>
+                <option value="1" data-for="Villa">اجاره ویلا و سوئیت</option>
+                <option value="2" data-for="Villa">خرید ویلا و سوئیت</option>    
+                <option value="1" data-for="Apartment">خرید آپارتمان</option>
+                <option value="2" data-for="Apartment">اجاره آپارتمان</option>
+                <option value="1" data-for="Area">خرید زمین</option>
+                <option value="1" data-for="Shop">خرید مغازه</option>
+                <option value="2"  data-for="Shop">اجاره مغازه</option>
             </select>
         </div>
         <button id="btn-search" type="button">

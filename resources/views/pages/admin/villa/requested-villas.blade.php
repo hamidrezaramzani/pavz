@@ -30,7 +30,7 @@
                                         <td width="20%">
                                             @if ($villa->cover)
                                                 <button class="btn btn-warning btn-sm show-villa-pic"
-                                                    src="{{ asset('covers/' . $villa->cover) }}">نمایش تصویر</button>
+                                                    src="{{ asset('user/covers/' . $villa->cover) }}">نمایش تصویر</button>
                                             @else
                                                 <span class="text-danger">کاور ندارد</span>
                                             @endif
@@ -39,13 +39,13 @@
                                         <td width="10%">{{ $villa->view_count }}</td>
                                         <td width="15%">
                                             @switch($villa->status)
-                                                @case(" not-completed")
+                                                @case("not-completed")
                                                     <span class="text-dark">پیش نویس</span>
                                                 @break
-                                                @case(" checking")
+                                                @case("checking")
                                                     <span class="text-warning">در حال بررسی</span>
                                                 @break
-                                                @case(" published")
+                                                @case("published")
                                                     <span class="text-success">انتشار یافت</span>
                                                 @break
                                             @endswitch

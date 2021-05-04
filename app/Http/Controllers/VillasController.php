@@ -16,6 +16,7 @@ use App\Models\User;
 use App\Models\Villa;
 use App\Models\VillaType;
 use Carbon\CarbonPeriod;
+use Facade\FlareClient\Stacktrace\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -294,14 +295,14 @@ class VillasController extends Controller
             $saves = Villa::find($id)->saves()->get();
             $likes = Villa::find($id)->likes()->get();
             $villa->delete();
-            if ($cover) {
-                unlink(public_path("covers") . "\\" . $cover);
+            if ($cover) {   
+                unlink(public_path("user/covers/") . $cover);                
             }
 
 
             foreach ($pictures as $picture) {
                 $picture->delete();
-                unlink(public_path("villa_pictures") . "/" . $picture->url);
+                unlink(public_path("user/villa_pictures/") . $picture->url);
             }
 
             foreach ($saves as $save) {

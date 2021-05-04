@@ -179,13 +179,13 @@ class ShopController extends Controller
         $shop = $user->shops()->where("id", $id);
         if ($shop) {
             if ($shop->get()[0]->cover) {
-                unlink(public_path("covers") . "/" . $shop->get()[0]->cover);
+                unlink(public_path("user/covers") . "/" . $shop->get()[0]->cover);
             }
             $pictures = Shop::find($id)->pictures()->get();
             $shop->delete();
             foreach ($pictures as $picture) {
                 $picture->delete();
-                unlink(public_path("shop_pictures") . "/" . $picture->url);
+                unlink(public_path("user/shop_pictures") . "/" . $picture->url);
             }
             return response(["message" => "shop deleted"], 200);
         } else {

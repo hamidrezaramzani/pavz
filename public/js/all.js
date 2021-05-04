@@ -55,8 +55,9 @@ $("#location-name").keyup(function () {
 $("#btn-search").click(function () {
     const name = $("#location-name").val();
     const type = $("#type-input").val();
+    var dataFor = $('#type-input').find("option:selected").attr('data-for');
     if (name.length) {
-        location.href = `/search/?name=${name}&type=${type}`;
+        location.href = `/search/?name=${name}&type=${type}&for=${dataFor}`;
     } else {
         Swal.fire({
             title: "مقصد",

@@ -158,7 +158,7 @@
                 $.ajax({
                     method: "POST",
                     data,
-                    url: "/user/change-profile",
+                    url: "/change-profile",
                     beforeSend: () => {
                         $("#p-loading").parents("button").prop("disabled", true);
                         $("#p-loading").show()
@@ -173,7 +173,7 @@
                             confirmButtonText: "باشه",
                         });
                     },
-                    errorr: () => {
+                    erorr: () => {
                         $("#p-loading").parents("button").prop("disabled", false);
                         $("#p-loading").hide()
                         Swal.fire({
