@@ -21,9 +21,8 @@
                     <br>
                     <div class="accordion-title">
                         <i class="far fa-circle"></i>
-                        این مورد را بعدن نمیتوانید تغییر دهید بنابرین با دقت تغییر دهید
+                        این مورد را بعدا نمیتوانید تغییر دهید بنابرین با دقت انتخاب کنید
                     </div>
-
                     <br>
                     <button type="submit" class="btn btn-primary is text-center">ادامه</button>
                 </form>

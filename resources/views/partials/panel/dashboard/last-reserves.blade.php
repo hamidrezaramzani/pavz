@@ -18,7 +18,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($reserves as $reserve)
+                  @if (count($reserves))
+                        @foreach ($reserves as $reserve)
                         <tr>
                             <td>{{ $reserve->fullname }}</td>
                             <td>{{ $reserve->start }}</td>
@@ -41,6 +42,9 @@
                         </td>
                         </tr>
                         @endforeach
+                  @else
+                    <td colspan="4" class="text-danger">رزروی ثبت نشده است</td>                      
+                  @endif
 
                     </tbody>
                 </table>

@@ -70,6 +70,7 @@
 
 @endsection
 @push('scripts')
+<script src="{{ asset('js/myapp.js') }}"></script>
 <script src="{{ asset('js/leaflet.js') }}"></script>
 <script>
 let lat = $("#lat").val();

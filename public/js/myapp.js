@@ -121,32 +121,24 @@ $(".btn-shop-like").click(function () {
 });
 
 $(".share-item").click(function () {
-    $("#copy-link-btn").attr(
-        "copy-button-text",
-        window.location.origin +
-            "/" +
-            $(this).attr("data-type") +
-            "/" +
-            $(this).attr("data-id")
-    );
-    $("#share-telegram-btn").attr(
-        "href",
-        `https://t.me/share/url?url=${
-            window.location.origin +
-            "/" +
-            $(this).attr("data-type") +
-            "/" +
-            $(this).attr("data-id")
-        }&text=${$(this).parents(".ads-item-content").find("h2").text()}`
-    );
+    const type = $(this).attr("data-type");
+    const id = $(this).attr("data-id");
+    const url =location.host + "/" + type + "/" + id;
+    $("#share-twitter-btn").attr("href" , "https://twitter.com/intent/tweet?url=" + url + "&text=این آگهی را تماشا کنید")
+    $("#share-telegram-btn").attr("href" , "https://telegram.me/share/url?url=" + url +"&text=این آگهی را تماشا کنید")
+    $("#share-code-input").val(url);
     $("#share-modal").modal("show");
 });
 
-$("#copy-link-btn").click(function () {
-    const text = $(this).attr("copy-button-text");
-    const el = document.createElement("input");
-    el.value = text;
+$("#copy-link-btn").click(function () {    
+    const el = document.getElementById("share-code-input");    
     el.select();
     el.setSelectionRange(0, 99999);
     document.execCommand("copy");
+    Swal.fire({
+        title: "کپی شد",
+        text: "لینک این آگهی کپی شد",
+        icon: "success",
+        confirmButtonText: "باشه",
+    });
 });

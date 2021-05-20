@@ -1,7 +1,9 @@
 <div class="product-item">
     <div class="vip-label">ویژه</div>
     <div class="type-label">{{ $item->ads_type == 1 ? 'فروش' : 'رهن' }}</div>
-    <img src="{{ asset('user/covers/' . $item->cover) }}" alt="{{ $item->title }}">
+    <a href="/apartment/{{ $item->id }}">
+       <img src="{{ asset('user/covers/' . $item->cover) }}" alt="{{ $item->title }}">
+    </a>
     <div class="product-item-content">
         <div class="product-item-header">
             <span class="float-right product-item-location">

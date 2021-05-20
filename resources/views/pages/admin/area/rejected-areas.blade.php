@@ -29,7 +29,7 @@
                                         <td width="20%">
                                             @if ($area->cover)
                                                 <button class="btn btn-warning btn-sm show-area-pic"
-                                                    src="{{ asset('covers/' . $area->cover) }}">نمایش تصویر</button>
+                                                    src="{{ asset('user/covers/' . $area->cover) }}">نمایش تصویر</button>
                                             @else
                                                 <span class="text-danger">کاور ندارد</span>
                                             @endif

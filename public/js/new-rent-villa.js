@@ -1001,7 +1001,7 @@ $("#cover").change(function (e) {
                         isCover = true;
                         const img = document.createElement("img");
                         img.src = target.result;
-                        img.classList.add("cover-image");                        
+                        img.classList.add("cover-image");
                         $("#cover-image-box").append(img);
                         $("#cover-image-box").show();
                     };
@@ -1148,6 +1148,30 @@ $("#picture-form").validate({
             processData: false,
             contentType: false,
             url: "/pictures/villa/pictures-update",
+            beforeSend: () => {
+                setProgress(true, "0%", "0%");
+            },
+            xhr: function () {
+                var xhr = new window.XMLHttpRequest();
+
+                xhr.upload.addEventListener(
+                    "progress",
+                    function (evt) {
+                        if (evt.lengthComputable) {
+                            var percentComplete = evt.loaded / evt.total;
+                            percentComplete = parseInt(percentComplete * 100);
+                            setProgress(
+                                true,
+                                percentComplete + "%",
+                                percentComplete + "0%"
+                            );
+                        }
+                    },
+                    false
+                );
+
+                return xhr;
+            },
             data: pictures,
 
             error: () => {
@@ -1163,11 +1187,13 @@ $("#picture-form").validate({
 
         Promise.all([updateCoverPromise, updatePicturesPromise])
             .then(() => {
+                setProgress(false, "0%", "0%");
                 $("#pictures-loading").parent().prop("disabled", false);
                 $("#pictures-loading").hide();
                 nextForm(form);
             })
-            .catch(() => {
+            .catch((err) => {
+                console.log(err);
                 $("#pictures-loading").parent().prop("disabled", false);
                 $("#pictures-loading").hide();
                 Swal.fire({

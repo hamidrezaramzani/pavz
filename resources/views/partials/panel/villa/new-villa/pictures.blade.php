@@ -41,15 +41,10 @@
                 @endif
             </ul>
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group mb-3  mb-3 w-100 float-right">
             <label for="cover">انتخاب عکس های ویلا:</label>
             <input type="file" id="pictures" multiple name="pictures[]" class="form-control" />
-        </div>
-        <div class="accordion-title">
-            <i class="far fa-circle"></i>
-            سعی کنید حداقل 8 عکس اضافه نمایید و بهترین عکس های ویلا را اضافه کنید
-        </div>
-        <br>
+        </div>    
         <div class="form-group">
             <button type="submit" class="btn btn-sm btn-primary is">ادامه
 
@@ -61,5 +56,8 @@
 
         <br>
         <br>
+        <div class="progress" style="display: none">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%;direction:ltr"></div>
+        </div>
     </form>
 </section>

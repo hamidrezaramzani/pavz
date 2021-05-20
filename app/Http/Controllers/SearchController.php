@@ -95,9 +95,12 @@ class SearchController extends Controller
 
         
         $type = $request->get("type");
-        $name = $request->get("name");
+        $name= $request->get("name"); 
         $for = $request->get("for");
         $data = $this->getStateOrCityName($name);        
+		if($data == null){
+			abort(redirect("/"));
+		}
         array_push($data, ["status", "published"]);
         array_push($data, ["ads_type", $type]);
 

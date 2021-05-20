@@ -96,10 +96,6 @@ class PictureController extends Controller
 
     public function updateVillaPictures(Request $request)
     {
-
-        ini_set("upload_max_filesize" , "40M");
-        ini_set("post_max_size " , "40M");
-
         $id = $request->get("id");
         $deletedPictures = json_decode($request->get("deleted_pictures"));
 

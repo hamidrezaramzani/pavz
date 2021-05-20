@@ -4,7 +4,7 @@
             <i class="fa fa-times"></i>
         </button>
         <a href="/">
-            <img src="{{ asset('images/dpavz.png') }}" width="80px" alt="Dark Pavz Logo">
+            <img src="{{ asset('images/dpavz.png') }}" width="60px" alt="Dark Pavz Logo">
         </a>
     </div>
     <br>
@@ -98,14 +98,19 @@
             @endguest
         </div>
         <a href="/" class="d-block d-md-none">
-            <img src="{{ asset('images/pavz.png') }}" id="responsive-navbar-logo" width="100" alt="pavz logo">
+            <img src="{{ asset('images/pavz.png') }}" class="mx-2" id="responsive-navbar-logo" width="60" alt="pavz logo">
         </a>
 
+
         <button class="navbar-toggler d-block d-md-none" id="navbar-menu-btn" type="button" data-bs-toggle="collapse"
+        
             data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fa fa-bars"></i>
 
+
         </button>
+        
+        
     </div>
     <div class="col-12 col-md-6 d-none d-md-flex justify-content-center">
         <nav class="navbar navbar-expand-lg navbar-rtl">
@@ -167,7 +172,7 @@
         <a href="/" class="d-none d-md-block">
             <img src="{{ asset('images/pavz.png') }}" id="navbar-logo"
                 data-light-src="{{ asset('images/pavz.png') }}" data-dark-src="{{ asset('images/dpavz.png') }}"
-                width="100" alt="pavz logo">
+                width="60" alt="pavz logo">
         </a>
     </div>
 </div>

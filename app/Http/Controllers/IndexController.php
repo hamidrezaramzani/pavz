@@ -101,8 +101,8 @@ class IndexController extends Controller
         }
     }
 
-    public function helpVilla()
+    public function help()
     {
-        return view("pages.help.villa");
+        return view("pages.help.help");
     }
 }

@@ -17,6 +17,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if (count($tickets))
                         @foreach ($tickets as $item)
                             <tr>
                                 <td>{{ $item->title }}</td>
@@ -51,7 +52,11 @@
                                 </td>
                             </tr>
 
-                        @endforeach
+                        @endforeach       
+                        @else
+                            <td colspan="4" class="text-danger text-center d-block">تیکتی را ثبت نکرده اید</td>
+                        @endif
+                     
 
                     </tbody>
                 </table>

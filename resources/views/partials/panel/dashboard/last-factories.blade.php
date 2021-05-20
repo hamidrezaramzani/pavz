@@ -18,20 +18,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($payments as $index => $item)
-                        <tr>
-                            <td>{{$index + 1}}</td>
-                            <td>{{ $item->vip->title }}</td>
-                            <td>{{ jdate($item->created_at)->format('%Y/%m/%d - %A') }}</td>
-                            <td>
-                                @if ($item->status == 100)
-                                    <span class="text-success">موفق</span>
-                                @else
-                                    <span class="text-danger">ناموفق</span>
-                                @endif
-                            </td>
-                        </tr>
-                    @endforeach
+                    @if (count($payments))
+                        @foreach ($payments as $index => $item)
+                            <tr>
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $item->vip->title }}</td>
+                                <td>{{ jdate($item->created_at)->format('%Y/%m/%d - %A') }}</td>
+                                <td>
+                                    @if ($item->status == 100)
+                                        <span class="text-success">موفق</span>
+                                    @else
+                                        <span class="text-danger">ناموفق</span>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <td colspan="4" class="text-danger">تراکنشی ثبت نشده است</td>
+                    @endif
 
                 </tbody>
             </table>

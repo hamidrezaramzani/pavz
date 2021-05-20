@@ -4,6 +4,7 @@
     @include('partials.home.header')
     @include('partials.navbar')
     @include('partials.share')
+    @include('partials.gototop')
     <style>
         body{
             overflow-x: hidden

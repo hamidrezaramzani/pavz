@@ -24,21 +24,15 @@
                 <p>شماره تلفن : 09010406467</p>
                 <ul>
                     <li>
-                        <button class="btn btn-sm btn-outline-danger is">
+                        <a href="https://instagram.com/pavz_official" class="btn btn-sm btn-outline-danger is">
                             <i class="fab fa-instagram"></i>
-                        </button>
-                    </li>
+                        </a>
+                    </li>                    
                     <li>
 
-                        <button class="btn btn-sm btn-outline-info is">
-                            <i class="fab fa-twitter"></i>
-                        </button>
-                    </li>
-                    <li>
-
-                        <button class="btn btn-sm btn-outline-primary is">
+                        <a class="btn btn-sm btn-outline-primary is" href="https://t.me/pavz_official">
                             <i class="fab fa-telegram"></i>
-                        </button>
+                        </a>
                     </li>
                 </ul>
             </div>

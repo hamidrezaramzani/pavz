@@ -51,6 +51,6 @@
             <a href="/login" class="btn btn-sm btn-primary is">ورود و ثبت نام</a>
             <a href="/about-us" class="btn btn-sm btn-warning  is">اطلاعات بیشتر درباره پاوز</a>
         </div>
-        <div class="col-12 col-md-6 bg-possibilities"></div>
+        <div class="col-12 col-md-6 d-none d-md-block bg-possibilities"></div>
     </div>
 </div>

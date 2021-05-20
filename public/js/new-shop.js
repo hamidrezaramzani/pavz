@@ -367,6 +367,30 @@ $("#pictures-form").validate({
             method: "POST",
             processData: false,
             contentType: false,
+            beforeSend: () => {
+                setProgress(true, "0%", "0%");
+            },
+            xhr: function () {
+                var xhr = new window.XMLHttpRequest();
+
+                xhr.upload.addEventListener(
+                    "progress",
+                    function (evt) {
+                        if (evt.lengthComputable) {
+                            var percentComplete = evt.loaded / evt.total;
+                            percentComplete = parseInt(percentComplete * 100);
+                            setProgress(
+                                true,
+                                percentComplete + "%",
+                                percentComplete + "0%"
+                            );
+                        }
+                    },
+                    false
+                );
+
+                return xhr;
+            },
             url: "/pictures/shop/pictures-update",
             data: pictures,
             error: () => {

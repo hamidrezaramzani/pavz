@@ -176,3 +176,13 @@ $(".price-counter").keyup(function () {
     const text = Num2persian(price);
     $(this).parents(".form-group").find("span").text(text);
 });
+
+function setProgress(show, width, text) {
+    $("#progress-bar").css("width", width);
+    $("#progress-bar").text(text);
+    if (show) {
+        $(".progress").show();
+    } else {
+        $(".progress").hide();
+    }
+}

@@ -1,4 +1,16 @@
-@media (min-width: 320px) and (max-width: 801px) {
+@media (min-width: 320px) and (max-width: 1440px) {
+    .title-dashboard h3 {
+        display: block;
+        text-align: center;
+    }
+    .title-dashboard p {
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+    .title-dashboard ul {
+        display: none;
+    }
     @font-face {
         @font-face {
             font-family: "is";
@@ -109,5 +121,8 @@
     }
     .login-form-content form {
         padding: 0 30px;
+    }
+    .responsive-register {
+        display: block;
     }
 }
