@@ -1,2 +1,2 @@
 # PAVZ
-create by laravel
+Powered by laravel
